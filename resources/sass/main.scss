@@ -1,7 +1,10 @@
+@import 'fonts.scss';
+@import 'vars.scss';
+
 body {
   min-width: 320px;
   overflow-x: hidden;
-  //font-family: ;
+  font-family: $font-main;
   font-size: 16px;
   line-height: 18px;
   color: black;
