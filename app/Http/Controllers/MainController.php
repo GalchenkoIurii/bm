@@ -20,4 +20,9 @@ class MainController extends Controller
     {
         echo 'contacts page';
     }
+
+    public function search()
+    {
+        echo 'search page';
+    }
 }

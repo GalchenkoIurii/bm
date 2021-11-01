@@ -10,9 +10,10 @@
                 <button id="mobileMenuOpen" class="menu__btn"></button>
                 <nav class="menu__nav">
                     <ul class="">
-                        <li><a href="{{ route('home') }}">Home</a></li>
-                        <li><a href="{{ route('about') }}">About</a></li>
-                        <li><a href="{{ route('contacts') }}">Contacts</a></li>
+                        <li><a href="{{ route('home') }}">Главная</a></li>
+                        <li><a href="{{ route('search') }}">Найти мастера</a></li>
+                        <li><a href="{{ route('about') }}">О сервисе</a></li>
+                        <li><a href="{{ route('contacts') }}">Контакты</a></li>
                     </ul>
                 </nav>
             </div>
@@ -26,13 +27,16 @@
     <nav class="mobile-menu__nav">
         <ul class="">
             <li class="mobile-menu__item">
-                <a class="mobile-menu__link" href="{{ route('home') }}">Home</a>
+                <a class="mobile-menu__link" href="{{ route('home') }}">Главная</a>
             </li>
             <li class="mobile-menu__item">
-                <a class="mobile-menu__link" href="{{ route('about') }}">About</a>
+                <a class="mobile-menu__link" href="{{ route('search') }}">Найти мастера</a>
             </li>
             <li class="mobile-menu__item">
-                <a class="mobile-menu__link" href="{{ route('contacts') }}">Contacts</a>
+                <a class="mobile-menu__link" href="{{ route('about') }}">О сервисе</a>
+            </li>
+            <li class="mobile-menu__item">
+                <a class="mobile-menu__link" href="{{ route('contacts') }}">Контакты</a>
             </li>
         </ul>
     </nav>

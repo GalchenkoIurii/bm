@@ -20,3 +20,5 @@ Route::get('/about', [MainController::class, 'about'])
     ->name('about');
 Route::get('/contacts', [MainController::class, 'contacts'])
     ->name('contacts');
+Route::get('/search', [MainController::class, 'search'])
+    ->name('search');

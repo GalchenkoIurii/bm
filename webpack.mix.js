@@ -13,5 +13,8 @@ const mix = require('laravel-mix');
 
 mix.styles('resources/css/reset.css', 'public/css/reset.css');
 mix.sass('resources/sass/main.scss', 'public/css')
+    // .options({
+    //     processCssUrls: false
+    // })
     .sass('resources/sass/media.scss', 'public/css');
 mix.js('resources/js/main.js', 'public/js');
