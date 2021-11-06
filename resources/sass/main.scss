@@ -63,6 +63,13 @@ a {
     background-color: $color-main-brown;
     color: $color-main-white;
   }
+  &_shadowed {
+    box-shadow: 2px 2px 8px 1px $color-main-grey;
+  }
+  &_shadowed:hover {
+    box-shadow: 0 0 6px 2px $color-main-grey;
+    cursor: pointer;
+  }
 }
 
 .btn-container {

@@ -12,7 +12,7 @@
             <h1 class="page-header">Найдите мастера, который позаботится о Вашей красоте</h1>
             <p class="page-description">Косметологи, парикмахеры, мастера маникюра и другие профессионалы рядом с Вами</p>
             <div class="btn-container">
-                <a href="{{ route('search') }}" class="button button_colored">Найти мастера</a>
+                <a href="{{ route('search') }}" class="button button_colored button_shadowed">Найти мастера</a>
             </div>
         </div>
     </section>
@@ -20,7 +20,7 @@
         <div class="container">
             <h2 class="page-subheader">...или оставьте заявку и мастер найдет Вас</h2>
             <div class="btn-container">
-                <a href="{{ route('apply') }}" class="button button_colored">Оставить заявку</a>
+                <a href="{{ route('apply') }}" class="button button_colored button_shadowed">Оставить заявку</a>
             </div>
         </div>
     </section>

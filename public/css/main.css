@@ -84,6 +84,13 @@ a {
   background-color: #d2a679;
   color: #fff;
 }
+.button_shadowed {
+  box-shadow: 2px 2px 8px 1px #d9dadf;
+}
+.button_shadowed:hover {
+  box-shadow: 0 0 6px 2px #d9dadf;
+  cursor: pointer;
+}
 
 .btn-container {
   display: flex;
