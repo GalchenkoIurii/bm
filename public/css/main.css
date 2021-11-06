@@ -56,6 +56,11 @@ a {
   padding: 0 20px;
 }
 
+.section {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
 .button {
   display: inline-flex;
   justify-content: center;
@@ -91,6 +96,15 @@ a {
   font-size: 1.3rem;
   line-height: 1.8rem;
   text-align: center;
+  margin-bottom: 1rem;
+}
+
+.page-subheader {
+  font-family: Roboto-Bold, sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  text-align: center;
+  margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
@@ -231,10 +245,6 @@ a {
 }
 
 /* home page */
-.intro {
-  padding-top: 1rem;
-}
-
 .accordion-box {
   margin: 1.5rem auto;
 }

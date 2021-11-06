@@ -16,6 +16,11 @@ class MainController extends Controller
         echo 'about page';
     }
 
+    public function apply()
+    {
+        echo 'apply page';
+    }
+
     public function contacts()
     {
         echo 'contacts page';
@@ -23,6 +28,6 @@ class MainController extends Controller
 
     public function search()
     {
-        echo 'search page';
+        return view('search');
     }
 }

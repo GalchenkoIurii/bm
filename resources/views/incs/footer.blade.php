@@ -5,6 +5,7 @@
                 <ul class="">
                     <li><a href="{{ route('home') }}">Главная</a></li>
                     <li><a href="{{ route('search') }}">Найти мастера</a></li>
+                    <li><a href="{{ route('apply') }}">Оставить заявку</a></li>
                     <li><a href="{{ route('about') }}">О сервисе</a></li>
                     <li><a href="{{ route('contacts') }}">Контакты</a></li>
                 </ul>

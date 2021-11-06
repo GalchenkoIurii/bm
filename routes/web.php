@@ -18,6 +18,8 @@ Route::get('/', [MainController::class, 'index'])
     ->name('home');
 Route::get('/about', [MainController::class, 'about'])
     ->name('about');
+Route::get('/apply', [MainController::class, 'apply'])
+    ->name('apply');
 Route::get('/contacts', [MainController::class, 'contacts'])
     ->name('contacts');
 Route::get('/search', [MainController::class, 'search'])
