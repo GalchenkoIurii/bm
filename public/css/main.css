@@ -269,7 +269,7 @@ a {
   justify-content: space-between;
   outline: none;
   padding: 1rem 1.5rem;
-  border: 1px solid #757070;
+  border: 1px solid #d2a679;
   border-radius: 0.5rem;
   cursor: pointer;
   list-style: none;
@@ -291,7 +291,7 @@ a {
 }
 
 .accordion[open] {
-  border: 1px solid #d9dadf;
+  border: 1px solid #d2a679;
   border-radius: 0.5rem;
 }
 
