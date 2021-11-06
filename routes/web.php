@@ -24,3 +24,11 @@ Route::get('/contacts', [MainController::class, 'contacts'])
     ->name('contacts');
 Route::get('/search', [MainController::class, 'search'])
     ->name('search');
+
+/*
+ * admin routes
+ */
+//Route::prefix('admin')->name('admin.')->middleware('admin')
+//    ->group(function() {
+//
+//    });

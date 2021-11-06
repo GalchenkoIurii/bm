@@ -7,8 +7,9 @@
 @endsection
 
 @section('content')
-    <section class="categories">
+    <section class="section">
         <div class="container">
+            <h1 class="page-header">Найдите своего мастера</h1>
             <div class="accordion-box">
                 <details class="accordion accordion-box__item">
                     <summary class="accordion__title">

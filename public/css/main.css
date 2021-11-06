@@ -259,6 +259,7 @@ a {
   margin-bottom: 0.8rem;
 }
 
+/* search page */
 .accordion {
   font-family: Roboto-Medium, sans-serif;
   font-size: 1rem;
@@ -283,8 +284,8 @@ a {
   color: #4a4a4a;
 }
 .accordion__item {
-  margin-bottom: 0.5rem;
-  padding: 0.5rem 1rem;
+  margin-bottom: 0.4rem;
+  padding: 0.3rem 1rem;
 }
 .accordion__item a {
   color: #4a4a4a;

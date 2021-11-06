@@ -278,6 +278,9 @@ a {
   }
 }
 
+
+/* search page */
+
 .accordion {
   font-family: $font-main-medium;
   font-size: 1rem;
@@ -301,8 +304,8 @@ a {
     color: $color-text-grey;
   }
   &__item {
-    margin-bottom: .5rem;
-    padding: .5rem 1rem;
+    margin-bottom: .4rem;
+    padding: .3rem 1rem;
     a {
       color: $color-text-grey;
     }
