@@ -75,6 +75,10 @@ a {
 .button_alternate {
   border: 1px solid #757070;
 }
+.button_colored {
+  background-color: #d2a679;
+  color: #fff;
+}
 
 .btn-container {
   display: flex;
@@ -194,7 +198,7 @@ a {
 
 /* footer */
 .footer {
-  background-color: #757070;
+  background-color: #996633;
   color: #fff;
 }
 .footer__nav {

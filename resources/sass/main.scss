@@ -54,6 +54,10 @@ a {
   &_alternate {
     border: 1px solid $color-dark-grey;
   }
+  &_colored {
+    background-color: $color-main-brown;
+    color: $color-main-white;
+  }
 }
 
 .btn-container {
@@ -182,7 +186,7 @@ a {
 /* footer */
 
 .footer {
-  background-color: $color-dark-grey;
+  background-color: $color-dark-brown;
   color: $color-main-white;
   &__nav {
     padding: 20px 0;

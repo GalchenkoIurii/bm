@@ -12,7 +12,7 @@
             <h1 class="page-header">Найдите мастера, который позаботится о Вашей красоте</h1>
             <p class="page-description">Косметологи, парикмахеры, мастера маникюра и другие профессионалы рядом с Вами</p>
             <div class="btn-container">
-                <a href="{{ route('search') }}" class="button button_alternate">Найти мастера</a>
+                <a href="{{ route('search') }}" class="button button_colored">Найти мастера</a>
             </div>
         </div>
     </section>
