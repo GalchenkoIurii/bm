@@ -57,6 +57,11 @@ class User extends Authenticatable
         return $this->hasMany(Portfolio::class);
     }
 
+    public function responses()
+    {
+        return $this->hasMany(Response::class);
+    }
+
     public function services()
     {
         return $this->belongsToMany(Service::class);
