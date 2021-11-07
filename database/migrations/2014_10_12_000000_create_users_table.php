@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('coord_lat')->nullable();
             $table->string('coord_long')->nullable();
             $table->unsignedTinyInteger('is_admin')->default(0);
+            $table->unsignedTinyInteger('is_master')->default(0);
             $table->unsignedTinyInteger('is_banned')->default(0);
             $table->unsignedTinyInteger('need_confirmation')->default(1);
             $table->unsignedTinyInteger('confirmation')->default(0);
