@@ -47,6 +47,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Category::class);
     }
 
+    public function certificates()
+    {
+        return $this->hasMany(Certificate::class);
+    }
+
     public function services()
     {
         return $this->belongsToMany(Service::class);
