@@ -17,6 +17,7 @@ class CreateServiceUserTable extends Migration
             $table->id();
             $table->unsignedBigInteger('service_id');
             $table->unsignedBigInteger('user_id');
+            $table->decimal('price')->nullable();
             $table->timestamps();
         });
     }
