@@ -57,6 +57,16 @@ class User extends Authenticatable
         return $this->hasMany(Certificate::class);
     }
 
+    public function chats()
+    {
+        return $this->belongsToMany(Chat::class);
+    }
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
+
     public function portfolios()
     {
         return $this->hasMany(Portfolio::class);
