@@ -28,6 +28,9 @@ class CreateApplicationsTable extends Migration
             $table->string('region')->nullable();
             $table->string('district')->nullable();
             $table->string('city')->nullable();
+            $table->string('street')->nullable();
+            $table->string('house')->nullable();
+            $table->string('locale_num')->nullable();
             $table->string('coord_lat')->nullable();
             $table->string('coord_long')->nullable();
             $table->string('name')->nullable();

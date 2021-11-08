@@ -25,11 +25,15 @@ class CreateUsersTable extends Migration
             $table->string('region')->nullable();
             $table->string('district')->nullable();
             $table->string('city')->nullable();
+            $table->string('street')->nullable();
+            $table->string('house')->nullable();
+            $table->string('locale_num')->nullable();
             $table->string('ip_address')->nullable();
             $table->string('coord_lat')->nullable();
             $table->string('coord_long')->nullable();
             $table->unsignedTinyInteger('is_admin')->default(0);
             $table->unsignedTinyInteger('is_master')->default(0);
+            $table->unsignedTinyInteger('is_business')->default(0);
             $table->unsignedTinyInteger('is_banned')->default(0);
             $table->unsignedTinyInteger('need_confirmation')->default(1);
             $table->unsignedTinyInteger('confirmation')->default(0);
