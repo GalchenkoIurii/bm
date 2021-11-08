@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,19 @@ Route::get('/contacts', [MainController::class, 'contacts'])
     ->name('contacts');
 Route::get('/search', [MainController::class, 'search'])
     ->name('search');
+
+
+Route::middleware('guest')->group(function() {
+    /*
+     * register, login, logout
+     */
+    Route::get('/register', [UserController::class, 'create'])
+        ->name('register.create');
+    Route::post('/register', [UserController::class, 'store'])
+        ->name('register.store');
+
+});
+
 
 /*
  * admin routes
