@@ -19,6 +19,8 @@
     @yield('content')
 </main>
 
+@include('incs.modal')
+
 @yield('footer')
 
 <script src="{{ asset('js/main.js') }}"></script>

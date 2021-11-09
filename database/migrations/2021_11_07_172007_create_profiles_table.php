@@ -26,7 +26,7 @@ class CreateProfilesTable extends Migration
             $table->string('street')->nullable();
             $table->string('house')->nullable();
             $table->string('locale_num')->nullable();
-            $table->set('place', ['master', 'client', 'both']);
+            $table->set('place', ['master', 'client', 'both'])->nullable();
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });

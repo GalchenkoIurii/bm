@@ -125,6 +125,76 @@ a {
   }
 }
 
+
+/* modal window */
+
+.modal {
+  position: fixed;
+  background-color: rgba(196, 196, 196, 0.8);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  //display: flex;
+  //flex-direction: column;
+  //visibility: hidden;
+  //opacity: 0;
+  pointer-events: none;
+  transform: translateX(-100vw);
+  transition: transform 200ms ease-in-out;
+  &[data-open] {
+    transform: translateX(0);
+  }
+  &__window {
+    width: 90vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem 2.5rem;
+    background: $color-main-white;
+    border-radius: 0.5rem;
+  }
+  &__close-wrapper {
+    min-height: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  &__close-btn {
+    width:40px;
+    height: 40px;
+    border: none;
+    background: none;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    &::before, &::after {
+      content: "";
+      width: 2px;
+      height: 28px;
+      background-color: $color-main-black;
+      position: absolute;
+      top: 7px;
+      left: 19px;
+    }
+    &::before {
+      transform: rotate(45deg);
+    }
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+  &__body {
+    min-height: 2rem;
+  }
+}
+
+
+
+
+
 .page-header {
   font-family: $font-main-bold;
   font-size: 1.3rem;
