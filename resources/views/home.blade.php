@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('page-title'){{ __('home.title') }} @endsection
+@section('page-title')Главная @endsection
 
 @section('header')
     @include('incs.header')

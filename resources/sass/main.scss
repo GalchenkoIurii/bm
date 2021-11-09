@@ -78,6 +78,53 @@ a {
   padding: 1rem;
 }
 
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-container {
+  padding: .8rem;
+}
+
+.form-group {
+  margin-bottom: .8rem;
+  display: inline-flex;
+  flex-direction: column;
+  &__label {
+    font-family: $font-main-medium;
+    font-size: .9rem;
+    line-height: 1.2rem;
+    margin-bottom: .3rem;
+  }
+  input {
+    width: 100%;
+    padding: .6rem .8rem;
+    height: 2.5rem;
+    border-radius: .3rem;
+    border: 1px solid $color-dark-grey;
+    background-color: $color-main-white;
+    box-shadow: 1px 1px 2px $color-dark-grey;
+    color: $color-text-grey;
+    font-size: 1rem;
+    line-height: 1.2;
+    outline: none;
+  }
+  &__error input {
+    border-color: $color-main-red;
+  }
+  &__status {
+    font-family: $font-main-light;
+    font-size: .8rem;
+    line-height: 1rem;
+    margin-bottom: .25rem;
+  }
+  &__error &__status {
+    color: $color-main-red;
+  }
+}
+
 .page-header {
   font-family: $font-main-bold;
   font-size: 1.3rem;

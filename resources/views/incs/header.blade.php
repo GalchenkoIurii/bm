@@ -11,6 +11,7 @@
                 <nav class="menu__nav">
                     <ul class="">
                         <li><a href="{{ route('home') }}">Главная</a></li>
+                        <li><a href="{{ route('register.create') }}">Регистрация</a></li>
                         <li><a href="{{ route('search') }}">Найти мастера</a></li>
                         <li><a href="{{ route('apply') }}">Оставить заявку</a></li>
                         <li><a href="{{ route('about') }}">О сервисе</a></li>
@@ -29,6 +30,9 @@
         <ul class="">
             <li class="mobile-menu__item">
                 <a class="mobile-menu__link" href="{{ route('home') }}">Главная</a>
+            </li>
+            <li class="mobile-menu__item">
+                <a class="mobile-menu__link" href="{{ route('register.create') }}">Регистрация</a>
             </li>
             <li class="mobile-menu__item">
                 <a class="mobile-menu__link" href="{{ route('search') }}">Найти мастера</a>
