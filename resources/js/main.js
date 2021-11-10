@@ -24,4 +24,18 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+
+    // modal window
+    const modalWindow = document.querySelector("#modal");
+    const modalWindowClose = document.querySelector("#modalClose");
+
+    if (modalWindowClose) {
+        modalWindowClose.addEventListener("click", function(e) {
+            e.preventDefault();
+            if (modalWindow) {
+                modalWindow.style.display = "none";
+            }
+        });
+    }
+
 }, false);

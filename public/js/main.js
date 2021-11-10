@@ -33,6 +33,20 @@ document.addEventListener("DOMContentLoaded", function () {
         mobileMenuOpen.style.display = "";
       }
     });
+  } // modal window
+
+
+  var modalWindow = document.querySelector("#modal");
+  var modalWindowClose = document.querySelector("#modalClose");
+
+  if (modalWindowClose) {
+    modalWindowClose.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      if (modalWindow) {
+        modalWindow.style.display = "none";
+      }
+    });
   }
 }, false);
 

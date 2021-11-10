@@ -38,6 +38,9 @@ Route::middleware('guest')->group(function() {
 
 });
 
+Route::get('/logout', [UserController::class, 'logout'])
+    ->name('logout')->middleware('auth');
+
 
 /*
  * admin routes

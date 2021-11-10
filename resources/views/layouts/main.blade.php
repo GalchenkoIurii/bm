@@ -19,7 +19,7 @@
     @yield('content')
 </main>
 
-@include('incs.modal')
+@include('incs.success_modal')
 
 @yield('footer')
 

@@ -29,4 +29,11 @@ class UserController extends Controller
 
         return redirect()->route('home');
     }
+
+    public function logout()
+    {
+        Auth::logout();
+
+        return redirect()->route('home');
+    }
 }

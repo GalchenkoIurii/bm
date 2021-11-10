@@ -16,6 +16,7 @@
                         <li><a href="{{ route('apply') }}">Оставить заявку</a></li>
                         <li><a href="{{ route('about') }}">О сервисе</a></li>
                         <li><a href="{{ route('contacts') }}">Контакты</a></li>
+                        <li><a href="{{ route('logout') }}">Выйти</a></li>
                     </ul>
                 </nav>
             </div>
@@ -45,6 +46,9 @@
             </li>
             <li class="mobile-menu__item">
                 <a class="mobile-menu__link" href="{{ route('contacts') }}">Контакты</a>
+            </li>
+            <li class="mobile-menu__item">
+                <a class="mobile-menu__link" href="{{ route('logout') }}">Выйти</a>
             </li>
         </ul>
     </nav>

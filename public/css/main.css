@@ -156,12 +156,6 @@ a {
   z-index: 999;
   width: 100vw;
   height: 100vh;
-  pointer-events: none;
-  transform: translateX(-100vw);
-  transition: transform 200ms ease-in-out;
-}
-.modal[data-open] {
-  transform: translateX(0);
 }
 .modal__window {
   width: 90vw;
@@ -175,7 +169,6 @@ a {
 }
 .modal__close-wrapper {
   min-height: 1.5rem;
-  margin-bottom: 1rem;
 }
 .modal__close-btn {
   width: 40px;
@@ -203,6 +196,11 @@ a {
 }
 .modal__body {
   min-height: 2rem;
+}
+.modal__message {
+  font-size: 1.1rem;
+  line-height: 1.4rem;
+  margin-bottom: 0.5rem;
 }
 
 .page-header {
