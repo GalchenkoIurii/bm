@@ -10,6 +10,7 @@
     <section class="section">
         <div class="container">
             <h1 class="page-header">Вход</h1>
+            <p class="page-description">Введите Email или номер телефона</p>
             <div class="form-container">
                 <form action="{{ route('login') }}" method="post" class="form">
                     @csrf

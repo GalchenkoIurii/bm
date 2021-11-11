@@ -10,6 +10,7 @@
     <section class="section">
         <div class="container">
             <h1 class="page-header">Регистрация</h1>
+            <p class="page-description">Введите имя, Email или номер телефона и пароль</p>
             <div class="form-container">
                 <form action="{{ route('register.store') }}" method="post" class="form">
                     @csrf

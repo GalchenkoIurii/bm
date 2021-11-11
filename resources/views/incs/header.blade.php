@@ -11,12 +11,16 @@
                 <nav class="menu__nav">
                     <ul class="">
                         <li><a href="{{ route('home') }}">Главная</a></li>
-                        <li><a href="{{ route('register.create') }}">Регистрация</a></li>
                         <li><a href="{{ route('search') }}">Найти мастера</a></li>
                         <li><a href="{{ route('apply') }}">Оставить заявку</a></li>
                         <li><a href="{{ route('about') }}">О сервисе</a></li>
                         <li><a href="{{ route('contacts') }}">Контакты</a></li>
-                        <li><a href="{{ route('logout') }}">Выйти</a></li>
+                        @if(auth()->check())
+                                <li><a href="{{ route('logout') }}">Выйти</a></li>
+                            @else
+                                <li><a href="{{ route('register.create') }}">Регистрация</a></li>
+                                <li><a href="{{ route('login.create') }}">Вход</a></li>
+                            @endif
                     </ul>
                 </nav>
             </div>
@@ -33,9 +37,6 @@
                 <a class="mobile-menu__link" href="{{ route('home') }}">Главная</a>
             </li>
             <li class="mobile-menu__item">
-                <a class="mobile-menu__link" href="{{ route('register.create') }}">Регистрация</a>
-            </li>
-            <li class="mobile-menu__item">
                 <a class="mobile-menu__link" href="{{ route('search') }}">Найти мастера</a>
             </li>
             <li class="mobile-menu__item">
@@ -47,9 +48,18 @@
             <li class="mobile-menu__item">
                 <a class="mobile-menu__link" href="{{ route('contacts') }}">Контакты</a>
             </li>
-            <li class="mobile-menu__item">
-                <a class="mobile-menu__link" href="{{ route('logout') }}">Выйти</a>
-            </li>
+            @if(auth()->check())
+                    <li class="mobile-menu__item">
+                        <a class="mobile-menu__link" href="{{ route('logout') }}">Выйти</a>
+                    </li>
+                @else
+                    <li class="mobile-menu__item">
+                        <a class="mobile-menu__link" href="{{ route('register.create') }}">Регистрация</a>
+                    </li>
+                    <li class="mobile-menu__item">
+                        <a class="mobile-menu__link" href="{{ route('login.create') }}">Вход</a>
+                    </li>
+                @endif
         </ul>
     </nav>
 </div>
