@@ -38,7 +38,25 @@ class UserController extends Controller
 
     public function login(UserLoginRequest $request)
     {
+        $request_data = array_diff($request->validated(), [null]);
 
+        $search_param = array_key_exists('email', $request_data) ? 'email' : 'phone';
+
+        $user = User::where($search_param, $request_data[$search_param])->first();
+
+        if (isset($user) && $user->is_banned) {
+            return redirect()->back()->with('error', 'Вы заблокированы');
+        }
+
+        if (Auth::attempt($request_data)) {
+            $request->session()->regenerate();
+
+            session()->flash('success', 'Вы вошли');
+
+            return redirect()->intended(route('home'));
+        }
+
+        return redirect()->back()->with('error', 'Неверные данные для входа');
     }
 
     public function logout()
