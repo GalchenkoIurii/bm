@@ -26,7 +26,7 @@ class SettingController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.settings-create');
     }
 
     /**
@@ -37,7 +37,15 @@ class SettingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|max:255',
+            'slug' => 'required|max:255',
+            'value' => 'nullable|max:255'
+        ]);
+
+        Setting::create($request->all());
+
+        return redirect()->route('admin.settings.index')->with('success', 'Настройка добавлена');
     }
 
     /**
