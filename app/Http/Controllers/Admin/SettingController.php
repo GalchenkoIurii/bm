@@ -67,7 +67,8 @@ class SettingController extends Controller
      */
     public function edit($id)
     {
-        //
+        $setting = Setting::findOrFail($id);
+        return view('admin.settings-edit', compact('setting'));
     }
 
     /**
@@ -79,7 +80,16 @@ class SettingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title' => 'required|max:255',
+            'slug' => 'required|max:255',
+            'value' => 'nullable|max:255'
+        ]);
+
+        $setting = Setting::find($id);
+        $setting->update($request->all());
+
+        return redirect()->route('admin.settings.index')->with('success', 'Настройка добавлена');
     }
 
     /**
@@ -90,6 +100,9 @@ class SettingController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $setting = Setting::findOrFail($id);
+        $setting->delete();
+
+        return redirect()->route('admin.settings.index')->with('success', 'Настройка удалена');
     }
 }
