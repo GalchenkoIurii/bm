@@ -73,7 +73,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.index') }}">
+                        <a class="nav-link" href="{{ route('admin.settings.index') }}">
                             <span data-feather="settings"></span>
                             Основные настройки
                         </a>
