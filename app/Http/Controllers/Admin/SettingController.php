@@ -81,15 +81,15 @@ class SettingController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'title' => 'required|max:255',
-            'slug' => 'required|max:255',
+            'title' => 'nullable|max:255',
+            'slug' => 'nullable|max:255',
             'value' => 'nullable|max:255'
         ]);
 
         $setting = Setting::find($id);
         $setting->update($request->all());
 
-        return redirect()->route('admin.settings.index')->with('success', 'Настройка добавлена');
+        return redirect()->route('admin.settings.index')->with('success', 'Настройка обновлена');
     }
 
     /**
