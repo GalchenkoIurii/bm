@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\UserController;
@@ -59,6 +60,7 @@ Route::prefix('admin')->name('admin.')->middleware('admin')
         Route::get('/', [AdminController::class, 'index'])->name('index');
 
         Route::resources([
+            '/categories' => CategoryController::class,
             '/settings' => SettingController::class
         ]);
     });
