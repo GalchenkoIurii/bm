@@ -86,8 +86,10 @@ class SettingController extends Controller
             'value' => 'nullable|max:255'
         ]);
 
+        $request_data = array_diff($request->all(), [null]);
+
         $setting = Setting::find($id);
-        $setting->update($request->all());
+        $setting->update($request_data);
 
         return redirect()->route('admin.settings.index')->with('success', 'Настройка обновлена');
     }
