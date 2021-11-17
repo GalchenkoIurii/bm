@@ -91,7 +91,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.index') }}">
+                        <a class="nav-link" href="{{ route('admin.categories.index') }}">
                             <span data-feather="sliders"></span>
                             Категории
                         </a>
