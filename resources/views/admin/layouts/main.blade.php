@@ -97,7 +97,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.index') }}">
+                        <a class="nav-link" href="{{ route('admin.services.index') }}">
                             <span data-feather="scissors"></span>
                             Услуги
                         </a>
