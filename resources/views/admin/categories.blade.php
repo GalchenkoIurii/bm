@@ -17,7 +17,8 @@
                         <th scope="col">Id</th>
                         <th scope="col">Название</th>
                         <th scope="col">Слаг</th>
-                        <th scope="col">Лого</th>
+                        <th scope="col">Услуги</th>
+                        {{--<th scope="col">Лого</th>--}}
                         <th scope="col">Действия</th>
                     </tr>
                     </thead>
@@ -27,7 +28,12 @@
                             <th scope="row">{{ $category->id }}</th>
                             <td>{{ $category->name }}</td>
                             <td>{{ $category->slug }}</td>
-                            <td>{{ $category->logo }}</td>
+                            <td>
+                                @foreach($category->services as $service)
+                                   <span>{{ $service->name }}</span><br>
+                                    @endforeach
+                            </td>
+                            {{--<td>{{ $category->logo }}</td>--}}
                             <td class="d-flex">
                                 <a href="{{ route('admin.categories.edit', ['category' => $category->id]) }}"
                                    class="btn btn-info btn-sm me-1">Редактировать</a>
