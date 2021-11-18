@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Service;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,8 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('admin.services-create', compact('categories'));
     }
 
     /**
@@ -37,7 +39,15 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:255',
+            'slug' => 'required|max:255',
+            'category_id' => 'required|integer'
+        ]);
+
+        Service::create($request->all());
+
+        return redirect()->route('admin.services.index')->with('success', 'Услуга добавлена');
     }
 
     /**
