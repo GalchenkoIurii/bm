@@ -69,7 +69,10 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        //
+        $service = Service::with('category')->findOrFail($id);
+        $categories = Category::all();
+
+        return view('admin.services-edit', compact('service', 'categories'));
     }
 
     /**
@@ -81,7 +84,18 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'nullable|max:255',
+            'slug' => 'nullable|max:255',
+            'category_id' => 'required|integer'
+        ]);
+
+        $request_data = array_diff($request->all(), [null]);
+
+        $service = Service::find($id);
+        $service->update($request_data);
+
+        return redirect()->route('admin.services.index')->with('success', 'Услуга обновлена');
     }
 
     /**
