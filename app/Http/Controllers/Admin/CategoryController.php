@@ -100,6 +100,15 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::doesntHave('services')->find($id);
+
+        if ($category) {
+            $category->delete();
+
+            return redirect()->route('admin.categories.index')->with('success', 'Категория удалена');
+        } else {
+            return redirect()->route('admin.categories.index')
+                ->with('error', 'Нельзя удалить данную категорию, так как у нее есть услуги');
+        }
     }
 }
