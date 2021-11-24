@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\PostCategoryController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\MainController;
@@ -62,6 +63,7 @@ Route::prefix('admin')->name('admin.')->middleware('admin')
 
         Route::resources([
             '/categories' => CategoryController::class,
+            '/post-categories' => PostCategoryController::class,
             '/services' => ServiceController::class,
             '/settings' => SettingController::class
         ]);

@@ -102,6 +102,12 @@
                             Услуги
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.post-categories.index') }}">
+                            <span data-feather="sliders"></span>
+                            Категории постов
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>
