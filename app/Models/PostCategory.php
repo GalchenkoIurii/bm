@@ -10,6 +10,10 @@ class PostCategory extends Model
 {
     use HasFactory, Sluggable;
 
+    protected $fillable = [
+        'title'
+    ];
+
     public function posts()
     {
         return $this->hasMany(Post::class);

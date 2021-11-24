@@ -26,7 +26,7 @@ class PostCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.post-categories-create');
     }
 
     /**
@@ -37,7 +37,13 @@ class PostCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|max:255'
+        ]);
+
+        PostCategory::create($request->all());
+
+        return redirect()->route('admin.post-categories.index')->with('success', 'Категория постов добавлена');
     }
 
     /**
