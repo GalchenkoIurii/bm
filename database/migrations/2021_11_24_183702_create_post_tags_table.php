@@ -16,7 +16,7 @@ class CreatePostTagsTable extends Migration
         Schema::create('post_tags', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('slug');
+            $table->string('slug')->nullable();
             $table->timestamps();
         });
     }
