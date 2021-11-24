@@ -106,6 +106,9 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $service = Service::findOrFail($id);
+        $service->delete();
+
+        return redirect()->route('admin.services.index')->with('success', 'Услуга удалена');
     }
 }
