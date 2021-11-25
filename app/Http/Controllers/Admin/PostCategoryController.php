@@ -91,6 +91,15 @@ class PostCategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = PostCategory::doesntHave('posts')->find($id);
+
+        if ($category) {
+            $category->delete();
+
+            return redirect()->route('admin.post-categories.index')->with('success', 'Категория постов удалена');
+        } else {
+            return redirect()->route('admin.post-categories.index')
+                ->with('error', 'Нельзя удалить данную категорию, так как у нее есть посты');
+        }
     }
 }
