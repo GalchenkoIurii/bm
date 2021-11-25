@@ -108,6 +108,12 @@
                             Категории постов
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.post-tags.index') }}">
+                            <span data-feather="tag"></span>
+                            Теги постов
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>
