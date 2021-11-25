@@ -63,6 +63,7 @@ class PostCategoryController extends Controller
     public function edit($id)
     {
         $category = PostCategory::findOrFail($id);
+
         return view('admin.post-categories-edit', compact('category'));
     }
 
@@ -73,9 +74,13 @@ class PostCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostCategoryRequest $request, $id)
     {
-        //
+        $category = PostCategory::findOrFail($id);
+
+        $category->update($request->validated());
+
+        return redirect()->route('admin.post-categories.index')->with('success', 'Категория постов обновлена');
     }
 
     /**
