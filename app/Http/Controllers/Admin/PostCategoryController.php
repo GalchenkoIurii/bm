@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PostCategoryRequest;
 use App\Models\PostCategory;
 use Illuminate\Http\Request;
 
@@ -35,13 +36,9 @@ class PostCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostCategoryRequest $request)
     {
-        $request->validate([
-            'title' => 'required|max:255'
-        ]);
-
-        PostCategory::create($request->all());
+        PostCategory::create($request->validated());
 
         return redirect()->route('admin.post-categories.index')->with('success', 'Категория постов добавлена');
     }
@@ -65,7 +62,8 @@ class PostCategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = PostCategory::findOrFail($id);
+        return view('admin.post-categories-edit', compact('category'));
     }
 
     /**
