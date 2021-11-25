@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PostTagRequest;
 use App\Models\PostTag;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,7 @@ class PostTagController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.post-tags-create');
     }
 
     /**
@@ -35,9 +36,11 @@ class PostTagController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostTagRequest $request)
     {
-        //
+        PostTag::create($request->validated());
+
+        return redirect()->route('admin.post-tags.index')->with('success', 'Тег постов добавлен');
     }
 
     /**
