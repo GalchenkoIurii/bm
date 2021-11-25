@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\PostCategoryController;
 use App\Http\Controllers\Admin\PostTagController;
 use App\Http\Controllers\Admin\ServiceController;
@@ -64,6 +65,7 @@ Route::prefix('admin')->name('admin.')->middleware('admin')
 
         Route::resources([
             '/categories' => CategoryController::class,
+            '/posts' => PostController::class,
             '/post-categories' => PostCategoryController::class,
             '/post-tags' => PostTagController::class,
             '/services' => ServiceController::class,

@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\PostTagRequest;
-use App\Models\PostTag;
 use Illuminate\Http\Request;
 
-class PostTagController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,7 @@ class PostTagController extends Controller
      */
     public function index()
     {
-        $tags = PostTag::all();
-        return view('admin.post-tags', compact('tags'));
+        //
     }
 
     /**
@@ -27,7 +24,7 @@ class PostTagController extends Controller
      */
     public function create()
     {
-        return view('admin.post-tags-create');
+        //
     }
 
     /**
@@ -36,11 +33,9 @@ class PostTagController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PostTagRequest $request)
+    public function store(Request $request)
     {
-        PostTag::create($request->validated());
-
-        return redirect()->route('admin.post-tags.index')->with('success', 'Тег постов добавлен');
+        //
     }
 
     /**
@@ -62,9 +57,7 @@ class PostTagController extends Controller
      */
     public function edit($id)
     {
-        $tag = PostTag::findOrFail($id);
-
-        return view('admin.post-tags-edit', compact('tag'));
+        //
     }
 
     /**
@@ -74,13 +67,9 @@ class PostTagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PostTagRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $tag = PostTag::findOrFail($id);
-
-        $tag->update($request->validated());
-
-        return redirect()->route('admin.post-tags.index')->with('success', 'Тег постов обновлен');
+        //
     }
 
     /**
@@ -91,15 +80,6 @@ class PostTagController extends Controller
      */
     public function destroy($id)
     {
-        $tag = PostTag::doesntHave('posts')->find($id);
-
-        if ($tag) {
-            $tag->delete();
-
-            return redirect()->route('admin.post-tags.index')->with('success', 'Тег постов удален');
-        } else {
-            return redirect()->route('admin.post-tags.index')
-                ->with('error', 'Нельзя удалить данный тег, так как у него есть посты');
-        }
+        //
     }
 }

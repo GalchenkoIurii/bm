@@ -114,6 +114,12 @@
                             Теги постов
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.posts.index') }}">
+                            <span data-feather="file-text"></span>
+                            Посты
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>
