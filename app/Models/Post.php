@@ -15,6 +15,8 @@ class Post extends Model
         'description',
         'content',
         'post_category_id',
+        'image',
+        'user_id'
     ];
 
     public function postCategory()
@@ -24,7 +26,7 @@ class Post extends Model
 
     public function postTags()
     {
-        return $this->belongsToMany(PostTag::class);
+        return $this->belongsToMany(PostTag::class)->withTimestamps();
     }
 
     public function user()

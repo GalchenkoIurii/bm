@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PostStoreRequest;
 use App\Models\Post;
 use App\Models\PostCategory;
 use App\Models\PostTag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -41,9 +43,24 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostStoreRequest $request)
     {
-        dd($request->all());
+        $request_data = $request->validated();
+
+        if ($request->hasFile('image')) {
+            $folder = date('Y-m-d');
+            $request_data['image'] = $request->file('image')->store('posts/' . $folder, 'public');
+        }
+
+        $request_data['user_id'] = Auth::id();
+
+        $post = Post::create($request_data);
+
+        if (isset($request_data['post_tags_id'])) {
+            $post->postTags()->sync($request_data['post_tags_id']);
+        }
+
+        return redirect()->route('admin.posts.index')->with('success', 'Пост сохранен');
     }
 
     /**
