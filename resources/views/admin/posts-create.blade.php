@@ -13,7 +13,7 @@
             <h3>Новый пост</h3>
         </div>
         <div class="card-body">
-            <form action="{{ route('admin.posts.store') }}" method="post">
+            <form action="{{ route('admin.posts.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="title" class="form-label">Название</label>
@@ -41,6 +41,10 @@
                             <option value="{{ $tag->id }}">{{ $tag->title }}</option>
                         @endforeach
                     </select>
+                </div>
+                <div class="mb-3">
+                    <label class="input-group-text" for="image">Изображение поста</label>
+                    <input type="file" class="form-control" id="image" name="image">
                 </div>
 
                 <button type="submit" class="btn btn-primary">Добавить</button>
