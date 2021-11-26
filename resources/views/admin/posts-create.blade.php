@@ -36,7 +36,6 @@
                     </select>
                 </div>
                 <div class="input-group mb-3">
-                    <label class="input-group-text" for="post_tags_id">Теги</label>
                     <select class="form-select" multiple="multiple" name="post_tags_id[]" id="post_tags_id">
                         @foreach($tags as $tag)
                             <option value="{{ $tag->id }}">{{ $tag->title }}</option>
@@ -54,7 +53,9 @@
     <script src="{{ asset('js/select2.full.min.js') }}"></script>
     <script>
         $(document).ready(function() {
-            $('#post_tags_id').select2();
+            $('#post_tags_id').select2({
+                placeholder: "Выберите теги для поста"
+            });
         });
     </script>
     @endsection
