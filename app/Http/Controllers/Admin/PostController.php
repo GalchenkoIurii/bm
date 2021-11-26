@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
+use App\Models\PostCategory;
+use App\Models\PostTag;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -14,7 +17,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::with(['postCategory', 'postTags'])->get();
+
+        return view('admin.posts', compact('posts'));
     }
 
     /**
@@ -24,7 +29,10 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $categories = PostCategory::all();
+        $tags = PostTag::all();
+
+        return view('admin.posts-create', compact('categories', 'tags'));
     }
 
     /**
@@ -35,7 +43,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**

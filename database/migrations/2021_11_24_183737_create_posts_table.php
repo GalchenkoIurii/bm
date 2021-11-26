@@ -22,6 +22,9 @@ class CreatePostsTable extends Migration
             $table->unsignedInteger('views')->default(0);
             $table->unsignedBigInteger('post_category_id');
             $table->string('image')->nullable();
+            $table->unsignedTinyInteger('need_confirmation')->default(1);
+            $table->unsignedTinyInteger('confirmed')->default(0);
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }

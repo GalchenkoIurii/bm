@@ -27,10 +27,6 @@
                             @endforeach
                     </select>
                 </div>
-                {{--<div class="mb-3">--}}
-                    {{--<label for="logo" class="form-label">Лого</label>--}}
-                    {{--<input type="text" class="form-control" id="logo" name="logo">--}}
-                {{--</div>--}}
 
                 <button type="submit" class="btn btn-primary">Добавить</button>
             </form>

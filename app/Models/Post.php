@@ -10,6 +10,13 @@ class Post extends Model
 {
     use HasFactory, Sluggable;
 
+    protected $fillable = [
+        'title',
+        'description',
+        'content',
+        'post_category_id',
+    ];
+
     public function postCategory()
     {
         return $this->belongsTo(PostCategory::class);
@@ -18,6 +25,11 @@ class Post extends Model
     public function postTags()
     {
         return $this->belongsToMany(PostTag::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function sluggable(): array
