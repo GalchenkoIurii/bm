@@ -133,6 +133,16 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        $post->postTags()->sync(null);
+
+        if (isset($post->image)) {
+            Storage::disk('public')->delete($post->image);
+        }
+
+        $post->delete();
+
+        return redirect()->route('admin.posts.index')->with('success', 'Пост удален');
     }
 }
