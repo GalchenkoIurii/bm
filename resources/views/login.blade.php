@@ -42,6 +42,11 @@
                     </div>
                 </form>
             </div>
+            <div class="forgot-password">
+                <p class="forgot-password__text">Забыли пароль?</p>
+                <a href="{{ route('password.request') }}" class="button button_alternate button_shadowed">Восстановить пароль!</a>
+            </div>
+
         </div>
     </section>
 @endsection

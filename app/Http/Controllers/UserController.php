@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserLoginRequest;
 use App\Http\Requests\UserRegisterRequest;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
 
 class UserController extends Controller
 {
@@ -64,5 +66,25 @@ class UserController extends Controller
         Auth::logout();
 
         return redirect()->route('home');
+    }
+
+    public function passwordRequest()
+    {
+        return view('reset-password.forgot-password');
+    }
+
+    public function passwordEmail(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email'
+        ]);
+
+        $status = Password::sendResetLink(
+            $request->only('email')
+        );
+
+        return $status === Password::RESET_LINK_SENT
+            ? view('reset-password.link-sent')->with(['status' => __($status)])
+            : back()->withErrors(['email' => __($status)]);
     }
 }

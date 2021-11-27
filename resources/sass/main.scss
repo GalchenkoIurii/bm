@@ -126,6 +126,20 @@ a {
 }
 
 
+.forgot-password {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: .8rem;
+  &__text {
+    font-family: $font-main-medium;
+    font-size: .9rem;
+    line-height: 1.2rem;
+    margin-bottom: .6rem;
+  }
+}
+
+
 /* modal window */
 
 .modal {
@@ -219,7 +233,7 @@ a {
   font-family: $font-main-medium;
   font-size: 0.9rem;
   line-height: 1.2rem;
-  text-align: justify;
+  text-align: center;
   margin-bottom: .8rem;
   padding: 0 5px;
 }

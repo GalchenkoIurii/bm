@@ -36,6 +36,19 @@ Route::get('/search', [MainController::class, 'search'])
 
 Route::middleware('guest')->group(function() {
     /*
+     * reset password
+     */
+    Route::get('/forgot-password', [UserController::class, 'passwordRequest'])
+        ->name('password.request');
+    Route::post('/forgot-password', [UserController::class, 'passwordEmail'])
+        ->name('password.email');
+
+    Route::get('/reset-password/{token}/', [UserController::class, 'passwordReset'])
+        ->name('password.reset');
+    Route::post('/reset-password', [UserController::class, 'passwordUpdate'])
+        ->name('password.update');
+
+    /*
      * register, login
      */
     Route::get('/register', [UserController::class, 'create'])
