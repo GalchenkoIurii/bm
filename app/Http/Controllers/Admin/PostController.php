@@ -9,6 +9,7 @@ use App\Models\PostCategory;
 use App\Models\PostTag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -97,9 +98,31 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostStoreRequest $request, $id)
     {
-        //
+        $request_data = $request->validated();
+
+        $post = Post::findOrFail($id);
+
+        if ($request->hasFile('image')) {
+            $folder = date('Y-m-d');
+            $request_data['image'] = $request->file('image')->store('posts/' . $folder, 'public');
+            $old_image_path = $post->image;
+        }
+
+        $post->update($request_data);
+
+        if (isset($request_data['post_tags_id'])) {
+            $post->postTags()->sync($request_data['post_tags_id']);
+        } else {
+            $post->postTags()->sync(null);
+        }
+
+        if (isset($old_image_path)) {
+            Storage::disk('public')->delete($old_image_path);
+        }
+
+        return redirect()->route('admin.posts.index')->with('success', 'Пост "' . $post->title . '" обновлен');
     }
 
     /**

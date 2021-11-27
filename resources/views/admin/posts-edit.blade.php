@@ -56,9 +56,10 @@
                 <div class="mb-3">
                     <label class="input-group-text" for="image">Изображение поста</label>
                     <input type="file" class="form-control" id="image" name="image">
+                    {{ $post->image }}
                 </div>
 
-                <button type="submit" class="btn btn-primary">Добавить</button>
+                <button type="submit" class="btn btn-primary">Обновить</button>
             </form>
         </div>
     </div>
