@@ -56,7 +56,9 @@
                 <div class="mb-3">
                     <label class="input-group-text" for="image">Изображение поста</label>
                     <input type="file" class="form-control" id="image" name="image">
-                    {{ $post->image }}
+                </div>
+                <div class="mb-3">
+                    <img src="{{ $post->getImage() }}" alt="{{ $post->title }}" class="img-fluid">
                 </div>
 
                 <button type="submit" class="btn btn-primary">Обновить</button>

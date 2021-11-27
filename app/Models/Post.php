@@ -19,6 +19,15 @@ class Post extends Model
         'user_id'
     ];
 
+    public function getImage()
+    {
+        if (!$this->image) {
+            return asset('storage/no-image.svg');
+        } else {
+            return asset('storage/' . $this->image);
+        }
+    }
+
     public function postCategory()
     {
         return $this->belongsTo(PostCategory::class);
