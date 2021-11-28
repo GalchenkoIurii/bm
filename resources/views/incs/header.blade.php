@@ -14,7 +14,6 @@
                         <li><a href="{{ route('search') }}">Найти мастера</a></li>
                         <li><a href="{{ route('apply') }}">Оставить заявку</a></li>
                         <li><a href="{{ route('about') }}">О сервисе</a></li>
-                        <li><a href="{{ route('contacts') }}">Контакты</a></li>
                         @if(auth()->check() && auth()->user()->is_admin)
                                 <li><a href="{{ route('admin.index') }}">Админпанель</a></li>
                                 <li><a href="{{ route('logout') }}">Выйти</a></li>
@@ -47,9 +46,6 @@
             </li>
             <li class="mobile-menu__item">
                 <a class="mobile-menu__link" href="{{ route('about') }}">О сервисе</a>
-            </li>
-            <li class="mobile-menu__item">
-                <a class="mobile-menu__link" href="{{ route('contacts') }}">Контакты</a>
             </li>
             @if(auth()->check() && auth()->user()->is_admin)
                     <li class="mobile-menu__item">
