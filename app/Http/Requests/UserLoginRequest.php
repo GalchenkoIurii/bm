@@ -24,9 +24,9 @@ class UserLoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'nullable|email|max:255',
-            'phone' => 'required_if:email,null|max:255',
-            'password' => 'required|max:255',
+            'email' => 'nullable|email',
+            'phone' => 'required_if:email,null',
+            'password' => 'required',
         ];
     }
 }

@@ -12,6 +12,9 @@
             <h1 class="page-header">Вход</h1>
             <p class="page-description">Введите Email или номер телефона</p>
             <div class="form-container">
+                @if(session()->has('error'))
+                    <p class="">{{ session('error') }}</p>
+                @endif
                 <form action="{{ route('login') }}" method="post" class="form">
                     @csrf
                     <div class="form-group">

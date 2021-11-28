@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -28,6 +29,8 @@ class MainController extends Controller
 
     public function search()
     {
-        return view('search');
+        $categories = Category::with('services')->get();
+
+        return view('search', compact('categories'));
     }
 }
