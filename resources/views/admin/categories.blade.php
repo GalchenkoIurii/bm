@@ -4,7 +4,7 @@
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Категории</h1>
     </div>
-    <div class="card">
+    <div class="card mb-3">
         <div class="card-header">
             <h3>Управление категориями</h3>
         </div>
@@ -53,4 +53,5 @@
             @endif
         </div>
     </div>
+    {{ $categories->links('admin.pagination.pagination') }}
 @endsection
