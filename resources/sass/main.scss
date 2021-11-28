@@ -126,6 +126,15 @@ a {
   }
 }
 
+.error-message {
+  font-family: $font-main;
+  font-size: .8rem;
+  line-height: 1rem;
+  text-align: center;
+  width: 90%;
+  margin: 0 auto .35rem;
+  color: $color-main-red;
+}
 
 .forgot-password {
   display: flex;
