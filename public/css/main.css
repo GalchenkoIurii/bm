@@ -109,6 +109,7 @@ a {
 }
 
 .form-group {
+  width: 90%;
   margin-bottom: 0.8rem;
   display: inline-flex;
   flex-direction: column;
@@ -132,7 +133,7 @@ a {
   line-height: 1.2;
   outline: none;
 }
-.form-group__error input {
+.form-group input.error {
   border-color: #f03d3e;
 }
 .form-group__status {
@@ -141,7 +142,7 @@ a {
   line-height: 1rem;
   margin-bottom: 0.25rem;
 }
-.form-group__error .form-group__status {
+.form-group__status.error {
   color: #f03d3e;
 }
 

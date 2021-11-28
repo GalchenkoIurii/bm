@@ -89,6 +89,7 @@ a {
 }
 
 .form-group {
+  width: 90%;
   margin-bottom: .8rem;
   display: inline-flex;
   flex-direction: column;
@@ -111,7 +112,7 @@ a {
     line-height: 1.2;
     outline: none;
   }
-  &__error input {
+  input.error {
     border-color: $color-main-red;
   }
   &__status {
@@ -120,7 +121,7 @@ a {
     line-height: 1rem;
     margin-bottom: .25rem;
   }
-  &__error &__status {
+  &__status.error  {
     color: $color-main-red;
   }
 }
