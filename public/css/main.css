@@ -305,7 +305,7 @@ a {
 }
 .mobile-menu__btn-wrapper {
   min-height: 80px;
-  margin-bottom: 30px;
+  margin-bottom: 0.8rem;
 }
 .mobile-menu__btn {
   width: 40px;
@@ -335,10 +335,10 @@ a {
   text-align: center;
 }
 .mobile-menu__item {
-  font-size: 1.8rem;
-  line-height: 2rem;
-  margin-bottom: 0.8rem;
-  padding: 0.6rem;
+  font-size: 1.5rem;
+  line-height: 1.8rem;
+  margin-bottom: 0.7rem;
+  padding: 0.5rem;
 }
 .mobile-menu__link {
   width: 100%;
