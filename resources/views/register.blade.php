@@ -60,6 +60,10 @@
                             <div class="form-group__status error">{{ $message }}</div>
                         @enderror
                     </div>
+                    <div class="form-group-checkbox">
+                        <input type="checkbox" name="is_master" id="is_master">
+                        <label for="is_master" class="form-group-checkbox__label">Я мастер</label>
+                    </div>
                     <div class="form-group">
                         <div class="btn-container">
                             <button type="submit" class="button button_colored button_shadowed">Зарегистрироваться</button>
