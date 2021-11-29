@@ -28,6 +28,7 @@ class UserRegisterRequest extends FormRequest
             'email' => 'nullable|unique:users|email|max:255',
             'phone' => 'required_if:email,null|nullable|unique:users|max:255',
             'password' => 'required|min:8|confirmed|max:255',
+            'is_master' => 'nullable'
         ];
     }
 }

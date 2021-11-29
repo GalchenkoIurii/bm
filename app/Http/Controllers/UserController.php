@@ -24,6 +24,10 @@ class UserController extends Controller
         $request_data = array_diff($request->validated(), [null]);
         $request_data['password'] = Hash::make($request_data['password']);
 
+        if (isset($request_data['is_master'])) {
+            $request_data['is_master'] = 1;
+        }
+
         $request_data['ip_address'] = $_SERVER['REMOTE_ADDR'];
 
         $user = User::create($request_data);
