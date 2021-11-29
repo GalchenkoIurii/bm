@@ -24,7 +24,7 @@ class MainController extends Controller
 
     public function contacts()
     {
-        echo 'contacts page';
+        return view('contacts');
     }
 
     public function search()
