@@ -10,7 +10,7 @@
     <section class="section">
         <div class="container">
             <h1 class="page-header">Регистрация</h1>
-            <p class="page-description">Введите имя, Email, номер телефона и пароль</p>
+            <p class="page-description">Введите имя, Email и пароль, а также если Вы мастер, поставьте отметку - "Я мастер"</p>
             <div class="form-container">
                 <form action="{{ route('register.store') }}" method="post" class="form">
                     @csrf
@@ -30,15 +30,6 @@
                             <input type="email" name="email" id="email" value="{{ old('email') }}">
                         </div>
                         @error('email')
-                            <div class="form-group__status error">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="phone" class="form-group__label">Номер телефона</label>
-                        <div class="form-group__input">
-                            <input type="text" name="phone" id="phone" value="{{ old('phone') }}">
-                        </div>
-                        @error('phone')
                             <div class="form-group__status error">{{ $message }}</div>
                         @enderror
                     </div>
