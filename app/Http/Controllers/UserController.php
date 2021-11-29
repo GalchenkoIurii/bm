@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserLoginRequest;
 use App\Http\Requests\UserRegisterRequest;
+use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
@@ -31,6 +32,8 @@ class UserController extends Controller
         $request_data['ip_address'] = $_SERVER['REMOTE_ADDR'];
 
         $user = User::create($request_data);
+
+        $user->profile()->save(new Profile());
 
         session()->flash('success', 'Вы успешно зарегистрированы');
 
