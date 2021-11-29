@@ -14,7 +14,7 @@ class MainController extends Controller
 
     public function about()
     {
-        echo 'about page';
+        return view('about');
     }
 
     public function apply()
