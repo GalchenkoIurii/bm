@@ -16,7 +16,8 @@
                     @csrf
                     <div class="form-group data-block">
                         <div class="select" id="category-select">
-                            <button type="button" class="select__toggle" name="category_id" value="" data-select="toggle" data-index="0">
+                            <button type="button" class="select__toggle" id="category_id" name="category_id" value=""
+                                    data-select="toggle" data-index="0">
                                 Выберите категорию
                             </button>
                             <div class="select__dropdown">
@@ -31,7 +32,7 @@
                         </div>
                     </div>
                     <div class="form-group data-block">
-                        <div class="select" id="category-select"></div>
+                        <div class="select" id="service-select"></div>
                     </div>
 
 

@@ -70,11 +70,13 @@ Route::middleware('auth')->group(function() {
      * logout
      */
     Route::get('/logout', [UserController::class, 'logout'])
-        ->name('logout')->middleware('auth');
+        ->name('logout');
 
     Route::resources([
         '/applications' => ApplicationController::class
     ]);
+
+    Route::post('/applications/services', [ApplicationController::class, 'getServices']);
 });
 
 /*

@@ -253,6 +253,45 @@ document.addEventListener("DOMContentLoaded", function () {
   var btnPrev = document.getElementById('btn-prev');
   var btnNext = document.getElementById('btn-next');
   btnPrev.style.display = 'none';
+
+  if (btnNext) {
+    btnNext.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      switch (step) {
+        case 1:
+          var categoryId = document.getElementById('category_id').value;
+          var csrf_token = document.querySelector('input[name="_token"]').value;
+          fetch('/applications/services', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json;charset=utf-8',
+              'X-CSRF-TOKEN': csrf_token
+            },
+            body: JSON.stringify({
+              category_id: categoryId
+            })
+          }).then(function (response) {
+            return response.json();
+          }).then(function (data) {
+            console.log(data);
+            var options = [];
+            data.forEach(function (item) {
+              options.push([item.id, item.name]);
+            });
+            var serviceSelect = new CustomSelect('#service-select', {
+              name: 'service_id',
+              targetValue: 'Выберите услугу',
+              options: options
+            });
+          });
+          break;
+
+        case 2:
+          break;
+      }
+    });
+  }
 }, false);
 
 /***/ }),

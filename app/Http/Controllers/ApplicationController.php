@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class ApplicationController extends Controller
@@ -82,5 +83,12 @@ class ApplicationController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getServices(Request $request)
+    {
+        $services = Service::where('category_id', $request->input('category_id'))->get();
+
+        return response()->json($services->toArray());
     }
 }
