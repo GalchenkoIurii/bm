@@ -14,7 +14,7 @@
             <div class="form-container">
                 <form action="{{ route('applications.store') }}" method="post" class="form">
                     @csrf
-                    <div class="form-group">
+                    <div class="form-group data-block">
                         <div class="select" id="category-select">
                             <button type="button" class="select__toggle" name="category_id" value="" data-select="toggle" data-index="0">
                                 Выберите категорию
@@ -30,12 +30,15 @@
                             </div>
                         </div>
                     </div>
-
+                    <div class="form-group data-block">
+                        <div class="select" id="category-select"></div>
+                    </div>
 
 
                     <div class="form-group">
                         <div class="btn-container">
-                            <button type="submit" class="button button_colored button_shadowed">Далее</button>
+                            <button id="btn-prev" type="submit" class="button button_colored button_shadowed button_margined">Назад</button>
+                            <button id="btn-next" type="submit" class="button button_colored button_shadowed">Далее</button>
                         </div>
                     </div>
                 </form>

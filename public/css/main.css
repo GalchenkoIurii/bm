@@ -87,6 +87,9 @@ a {
 .button_shadowed {
   box-shadow: 2px 2px 8px 1px #d9dadf;
 }
+.button_margined {
+  margin-right: auto;
+}
 .button_shadowed:hover {
   box-shadow: 0 0 6px 2px #d9dadf;
   cursor: pointer;
@@ -107,7 +110,7 @@ a {
 .select__toggle {
   display: flex;
   background-color: #fff;
-  border: 1px solid #ccc;
+  border: 1px solid #d9dadf;
   border-radius: 0.3125rem;
   cursor: pointer;
   align-items: center;
@@ -120,7 +123,6 @@ a {
       -ms-user-select: none;
           user-select: none;
   justify-content: space-between;
-  font-style: italic;
 }
 .select__toggle::after {
   content: "";
@@ -138,7 +140,7 @@ a {
   top: 2.5rem;
   left: 0;
   right: 0;
-  border: 1px solid #ccc;
+  border: 1px solid #d9dadf;
   max-height: 10rem;
   overflow-y: auto;
   border-radius: 0.3125rem;

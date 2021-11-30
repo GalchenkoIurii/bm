@@ -243,10 +243,16 @@ document.addEventListener("DOMContentLoaded", function () {
         modalWindow.style.display = "none";
       }
     });
-  } // category select
+  } // handle application data
+  // category select
 
 
   var categorySelect = new CustomSelect('#category-select');
+  var dataBlocks = document.getElementsByClassName('data-block');
+  var step = 1;
+  var btnPrev = document.getElementById('btn-prev');
+  var btnNext = document.getElementById('btn-next');
+  btnPrev.style.display = 'none';
 }, false);
 
 /***/ }),

@@ -183,7 +183,16 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
 
+    // handle application data
     // category select
     const categorySelect = new CustomSelect('#category-select');
+    const dataBlocks = document.getElementsByClassName('data-block');
+    const step = 1;
+    const btnPrev = document.getElementById('btn-prev');
+    const btnNext = document.getElementById('btn-next');
+
+    btnPrev.style.display = 'none';
+
+
 
 }, false);

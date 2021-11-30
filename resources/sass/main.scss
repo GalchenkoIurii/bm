@@ -66,6 +66,9 @@ a {
   &_shadowed {
     box-shadow: 2px 2px 8px 1px $color-main-grey;
   }
+  &_margined {
+    margin-right: auto;
+  }
   &_shadowed:hover {
     box-shadow: 0 0 6px 2px $color-main-grey;
     cursor: pointer;
@@ -87,8 +90,8 @@ a {
   padding: 1rem .2rem;
   &__toggle {
     display: flex;
-    background-color: #fff;
-    border: 1px solid #ccc;
+    background-color: $color-main-white;
+    border: 1px solid $color-main-grey;
     border-radius: 0.3125rem;
     cursor: pointer;
     align-items: center;
@@ -98,7 +101,6 @@ a {
     line-height: 1.4;
     user-select: none;
     justify-content: space-between;
-    font-style: italic;
   }
   &__toggle::after {
     content: '';
@@ -116,12 +118,12 @@ a {
     top: 2.5rem;
     left: 0;
     right: 0;
-    border: 1px solid #ccc;
+    border: 1px solid $color-main-grey;
     max-height: 10rem;
     overflow-y: auto;
     border-radius: 0.3125rem;
     z-index: 2;
-    background-color: #fff;
+    background-color: $color-main-white;
   }
   &__options {
     margin: 0;
