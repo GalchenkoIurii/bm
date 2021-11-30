@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ApplicationController extends Controller
@@ -23,7 +24,8 @@ class ApplicationController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('applications.applications-create', compact('categories'));
     }
 
     /**

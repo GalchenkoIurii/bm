@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('page-title')Вход @endsection
+@section('page-title')Вход@endsection
 
 @section('header')
     @include('incs.header')
