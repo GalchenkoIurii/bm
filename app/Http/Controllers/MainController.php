@@ -17,10 +17,10 @@ class MainController extends Controller
         return view('about');
     }
 
-    public function apply()
-    {
-        echo 'apply page';
-    }
+//    public function apply()
+//    {
+//        echo 'apply page';
+//    }
 
     public function contacts()
     {

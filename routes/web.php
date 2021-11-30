@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\PostCategoryController;
 use App\Http\Controllers\Admin\PostTagController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -26,8 +27,9 @@ Route::get('/', [MainController::class, 'index'])
     ->name('home');
 Route::get('/about', [MainController::class, 'about'])
     ->name('about');
-Route::get('/apply', [MainController::class, 'apply'])
-    ->name('apply');
+//Route::get('/apply', [MainController::class, 'apply'])
+//    ->name('apply');
+
 Route::get('/contacts', [MainController::class, 'contacts'])
     ->name('contacts');
 Route::get('/search', [MainController::class, 'search'])
@@ -62,12 +64,18 @@ Route::middleware('guest')->group(function() {
         ->name('login');
 });
 
+
+Route::middleware('auth')->group(function() {
     /*
      * logout
      */
-Route::get('/logout', [UserController::class, 'logout'])
-    ->name('logout')->middleware('auth');
+    Route::get('/logout', [UserController::class, 'logout'])
+        ->name('logout')->middleware('auth');
 
+    Route::resources([
+        '/applications' => ApplicationController::class
+    ]);
+});
 
 /*
  * admin routes

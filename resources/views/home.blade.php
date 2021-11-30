@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('page-title')Главная @endsection
+@section('page-title')Главная@endsection
 
 @section('header')
     @include('incs.header')
@@ -20,7 +20,7 @@
         <div class="container">
             <h2 class="page-subheader">...или оставьте заявку и мастер найдет Вас</h2>
             <div class="btn-container">
-                <a href="{{ route('apply') }}" class="button button_colored button_shadowed">Оставить заявку</a>
+                <a href="{{ route('applications.create') }}" class="button button_colored button_shadowed">Оставить заявку</a>
             </div>
         </div>
     </section>
