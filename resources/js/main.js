@@ -270,12 +270,15 @@ document.addEventListener("DOMContentLoaded", function() {
                     const photoInput = document.querySelector('#photo');
                     if (photoInput) {
                         photoInput.addEventListener('change', function(e) {
-                            if (this.value != '') {
+                            if (this.value != '' && e.target.files.length > 0) {
                                 this.parentNode.previousElementSibling.textContent = 'Выбрано фото ' + e.target.files[0].name;
+                                const photoUrl = URL.createObjectURL(e.target.files[0]);
+                                const preview = document.querySelector('#photo-preview');
+                                preview.src = photoUrl;
+                                preview.style.display = 'inline-flex';
                             } else {
                                 this.parentNode.previousElementSibling.textContent = 'Выберите фото...';
                             }
-                            console.log(this.parentNode.previousElementSibling);
                         });
                     }
 

@@ -320,13 +320,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
           if (photoInput) {
             photoInput.addEventListener('change', function (e) {
-              if (this.value != '') {
+              if (this.value != '' && e.target.files.length > 0) {
                 this.parentNode.previousElementSibling.textContent = 'Выбрано фото ' + e.target.files[0].name;
+                var photoUrl = URL.createObjectURL(e.target.files[0]);
+                var preview = document.querySelector('#photo-preview');
+                preview.src = photoUrl;
+                preview.style.display = 'inline-flex';
               } else {
                 this.parentNode.previousElementSibling.textContent = 'Выберите фото...';
               }
-
-              console.log(this.parentNode.previousElementSibling);
             });
           }
 

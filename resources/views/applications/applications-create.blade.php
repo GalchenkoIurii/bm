@@ -50,6 +50,9 @@
                         <div class="form-group__input">
                             <input type="file" class="file-input__input" name="photo" id="photo">
                         </div>
+                        <div class="photo-preview">
+                            <img id="photo-preview" src="" alt="">
+                        </div>
                     </div>
 
                     <div class="form-group">
