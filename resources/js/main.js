@@ -258,6 +258,16 @@ document.addEventListener("DOMContentLoaded", function() {
                     document.querySelector(thirdElSelector).style.display = 'inline-flex';
 
                     break;
+                case 3:
+                    const thirdElemSelector = '[data-block="' + step + '"]';
+                    document.querySelector(thirdElemSelector).style.display = 'none';
+
+                    step++;
+
+                    const fourthElSelector = '[data-block="' + step + '"]';
+                    document.querySelector(fourthElSelector).style.display = 'inline-flex';
+
+                    break;
             }
         });
     }

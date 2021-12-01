@@ -309,6 +309,14 @@ document.addEventListener("DOMContentLoaded", function () {
           var thirdElSelector = '[data-block="' + step + '"]';
           document.querySelector(thirdElSelector).style.display = 'inline-flex';
           break;
+
+        case 3:
+          var thirdElemSelector = '[data-block="' + step + '"]';
+          document.querySelector(thirdElemSelector).style.display = 'none';
+          step++;
+          var fourthElSelector = '[data-block="' + step + '"]';
+          document.querySelector(fourthElSelector).style.display = 'inline-flex';
+          break;
       }
     });
   }

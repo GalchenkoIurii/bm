@@ -11,7 +11,7 @@
         <div class="container">
             <h1 class="page-header">Создание заявки</h1>
             <div class="form-container">
-                <form action="{{ route('applications.store') }}" method="post" class="form">
+                <form action="{{ route('applications.store') }}" method="post" class="form" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group" data-block="1">
                         <div class="select" id="category-select">
@@ -34,7 +34,7 @@
                         <div class="select" id="service-select"></div>
                     </div>
                     <div class="form-group" data-block="3">
-                        <h3 class="page-description">Сколько Вы готовы заплатить за услугу?</h3>
+                        <h3 class="page-description">Сколько Вы готовы заплатить за услугу? (не обязательно)</h3>
                         <label for="start_price" class="form-group__label">От ... грн</label>
                         <div class="form-group__input">
                             <input type="number" name="start_price" id="start_price">
@@ -42,6 +42,13 @@
                         <label for="end_price" class="form-group__label">До ... грн</label>
                         <div class="form-group__input">
                             <input type="number" name="end_price" id="end_price">
+                        </div>
+                    </div>
+                    <div class="form-group file-input" data-block="4">
+                        <h3 class="page-description">Добавьте фото, чтобы мастера смогли оценить объем работы (не обязательно)</h3>
+                        <label for="photo" class="form-group__label file-input__label">Выберите фото...</label>
+                        <div class="form-group__input">
+                            <input type="file" class="file-input__input" name="photo" id="photo">
                         </div>
                     </div>
 

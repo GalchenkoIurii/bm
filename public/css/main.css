@@ -320,6 +320,36 @@ a {
   margin-bottom: 0.6rem;
 }
 
+/* custom file input */
+.file-input {
+  font-family: Roboto-Medium, sans-serif;
+  font-size: 1rem;
+  line-height: 1.3rem;
+  color: #000;
+}
+.file-input__label {
+  height: 2.6rem;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  display: block;
+  transition: all 0.18s ease-in-out;
+  border: 1px solid #d9dadf;
+  color: #d9dadf;
+}
+.file-input__label:hover {
+  color: #fff;
+  background: #d9dadf;
+}
+.file-input input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
 /* modal window */
 .modal {
   position: fixed;
