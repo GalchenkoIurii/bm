@@ -267,6 +267,18 @@ document.addEventListener("DOMContentLoaded", function() {
                     const fourthElSelector = '[data-block="' + step + '"]';
                     document.querySelector(fourthElSelector).style.display = 'inline-flex';
 
+                    const photoInput = document.querySelector('#photo');
+                    if (photoInput) {
+                        photoInput.addEventListener('change', function(e) {
+                            if (this.value != '') {
+                                this.parentNode.previousElementSibling.textContent = 'Выбрано фото ' + e.target.files[0].name;
+                            } else {
+                                this.parentNode.previousElementSibling.textContent = 'Выберите фото...';
+                            }
+                            console.log(this.parentNode.previousElementSibling);
+                        });
+                    }
+
                     break;
             }
         });
