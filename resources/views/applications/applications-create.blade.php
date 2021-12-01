@@ -67,6 +67,30 @@
                             <input type="date" name="end_date" id="end_date">
                         </div>
                     </div>
+                    <div class="form-group" data-block="6">
+                        <h3 class="page-description">Выберите место встречи с мастером</h3>
+                        <div class="select" id="place-select">
+                            <button type="button" class="select__toggle" id="place" name="place" value=""
+                                    data-select="toggle" data-index="0">
+                                Выберите место
+                            </button>
+                            <div class="select__dropdown">
+                                <ul class="select__options">
+                                    <li class="select__option" data-select="option" data-value="master"
+                                        data-index="0">Я приеду к мастеру</li>
+                                    <li class="select__option" data-select="option" data-value="client"
+                                        data-index="1">Мастер приедет ко мне</li>
+                                    <li class="select__option" data-select="option" data-value="both"
+                                        data-index="2">Рассмотрю оба варианта</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="address-btns" class="btn-container btn-address-container" style="display:none">
+                            <button id="btn-address" type="submit" class="button button_colored button_shadowed button_margined">Оставить свой адрес</button>
+                            <p class="page-description">...или</p>
+                            <button id="btn-coords" type="submit" class="button button_colored button_shadowed">Оставить свое местоположение</button>
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <div class="btn-container">

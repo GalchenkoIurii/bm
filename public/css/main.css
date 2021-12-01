@@ -101,6 +101,13 @@ a {
   padding: 1rem;
 }
 
+.btn-address-container {
+  flex-direction: column;
+}
+.btn-address-container .page-description {
+  margin-top: 0.8rem;
+}
+
 /* custom select */
 .select {
   position: relative;

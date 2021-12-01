@@ -250,6 +250,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   var categorySelect = new CustomSelect('#category-select');
+  var placeSelect = new CustomSelect('#place-select');
   var dataBlocks = document.querySelectorAll('[data-block]');
   var btnPrev = document.getElementById('btn-prev');
   var btnNext = document.getElementById('btn-next');
@@ -352,6 +353,27 @@ document.addEventListener("DOMContentLoaded", function () {
           currentStepEl.textContent = String(step);
           var fifthElSelector = '[data-block="' + step + '"]';
           document.querySelector(fifthElSelector).style.display = 'inline-flex';
+          break;
+
+        case 5:
+          var fifthElemSelector = '[data-block="' + step + '"]';
+          document.querySelector(fifthElemSelector).style.display = 'none';
+          step++;
+          currentStepEl.textContent = String(step);
+          var sixthElSelector = '[data-block="' + step + '"]';
+          document.querySelector(sixthElSelector).style.display = 'inline-flex';
+          var placeSelectBtn = document.getElementById('place-select');
+          placeSelectBtn.addEventListener('select.change', function (e) {
+            var btn = e.target.querySelector('#place');
+            console.log(btn.value);
+            var addressBtns = document.getElementById('address-btns');
+
+            if (btn.value == 'client' || btn.value == 'both') {
+              addressBtns.style.display = 'inline-flex';
+            } else {
+              addressBtns.style.display = 'none';
+            }
+          });
           break;
       }
     });
