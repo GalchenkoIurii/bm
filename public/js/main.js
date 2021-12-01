@@ -333,6 +333,14 @@ document.addEventListener("DOMContentLoaded", function () {
           }
 
           break;
+
+        case 4:
+          var fourthElemSelector = '[data-block="' + step + '"]';
+          document.querySelector(fourthElemSelector).style.display = 'none';
+          step++;
+          var fifthElSelector = '[data-block="' + step + '"]';
+          document.querySelector(fifthElSelector).style.display = 'inline-flex';
+          break;
       }
     });
   }

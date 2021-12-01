@@ -283,6 +283,15 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
 
                     break;
+                case 4:
+                    const fourthElemSelector = '[data-block="' + step + '"]';
+                    document.querySelector(fourthElemSelector).style.display = 'none';
+
+                    step++;
+
+                    const fifthElSelector = '[data-block="' + step + '"]';
+                    document.querySelector(fifthElSelector).style.display = 'inline-flex';
+                    break;
             }
         });
     }

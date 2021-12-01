@@ -54,6 +54,17 @@
                             <img id="photo-preview" src="" alt="">
                         </div>
                     </div>
+                    <div class="form-group" data-block="5">
+                        <h3 class="page-description">Выберите период, в который Вам нужна услуга (не обязательно)</h3>
+                        <label for="start_date" class="form-group__label">С</label>
+                        <div class="form-group__input">
+                            <input type="date" name="start_date" id="start_date">
+                        </div>
+                        <label for="end_date" class="form-group__label">До</label>
+                        <div class="form-group__input">
+                            <input type="date" name="end_date" id="end_date">
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <div class="btn-container">
