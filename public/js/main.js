@@ -204,7 +204,45 @@ document.addEventListener('click', function (e) {
       select.classList.remove(CLASS_NAME_ACTIVE);
     });
   }
-});
+}); // get geo position
+
+function getGeoPosition() {
+  var latitude = null;
+  var longitude = null; // function geo_success(position) {
+  //     latitude  = position.coords.latitude;
+  //     longitude = position.coords.longitude;
+  // }
+  //
+  // function geo_error(error) {
+  //     alert("Ошибка получения геоданных. " + error.message);
+  // }
+  // const geo_options = {
+  //     enableHighAccuracy: true,
+  //     maximumAge        : 20000
+  // };
+  // const promise = new Promise(function(resolve, reject) {
+  //     if (!navigator.geolocation) {
+  //         alert('Определение геоданных не поддерживается вашим браузером');
+  //         return false;
+  //     } else {
+  //         navigator.geolocation.getCurrentPosition(function(pos){
+  //             let lat = pos.coords.latitude;
+  //             let long = pos.coords.longitude;
+  //             resolve({lat,long});
+  //         })
+  //     }
+  //
+  // });
+  //
+  // promise.then(function(geo) {
+  //     // console.log(geo.lat, geo.long);
+  //     return {
+  //         latitude: geo.lat,
+  //         longitude: geo.long
+  //     };
+  // });
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   // mobile menu
   var mobileMenu = document.querySelector("#mobileMenu");
@@ -361,7 +399,7 @@ document.addEventListener("DOMContentLoaded", function () {
           step++;
           currentStepEl.textContent = String(step);
           var sixthElSelector = '[data-block="' + step + '"]';
-          document.querySelector(sixthElSelector).style.display = 'inline-flex';
+          var sixthElem = document.querySelector(sixthElSelector).style.display = 'inline-flex';
           var placeSelectBtn = document.getElementById('place-select');
           placeSelectBtn.addEventListener('select.change', function (e) {
             var btn = e.target.querySelector('#place');
@@ -370,10 +408,48 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (btn.value == 'client' || btn.value == 'both') {
               addressBtns.style.display = 'inline-flex';
+              var addressBtn = document.getElementById('btn-address');
+              var geoBtn = document.getElementById('btn-coords');
+
+              if (geoBtn) {
+                geoBtn.addEventListener('click', function (e) {
+                  e.preventDefault();
+                  var promise = new Promise(function (resolve, reject) {
+                    if (!navigator.geolocation) {
+                      alert('Определение геоданных не поддерживается вашим браузером');
+                      return false;
+                    } else {
+                      navigator.geolocation.getCurrentPosition(function (pos) {
+                        var lat = pos.coords.latitude;
+                        var _long = pos.coords.longitude;
+                        resolve({
+                          lat: lat,
+                          "long": _long
+                        });
+                      });
+                    }
+                  });
+                  promise.then(function (geo) {
+                    console.log(geo.lat, geo["long"]);
+                    document.getElementById('coord_lat').value = geo.lat;
+                    document.getElementById('coord_long').value = geo["long"];
+                    document.getElementById('btn-next').dispatchEvent(new Event('click'));
+                  });
+                });
+              }
             } else {
               addressBtns.style.display = 'none';
             }
           });
+          break;
+
+        case 6:
+          var sixthElemSelector = '[data-block="' + step + '"]';
+          document.querySelector(sixthElemSelector).style.display = 'none';
+          step++;
+          currentStepEl.textContent = String(step);
+          var seventhElSelector = '[data-block="' + step + '"]';
+          document.querySelector(seventhElSelector).style.display = 'inline-flex';
           break;
       }
     });

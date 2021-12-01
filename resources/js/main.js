@@ -144,6 +144,52 @@ document.addEventListener('click', (e) => {
 });
 
 
+// get geo position
+
+function getGeoPosition() {
+    let latitude = null;
+    let longitude = null;
+
+    // function geo_success(position) {
+    //     latitude  = position.coords.latitude;
+    //     longitude = position.coords.longitude;
+    // }
+    //
+    // function geo_error(error) {
+    //     alert("Ошибка получения геоданных. " + error.message);
+    // }
+
+    // const geo_options = {
+    //     enableHighAccuracy: true,
+    //     maximumAge        : 20000
+    // };
+
+    // const promise = new Promise(function(resolve, reject) {
+    //     if (!navigator.geolocation) {
+    //         alert('Определение геоданных не поддерживается вашим браузером');
+    //         return false;
+    //     } else {
+    //         navigator.geolocation.getCurrentPosition(function(pos){
+    //             let lat = pos.coords.latitude;
+    //             let long = pos.coords.longitude;
+    //             resolve({lat,long});
+    //         })
+    //     }
+    //
+    // });
+    //
+    // promise.then(function(geo) {
+    //     // console.log(geo.lat, geo.long);
+    //     return {
+    //         latitude: geo.lat,
+    //         longitude: geo.long
+    //     };
+    // });
+
+
+}
+
+
 document.addEventListener("DOMContentLoaded", function() {
     // mobile menu
     const mobileMenu      = document.querySelector("#mobileMenu");
@@ -320,7 +366,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     currentStepEl.textContent = String(step);
 
                     const sixthElSelector = '[data-block="' + step + '"]';
-                    document.querySelector(sixthElSelector).style.display = 'inline-flex';
+                    const sixthElem = document.querySelector(sixthElSelector).style.display = 'inline-flex';
 
                     const placeSelectBtn = document.getElementById('place-select');
                     placeSelectBtn.addEventListener('select.change', function(e) {
@@ -331,11 +377,56 @@ document.addEventListener("DOMContentLoaded", function() {
 
                         if (btn.value == 'client' || btn.value == 'both') {
                             addressBtns.style.display = 'inline-flex';
+
+                            const addressBtn = document.getElementById('btn-address');
+                            const geoBtn = document.getElementById('btn-coords');
+
+                            if (geoBtn) {
+                                geoBtn.addEventListener('click', function(e) {
+                                    e.preventDefault();
+
+                                    const promise = new Promise(function(resolve, reject) {
+                                        if (!navigator.geolocation) {
+                                            alert('Определение геоданных не поддерживается вашим браузером');
+                                            return false;
+                                        } else {
+                                            navigator.geolocation.getCurrentPosition(function(pos){
+                                                let lat = pos.coords.latitude;
+                                                let long = pos.coords.longitude;
+                                                resolve({lat,long});
+                                            })
+                                        }
+
+                                    });
+
+                                    promise.then(function(geo) {
+                                        console.log(geo.lat, geo.long);
+                                        document.getElementById('coord_lat').value = geo.lat;
+                                        document.getElementById('coord_long').value = geo.long;
+
+                                        document.getElementById('btn-next').dispatchEvent(new Event('click'));
+                                    });
+
+                                });
+                            }
+
                         } else {
                             addressBtns.style.display = 'none';
                         }
 
                     });
+
+                    break;
+                case 6:
+                    const sixthElemSelector = '[data-block="' + step + '"]';
+                    document.querySelector(sixthElemSelector).style.display = 'none';
+
+                    step++;
+
+                    currentStepEl.textContent = String(step);
+
+                    const seventhElSelector = '[data-block="' + step + '"]';
+                    document.querySelector(seventhElSelector).style.display = 'inline-flex';
 
                     break;
             }

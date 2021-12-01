@@ -91,6 +91,28 @@
                             <button id="btn-coords" type="submit" class="button button_colored button_shadowed">Оставить свое местоположение</button>
                         </div>
                     </div>
+                    <div class="form-group" data-block="7">
+                        <h3 class="page-description">Введите свои контактные данные</h3>
+                        <div class="select" id="place-select">
+                            <button type="button" class="select__toggle" id="place" name="place" value=""
+                                    data-select="toggle" data-index="0">
+                                Выберите место
+                            </button>
+                            <div class="select__dropdown">
+                                <ul class="select__options">
+                                    <li class="select__option" data-select="option" data-value="master"
+                                        data-index="0">Я приеду к мастеру</li>
+                                    <li class="select__option" data-select="option" data-value="client"
+                                        data-index="1">Мастер приедет ко мне</li>
+                                    <li class="select__option" data-select="option" data-value="both"
+                                        data-index="2">Рассмотрю оба варианта</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="coord_lat" id="coord_lat">
+                    <input type="hidden" name="coord_long" id="coord_long">
 
                     <div class="form-group">
                         <div class="btn-container">
