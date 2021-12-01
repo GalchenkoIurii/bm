@@ -191,11 +191,20 @@ document.addEventListener("DOMContentLoaded", function() {
     const dataBlocks = document.querySelectorAll('[data-block]');
     const btnPrev = document.getElementById('btn-prev');
     const btnNext = document.getElementById('btn-next');
+    const stepsAmountEl = document.getElementById('amount-step');
+    let currentStepEl = document.getElementById('current-step');
     let step = 1;
 
-    for (let i = 1; i < dataBlocks.length; i++) {
-        dataBlocks[i].style.display = 'none';
+    if (dataBlocks) {
+        stepsAmountEl.textContent = String(dataBlocks.length);
+
+        for (let i = 1; i < dataBlocks.length; i++) {
+            dataBlocks[i].style.display = 'none';
+        }
+
+        currentStepEl.textContent = String(step);
     }
+
 
     if (btnPrev) {
         btnPrev.style.display = 'none';
@@ -239,6 +248,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
                             step++;
 
+                            currentStepEl.textContent = String(step);
+
                             const secondElSelector = '[data-block="' + step + '"]';
                             document.querySelector(secondElSelector).style.display = 'inline-flex';
 
@@ -254,6 +265,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
                     step++;
 
+                    currentStepEl.textContent = String(step);
+
                     const thirdElSelector = '[data-block="' + step + '"]';
                     document.querySelector(thirdElSelector).style.display = 'inline-flex';
 
@@ -263,6 +276,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     document.querySelector(thirdElemSelector).style.display = 'none';
 
                     step++;
+
+                    currentStepEl.textContent = String(step);
 
                     const fourthElSelector = '[data-block="' + step + '"]';
                     document.querySelector(fourthElSelector).style.display = 'inline-flex';
@@ -288,6 +303,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     document.querySelector(fourthElemSelector).style.display = 'none';
 
                     step++;
+
+                    currentStepEl.textContent = String(step);
 
                     const fifthElSelector = '[data-block="' + step + '"]';
                     document.querySelector(fifthElSelector).style.display = 'inline-flex';

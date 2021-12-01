@@ -10,6 +10,8 @@
     <section class="section">
         <div class="container">
             <h1 class="page-header">Создание заявки</h1>
+            <p class="page-description">Шаг <span class="application-step" id="current-step"></span> из
+                <span class="application-step" id="amount-step"></span></p>
             <div class="form-container">
                 <form action="{{ route('applications.store') }}" method="post" class="form" enctype="multipart/form-data">
                     @csrf

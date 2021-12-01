@@ -253,10 +253,18 @@ document.addEventListener("DOMContentLoaded", function () {
   var dataBlocks = document.querySelectorAll('[data-block]');
   var btnPrev = document.getElementById('btn-prev');
   var btnNext = document.getElementById('btn-next');
+  var stepsAmountEl = document.getElementById('amount-step');
+  var currentStepEl = document.getElementById('current-step');
   var step = 1;
 
-  for (var i = 1; i < dataBlocks.length; i++) {
-    dataBlocks[i].style.display = 'none';
+  if (dataBlocks) {
+    stepsAmountEl.textContent = String(dataBlocks.length);
+
+    for (var i = 1; i < dataBlocks.length; i++) {
+      dataBlocks[i].style.display = 'none';
+    }
+
+    currentStepEl.textContent = String(step);
   }
 
   if (btnPrev) {
@@ -295,6 +303,7 @@ document.addEventListener("DOMContentLoaded", function () {
             var firstElSelector = '[data-block="' + step + '"]';
             document.querySelector(firstElSelector).style.display = 'none';
             step++;
+            currentStepEl.textContent = String(step);
             var secondElSelector = '[data-block="' + step + '"]';
             document.querySelector(secondElSelector).style.display = 'inline-flex';
             document.querySelector('[name="service_id"]').textContent = 'Выберите услугу';
@@ -306,6 +315,7 @@ document.addEventListener("DOMContentLoaded", function () {
           var secondElSelector = '[data-block="' + step + '"]';
           document.querySelector(secondElSelector).style.display = 'none';
           step++;
+          currentStepEl.textContent = String(step);
           var thirdElSelector = '[data-block="' + step + '"]';
           document.querySelector(thirdElSelector).style.display = 'inline-flex';
           break;
@@ -314,6 +324,7 @@ document.addEventListener("DOMContentLoaded", function () {
           var thirdElemSelector = '[data-block="' + step + '"]';
           document.querySelector(thirdElemSelector).style.display = 'none';
           step++;
+          currentStepEl.textContent = String(step);
           var fourthElSelector = '[data-block="' + step + '"]';
           document.querySelector(fourthElSelector).style.display = 'inline-flex';
           var photoInput = document.querySelector('#photo');
@@ -338,6 +349,7 @@ document.addEventListener("DOMContentLoaded", function () {
           var fourthElemSelector = '[data-block="' + step + '"]';
           document.querySelector(fourthElemSelector).style.display = 'none';
           step++;
+          currentStepEl.textContent = String(step);
           var fifthElSelector = '[data-block="' + step + '"]';
           document.querySelector(fifthElSelector).style.display = 'inline-flex';
           break;
