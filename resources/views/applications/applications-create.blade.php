@@ -10,11 +10,10 @@
     <section class="section">
         <div class="container">
             <h1 class="page-header">Создание заявки</h1>
-            {{--<p class="page-description">Выберите категорию необходимой Вам услуги</p>--}}
             <div class="form-container">
                 <form action="{{ route('applications.store') }}" method="post" class="form">
                     @csrf
-                    <div class="form-group data-block">
+                    <div class="form-group" data-block="1">
                         <div class="select" id="category-select">
                             <button type="button" class="select__toggle" id="category_id" name="category_id" value=""
                                     data-select="toggle" data-index="0">
@@ -31,7 +30,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group data-block">
+                    <div class="form-group" data-block="2">
                         <div class="select" id="service-select"></div>
                     </div>
 

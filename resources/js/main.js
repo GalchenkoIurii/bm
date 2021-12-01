@@ -186,10 +186,14 @@ document.addEventListener("DOMContentLoaded", function() {
     // handle application data
     // category select
     const categorySelect = new CustomSelect('#category-select');
-    const dataBlocks = document.getElementsByClassName('data-block');
-    const step = 1;
+    const dataBlocks = document.querySelectorAll('[data-block]');
     const btnPrev = document.getElementById('btn-prev');
     const btnNext = document.getElementById('btn-next');
+    let step = 1;
+
+    for (let i = 1; i < dataBlocks.length; i++) {
+        dataBlocks[i].style.display = 'none';
+    }
 
     btnPrev.style.display = 'none';
 
@@ -214,7 +218,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     })
                         .then(response => response.json())
                         .then(data => {
-                            console.log(data);
                             const options = [];
 
                             data.forEach(function(item) {
@@ -223,9 +226,21 @@ document.addEventListener("DOMContentLoaded", function() {
 
                             const serviceSelect = new CustomSelect('#service-select', {
                                 name: 'service_id',
-                                targetValue: 'Выберите услугу',
+                                selectedContent: 'Выберите услугу',
                                 options
                             });
+
+                            const firstElSelector = '[data-block="' + step + '"]';
+                            document.querySelector(firstElSelector).style.display = 'none';
+
+                            step++;
+
+                            const secondElSelector = '[data-block="' + step + '"]';
+                            document.querySelector(secondElSelector).style.display = 'inline-flex';
+
+                            document.querySelector('[name="service_id"]').textContent = 'Выберите услугу';
+
+                            btnPrev.style.display = 'inline-flex';
                         });
 
                     break;

@@ -248,10 +248,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   var categorySelect = new CustomSelect('#category-select');
-  var dataBlocks = document.getElementsByClassName('data-block');
-  var step = 1;
+  var dataBlocks = document.querySelectorAll('[data-block]');
   var btnPrev = document.getElementById('btn-prev');
   var btnNext = document.getElementById('btn-next');
+  var step = 1;
+
+  for (var i = 1; i < dataBlocks.length; i++) {
+    dataBlocks[i].style.display = 'none';
+  }
+
   btnPrev.style.display = 'none';
 
   if (btnNext) {
@@ -274,16 +279,22 @@ document.addEventListener("DOMContentLoaded", function () {
           }).then(function (response) {
             return response.json();
           }).then(function (data) {
-            console.log(data);
             var options = [];
             data.forEach(function (item) {
               options.push([item.id, item.name]);
             });
             var serviceSelect = new CustomSelect('#service-select', {
               name: 'service_id',
-              targetValue: 'Выберите услугу',
+              selectedContent: 'Выберите услугу',
               options: options
             });
+            var firstElSelector = '[data-block="' + step + '"]';
+            document.querySelector(firstElSelector).style.display = 'none';
+            step++;
+            var secondElSelector = '[data-block="' + step + '"]';
+            document.querySelector(secondElSelector).style.display = 'inline-flex';
+            document.querySelector('[name="service_id"]').textContent = 'Выберите услугу';
+            btnPrev.style.display = 'inline-flex';
           });
           break;
 
