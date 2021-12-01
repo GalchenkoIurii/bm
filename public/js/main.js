@@ -35,9 +35,11 @@ var CustomSelect = /*#__PURE__*/function () {
       this._elRoot.innerHTML = CustomSelect.template(this._params);
     }
 
-    this._elToggle = this._elRoot.querySelector(SELECTOR_DATA_TOGGLE);
+    if (this._elRoot) {
+      this._elToggle = this._elRoot.querySelector(SELECTOR_DATA_TOGGLE);
 
-    this._elRoot.addEventListener('click', this._onClick.bind(this));
+      this._elRoot.addEventListener('click', this._onClick.bind(this));
+    }
   }
 
   _createClass(CustomSelect, [{
@@ -257,7 +259,9 @@ document.addEventListener("DOMContentLoaded", function () {
     dataBlocks[i].style.display = 'none';
   }
 
-  btnPrev.style.display = 'none';
+  if (btnPrev) {
+    btnPrev.style.display = 'none';
+  }
 
   if (btnNext) {
     btnNext.addEventListener("click", function (e) {
@@ -299,6 +303,11 @@ document.addEventListener("DOMContentLoaded", function () {
           break;
 
         case 2:
+          var secondElSelector = '[data-block="' + step + '"]';
+          document.querySelector(secondElSelector).style.display = 'none';
+          step++;
+          var thirdElSelector = '[data-block="' + step + '"]';
+          document.querySelector(thirdElSelector).style.display = 'inline-flex';
           break;
       }
     });

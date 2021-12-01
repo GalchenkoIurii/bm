@@ -33,7 +33,17 @@
                     <div class="form-group" data-block="2">
                         <div class="select" id="service-select"></div>
                     </div>
-
+                    <div class="form-group" data-block="3">
+                        <h3 class="page-description">Сколько Вы готовы заплатить за услугу?</h3>
+                        <label for="start_price" class="form-group__label">От ... грн</label>
+                        <div class="form-group__input">
+                            <input type="number" name="start_price" id="start_price">
+                        </div>
+                        <label for="end_price" class="form-group__label">До ... грн</label>
+                        <div class="form-group__input">
+                            <input type="number" name="end_price" id="end_price">
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <div class="btn-container">
