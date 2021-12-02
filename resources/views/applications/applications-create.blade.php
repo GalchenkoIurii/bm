@@ -139,21 +139,17 @@
 
                     <div class="form-group" data-block="7">
                         <h3 class="page-description">Введите свои контактные данные</h3>
-                        <div class="select" id="place-select">
-                            <button type="button" class="select__toggle" id="place" name="place" value=""
-                                    data-select="toggle" data-index="0">
-                                Выберите место
-                            </button>
-                            <div class="select__dropdown">
-                                <ul class="select__options">
-                                    <li class="select__option" data-select="option" data-value="master"
-                                        data-index="0">Я приеду к мастеру</li>
-                                    <li class="select__option" data-select="option" data-value="client"
-                                        data-index="1">Мастер приедет ко мне</li>
-                                    <li class="select__option" data-select="option" data-value="both"
-                                        data-index="2">Рассмотрю оба варианта</li>
-                                </ul>
-                            </div>
+                        <label for="name" class="form-group__label">Имя</label>
+                        <div class="form-group__input">
+                            <input type="text" name="name" id="name">
+                        </div>
+                        <label for="phone" class="form-group__label">Номер телефона</label>
+                        <div class="form-group__input">
+                            <input type="text" name="phone" id="phone">
+                        </div>
+                        <label for="email" class="form-group__label">Email</label>
+                        <div class="form-group__input">
+                            <input type="email" name="email" id="email">
                         </div>
                     </div>
 
