@@ -244,13 +244,17 @@ document.addEventListener("DOMContentLoaded", function() {
     let step = 1;
 
     if (dataBlocks) {
-        stepsAmountEl.textContent = String(dataBlocks.length);
+        if (stepsAmountEl) {
+            stepsAmountEl.textContent = String(dataBlocks.length);
+        }
 
         for (let i = 1; i < dataBlocks.length; i++) {
             dataBlocks[i].style.display = 'none';
         }
 
-        currentStepEl.textContent = String(step);
+        if (currentStepEl) {
+            currentStepEl.textContent = String(step);
+        }
     }
 
 
@@ -367,7 +371,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     currentStepEl.textContent = String(step);
 
                     const sixthElSelector = '[data-block="' + step + '"]';
-                    const sixthElem = document.querySelector(sixthElSelector).style.display = 'inline-flex';
+                    document.querySelector(sixthElSelector).style.display = 'inline-flex';
 
                     const placeSelectBtn = document.getElementById('place-select');
                     placeSelectBtn.addEventListener('select.change', function(e) {
@@ -387,7 +391,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                     e.preventDefault();
 
                                     document.querySelector('[data-block="6"]').style.display = 'none';
-                                    // addressBtns.style.display = 'none';
+
                                     document.getElementById('address-data').style.display = 'inline-flex';
                                 });
                             }
@@ -407,7 +411,6 @@ document.addEventListener("DOMContentLoaded", function() {
                                                 resolve({lat,long});
                                             })
                                         }
-
                                     });
 
                                     promise.then(function(geo) {
@@ -432,6 +435,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 case 6:
                     const sixthElemSelector = '[data-block="' + step + '"]';
                     document.querySelector(sixthElemSelector).style.display = 'none';
+                    document.getElementById('address-data').style.display = 'none';
 
                     step++;
 

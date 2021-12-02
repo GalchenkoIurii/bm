@@ -298,13 +298,17 @@ document.addEventListener("DOMContentLoaded", function () {
   var step = 1;
 
   if (dataBlocks) {
-    stepsAmountEl.textContent = String(dataBlocks.length);
+    if (stepsAmountEl) {
+      stepsAmountEl.textContent = String(dataBlocks.length);
+    }
 
     for (var i = 1; i < dataBlocks.length; i++) {
       dataBlocks[i].style.display = 'none';
     }
 
-    currentStepEl.textContent = String(step);
+    if (currentStepEl) {
+      currentStepEl.textContent = String(step);
+    }
   }
 
   if (btnPrev) {
@@ -400,7 +404,7 @@ document.addEventListener("DOMContentLoaded", function () {
           step++;
           currentStepEl.textContent = String(step);
           var sixthElSelector = '[data-block="' + step + '"]';
-          var sixthElem = document.querySelector(sixthElSelector).style.display = 'inline-flex';
+          document.querySelector(sixthElSelector).style.display = 'inline-flex';
           var placeSelectBtn = document.getElementById('place-select');
           placeSelectBtn.addEventListener('select.change', function (e) {
             var btn = e.target.querySelector('#place');
@@ -415,8 +419,7 @@ document.addEventListener("DOMContentLoaded", function () {
               if (addressBtn) {
                 addressBtn.addEventListener('click', function (e) {
                   e.preventDefault();
-                  document.querySelector('[data-block="6"]').style.display = 'none'; // addressBtns.style.display = 'none';
-
+                  document.querySelector('[data-block="6"]').style.display = 'none';
                   document.getElementById('address-data').style.display = 'inline-flex';
                 });
               }
@@ -457,6 +460,7 @@ document.addEventListener("DOMContentLoaded", function () {
         case 6:
           var sixthElemSelector = '[data-block="' + step + '"]';
           document.querySelector(sixthElemSelector).style.display = 'none';
+          document.getElementById('address-data').style.display = 'none';
           step++;
           currentStepEl.textContent = String(step);
           var seventhElSelector = '[data-block="' + step + '"]';
