@@ -235,6 +235,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // category select
     const categorySelect = new CustomSelect('#category-select');
     const placeSelect = new CustomSelect('#place-select');
+    const countrySelect = new CustomSelect('#country-select');
     const dataBlocks = document.querySelectorAll('[data-block]');
     const btnPrev = document.getElementById('btn-prev');
     const btnNext = document.getElementById('btn-next');
@@ -380,6 +381,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
                             const addressBtn = document.getElementById('btn-address');
                             const geoBtn = document.getElementById('btn-coords');
+
+                            if (addressBtn) {
+                                addressBtn.addEventListener('click', function(e) {
+                                    e.preventDefault();
+
+                                    document.querySelector('[data-block="6"]').style.display = 'none';
+                                    // addressBtns.style.display = 'none';
+                                    document.getElementById('address-data').style.display = 'inline-flex';
+                                });
+                            }
 
                             if (geoBtn) {
                                 geoBtn.addEventListener('click', function(e) {

@@ -92,6 +92,51 @@
                         </div>
                         <h3 id="coords-saved" class="page-description" style="display:none">Ваше местоположение сохранено</h3>
                     </div>
+
+                    <div id="address-data" class="form-group" style="display:none">
+                        <h3 class="page-description">Введите свой адрес (не обязательно)</h3>
+                        <h3 class="page-description">Ваши данные будут доступны только выбранному мастеру</h3>
+
+                        <div class="select" id="country-select">
+                            <button type="button" class="select__toggle" id="country" name="country" value=""
+                                    data-select="toggle" data-index="0">
+                                Выберите страну
+                            </button>
+                            <div class="select__dropdown">
+                                <ul class="select__options">
+                                    <li class="select__option" data-select="option" data-value="Украина"
+                                        data-index="0">Украина</li>
+                                    <li class="select__option" data-select="option" data-value="Польша"
+                                        data-index="1">Польша</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <label for="region" class="form-group__label">Область/Регион</label>
+                        <div class="form-group__input">
+                            <input type="text" name="region" id="region">
+                        </div>
+                        <label for="district" class="form-group__label">Район</label>
+                        <div class="form-group__input">
+                            <input type="text" name="district" id="district">
+                        </div>
+                        <label for="city" class="form-group__label">Город</label>
+                        <div class="form-group__input">
+                            <input type="text" name="city" id="city">
+                        </div>
+                        <label for="street" class="form-group__label">Улица</label>
+                        <div class="form-group__input">
+                            <input type="text" name="street" id="street">
+                        </div>
+                        <label for="house" class="form-group__label">Номер дома</label>
+                        <div class="form-group__input">
+                            <input type="text" name="house" id="house">
+                        </div>
+                        <label for="locale_num" class="form-group__label">Номер квартиры</label>
+                        <div class="form-group__input">
+                            <input type="text" name="locale_num" id="locale_num">
+                        </div>
+                    </div>
+
                     <div class="form-group" data-block="7">
                         <h3 class="page-description">Введите свои контактные данные</h3>
                         <div class="select" id="place-select">

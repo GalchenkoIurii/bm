@@ -289,6 +289,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var categorySelect = new CustomSelect('#category-select');
   var placeSelect = new CustomSelect('#place-select');
+  var countrySelect = new CustomSelect('#country-select');
   var dataBlocks = document.querySelectorAll('[data-block]');
   var btnPrev = document.getElementById('btn-prev');
   var btnNext = document.getElementById('btn-next');
@@ -410,6 +411,15 @@ document.addEventListener("DOMContentLoaded", function () {
               addressBtns.style.display = 'inline-flex';
               var addressBtn = document.getElementById('btn-address');
               var geoBtn = document.getElementById('btn-coords');
+
+              if (addressBtn) {
+                addressBtn.addEventListener('click', function (e) {
+                  e.preventDefault();
+                  document.querySelector('[data-block="6"]').style.display = 'none'; // addressBtns.style.display = 'none';
+
+                  document.getElementById('address-data').style.display = 'inline-flex';
+                });
+              }
 
               if (geoBtn) {
                 geoBtn.addEventListener('click', function (e) {
