@@ -433,7 +433,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     console.log(geo.lat, geo["long"]);
                     document.getElementById('coord_lat').value = geo.lat;
                     document.getElementById('coord_long').value = geo["long"];
-                    document.getElementById('btn-next').dispatchEvent(new Event('click'));
+                    addressBtns.style.display = 'none';
+                    document.getElementById('coords-saved').style.display = 'inline-flex';
                   });
                 });
               }

@@ -404,7 +404,8 @@ document.addEventListener("DOMContentLoaded", function() {
                                         document.getElementById('coord_lat').value = geo.lat;
                                         document.getElementById('coord_long').value = geo.long;
 
-                                        document.getElementById('btn-next').dispatchEvent(new Event('click'));
+                                        addressBtns.style.display = 'none';
+                                        document.getElementById('coords-saved').style.display = 'inline-flex';
                                     });
 
                                 });

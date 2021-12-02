@@ -90,6 +90,7 @@
                             <p class="page-description">...или</p>
                             <button id="btn-coords" type="submit" class="button button_colored button_shadowed">Оставить свое местоположение</button>
                         </div>
+                        <h3 id="coords-saved" class="page-description" style="display:none">Ваше местоположение сохранено</h3>
                     </div>
                     <div class="form-group" data-block="7">
                         <h3 class="page-description">Введите свои контактные данные</h3>
