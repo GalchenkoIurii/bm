@@ -86,7 +86,7 @@
                             </div>
                         </div>
                         <div id="address-btns" class="btn-container btn-address-container" style="display:none">
-                            <button id="btn-address" type="submit" class="button button_colored button_shadowed button_margined">Оставить свой адрес</button>
+                            <button id="btn-address" type="submit" class="button button_colored button_shadowed">Оставить свой адрес</button>
                             <p class="page-description">...или</p>
                             <button id="btn-coords" type="submit" class="button button_colored button_shadowed">Оставить свое местоположение</button>
                         </div>
