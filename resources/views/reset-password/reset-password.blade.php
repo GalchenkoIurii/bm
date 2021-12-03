@@ -20,7 +20,9 @@
                         <div class="form-group__input">
                             <input type="email" name="email" id="email" value="{{ old('email') }}" required>
                         </div>
-                        <div class="form-group__status"></div>
+                        @error('email')
+                            <div class="form-group__status error">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="password" class="form-group__label">Пароль</label>

@@ -296,6 +296,16 @@ a {
     color: $color-main-red;
   }
 
+.status-message {
+  font-family: $font-main;
+  font-size: .8rem;
+  line-height: 1rem;
+  text-align: center;
+  width: 90%;
+  margin: 0 auto .85rem;
+  color: $color-main-green;
+}
+
   .forgot-password {
     display: flex;
     flex-direction: column;

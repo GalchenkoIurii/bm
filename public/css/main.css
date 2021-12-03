@@ -314,6 +314,16 @@ a {
   color: #f03d3e;
 }
 
+.status-message {
+  font-family: Roboto, sans-serif;
+  font-size: 0.8rem;
+  line-height: 1rem;
+  text-align: center;
+  width: 90%;
+  margin: 0 auto 0.85rem;
+  color: #199946;
+}
+
 .forgot-password {
   display: flex;
   flex-direction: column;

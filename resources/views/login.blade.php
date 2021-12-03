@@ -15,6 +15,9 @@
                 @if(session()->has('error'))
                     <p class="error-message">{{ session('error') }}</p>
                 @endif
+                    @if(session()->has('status'))
+                        <p class="status-message">{{ session('status') }}</p>
+                    @endif
                 <form action="{{ route('login') }}" method="post" class="form">
                     @csrf
                     <div class="form-group">
