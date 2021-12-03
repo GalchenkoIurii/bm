@@ -260,11 +260,101 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (btnPrev) {
         btnPrev.style.display = 'none';
+
+        btnPrev.addEventListener("click", function(e) {
+            switch(step) {
+                case 2:
+                    e.preventDefault();
+
+                    const secondElSelector = '[data-block="' + step + '"]';
+                    document.querySelector(secondElSelector).style.display = 'none';
+
+                    step--;
+
+                    currentStepEl.textContent = String(step);
+
+                    const firstElSelector = '[data-block="' + step + '"]';
+                    document.querySelector(firstElSelector).style.display = 'inline-flex';
+
+                    btnPrev.style.display = 'none';
+
+                    break;
+                case 3:
+                    e.preventDefault();
+
+                    const thirdElSelector = '[data-block="' + step + '"]';
+                    document.querySelector(thirdElSelector).style.display = 'none';
+
+                    step--;
+
+                    currentStepEl.textContent = String(step);
+
+                    const secondElemSelector = '[data-block="' + step + '"]';
+                    document.querySelector(secondElemSelector).style.display = 'inline-flex';
+
+                    break;
+                case 4:
+                    e.preventDefault();
+
+                    const fourthElSelector = '[data-block="' + step + '"]';
+                    document.querySelector(fourthElSelector).style.display = 'none';
+
+                    step--;
+
+                    currentStepEl.textContent = String(step);
+
+                    const thirdElemSelector = '[data-block="' + step + '"]';
+                    document.querySelector(thirdElemSelector).style.display = 'inline-flex';
+
+                    break;
+                case 5:
+                    e.preventDefault();
+
+                    const fifthElSelector = '[data-block="' + step + '"]';
+                    document.querySelector(fifthElSelector).style.display = 'none';
+
+                    step--;
+
+                    currentStepEl.textContent = String(step);
+
+                    const fourthElemSelector = '[data-block="' + step + '"]';
+                    document.querySelector(fourthElemSelector).style.display = 'inline-flex';
+
+                    break;
+                case 6:
+                    e.preventDefault();
+
+                    const sixthElSelector = '[data-block="' + step + '"]';
+                    document.querySelector(sixthElSelector).style.display = 'none';
+
+                    step--;
+
+                    currentStepEl.textContent = String(step);
+
+                    const fifthElemSelector = '[data-block="' + step + '"]';
+                    document.querySelector(fifthElemSelector).style.display = 'inline-flex';
+
+                    break;
+                case 7:
+                    e.preventDefault();
+
+                    const seventhElSelector = '[data-block="' + step + '"]';
+                    document.querySelector(seventhElSelector).style.display = 'none';
+
+                    step--;
+
+                    currentStepEl.textContent = String(step);
+
+                    const sixthElemSelector = '[data-block="' + step + '"]';
+                    document.querySelector(sixthElemSelector).style.display = 'inline-flex';
+
+                    break;
+            }
+        });
     }
 
     if (btnNext) {
         btnNext.addEventListener("click", function(e) {
-            // e.preventDefault();
 
             switch(step) {
                 case 1:
