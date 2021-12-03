@@ -15,7 +15,7 @@ class CreateApplicationsTable extends Migration
     {
         Schema::create('applications', function (Blueprint $table) {
             $table->id();
-            $table->enum('gender', ['female', 'male']);
+            $table->enum('gender', ['female', 'male'])->nullable();
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('service_id');
             $table->decimal('start_price')->nullable();
