@@ -76,6 +76,8 @@ Route::middleware('auth')->group(function() {
         '/applications' => ApplicationController::class
     ]);
 
+    Route::get('/application/created', [ApplicationController::class, 'applicationCreated'])
+        ->name('application.created');
     Route::post('/applications/services', [ApplicationController::class, 'getServices']);
 });
 

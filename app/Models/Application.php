@@ -9,6 +9,30 @@ class Application extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'category_id',
+        'service_id',
+        'start_price',
+        'end_price',
+        'photo',
+        'start_date',
+        'end_date',
+        'place',
+        'country',
+        'region',
+        'district',
+        'city',
+        'street',
+        'house',
+        'locale_num',
+        'coord_lat',
+        'coord_long',
+        'name',
+        'phone',
+        'email',
+        'user_id'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

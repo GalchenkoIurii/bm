@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ApplicationStoreRequest;
+use App\Models\Application;
 use App\Models\Category;
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ApplicationController extends Controller
 {
@@ -35,9 +38,20 @@ class ApplicationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ApplicationStoreRequest $request)
     {
-        dd($request);
+        $request_data = $request->validated();
+
+        if ($request->hasFile('photo')) {
+            $folder = date('Y-m-d');
+            $request_data['photo'] = $request->file('photo')->store('applications/' . $folder, 'public');
+        }
+
+        $request_data['user_id'] = Auth::id();
+
+        $application = Application::create($request_data);
+
+        return redirect()->route('application.created');
     }
 
     /**
@@ -83,6 +97,11 @@ class ApplicationController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function applicationCreated()
+    {
+        return view('applications.application-created');
     }
 
     public function getServices(Request $request)
