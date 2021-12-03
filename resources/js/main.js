@@ -264,11 +264,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (btnNext) {
         btnNext.addEventListener("click", function(e) {
-            e.preventDefault();
+            // e.preventDefault();
 
             switch(step) {
                 case 1:
-                    const categoryId = document.getElementById('category_id').value;
+                    e.preventDefault();
+                    const categoryId = document.getElementById('category_id-btn').value;
                     const csrf_token = document.querySelector('input[name="_token"]').value;
 
                     fetch('/applications/services', {
@@ -290,13 +291,15 @@ document.addEventListener("DOMContentLoaded", function() {
                             });
 
                             const serviceSelect = new CustomSelect('#service-select', {
-                                name: 'service_id',
+                                name: 'service_id-btn',
                                 selectedContent: 'Выберите услугу',
                                 options
                             });
 
                             const firstElSelector = '[data-block="' + step + '"]';
                             document.querySelector(firstElSelector).style.display = 'none';
+
+                            document.querySelector('#category_id').value = categoryId;
 
                             step++;
 
@@ -305,15 +308,18 @@ document.addEventListener("DOMContentLoaded", function() {
                             const secondElSelector = '[data-block="' + step + '"]';
                             document.querySelector(secondElSelector).style.display = 'inline-flex';
 
-                            document.querySelector('[name="service_id"]').textContent = 'Выберите услугу';
+                            document.querySelector('[name="service_id-btn"]').textContent = 'Выберите услугу';
 
                             btnPrev.style.display = 'inline-flex';
                         });
 
                     break;
                 case 2:
+                    e.preventDefault();
                     const secondElSelector = '[data-block="' + step + '"]';
                     document.querySelector(secondElSelector).style.display = 'none';
+
+                    document.querySelector('#service_id').value = document.querySelector('[name="service_id-btn"]').value;
 
                     step++;
 
@@ -324,6 +330,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                     break;
                 case 3:
+                    e.preventDefault();
                     const thirdElemSelector = '[data-block="' + step + '"]';
                     document.querySelector(thirdElemSelector).style.display = 'none';
 
@@ -351,6 +358,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                     break;
                 case 4:
+                    e.preventDefault();
                     const fourthElemSelector = '[data-block="' + step + '"]';
                     document.querySelector(fourthElemSelector).style.display = 'none';
 
@@ -363,6 +371,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                     break;
                 case 5:
+                    e.preventDefault();
                     const fifthElemSelector = '[data-block="' + step + '"]';
                     document.querySelector(fifthElemSelector).style.display = 'none';
 
@@ -375,8 +384,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
                     const placeSelectBtn = document.getElementById('place-select');
                     placeSelectBtn.addEventListener('select.change', function(e) {
-                        const btn = e.target.querySelector('#place');
+                        const btn = e.target.querySelector('#place-btn');
                         console.log(btn.value);
+
+                        document.querySelector('#place').value = btn.value;
 
                         const addressBtns = document.getElementById('address-btns');
 
@@ -433,9 +444,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
                     break;
                 case 6:
+                    e.preventDefault();
                     const sixthElemSelector = '[data-block="' + step + '"]';
                     document.querySelector(sixthElemSelector).style.display = 'none';
                     document.getElementById('address-data').style.display = 'none';
+
+                    document.querySelector('#country').value = document.querySelector('#country-btn').value;
 
                     step++;
 

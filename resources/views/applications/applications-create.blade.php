@@ -13,12 +13,13 @@
             <p class="page-description">Шаг <span class="application-step" id="current-step"></span> из
                 <span class="application-step" id="amount-step"></span></p>
             <div class="form-container">
-                <form action="{{ route('applications.store') }}" method="post" class="form" enctype="multipart/form-data">
+                <form action="{{ route('applications.store') }}" method="post" class="form"
+                      enctype="multipart/form-data">
                     @csrf
                     <div class="form-group" data-block="1">
                         <div class="select" id="category-select">
-                            <button type="button" class="select__toggle" id="category_id" name="category_id" value=""
-                                    data-select="toggle" data-index="0">
+                            <button type="button" class="select__toggle" id="category_id-btn" name="category_id-btn" value=""
+                                    data-select="toggle" data-index="-1">
                                 Выберите категорию
                             </button>
                             <div class="select__dropdown">
@@ -31,9 +32,11 @@
                                 </ul>
                             </div>
                         </div>
+                        <input type="hidden" name="category_id" id="category_id">
                     </div>
                     <div class="form-group" data-block="2">
                         <div class="select" id="service-select"></div>
+                        <input type="hidden" name="service_id" id="service_id">
                     </div>
                     <div class="form-group" data-block="3">
                         <h3 class="page-description">Сколько Вы готовы заплатить за услугу? (не обязательно)</h3>
@@ -70,8 +73,8 @@
                     <div class="form-group" data-block="6">
                         <h3 class="page-description">Выберите место встречи с мастером</h3>
                         <div class="select" id="place-select">
-                            <button type="button" class="select__toggle" id="place" name="place" value=""
-                                    data-select="toggle" data-index="0">
+                            <button type="button" class="select__toggle" id="place-btn" name="place-btn" value=""
+                                    data-select="toggle" data-index="-1">
                                 Выберите место
                             </button>
                             <div class="select__dropdown">
@@ -85,6 +88,7 @@
                                 </ul>
                             </div>
                         </div>
+                        <input type="hidden" name="place" id="place">
                         <div id="address-btns" class="btn-container btn-address-container" style="display:none">
                             <button id="btn-address" type="submit" class="button button_colored button_shadowed">Оставить свой адрес</button>
                             <p class="page-description">...или</p>
@@ -98,8 +102,8 @@
                         <h3 class="page-description">Ваши данные будут доступны только выбранному мастеру</h3>
 
                         <div class="select" id="country-select">
-                            <button type="button" class="select__toggle" id="country" name="country" value=""
-                                    data-select="toggle" data-index="0">
+                            <button type="button" class="select__toggle" id="country-btn" name="country-btn" value=""
+                                    data-select="toggle" data-index="-1">
                                 Выберите страну
                             </button>
                             <div class="select__dropdown">
@@ -111,6 +115,7 @@
                                 </ul>
                             </div>
                         </div>
+                        <input type="hidden" name="country" id="country">
                         <label for="region" class="form-group__label">Область/Регион</label>
                         <div class="form-group__input">
                             <input type="text" name="region" id="region">
