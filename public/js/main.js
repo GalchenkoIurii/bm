@@ -186,10 +186,105 @@ function getGeoPosition() {
   //         longitude: geo.long
   //     };
   // });
+} // select
+
+
+function closeAllSelect(element) {
+  var elemsNum = [];
+  var selectElems = document.querySelectorAll('.select_items');
+  var selectedElems = document.querySelectorAll('.select_selected');
+
+  for (var i = 0; i < selectedElems.length; i++) {
+    if (element == selectedElems[i]) {
+      elemsNum.push(i);
+    } else {
+      selectedElems[i].classList.remove('select-arrow-active');
+    }
+  }
+
+  for (var _i = 0; _i < selectElems.length; _i++) {
+    if (elemsNum.indexOf(_i)) {
+      selectElems[_i].classList.add('select_hide');
+    }
+  }
+}
+
+function initSelects() {
+  var selectElems = document.querySelectorAll('.select');
+
+  for (var i = 0; i < selectElems.length; i++) {
+    var selectElem = selectElems[i].querySelectorAll('select')[0]; // console.log(selectElem);
+
+    var divElement = document.createElement('DIV');
+    divElement.setAttribute('class', 'select_selected');
+
+    if (selectElem) {
+      // console.log(selectElem);
+      // console.log(selectElem.selectedIndex);
+      // console.log(selectElem.options);
+      if (selectElem.selectedIndex !== -1) {
+        divElement.innerHTML = selectElem.options[selectElem.selectedIndex].innerHTML;
+      }
+
+      selectElems[i].appendChild(divElement);
+      var optionList = document.createElement('DIV');
+      optionList.setAttribute('class', 'select_items select_hide');
+
+      for (var j = 0; j < selectElem.length; j++) {
+        var optionDivElement = document.createElement('DIV');
+        optionDivElement.innerHTML = selectElem.options[j].innerHTML;
+        optionDivElement.setAttribute('data-value', selectElem.options[j].value);
+        optionDivElement.addEventListener('click', function (e) {
+          var currentSelect = this.parentNode.parentNode.querySelectorAll('select')[0];
+          var selectedDiv = this.parentNode.previousSibling; //console.log(currentSelect);
+          //console.log(selectedDiv);
+
+          for (var _i2 = 0; _i2 < currentSelect.length; _i2++) {
+            if (currentSelect.options[_i2].innerHTML == this.innerHTML) {
+              // console.log(currentSelect.options[i]);
+              currentSelect.selectedIndex = _i2;
+              selectedDiv.innerHTML = this.innerHTML;
+              var selectedElems = this.parentNode.querySelectorAll('.selected-item');
+
+              for (var k = 0; k < selectedElems.length; k++) {
+                selectedElems[k].removeAttribute('class');
+              }
+
+              this.setAttribute('class', 'selected-item');
+              var selectedValue = this.getAttribute('data-value');
+
+              if (selectedValue == currentSelect.options[_i2].value) {
+                currentSelect.options[_i2].selected = true;
+              } // console.log(selectedValue);
+              // console.log(currentSelect.options[i].value);
+              // console.log(currentSelect.options[i].selected);
+
+
+              break;
+            }
+          }
+
+          selectedDiv.click();
+        });
+        optionList.appendChild(optionDivElement);
+      }
+
+      selectElems[i].appendChild(optionList);
+    }
+
+    divElement.addEventListener('click', function (e) {
+      e.stopPropagation();
+      closeAllSelect(this);
+      this.nextSibling.classList.toggle('select_hide');
+      this.classList.toggle('select-arrow-active');
+    });
+  }
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  // mobile menu
+  document.addEventListener('click', closeAllSelect);
+  initSelects(); // mobile menu
+
   var mobileMenu = document.querySelector("#mobileMenu");
   var mobileMenuOpen = document.querySelector("#mobileMenuOpen");
   var mobileMenuClose = document.querySelector("#mobileMenuClose");
@@ -255,102 +350,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (currentStepEl) {
       currentStepEl.textContent = String(step);
     }
-  } // select
-
-
-  var selectElems = document.querySelectorAll('.select');
-
-  for (var _i = 0; _i < selectElems.length; _i++) {
-    var selectElem = selectElems[_i].querySelectorAll('select')[0]; // console.log(selectElem);
-
-
-    var divElement = document.createElement('DIV');
-    divElement.setAttribute('class', 'select_selected');
-
-    if (selectElem) {
-      // console.log(selectElem);
-      // console.log(selectElem.selectedIndex);
-      // console.log(selectElem.options);
-      if (selectElem.selectedIndex !== -1) {
-        divElement.innerHTML = selectElem.options[selectElem.selectedIndex].innerHTML;
-      }
-
-      selectElems[_i].appendChild(divElement);
-
-      var optionList = document.createElement('DIV');
-      optionList.setAttribute('class', 'select_items select_hide');
-
-      for (var j = 0; j < selectElem.length; j++) {
-        var optionDivElement = document.createElement('DIV');
-        optionDivElement.innerHTML = selectElem.options[j].innerHTML;
-        optionDivElement.setAttribute('data-value', selectElem.options[j].value);
-        optionDivElement.addEventListener('click', function (e) {
-          var currentSelect = this.parentNode.parentNode.querySelectorAll('select')[0];
-          var selectedDiv = this.parentNode.previousSibling; //console.log(currentSelect);
-          //console.log(selectedDiv);
-
-          for (var _i2 = 0; _i2 < currentSelect.length; _i2++) {
-            if (currentSelect.options[_i2].innerHTML == this.innerHTML) {
-              // console.log(currentSelect.options[i]);
-              currentSelect.selectedIndex = _i2;
-              selectedDiv.innerHTML = this.innerHTML;
-              var selectedElems = this.parentNode.querySelectorAll('.selected-item');
-
-              for (var k = 0; k < selectedElems.length; k++) {
-                selectedElems[k].removeAttribute('class');
-              }
-
-              this.setAttribute('class', 'selected-item');
-              var selectedValue = this.getAttribute('data-value');
-
-              if (selectedValue == currentSelect.options[_i2].value) {
-                currentSelect.options[_i2].selected = true;
-              } // console.log(selectedValue);
-              // console.log(currentSelect.options[i].value);
-              // console.log(currentSelect.options[i].selected);
-
-
-              break;
-            }
-          }
-
-          selectedDiv.click();
-        });
-        optionList.appendChild(optionDivElement);
-      }
-
-      selectElems[_i].appendChild(optionList);
-    }
-
-    divElement.addEventListener('click', function (e) {
-      e.stopPropagation();
-      closeAllSelect(this);
-      this.nextSibling.classList.toggle('select_hide');
-      this.classList.toggle('select-arrow-active');
-    });
   }
-
-  function closeAllSelect(element) {
-    var elemsNum = [];
-    var selectElems = document.querySelectorAll('.select_items');
-    var selectedElems = document.querySelectorAll('.select_selected');
-
-    for (var _i3 = 0; _i3 < selectedElems.length; _i3++) {
-      if (element == selectedElems[_i3]) {
-        elemsNum.push(_i3);
-      } else {
-        selectedElems[_i3].classList.remove('select-arrow-active');
-      }
-    }
-
-    for (var _i4 = 0; _i4 < selectElems.length; _i4++) {
-      if (elemsNum.indexOf(_i4)) {
-        selectElems[_i4].classList.add('select_hide');
-      }
-    }
-  }
-
-  document.addEventListener('click', closeAllSelect);
 
   if (btnPrev) {
     btnPrev.style.display = 'none';
@@ -463,7 +463,10 @@ document.addEventListener("DOMContentLoaded", function () {
               //                     <div class="select__dropdown">
               //                         <ul class="select__options">${items.join('')}</ul>
               //                     </div>`;
-              document.querySelector('#service_id').insertAdjacentHTML('afterbegin', items.join('')); // if (serviceSelect) {
+              document.querySelector('#service_id').insertAdjacentHTML('afterbegin', items.join(''));
+              document.querySelector('#service-select .select_selected').remove();
+              document.querySelector('#service-select .select_items.select_hide').remove();
+              initSelects(); // if (serviceSelect) {
               //     serviceSelect = null;
               // }
               // let serviceSelect = new CustomSelect('#service-select', {

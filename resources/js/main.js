@@ -191,79 +191,29 @@ function getGeoPosition() {
 }
 
 
-document.addEventListener("DOMContentLoaded", function() {
-    // mobile menu
-    const mobileMenu      = document.querySelector("#mobileMenu");
-    const mobileMenuOpen  = document.querySelector("#mobileMenuOpen");
-    const mobileMenuClose = document.querySelector("#mobileMenuClose");
+// select
 
-    if (mobileMenuOpen) {
-        mobileMenuOpen.addEventListener("click", function(e) {
-            e.preventDefault();
-            if (mobileMenu) {
-                mobileMenu.setAttribute("data-open", true);
-                mobileMenuOpen.style.display = "none";
-            }
-        });
-    }
+function closeAllSelect(element) {
+    let elemsNum = [];
+    let selectElems = document.querySelectorAll('.select_items');
+    let selectedElems = document.querySelectorAll('.select_selected');
 
-    if (mobileMenuClose) {
-        mobileMenuClose.addEventListener("click", function(e) {
-            e.preventDefault();
-            if (mobileMenu && mobileMenu.hasAttribute("data-open")) {
-                mobileMenu.removeAttribute("data-open");
-                mobileMenuOpen.style.display = "";
-            }
-        });
-    }
-
-
-    // modal window
-    const modalWindow = document.querySelector("#modal");
-    const modalWindowClose = document.querySelector("#modalClose");
-
-    if (modalWindowClose) {
-        modalWindowClose.addEventListener("click", function(e) {
-            e.preventDefault();
-            if (modalWindow) {
-                modalWindow.style.display = "none";
-            }
-        });
-    }
-
-
-    // handle application data
-    // category select
-
-    // const categorySelect = new CustomSelect('#category-select');
-    // let serviceSelect = new CustomSelect('#service-select');
-    // const placeSelect = new CustomSelect('#place-select');
-    // const countrySelect = new CustomSelect('#country-select');
-
-    const dataBlocks = document.querySelectorAll('[data-block]');
-    const btnPrev = document.getElementById('btn-prev');
-    const btnNext = document.getElementById('btn-next');
-    const stepsAmountEl = document.getElementById('amount-step');
-    let currentStepEl = document.getElementById('current-step');
-    let step = 1;
-
-    if (dataBlocks) {
-        if (stepsAmountEl) {
-            stepsAmountEl.textContent = String(dataBlocks.length);
-        }
-
-        for (let i = 1; i < dataBlocks.length; i++) {
-            dataBlocks[i].style.display = 'none';
-        }
-
-        if (currentStepEl) {
-            currentStepEl.textContent = String(step);
+    for (let i = 0; i < selectedElems.length; i++) {
+        if (element == selectedElems[i]) {
+            elemsNum.push(i);
+        } else {
+            selectedElems[i].classList.remove('select-arrow-active');
         }
     }
 
+    for (let i = 0; i < selectElems.length; i++) {
+        if (elemsNum.indexOf(i)) {
+            selectElems[i].classList.add('select_hide');
+        }
+    }
+}
 
-    // select
-
+function initSelects() {
     let selectElems = document.querySelectorAll('.select');
 
     for (let i = 0; i < selectElems.length; i++) {
@@ -344,28 +294,83 @@ document.addEventListener("DOMContentLoaded", function() {
             this.classList.toggle('select-arrow-active');
         });
     }
+}
 
-    function closeAllSelect(element) {
-        let elemsNum = [];
-        let selectElems = document.querySelectorAll('.select_items');
-        let selectedElems = document.querySelectorAll('.select_selected');
 
-        for (let i = 0; i < selectedElems.length; i++) {
-            if (element == selectedElems[i]) {
-                elemsNum.push(i);
-            } else {
-                selectedElems[i].classList.remove('select-arrow-active');
-            }
-        }
-
-        for (let i = 0; i < selectElems.length; i++) {
-            if (elemsNum.indexOf(i)) {
-                selectElems[i].classList.add('select_hide');
-            }
-        }
-    }
+document.addEventListener("DOMContentLoaded", function() {
 
     document.addEventListener('click', closeAllSelect);
+
+    initSelects();
+
+    // mobile menu
+    const mobileMenu      = document.querySelector("#mobileMenu");
+    const mobileMenuOpen  = document.querySelector("#mobileMenuOpen");
+    const mobileMenuClose = document.querySelector("#mobileMenuClose");
+
+    if (mobileMenuOpen) {
+        mobileMenuOpen.addEventListener("click", function(e) {
+            e.preventDefault();
+            if (mobileMenu) {
+                mobileMenu.setAttribute("data-open", true);
+                mobileMenuOpen.style.display = "none";
+            }
+        });
+    }
+
+    if (mobileMenuClose) {
+        mobileMenuClose.addEventListener("click", function(e) {
+            e.preventDefault();
+            if (mobileMenu && mobileMenu.hasAttribute("data-open")) {
+                mobileMenu.removeAttribute("data-open");
+                mobileMenuOpen.style.display = "";
+            }
+        });
+    }
+
+
+    // modal window
+    const modalWindow = document.querySelector("#modal");
+    const modalWindowClose = document.querySelector("#modalClose");
+
+    if (modalWindowClose) {
+        modalWindowClose.addEventListener("click", function(e) {
+            e.preventDefault();
+            if (modalWindow) {
+                modalWindow.style.display = "none";
+            }
+        });
+    }
+
+
+    // handle application data
+    // category select
+
+    // const categorySelect = new CustomSelect('#category-select');
+    // let serviceSelect = new CustomSelect('#service-select');
+    // const placeSelect = new CustomSelect('#place-select');
+    // const countrySelect = new CustomSelect('#country-select');
+
+    const dataBlocks = document.querySelectorAll('[data-block]');
+    const btnPrev = document.getElementById('btn-prev');
+    const btnNext = document.getElementById('btn-next');
+    const stepsAmountEl = document.getElementById('amount-step');
+    let currentStepEl = document.getElementById('current-step');
+    let step = 1;
+
+    if (dataBlocks) {
+        if (stepsAmountEl) {
+            stepsAmountEl.textContent = String(dataBlocks.length);
+        }
+
+        for (let i = 1; i < dataBlocks.length; i++) {
+            dataBlocks[i].style.display = 'none';
+        }
+
+        if (currentStepEl) {
+            currentStepEl.textContent = String(step);
+        }
+    }
 
 
     if (btnPrev) {
@@ -513,6 +518,11 @@ document.addEventListener("DOMContentLoaded", function() {
                                 //                     </div>`;
 
                                 document.querySelector('#service_id').insertAdjacentHTML('afterbegin', items.join(''));
+
+                                document.querySelector('#service-select .select_selected').remove();
+                                document.querySelector('#service-select .select_items.select_hide').remove();
+
+                                initSelects();
 
                                 // if (serviceSelect) {
                                 //     serviceSelect = null;

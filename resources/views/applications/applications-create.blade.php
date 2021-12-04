@@ -42,7 +42,7 @@
                         {{--<input type="hidden" name="category_id" id="category_id">--}}
                     </div>
                     <div class="form-group" data-block="2">
-                        <div class="select">
+                        <div id="service-select" class="select">
                             <select name="service_id" id="service_id"></select>
                         </div>
                         {{--<input type="hidden" name="service_id" id="service_id">--}}
