@@ -393,6 +393,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
                     currentStepEl.textContent = String(step);
 
+                    document.querySelectorAll('.select_selected').forEach(function(item) {
+                        item.remove();
+                    });
+                    document.querySelectorAll('.select_items.select_hide').forEach(function(item) {
+                        item.remove();
+                    });
+
+                    initSelects();
+
                     const firstElSelector = '[data-block="' + step + '"]';
                     document.querySelector(firstElSelector).style.display = 'inline-flex';
 
