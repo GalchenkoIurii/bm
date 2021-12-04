@@ -38,6 +38,7 @@ class CustomSelect {
             selected.classList.remove(CLASS_NAME_SELECTED);
         }
         option.classList.add(CLASS_NAME_SELECTED);
+
         this._elToggle.textContent = option.textContent;
         this._elToggle.value = option.dataset['value'];
         this._elToggle.dataset.index = option.dataset['index'];
@@ -135,13 +136,13 @@ CustomSelect.template = params => {
 };
 
 
-document.addEventListener('click', (e) => {
-    if (!e.target.closest('.select')) {
-        document.querySelectorAll(SELECTOR_ACTIVE).forEach(select => {
-            select.classList.remove(CLASS_NAME_ACTIVE);
-        });
-    }
-});
+// document.addEventListener('click', (e) => {
+//     if (!e.target.closest('.select')) {
+//         document.querySelectorAll(SELECTOR_ACTIVE).forEach(select => {
+//             select.classList.remove(CLASS_NAME_ACTIVE);
+//         });
+//     }
+// });
 
 
 // get geo position
@@ -233,9 +234,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // handle application data
     // category select
-    const categorySelect = new CustomSelect('#category-select');
-    const placeSelect = new CustomSelect('#place-select');
-    const countrySelect = new CustomSelect('#country-select');
+
+    // const categorySelect = new CustomSelect('#category-select');
+    // let serviceSelect = new CustomSelect('#service-select');
+    // const placeSelect = new CustomSelect('#place-select');
+    // const countrySelect = new CustomSelect('#country-select');
+
     const dataBlocks = document.querySelectorAll('[data-block]');
     const btnPrev = document.getElementById('btn-prev');
     const btnNext = document.getElementById('btn-next');
@@ -258,6 +262,90 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
 
+    // select
+
+    let selectElems = document.querySelectorAll('.select');
+
+    for (let i = 0; i < selectElems.length; i++) {
+        let selectElem = selectElems[i].querySelectorAll('select')[0];
+
+        let divElement = document.createElement('DIV');
+        divElement.setAttribute('class', 'select_selected');
+
+        if (selectElem) {
+            divElement.innerHTML = selectElem.options[selectElem.selectedIndex].innerHTML;
+
+            selectElems[i].appendChild(divElement);
+
+            let optionList = document.createElement('DIV');
+            optionList.setAttribute('class', 'select_items select_hide');
+
+            for (let j = 0; j < selectElem.length; j++) {
+                let optionDivElement = document.createElement('DIV');
+                optionDivElement.innerHTML = selectElem.options[j].innerHTML;
+
+                optionDivElement.addEventListener('click', function(e) {
+                    let currentSelect = this.parentNode.parentNode.querySelectorAll('select')[0];
+                    let hiddenSelect = this.parentNode.previousSibling;
+
+                    for (let i = 0; i < currentSelect.length; i++) {
+                        if (currentSelect.options[i].innerHTML == this.innerHTML) {
+                            currentSelect.selectedIndex = i;
+                            hiddenSelect.innerHTML = this.innerHTML;
+
+                            let sameSelectedElems = this.parentNode.querySelectorAll('.same-as-selected');
+
+                            for (let k = 0; k < sameSelectedElems.length; k++) {
+                                sameSelectedElems[k].removeAttribute('class');
+                            }
+
+                            this.setAttribute('class', 'same-as-selected');
+                            break;
+                        }
+                    }
+
+                    hiddenSelect.click();
+                });
+
+                optionList.appendChild(optionDivElement);
+            }
+
+            selectElems[i].appendChild(optionList);
+        }
+
+
+
+        divElement.addEventListener('click', function(e) {
+            e.stopPropagation();
+            closeAllSelect(this);
+            this.nextSibling.classList.toggle('select_hide');
+            this.classList.toggle('select-arrow-active');
+        });
+    }
+
+    function closeAllSelect(element) {
+        let elemsNum = [];
+        let selectElems = document.querySelectorAll('.select_items');
+        let selectedElems = document.querySelectorAll('.select_selected');
+
+        for (let i = 0; i < selectedElems.length; i++) {
+            if (element == selectedElems[i]) {
+                elemsNum.push(i);
+            } else {
+                selectedElems[i].classList.remove('select-arrow-active');
+            }
+        }
+
+        for (let i = 0; i < selectElems.length; i++) {
+            if (elemsNum.indexOf(i)) {
+                selectElems[i].classList.add('select_hide');
+            }
+        }
+    }
+
+    document.addEventListener('click', closeAllSelect);
+
+
     if (btnPrev) {
         btnPrev.style.display = 'none';
 
@@ -268,6 +356,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
                     const secondElSelector = '[data-block="' + step + '"]';
                     document.querySelector(secondElSelector).style.display = 'none';
+
+                    // let serviceSelectEl = document.querySelector('#service-select');
+                    // for (let node of document.querySelector('#service-select').childNodes) {
+                    //     node.remove();
+                    // }
 
                     step--;
 
@@ -359,7 +452,7 @@ document.addEventListener("DOMContentLoaded", function() {
             switch(step) {
                 case 1:
                     e.preventDefault();
-                    const categoryId = document.getElementById('category_id-btn').value;
+                    // const categoryId = document.getElementById('category_id-btn').value;
                     const csrf_token = document.querySelector('input[name="_token"]').value;
 
                     fetch('/applications/services', {
@@ -380,11 +473,45 @@ document.addEventListener("DOMContentLoaded", function() {
                                 options.push([item.id, item.name]);
                             });
 
-                            const serviceSelect = new CustomSelect('#service-select', {
-                                name: 'service_id-btn',
-                                selectedContent: 'Выберите услугу',
-                                options
-                            });
+                            // let items = [];
+                            // let index = 0;
+                            //
+                            // data.forEach(function(item) {
+                            //     items.push(`<li class="select__option" data-select="option" data-value="${item.id}"
+                            //                 data-index="${index++}">${item.name}</li>`);
+                            // });
+
+                            if (options.length) {
+                                // let name = 'service_id-btn';
+                                // let selectedContent = 'Выберите услугу';
+                                //
+                                // let template = `<button type="button" class="select__toggle" name="${name}"
+                                //                     value="" data-select="toggle"
+                                //                     data-index="-1">${selectedContent}</button>
+                                //                     <div class="select__dropdown">
+                                //                         <ul class="select__options">${items.join('')}</ul>
+                                //                     </div>`;
+                                //
+                                // document.querySelector('#service-select').insertAdjacentHTML('afterbegin', template);
+
+                                // if (serviceSelect) {
+                                //     serviceSelect = null;
+                                // }
+
+                                // let serviceSelect = new CustomSelect('#service-select', {
+                                //     name: 'service_id-btn',
+                                //     // selectedContent: 'Выберите услугу',
+                                //     // targetValue: 'Выберите услугу',
+                                //     options
+                                // });
+
+                                // serviceSelect.dispose();
+                                //
+                                // document.querySelector('[name="service_id-btn"]').textContent = 'Выберите услугу';
+                                //
+                                // serviceSelect.show();
+                            }
+
 
                             const firstElSelector = '[data-block="' + step + '"]';
                             document.querySelector(firstElSelector).style.display = 'none';
@@ -397,10 +524,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
                             const secondElSelector = '[data-block="' + step + '"]';
                             document.querySelector(secondElSelector).style.display = 'inline-flex';
-
-                            document.querySelector('[name="service_id-btn"]').textContent = 'Выберите услугу';
-
                             btnPrev.style.display = 'inline-flex';
+
+
+                            // document.querySelector('.select__trigger').textContent = document.querySelector('.select__item_selected').textContent;
+
+
                         });
 
                     break;

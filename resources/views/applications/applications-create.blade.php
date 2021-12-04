@@ -17,22 +17,29 @@
                       enctype="multipart/form-data">
                     @csrf
                     <div class="form-group" data-block="1">
-                        <div class="select" id="category-select">
-                            <button type="button" class="select__toggle" id="category_id-btn" name="category_id-btn" value=""
-                                    data-select="toggle" data-index="-1">
-                                Выберите категорию
-                            </button>
-                            <div class="select__dropdown">
-                                <ul class="select__options">
-                                    @php $index = 0; @endphp
-                                    @foreach($categories as $category)
-                                        <li class="select__option" data-select="option" data-value="{{ $category->id }}"
-                                            data-index="{{ $index++ }}">{{ $category->name }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
+                        <div class="select">
+                            <select name="category_id" id="category_id">
+                                @foreach($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
-                        <input type="hidden" name="category_id" id="category_id">
+                        {{--<div class="select" id="category-select">--}}
+                            {{--<button type="button" class="select__toggle" id="category_id-btn" name="category_id-btn" value=""--}}
+                                    {{--data-select="toggle" data-index="-1">--}}
+                                {{--Выберите категорию--}}
+                            {{--</button>--}}
+                            {{--<div class="select__dropdown">--}}
+                                {{--<ul class="select__options">--}}
+                                    {{--@php $index = 0; @endphp--}}
+                                    {{--@foreach($categories as $category)--}}
+                                        {{--<li class="select__option" data-select="option" data-value="{{ $category->id }}"--}}
+                                            {{--data-index="{{ $index++ }}">{{ $category->name }}</li>--}}
+                                    {{--@endforeach--}}
+                                {{--</ul>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<input type="hidden" name="category_id" id="category_id">--}}
                     </div>
                     <div class="form-group" data-block="2">
                         <div class="select" id="service-select"></div>
