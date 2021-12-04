@@ -42,8 +42,10 @@
                         {{--<input type="hidden" name="category_id" id="category_id">--}}
                     </div>
                     <div class="form-group" data-block="2">
-                        <div class="select" id="service-select"></div>
-                        <input type="hidden" name="service_id" id="service_id">
+                        <div class="select">
+                            <select name="service_id" id="service_id"></select>
+                        </div>
+                        {{--<input type="hidden" name="service_id" id="service_id">--}}
                     </div>
                     <div class="form-group" data-block="3">
                         <h3 class="page-description">Сколько Вы готовы заплатить за услугу? (не обязательно)</h3>
@@ -79,23 +81,28 @@
                     </div>
                     <div class="form-group" data-block="6">
                         <h3 class="page-description">Выберите место встречи с мастером</h3>
-                        <div class="select" id="place-select">
-                            <button type="button" class="select__toggle" id="place-btn" name="place-btn" value=""
-                                    data-select="toggle" data-index="-1">
-                                Выберите место
-                            </button>
-                            <div class="select__dropdown">
-                                <ul class="select__options">
-                                    <li class="select__option" data-select="option" data-value="master"
-                                        data-index="0">Я приеду к мастеру</li>
-                                    <li class="select__option" data-select="option" data-value="client"
-                                        data-index="1">Мастер приедет ко мне</li>
-                                    <li class="select__option" data-select="option" data-value="both"
-                                        data-index="2">Рассмотрю оба варианта</li>
-                                </ul>
-                            </div>
+                        <div class="select">
+                            <select name="place" id="place">
+                                <option value="master">Я приеду к мастеру</option>
+                                <option value="client">Мастер приедет ко мне</option>
+                                <option value="both">Рассмотрю оба варианта</option>
+                            </select>
+                            {{--<button type="button" class="select__toggle" id="place-btn" name="place-btn" value=""--}}
+                                    {{--data-select="toggle" data-index="-1">--}}
+                                {{--Выберите место--}}
+                            {{--</button>--}}
+                            {{--<div class="select__dropdown">--}}
+                                {{--<ul class="select__options">--}}
+                                    {{--<li class="select__option" data-select="option" data-value="master"--}}
+                                        {{--data-index="0">Я приеду к мастеру</li>--}}
+                                    {{--<li class="select__option" data-select="option" data-value="client"--}}
+                                        {{--data-index="1">Мастер приедет ко мне</li>--}}
+                                    {{--<li class="select__option" data-select="option" data-value="both"--}}
+                                        {{--data-index="2">Рассмотрю оба варианта</li>--}}
+                                {{--</ul>--}}
+                            {{--</div>--}}
                         </div>
-                        <input type="hidden" name="place" id="place">
+                        {{--<input type="hidden" name="place" id="place">--}}
                         <div id="address-btns" class="btn-container btn-address-container" style="display:none">
                             <button id="btn-address" type="submit" class="button button_colored button_shadowed">Оставить свой адрес</button>
                             <p class="page-description">...или</p>
@@ -108,21 +115,25 @@
                         <h3 class="page-description">Введите свой адрес (не обязательно)</h3>
                         <h3 class="page-description">Ваши данные будут доступны только выбранному мастеру</h3>
 
-                        <div class="select" id="country-select">
-                            <button type="button" class="select__toggle" id="country-btn" name="country-btn" value=""
-                                    data-select="toggle" data-index="-1">
-                                Выберите страну
-                            </button>
-                            <div class="select__dropdown">
-                                <ul class="select__options">
-                                    <li class="select__option" data-select="option" data-value="Украина"
-                                        data-index="0">Украина</li>
-                                    <li class="select__option" data-select="option" data-value="Польша"
-                                        data-index="1">Польша</li>
-                                </ul>
-                            </div>
+                        <div class="select">
+                            <select name="country" id="country">
+                                <option value="Украина">Украина</option>
+                                <option value="Польша">Польша</option>
+                            </select>
+                            {{--<button type="button" class="select__toggle" id="country-btn" name="country-btn" value=""--}}
+                                    {{--data-select="toggle" data-index="-1">--}}
+                                {{--Выберите страну--}}
+                            {{--</button>--}}
+                            {{--<div class="select__dropdown">--}}
+                                {{--<ul class="select__options">--}}
+                                    {{--<li class="select__option" data-select="option" data-value="Украина"--}}
+                                        {{--data-index="0">Украина</li>--}}
+                                    {{--<li class="select__option" data-select="option" data-value="Польша"--}}
+                                        {{--data-index="1">Польша</li>--}}
+                                {{--</ul>--}}
+                            {{--</div>--}}
                         </div>
-                        <input type="hidden" name="country" id="country">
+                        {{--<input type="hidden" name="country" id="country">--}}
                         <label for="region" class="form-group__label">Область/Регион</label>
                         <div class="form-group__input">
                             <input type="text" name="region" id="region">

@@ -1,139 +1,139 @@
 // custom select
-const CLASS_NAME_SELECT = 'select';
-const CLASS_NAME_ACTIVE = 'select_show';
-const CLASS_NAME_SELECTED = 'select__option_selected';
-const SELECTOR_ACTIVE = '.select_show';
-const SELECTOR_DATA = '[data-select]';
-const SELECTOR_DATA_TOGGLE = '[data-select="toggle"]';
-const SELECTOR_OPTION_SELECTED = '.select__option_selected';
-
-class CustomSelect {
-    constructor(target, params) {
-        this._elRoot = typeof target === 'string' ? document.querySelector(target) : target;
-        this._params = params || {};
-        if (this._params['options']) {
-            this._elRoot.classList.add(CLASS_NAME_SELECT);
-            this._elRoot.innerHTML = CustomSelect.template(this._params);
-        }
-        if (this._elRoot) {
-            this._elToggle = this._elRoot.querySelector(SELECTOR_DATA_TOGGLE);
-            this._elRoot.addEventListener('click', this._onClick.bind(this));
-        }
-    }
-    _onClick(e) {
-        const target = e.target;
-        const type = target.closest(SELECTOR_DATA).dataset.select;
-        switch (type) {
-            case 'toggle':
-                this.toggle();
-                break;
-            case 'option':
-                this._changeValue(target);
-                break;
-        }
-    }
-    _update(option) {
-        const selected = this._elRoot.querySelector(SELECTOR_OPTION_SELECTED);
-        if (selected) {
-            selected.classList.remove(CLASS_NAME_SELECTED);
-        }
-        option.classList.add(CLASS_NAME_SELECTED);
-
-        this._elToggle.textContent = option.textContent;
-        this._elToggle.value = option.dataset['value'];
-        this._elToggle.dataset.index = option.dataset['index'];
-        this._elRoot.dispatchEvent(new CustomEvent('select.change'));
-        this._params.onSelected ? this._params.onSelected(this, option) : null;
-        return option.dataset['value'];
-    }
-    _reset() {
-        const selected = this._elRoot.querySelector(SELECTOR_OPTION_SELECTED);
-        if (selected) {
-            selected.classList.remove(CLASS_NAME_SELECTED);
-        }
-        this._elToggle.textContent = 'Выберите из списка';
-        this._elToggle.value = '';
-        this._elToggle.dataset.index = -1;
-        this._elRoot.dispatchEvent(new CustomEvent('select.change'));
-        this._params.onSelected ? this._params.onSelected(this, null) : null;
-        return '';
-    }
-    _changeValue(option) {
-        if (option.classList.contains(CLASS_NAME_SELECTED)) {
-            return;
-        }
-        this._update(option);
-        this.hide();
-    }
-    show() {
-        document.querySelectorAll(SELECTOR_ACTIVE).forEach(select => {
-            select.classList.remove(CLASS_NAME_ACTIVE);
-        });
-        this._elRoot.classList.add(CLASS_NAME_ACTIVE);
-    }
-    hide() {
-        this._elRoot.classList.remove(CLASS_NAME_ACTIVE);
-    }
-    toggle() {
-        if (this._elRoot.classList.contains(CLASS_NAME_ACTIVE)) {
-            this.hide();
-        } else {
-            this.show();
-        }
-    }
-    dispose() {
-        this._elRoot.removeEventListener('click', this._onClick);
-    }
-    get value() {
-        return this._elToggle.value;
-    }
-    set value(value) {
-        let isExists = false;
-        this._elRoot.querySelectorAll('.select__option').forEach((option) => {
-            if (option.dataset['value'] === value) {
-                isExists = true;
-                return this._update(option);
-            }
-        });
-        if (!isExists) {
-            return this._reset();
-        }
-    }
-    get selectedIndex() {
-        return this._elToggle.dataset['index'];
-    }
-    set selectedIndex(index) {
-        const option = this._elRoot.querySelector(`.select__option[data-index="${index}"]`);
-        if (option) {
-            return this._update(option);
-        }
-        return this._reset();
-    }
-}
-
-CustomSelect.template = params => {
-    const name = params['name'];
-    const options = params['options'];
-    const targetValue = params['targetValue'];
-    let items = [];
-    let selectedIndex = -1;
-    let selectedValue = '';
-    let selectedContent = 'Выберите из списка';
-    options.forEach((option, index) => {
-        let selectedClass = '';
-        if (option[0] === targetValue) {
-            selectedClass = ' select__option_selected';
-            selectedIndex = index;
-            selectedValue = option[0];
-            selectedContent = option[1];
-        }
-        items.push(`<li class="select__option${selectedClass}" data-select="option" data-value="${option[0]}" data-index="${index}">${option[1]}</li>`);
-    });
-    return `<button type="button" class="select__toggle" name="${name}" value="${selectedValue}" data-select="toggle" data-index="${selectedIndex}">${selectedContent}</button>
-  <div class="select__dropdown">
-    <ul class="select__options">${items.join('')}</ul>
-  </div>`;
-};
+// const CLASS_NAME_SELECT = 'select';
+// const CLASS_NAME_ACTIVE = 'select_show';
+// const CLASS_NAME_SELECTED = 'select__option_selected';
+// const SELECTOR_ACTIVE = '.select_show';
+// const SELECTOR_DATA = '[data-select]';
+// const SELECTOR_DATA_TOGGLE = '[data-select="toggle"]';
+// const SELECTOR_OPTION_SELECTED = '.select__option_selected';
+//
+// class CustomSelect {
+//     constructor(target, params) {
+//         this._elRoot = typeof target === 'string' ? document.querySelector(target) : target;
+//         this._params = params || {};
+//         if (this._params['options']) {
+//             this._elRoot.classList.add(CLASS_NAME_SELECT);
+//             this._elRoot.innerHTML = CustomSelect.template(this._params);
+//         }
+//         if (this._elRoot) {
+//             this._elToggle = this._elRoot.querySelector(SELECTOR_DATA_TOGGLE);
+//             this._elRoot.addEventListener('click', this._onClick.bind(this));
+//         }
+//     }
+//     _onClick(e) {
+//         const target = e.target;
+//         const type = target.closest(SELECTOR_DATA).dataset.select;
+//         switch (type) {
+//             case 'toggle':
+//                 this.toggle();
+//                 break;
+//             case 'option':
+//                 this._changeValue(target);
+//                 break;
+//         }
+//     }
+//     _update(option) {
+//         const selected = this._elRoot.querySelector(SELECTOR_OPTION_SELECTED);
+//         if (selected) {
+//             selected.classList.remove(CLASS_NAME_SELECTED);
+//         }
+//         option.classList.add(CLASS_NAME_SELECTED);
+//
+//         this._elToggle.textContent = option.textContent;
+//         this._elToggle.value = option.dataset['value'];
+//         this._elToggle.dataset.index = option.dataset['index'];
+//         this._elRoot.dispatchEvent(new CustomEvent('select.change'));
+//         this._params.onSelected ? this._params.onSelected(this, option) : null;
+//         return option.dataset['value'];
+//     }
+//     _reset() {
+//         const selected = this._elRoot.querySelector(SELECTOR_OPTION_SELECTED);
+//         if (selected) {
+//             selected.classList.remove(CLASS_NAME_SELECTED);
+//         }
+//         this._elToggle.textContent = 'Выберите из списка';
+//         this._elToggle.value = '';
+//         this._elToggle.dataset.index = -1;
+//         this._elRoot.dispatchEvent(new CustomEvent('select.change'));
+//         this._params.onSelected ? this._params.onSelected(this, null) : null;
+//         return '';
+//     }
+//     _changeValue(option) {
+//         if (option.classList.contains(CLASS_NAME_SELECTED)) {
+//             return;
+//         }
+//         this._update(option);
+//         this.hide();
+//     }
+//     show() {
+//         document.querySelectorAll(SELECTOR_ACTIVE).forEach(select => {
+//             select.classList.remove(CLASS_NAME_ACTIVE);
+//         });
+//         this._elRoot.classList.add(CLASS_NAME_ACTIVE);
+//     }
+//     hide() {
+//         this._elRoot.classList.remove(CLASS_NAME_ACTIVE);
+//     }
+//     toggle() {
+//         if (this._elRoot.classList.contains(CLASS_NAME_ACTIVE)) {
+//             this.hide();
+//         } else {
+//             this.show();
+//         }
+//     }
+//     dispose() {
+//         this._elRoot.removeEventListener('click', this._onClick);
+//     }
+//     get value() {
+//         return this._elToggle.value;
+//     }
+//     set value(value) {
+//         let isExists = false;
+//         this._elRoot.querySelectorAll('.select__option').forEach((option) => {
+//             if (option.dataset['value'] === value) {
+//                 isExists = true;
+//                 return this._update(option);
+//             }
+//         });
+//         if (!isExists) {
+//             return this._reset();
+//         }
+//     }
+//     get selectedIndex() {
+//         return this._elToggle.dataset['index'];
+//     }
+//     set selectedIndex(index) {
+//         const option = this._elRoot.querySelector(`.select__option[data-index="${index}"]`);
+//         if (option) {
+//             return this._update(option);
+//         }
+//         return this._reset();
+//     }
+// }
+//
+// CustomSelect.template = params => {
+//     const name = params['name'];
+//     const options = params['options'];
+//     const targetValue = params['targetValue'];
+//     let items = [];
+//     let selectedIndex = -1;
+//     let selectedValue = '';
+//     let selectedContent = 'Выберите из списка';
+//     options.forEach((option, index) => {
+//         let selectedClass = '';
+//         if (option[0] === targetValue) {
+//             selectedClass = ' select__option_selected';
+//             selectedIndex = index;
+//             selectedValue = option[0];
+//             selectedContent = option[1];
+//         }
+//         items.push(`<li class="select__option${selectedClass}" data-select="option" data-value="${option[0]}" data-index="${index}">${option[1]}</li>`);
+//     });
+//     return `<button type="button" class="select__toggle" name="${name}" value="${selectedValue}" data-select="toggle" data-index="${selectedIndex}">${selectedContent}</button>
+//   <div class="select__dropdown">
+//     <ul class="select__options">${items.join('')}</ul>
+//   </div>`;
+// };
 
 
 // document.addEventListener('click', (e) => {
@@ -268,12 +268,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
     for (let i = 0; i < selectElems.length; i++) {
         let selectElem = selectElems[i].querySelectorAll('select')[0];
-
+        // console.log(selectElem);
         let divElement = document.createElement('DIV');
         divElement.setAttribute('class', 'select_selected');
 
         if (selectElem) {
-            divElement.innerHTML = selectElem.options[selectElem.selectedIndex].innerHTML;
+            // console.log(selectElem);
+            // console.log(selectElem.selectedIndex);
+            // console.log(selectElem.options);
+
+            if (selectElem.selectedIndex !== -1) {
+                divElement.innerHTML = selectElem.options[selectElem.selectedIndex].innerHTML;
+            }
 
             selectElems[i].appendChild(divElement);
 
@@ -284,27 +290,43 @@ document.addEventListener("DOMContentLoaded", function() {
                 let optionDivElement = document.createElement('DIV');
                 optionDivElement.innerHTML = selectElem.options[j].innerHTML;
 
+                optionDivElement.setAttribute('data-value', selectElem.options[j].value);
+
                 optionDivElement.addEventListener('click', function(e) {
                     let currentSelect = this.parentNode.parentNode.querySelectorAll('select')[0];
-                    let hiddenSelect = this.parentNode.previousSibling;
+                    let selectedDiv = this.parentNode.previousSibling;
+                    //console.log(currentSelect);
+                    //console.log(selectedDiv);
 
                     for (let i = 0; i < currentSelect.length; i++) {
                         if (currentSelect.options[i].innerHTML == this.innerHTML) {
+                            // console.log(currentSelect.options[i]);
                             currentSelect.selectedIndex = i;
-                            hiddenSelect.innerHTML = this.innerHTML;
+                            selectedDiv.innerHTML = this.innerHTML;
 
-                            let sameSelectedElems = this.parentNode.querySelectorAll('.same-as-selected');
+                            let selectedElems = this.parentNode.querySelectorAll('.selected-item');
 
-                            for (let k = 0; k < sameSelectedElems.length; k++) {
-                                sameSelectedElems[k].removeAttribute('class');
+                            for (let k = 0; k < selectedElems.length; k++) {
+                                selectedElems[k].removeAttribute('class');
                             }
 
-                            this.setAttribute('class', 'same-as-selected');
+                            this.setAttribute('class', 'selected-item');
+
+                            let selectedValue = this.getAttribute('data-value');
+
+                            if (selectedValue == currentSelect.options[i].value) {
+                                currentSelect.options[i].selected = true;
+                            }
+                            // console.log(selectedValue);
+                            // console.log(currentSelect.options[i].value);
+                            // console.log(currentSelect.options[i].selected);
+
+
                             break;
                         }
                     }
 
-                    hiddenSelect.click();
+                    selectedDiv.click();
                 });
 
                 optionList.appendChild(optionDivElement);
@@ -452,7 +474,7 @@ document.addEventListener("DOMContentLoaded", function() {
             switch(step) {
                 case 1:
                     e.preventDefault();
-                    // const categoryId = document.getElementById('category_id-btn').value;
+                    const categoryId = document.getElementById('category_id').value;
                     const csrf_token = document.querySelector('input[name="_token"]').value;
 
                     fetch('/applications/services', {
@@ -467,21 +489,19 @@ document.addEventListener("DOMContentLoaded", function() {
                     })
                         .then(response => response.json())
                         .then(data => {
-                            const options = [];
-
-                            data.forEach(function(item) {
-                                options.push([item.id, item.name]);
-                            });
-
-                            // let items = [];
-                            // let index = 0;
+                            // const options = [];
                             //
                             // data.forEach(function(item) {
-                            //     items.push(`<li class="select__option" data-select="option" data-value="${item.id}"
-                            //                 data-index="${index++}">${item.name}</li>`);
+                            //     options.push([item.id, item.name]);
                             // });
 
-                            if (options.length) {
+                            let items = [];
+
+                            data.forEach(function(item) {
+                                items.push(`<option value="${item.id}">${item.name}</option>`);
+                            });
+
+                            if (items.length) {
                                 // let name = 'service_id-btn';
                                 // let selectedContent = 'Выберите услугу';
                                 //
@@ -491,8 +511,8 @@ document.addEventListener("DOMContentLoaded", function() {
                                 //                     <div class="select__dropdown">
                                 //                         <ul class="select__options">${items.join('')}</ul>
                                 //                     </div>`;
-                                //
-                                // document.querySelector('#service-select').insertAdjacentHTML('afterbegin', template);
+
+                                document.querySelector('#service_id').insertAdjacentHTML('afterbegin', items.join(''));
 
                                 // if (serviceSelect) {
                                 //     serviceSelect = null;
@@ -516,7 +536,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             const firstElSelector = '[data-block="' + step + '"]';
                             document.querySelector(firstElSelector).style.display = 'none';
 
-                            document.querySelector('#category_id').value = categoryId;
+                            // document.querySelector('#category_id').value = categoryId;
 
                             step++;
 
@@ -538,7 +558,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     const secondElSelector = '[data-block="' + step + '"]';
                     document.querySelector(secondElSelector).style.display = 'none';
 
-                    document.querySelector('#service_id').value = document.querySelector('[name="service_id-btn"]').value;
+                    // document.querySelector('#service_id').value = document.querySelector('[name="service_id-btn"]').value;
 
                     step++;
 
@@ -601,65 +621,68 @@ document.addEventListener("DOMContentLoaded", function() {
                     const sixthElSelector = '[data-block="' + step + '"]';
                     document.querySelector(sixthElSelector).style.display = 'inline-flex';
 
-                    const placeSelectBtn = document.getElementById('place-select');
-                    placeSelectBtn.addEventListener('select.change', function(e) {
-                        const btn = e.target.querySelector('#place-btn');
-                        console.log(btn.value);
 
-                        document.querySelector('#place').value = btn.value;
+                    // need to fix place select !!!!!!!!!
 
-                        const addressBtns = document.getElementById('address-btns');
-
-                        if (btn.value == 'client' || btn.value == 'both') {
-                            addressBtns.style.display = 'inline-flex';
-
-                            const addressBtn = document.getElementById('btn-address');
-                            const geoBtn = document.getElementById('btn-coords');
-
-                            if (addressBtn) {
-                                addressBtn.addEventListener('click', function(e) {
-                                    e.preventDefault();
-
-                                    document.querySelector('[data-block="6"]').style.display = 'none';
-
-                                    document.getElementById('address-data').style.display = 'inline-flex';
-                                });
-                            }
-
-                            if (geoBtn) {
-                                geoBtn.addEventListener('click', function(e) {
-                                    e.preventDefault();
-
-                                    const promise = new Promise(function(resolve, reject) {
-                                        if (!navigator.geolocation) {
-                                            alert('Определение геоданных не поддерживается вашим браузером');
-                                            return false;
-                                        } else {
-                                            navigator.geolocation.getCurrentPosition(function(pos){
-                                                let lat = pos.coords.latitude;
-                                                let long = pos.coords.longitude;
-                                                resolve({lat,long});
-                                            })
-                                        }
-                                    });
-
-                                    promise.then(function(geo) {
-                                        console.log(geo.lat, geo.long);
-                                        document.getElementById('coord_lat').value = geo.lat;
-                                        document.getElementById('coord_long').value = geo.long;
-
-                                        addressBtns.style.display = 'none';
-                                        document.getElementById('coords-saved').style.display = 'inline-flex';
-                                    });
-
-                                });
-                            }
-
-                        } else {
-                            addressBtns.style.display = 'none';
-                        }
-
-                    });
+                    // const placeSelectBtn = document.getElementById('place-select');
+                    // placeSelectBtn.addEventListener('select.change', function(e) {
+                    //     const btn = e.target.querySelector('#place-btn');
+                    //     console.log(btn.value);
+                    //
+                    //     document.querySelector('#place').value = btn.value;
+                    //
+                    //     const addressBtns = document.getElementById('address-btns');
+                    //
+                    //     if (btn.value == 'client' || btn.value == 'both') {
+                    //         addressBtns.style.display = 'inline-flex';
+                    //
+                    //         const addressBtn = document.getElementById('btn-address');
+                    //         const geoBtn = document.getElementById('btn-coords');
+                    //
+                    //         if (addressBtn) {
+                    //             addressBtn.addEventListener('click', function(e) {
+                    //                 e.preventDefault();
+                    //
+                    //                 document.querySelector('[data-block="6"]').style.display = 'none';
+                    //
+                    //                 document.getElementById('address-data').style.display = 'inline-flex';
+                    //             });
+                    //         }
+                    //
+                    //         if (geoBtn) {
+                    //             geoBtn.addEventListener('click', function(e) {
+                    //                 e.preventDefault();
+                    //
+                    //                 const promise = new Promise(function(resolve, reject) {
+                    //                     if (!navigator.geolocation) {
+                    //                         alert('Определение геоданных не поддерживается вашим браузером');
+                    //                         return false;
+                    //                     } else {
+                    //                         navigator.geolocation.getCurrentPosition(function(pos){
+                    //                             let lat = pos.coords.latitude;
+                    //                             let long = pos.coords.longitude;
+                    //                             resolve({lat,long});
+                    //                         })
+                    //                     }
+                    //                 });
+                    //
+                    //                 promise.then(function(geo) {
+                    //                     console.log(geo.lat, geo.long);
+                    //                     document.getElementById('coord_lat').value = geo.lat;
+                    //                     document.getElementById('coord_long').value = geo.long;
+                    //
+                    //                     addressBtns.style.display = 'none';
+                    //                     document.getElementById('coords-saved').style.display = 'inline-flex';
+                    //                 });
+                    //
+                    //             });
+                    //         }
+                    //
+                    //     } else {
+                    //         addressBtns.style.display = 'none';
+                    //     }
+                    //
+                    // });
 
                     break;
                 case 6:
@@ -668,7 +691,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     document.querySelector(sixthElemSelector).style.display = 'none';
                     document.getElementById('address-data').style.display = 'none';
 
-                    document.querySelector('#country').value = document.querySelector('#country-btn').value;
+                    // document.querySelector('#country').value = document.querySelector('#country-btn').value;
 
                     step++;
 

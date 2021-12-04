@@ -144,7 +144,7 @@ a {
   &_hide {
     display: none;
   }
-  &_items div:hover, .same-as-selected {
+  &_items div:hover, .selected-item {
     background-color: rgba(0, 0, 0, 0.1);
   }
 

@@ -159,7 +159,7 @@ a {
 .select_hide {
   display: none;
 }
-.select_items div:hover, .select .same-as-selected {
+.select_items div:hover, .select .selected-item {
   background-color: rgba(0, 0, 0, 0.1);
 }
 

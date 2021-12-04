@@ -7,196 +7,143 @@
   \******************************/
 /***/ (() => {
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
 // custom select
-var CLASS_NAME_SELECT = 'select';
-var CLASS_NAME_ACTIVE = 'select_show';
-var CLASS_NAME_SELECTED = 'select__option_selected';
-var SELECTOR_ACTIVE = '.select_show';
-var SELECTOR_DATA = '[data-select]';
-var SELECTOR_DATA_TOGGLE = '[data-select="toggle"]';
-var SELECTOR_OPTION_SELECTED = '.select__option_selected';
-
-var CustomSelect = /*#__PURE__*/function () {
-  function CustomSelect(target, params) {
-    _classCallCheck(this, CustomSelect);
-
-    this._elRoot = typeof target === 'string' ? document.querySelector(target) : target;
-    this._params = params || {};
-
-    if (this._params['options']) {
-      this._elRoot.classList.add(CLASS_NAME_SELECT);
-
-      this._elRoot.innerHTML = CustomSelect.template(this._params);
-    }
-
-    if (this._elRoot) {
-      this._elToggle = this._elRoot.querySelector(SELECTOR_DATA_TOGGLE);
-
-      this._elRoot.addEventListener('click', this._onClick.bind(this));
-    }
-  }
-
-  _createClass(CustomSelect, [{
-    key: "_onClick",
-    value: function _onClick(e) {
-      var target = e.target;
-      var type = target.closest(SELECTOR_DATA).dataset.select;
-
-      switch (type) {
-        case 'toggle':
-          this.toggle();
-          break;
-
-        case 'option':
-          this._changeValue(target);
-
-          break;
-      }
-    }
-  }, {
-    key: "_update",
-    value: function _update(option) {
-      var selected = this._elRoot.querySelector(SELECTOR_OPTION_SELECTED);
-
-      if (selected) {
-        selected.classList.remove(CLASS_NAME_SELECTED);
-      }
-
-      option.classList.add(CLASS_NAME_SELECTED);
-      this._elToggle.textContent = option.textContent;
-      this._elToggle.value = option.dataset['value'];
-      this._elToggle.dataset.index = option.dataset['index'];
-
-      this._elRoot.dispatchEvent(new CustomEvent('select.change'));
-
-      this._params.onSelected ? this._params.onSelected(this, option) : null;
-      return option.dataset['value'];
-    }
-  }, {
-    key: "_reset",
-    value: function _reset() {
-      var selected = this._elRoot.querySelector(SELECTOR_OPTION_SELECTED);
-
-      if (selected) {
-        selected.classList.remove(CLASS_NAME_SELECTED);
-      }
-
-      this._elToggle.textContent = 'Выберите из списка';
-      this._elToggle.value = '';
-      this._elToggle.dataset.index = -1;
-
-      this._elRoot.dispatchEvent(new CustomEvent('select.change'));
-
-      this._params.onSelected ? this._params.onSelected(this, null) : null;
-      return '';
-    }
-  }, {
-    key: "_changeValue",
-    value: function _changeValue(option) {
-      if (option.classList.contains(CLASS_NAME_SELECTED)) {
-        return;
-      }
-
-      this._update(option);
-
-      this.hide();
-    }
-  }, {
-    key: "show",
-    value: function show() {
-      document.querySelectorAll(SELECTOR_ACTIVE).forEach(function (select) {
-        select.classList.remove(CLASS_NAME_ACTIVE);
-      });
-
-      this._elRoot.classList.add(CLASS_NAME_ACTIVE);
-    }
-  }, {
-    key: "hide",
-    value: function hide() {
-      this._elRoot.classList.remove(CLASS_NAME_ACTIVE);
-    }
-  }, {
-    key: "toggle",
-    value: function toggle() {
-      if (this._elRoot.classList.contains(CLASS_NAME_ACTIVE)) {
-        this.hide();
-      } else {
-        this.show();
-      }
-    }
-  }, {
-    key: "dispose",
-    value: function dispose() {
-      this._elRoot.removeEventListener('click', this._onClick);
-    }
-  }, {
-    key: "value",
-    get: function get() {
-      return this._elToggle.value;
-    },
-    set: function set(value) {
-      var _this = this;
-
-      var isExists = false;
-
-      this._elRoot.querySelectorAll('.select__option').forEach(function (option) {
-        if (option.dataset['value'] === value) {
-          isExists = true;
-          return _this._update(option);
-        }
-      });
-
-      if (!isExists) {
-        return this._reset();
-      }
-    }
-  }, {
-    key: "selectedIndex",
-    get: function get() {
-      return this._elToggle.dataset['index'];
-    },
-    set: function set(index) {
-      var option = this._elRoot.querySelector(".select__option[data-index=\"".concat(index, "\"]"));
-
-      if (option) {
-        return this._update(option);
-      }
-
-      return this._reset();
-    }
-  }]);
-
-  return CustomSelect;
-}();
-
-CustomSelect.template = function (params) {
-  var name = params['name'];
-  var options = params['options'];
-  var targetValue = params['targetValue'];
-  var items = [];
-  var selectedIndex = -1;
-  var selectedValue = '';
-  var selectedContent = 'Выберите из списка';
-  options.forEach(function (option, index) {
-    var selectedClass = '';
-
-    if (option[0] === targetValue) {
-      selectedClass = ' select__option_selected';
-      selectedIndex = index;
-      selectedValue = option[0];
-      selectedContent = option[1];
-    }
-
-    items.push("<li class=\"select__option".concat(selectedClass, "\" data-select=\"option\" data-value=\"").concat(option[0], "\" data-index=\"").concat(index, "\">").concat(option[1], "</li>"));
-  });
-  return "<button type=\"button\" class=\"select__toggle\" name=\"".concat(name, "\" value=\"").concat(selectedValue, "\" data-select=\"toggle\" data-index=\"").concat(selectedIndex, "\">").concat(selectedContent, "</button>\n  <div class=\"select__dropdown\">\n    <ul class=\"select__options\">").concat(items.join(''), "</ul>\n  </div>");
-}; // document.addEventListener('click', (e) => {
+// const CLASS_NAME_SELECT = 'select';
+// const CLASS_NAME_ACTIVE = 'select_show';
+// const CLASS_NAME_SELECTED = 'select__option_selected';
+// const SELECTOR_ACTIVE = '.select_show';
+// const SELECTOR_DATA = '[data-select]';
+// const SELECTOR_DATA_TOGGLE = '[data-select="toggle"]';
+// const SELECTOR_OPTION_SELECTED = '.select__option_selected';
+//
+// class CustomSelect {
+//     constructor(target, params) {
+//         this._elRoot = typeof target === 'string' ? document.querySelector(target) : target;
+//         this._params = params || {};
+//         if (this._params['options']) {
+//             this._elRoot.classList.add(CLASS_NAME_SELECT);
+//             this._elRoot.innerHTML = CustomSelect.template(this._params);
+//         }
+//         if (this._elRoot) {
+//             this._elToggle = this._elRoot.querySelector(SELECTOR_DATA_TOGGLE);
+//             this._elRoot.addEventListener('click', this._onClick.bind(this));
+//         }
+//     }
+//     _onClick(e) {
+//         const target = e.target;
+//         const type = target.closest(SELECTOR_DATA).dataset.select;
+//         switch (type) {
+//             case 'toggle':
+//                 this.toggle();
+//                 break;
+//             case 'option':
+//                 this._changeValue(target);
+//                 break;
+//         }
+//     }
+//     _update(option) {
+//         const selected = this._elRoot.querySelector(SELECTOR_OPTION_SELECTED);
+//         if (selected) {
+//             selected.classList.remove(CLASS_NAME_SELECTED);
+//         }
+//         option.classList.add(CLASS_NAME_SELECTED);
+//
+//         this._elToggle.textContent = option.textContent;
+//         this._elToggle.value = option.dataset['value'];
+//         this._elToggle.dataset.index = option.dataset['index'];
+//         this._elRoot.dispatchEvent(new CustomEvent('select.change'));
+//         this._params.onSelected ? this._params.onSelected(this, option) : null;
+//         return option.dataset['value'];
+//     }
+//     _reset() {
+//         const selected = this._elRoot.querySelector(SELECTOR_OPTION_SELECTED);
+//         if (selected) {
+//             selected.classList.remove(CLASS_NAME_SELECTED);
+//         }
+//         this._elToggle.textContent = 'Выберите из списка';
+//         this._elToggle.value = '';
+//         this._elToggle.dataset.index = -1;
+//         this._elRoot.dispatchEvent(new CustomEvent('select.change'));
+//         this._params.onSelected ? this._params.onSelected(this, null) : null;
+//         return '';
+//     }
+//     _changeValue(option) {
+//         if (option.classList.contains(CLASS_NAME_SELECTED)) {
+//             return;
+//         }
+//         this._update(option);
+//         this.hide();
+//     }
+//     show() {
+//         document.querySelectorAll(SELECTOR_ACTIVE).forEach(select => {
+//             select.classList.remove(CLASS_NAME_ACTIVE);
+//         });
+//         this._elRoot.classList.add(CLASS_NAME_ACTIVE);
+//     }
+//     hide() {
+//         this._elRoot.classList.remove(CLASS_NAME_ACTIVE);
+//     }
+//     toggle() {
+//         if (this._elRoot.classList.contains(CLASS_NAME_ACTIVE)) {
+//             this.hide();
+//         } else {
+//             this.show();
+//         }
+//     }
+//     dispose() {
+//         this._elRoot.removeEventListener('click', this._onClick);
+//     }
+//     get value() {
+//         return this._elToggle.value;
+//     }
+//     set value(value) {
+//         let isExists = false;
+//         this._elRoot.querySelectorAll('.select__option').forEach((option) => {
+//             if (option.dataset['value'] === value) {
+//                 isExists = true;
+//                 return this._update(option);
+//             }
+//         });
+//         if (!isExists) {
+//             return this._reset();
+//         }
+//     }
+//     get selectedIndex() {
+//         return this._elToggle.dataset['index'];
+//     }
+//     set selectedIndex(index) {
+//         const option = this._elRoot.querySelector(`.select__option[data-index="${index}"]`);
+//         if (option) {
+//             return this._update(option);
+//         }
+//         return this._reset();
+//     }
+// }
+//
+// CustomSelect.template = params => {
+//     const name = params['name'];
+//     const options = params['options'];
+//     const targetValue = params['targetValue'];
+//     let items = [];
+//     let selectedIndex = -1;
+//     let selectedValue = '';
+//     let selectedContent = 'Выберите из списка';
+//     options.forEach((option, index) => {
+//         let selectedClass = '';
+//         if (option[0] === targetValue) {
+//             selectedClass = ' select__option_selected';
+//             selectedIndex = index;
+//             selectedValue = option[0];
+//             selectedContent = option[1];
+//         }
+//         items.push(`<li class="select__option${selectedClass}" data-select="option" data-value="${option[0]}" data-index="${index}">${option[1]}</li>`);
+//     });
+//     return `<button type="button" class="select__toggle" name="${name}" value="${selectedValue}" data-select="toggle" data-index="${selectedIndex}">${selectedContent}</button>
+//   <div class="select__dropdown">
+//     <ul class="select__options">${items.join('')}</ul>
+//   </div>`;
+// };
+// document.addEventListener('click', (e) => {
 //     if (!e.target.closest('.select')) {
 //         document.querySelectorAll(SELECTOR_ACTIVE).forEach(select => {
 //             select.classList.remove(CLASS_NAME_ACTIVE);
@@ -204,8 +151,6 @@ CustomSelect.template = function (params) {
 //     }
 // });
 // get geo position
-
-
 function getGeoPosition() {
   var latitude = null;
   var longitude = null; // function geo_success(position) {
@@ -316,13 +261,19 @@ document.addEventListener("DOMContentLoaded", function () {
   var selectElems = document.querySelectorAll('.select');
 
   for (var _i = 0; _i < selectElems.length; _i++) {
-    var selectElem = selectElems[_i].querySelectorAll('select')[0];
+    var selectElem = selectElems[_i].querySelectorAll('select')[0]; // console.log(selectElem);
+
 
     var divElement = document.createElement('DIV');
     divElement.setAttribute('class', 'select_selected');
 
     if (selectElem) {
-      divElement.innerHTML = selectElem.options[selectElem.selectedIndex].innerHTML;
+      // console.log(selectElem);
+      // console.log(selectElem.selectedIndex);
+      // console.log(selectElem.options);
+      if (selectElem.selectedIndex !== -1) {
+        divElement.innerHTML = selectElem.options[selectElem.selectedIndex].innerHTML;
+      }
 
       selectElems[_i].appendChild(divElement);
 
@@ -332,26 +283,38 @@ document.addEventListener("DOMContentLoaded", function () {
       for (var j = 0; j < selectElem.length; j++) {
         var optionDivElement = document.createElement('DIV');
         optionDivElement.innerHTML = selectElem.options[j].innerHTML;
+        optionDivElement.setAttribute('data-value', selectElem.options[j].value);
         optionDivElement.addEventListener('click', function (e) {
           var currentSelect = this.parentNode.parentNode.querySelectorAll('select')[0];
-          var hiddenSelect = this.parentNode.previousSibling;
+          var selectedDiv = this.parentNode.previousSibling; //console.log(currentSelect);
+          //console.log(selectedDiv);
 
           for (var _i2 = 0; _i2 < currentSelect.length; _i2++) {
             if (currentSelect.options[_i2].innerHTML == this.innerHTML) {
+              // console.log(currentSelect.options[i]);
               currentSelect.selectedIndex = _i2;
-              hiddenSelect.innerHTML = this.innerHTML;
-              var sameSelectedElems = this.parentNode.querySelectorAll('.same-as-selected');
+              selectedDiv.innerHTML = this.innerHTML;
+              var selectedElems = this.parentNode.querySelectorAll('.selected-item');
 
-              for (var k = 0; k < sameSelectedElems.length; k++) {
-                sameSelectedElems[k].removeAttribute('class');
+              for (var k = 0; k < selectedElems.length; k++) {
+                selectedElems[k].removeAttribute('class');
               }
 
-              this.setAttribute('class', 'same-as-selected');
+              this.setAttribute('class', 'selected-item');
+              var selectedValue = this.getAttribute('data-value');
+
+              if (selectedValue == currentSelect.options[_i2].value) {
+                currentSelect.options[_i2].selected = true;
+              } // console.log(selectedValue);
+              // console.log(currentSelect.options[i].value);
+              // console.log(currentSelect.options[i].selected);
+
+
               break;
             }
           }
 
-          hiddenSelect.click();
+          selectedDiv.click();
         });
         optionList.appendChild(optionDivElement);
       }
@@ -465,8 +428,8 @@ document.addEventListener("DOMContentLoaded", function () {
     btnNext.addEventListener("click", function (e) {
       switch (step) {
         case 1:
-          e.preventDefault(); // const categoryId = document.getElementById('category_id-btn').value;
-
+          e.preventDefault();
+          var categoryId = document.getElementById('category_id').value;
           var csrf_token = document.querySelector('input[name="_token"]').value;
           fetch('/applications/services', {
             method: 'POST',
@@ -480,18 +443,18 @@ document.addEventListener("DOMContentLoaded", function () {
           }).then(function (response) {
             return response.json();
           }).then(function (data) {
-            var options = [];
-            data.forEach(function (item) {
-              options.push([item.id, item.name]);
-            }); // let items = [];
-            // let index = 0;
+            // const options = [];
             //
             // data.forEach(function(item) {
-            //     items.push(`<li class="select__option" data-select="option" data-value="${item.id}"
-            //                 data-index="${index++}">${item.name}</li>`);
+            //     options.push([item.id, item.name]);
             // });
+            var items = [];
+            data.forEach(function (item) {
+              items.push("<option value=\"".concat(item.id, "\">").concat(item.name, "</option>"));
+            });
 
-            if (options.length) {// let name = 'service_id-btn';
+            if (items.length) {
+              // let name = 'service_id-btn';
               // let selectedContent = 'Выберите услугу';
               //
               // let template = `<button type="button" class="select__toggle" name="${name}"
@@ -500,9 +463,7 @@ document.addEventListener("DOMContentLoaded", function () {
               //                     <div class="select__dropdown">
               //                         <ul class="select__options">${items.join('')}</ul>
               //                     </div>`;
-              //
-              // document.querySelector('#service-select').insertAdjacentHTML('afterbegin', template);
-              // if (serviceSelect) {
+              document.querySelector('#service_id').insertAdjacentHTML('afterbegin', items.join('')); // if (serviceSelect) {
               //     serviceSelect = null;
               // }
               // let serviceSelect = new CustomSelect('#service-select', {
@@ -519,8 +480,8 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             var firstElSelector = '[data-block="' + step + '"]';
-            document.querySelector(firstElSelector).style.display = 'none';
-            document.querySelector('#category_id').value = categoryId;
+            document.querySelector(firstElSelector).style.display = 'none'; // document.querySelector('#category_id').value = categoryId;
+
             step++;
             currentStepEl.textContent = String(step);
             var secondElSelector = '[data-block="' + step + '"]';
@@ -532,8 +493,8 @@ document.addEventListener("DOMContentLoaded", function () {
         case 2:
           e.preventDefault();
           var secondElSelector = '[data-block="' + step + '"]';
-          document.querySelector(secondElSelector).style.display = 'none';
-          document.querySelector('#service_id').value = document.querySelector('[name="service_id-btn"]').value;
+          document.querySelector(secondElSelector).style.display = 'none'; // document.querySelector('#service_id').value = document.querySelector('[name="service_id-btn"]').value;
+
           step++;
           currentStepEl.textContent = String(step);
           var thirdElSelector = '[data-block="' + step + '"]';
@@ -583,66 +544,75 @@ document.addEventListener("DOMContentLoaded", function () {
           step++;
           currentStepEl.textContent = String(step);
           var sixthElSelector = '[data-block="' + step + '"]';
-          document.querySelector(sixthElSelector).style.display = 'inline-flex';
-          var placeSelectBtn = document.getElementById('place-select');
-          placeSelectBtn.addEventListener('select.change', function (e) {
-            var btn = e.target.querySelector('#place-btn');
-            console.log(btn.value);
-            document.querySelector('#place').value = btn.value;
-            var addressBtns = document.getElementById('address-btns');
+          document.querySelector(sixthElSelector).style.display = 'inline-flex'; // need to fix place select !!!!!!!!!
+          // const placeSelectBtn = document.getElementById('place-select');
+          // placeSelectBtn.addEventListener('select.change', function(e) {
+          //     const btn = e.target.querySelector('#place-btn');
+          //     console.log(btn.value);
+          //
+          //     document.querySelector('#place').value = btn.value;
+          //
+          //     const addressBtns = document.getElementById('address-btns');
+          //
+          //     if (btn.value == 'client' || btn.value == 'both') {
+          //         addressBtns.style.display = 'inline-flex';
+          //
+          //         const addressBtn = document.getElementById('btn-address');
+          //         const geoBtn = document.getElementById('btn-coords');
+          //
+          //         if (addressBtn) {
+          //             addressBtn.addEventListener('click', function(e) {
+          //                 e.preventDefault();
+          //
+          //                 document.querySelector('[data-block="6"]').style.display = 'none';
+          //
+          //                 document.getElementById('address-data').style.display = 'inline-flex';
+          //             });
+          //         }
+          //
+          //         if (geoBtn) {
+          //             geoBtn.addEventListener('click', function(e) {
+          //                 e.preventDefault();
+          //
+          //                 const promise = new Promise(function(resolve, reject) {
+          //                     if (!navigator.geolocation) {
+          //                         alert('Определение геоданных не поддерживается вашим браузером');
+          //                         return false;
+          //                     } else {
+          //                         navigator.geolocation.getCurrentPosition(function(pos){
+          //                             let lat = pos.coords.latitude;
+          //                             let long = pos.coords.longitude;
+          //                             resolve({lat,long});
+          //                         })
+          //                     }
+          //                 });
+          //
+          //                 promise.then(function(geo) {
+          //                     console.log(geo.lat, geo.long);
+          //                     document.getElementById('coord_lat').value = geo.lat;
+          //                     document.getElementById('coord_long').value = geo.long;
+          //
+          //                     addressBtns.style.display = 'none';
+          //                     document.getElementById('coords-saved').style.display = 'inline-flex';
+          //                 });
+          //
+          //             });
+          //         }
+          //
+          //     } else {
+          //         addressBtns.style.display = 'none';
+          //     }
+          //
+          // });
 
-            if (btn.value == 'client' || btn.value == 'both') {
-              addressBtns.style.display = 'inline-flex';
-              var addressBtn = document.getElementById('btn-address');
-              var geoBtn = document.getElementById('btn-coords');
-
-              if (addressBtn) {
-                addressBtn.addEventListener('click', function (e) {
-                  e.preventDefault();
-                  document.querySelector('[data-block="6"]').style.display = 'none';
-                  document.getElementById('address-data').style.display = 'inline-flex';
-                });
-              }
-
-              if (geoBtn) {
-                geoBtn.addEventListener('click', function (e) {
-                  e.preventDefault();
-                  var promise = new Promise(function (resolve, reject) {
-                    if (!navigator.geolocation) {
-                      alert('Определение геоданных не поддерживается вашим браузером');
-                      return false;
-                    } else {
-                      navigator.geolocation.getCurrentPosition(function (pos) {
-                        var lat = pos.coords.latitude;
-                        var _long = pos.coords.longitude;
-                        resolve({
-                          lat: lat,
-                          "long": _long
-                        });
-                      });
-                    }
-                  });
-                  promise.then(function (geo) {
-                    console.log(geo.lat, geo["long"]);
-                    document.getElementById('coord_lat').value = geo.lat;
-                    document.getElementById('coord_long').value = geo["long"];
-                    addressBtns.style.display = 'none';
-                    document.getElementById('coords-saved').style.display = 'inline-flex';
-                  });
-                });
-              }
-            } else {
-              addressBtns.style.display = 'none';
-            }
-          });
           break;
 
         case 6:
           e.preventDefault();
           var sixthElemSelector = '[data-block="' + step + '"]';
           document.querySelector(sixthElemSelector).style.display = 'none';
-          document.getElementById('address-data').style.display = 'none';
-          document.querySelector('#country').value = document.querySelector('#country-btn').value;
+          document.getElementById('address-data').style.display = 'none'; // document.querySelector('#country').value = document.querySelector('#country-btn').value;
+
           step++;
           currentStepEl.textContent = String(step);
           var seventhElSelector = '[data-block="' + step + '"]';
