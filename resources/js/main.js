@@ -1,194 +1,46 @@
-// custom select
-// const CLASS_NAME_SELECT = 'select';
-// const CLASS_NAME_ACTIVE = 'select_show';
-// const CLASS_NAME_SELECTED = 'select__option_selected';
-// const SELECTOR_ACTIVE = '.select_show';
-// const SELECTOR_DATA = '[data-select]';
-// const SELECTOR_DATA_TOGGLE = '[data-select="toggle"]';
-// const SELECTOR_OPTION_SELECTED = '.select__option_selected';
-//
-// class CustomSelect {
-//     constructor(target, params) {
-//         this._elRoot = typeof target === 'string' ? document.querySelector(target) : target;
-//         this._params = params || {};
-//         if (this._params['options']) {
-//             this._elRoot.classList.add(CLASS_NAME_SELECT);
-//             this._elRoot.innerHTML = CustomSelect.template(this._params);
-//         }
-//         if (this._elRoot) {
-//             this._elToggle = this._elRoot.querySelector(SELECTOR_DATA_TOGGLE);
-//             this._elRoot.addEventListener('click', this._onClick.bind(this));
-//         }
-//     }
-//     _onClick(e) {
-//         const target = e.target;
-//         const type = target.closest(SELECTOR_DATA).dataset.select;
-//         switch (type) {
-//             case 'toggle':
-//                 this.toggle();
-//                 break;
-//             case 'option':
-//                 this._changeValue(target);
-//                 break;
-//         }
-//     }
-//     _update(option) {
-//         const selected = this._elRoot.querySelector(SELECTOR_OPTION_SELECTED);
-//         if (selected) {
-//             selected.classList.remove(CLASS_NAME_SELECTED);
-//         }
-//         option.classList.add(CLASS_NAME_SELECTED);
-//
-//         this._elToggle.textContent = option.textContent;
-//         this._elToggle.value = option.dataset['value'];
-//         this._elToggle.dataset.index = option.dataset['index'];
-//         this._elRoot.dispatchEvent(new CustomEvent('select.change'));
-//         this._params.onSelected ? this._params.onSelected(this, option) : null;
-//         return option.dataset['value'];
-//     }
-//     _reset() {
-//         const selected = this._elRoot.querySelector(SELECTOR_OPTION_SELECTED);
-//         if (selected) {
-//             selected.classList.remove(CLASS_NAME_SELECTED);
-//         }
-//         this._elToggle.textContent = 'Выберите из списка';
-//         this._elToggle.value = '';
-//         this._elToggle.dataset.index = -1;
-//         this._elRoot.dispatchEvent(new CustomEvent('select.change'));
-//         this._params.onSelected ? this._params.onSelected(this, null) : null;
-//         return '';
-//     }
-//     _changeValue(option) {
-//         if (option.classList.contains(CLASS_NAME_SELECTED)) {
-//             return;
-//         }
-//         this._update(option);
-//         this.hide();
-//     }
-//     show() {
-//         document.querySelectorAll(SELECTOR_ACTIVE).forEach(select => {
-//             select.classList.remove(CLASS_NAME_ACTIVE);
-//         });
-//         this._elRoot.classList.add(CLASS_NAME_ACTIVE);
-//     }
-//     hide() {
-//         this._elRoot.classList.remove(CLASS_NAME_ACTIVE);
-//     }
-//     toggle() {
-//         if (this._elRoot.classList.contains(CLASS_NAME_ACTIVE)) {
-//             this.hide();
-//         } else {
-//             this.show();
-//         }
-//     }
-//     dispose() {
-//         this._elRoot.removeEventListener('click', this._onClick);
-//     }
-//     get value() {
-//         return this._elToggle.value;
-//     }
-//     set value(value) {
-//         let isExists = false;
-//         this._elRoot.querySelectorAll('.select__option').forEach((option) => {
-//             if (option.dataset['value'] === value) {
-//                 isExists = true;
-//                 return this._update(option);
-//             }
-//         });
-//         if (!isExists) {
-//             return this._reset();
-//         }
-//     }
-//     get selectedIndex() {
-//         return this._elToggle.dataset['index'];
-//     }
-//     set selectedIndex(index) {
-//         const option = this._elRoot.querySelector(`.select__option[data-index="${index}"]`);
-//         if (option) {
-//             return this._update(option);
-//         }
-//         return this._reset();
-//     }
-// }
-//
-// CustomSelect.template = params => {
-//     const name = params['name'];
-//     const options = params['options'];
-//     const targetValue = params['targetValue'];
-//     let items = [];
-//     let selectedIndex = -1;
-//     let selectedValue = '';
-//     let selectedContent = 'Выберите из списка';
-//     options.forEach((option, index) => {
-//         let selectedClass = '';
-//         if (option[0] === targetValue) {
-//             selectedClass = ' select__option_selected';
-//             selectedIndex = index;
-//             selectedValue = option[0];
-//             selectedContent = option[1];
-//         }
-//         items.push(`<li class="select__option${selectedClass}" data-select="option" data-value="${option[0]}" data-index="${index}">${option[1]}</li>`);
-//     });
-//     return `<button type="button" class="select__toggle" name="${name}" value="${selectedValue}" data-select="toggle" data-index="${selectedIndex}">${selectedContent}</button>
-//   <div class="select__dropdown">
-//     <ul class="select__options">${items.join('')}</ul>
-//   </div>`;
-// };
-
-
-// document.addEventListener('click', (e) => {
-//     if (!e.target.closest('.select')) {
-//         document.querySelectorAll(SELECTOR_ACTIVE).forEach(select => {
-//             select.classList.remove(CLASS_NAME_ACTIVE);
-//         });
-//     }
-// });
-
-
 // get geo position
 
-function getGeoPosition() {
-    let latitude = null;
-    let longitude = null;
-
-    // function geo_success(position) {
-    //     latitude  = position.coords.latitude;
-    //     longitude = position.coords.longitude;
-    // }
-    //
-    // function geo_error(error) {
-    //     alert("Ошибка получения геоданных. " + error.message);
-    // }
-
-    // const geo_options = {
-    //     enableHighAccuracy: true,
-    //     maximumAge        : 20000
-    // };
-
-    // const promise = new Promise(function(resolve, reject) {
-    //     if (!navigator.geolocation) {
-    //         alert('Определение геоданных не поддерживается вашим браузером');
-    //         return false;
-    //     } else {
-    //         navigator.geolocation.getCurrentPosition(function(pos){
-    //             let lat = pos.coords.latitude;
-    //             let long = pos.coords.longitude;
-    //             resolve({lat,long});
-    //         })
-    //     }
-    //
-    // });
-    //
-    // promise.then(function(geo) {
-    //     // console.log(geo.lat, geo.long);
-    //     return {
-    //         latitude: geo.lat,
-    //         longitude: geo.long
-    //     };
-    // });
-
-
-}
+// function getGeoPosition() {
+//     let latitude = null;
+//     let longitude = null;
+//
+//     // function geo_success(position) {
+//     //     latitude  = position.coords.latitude;
+//     //     longitude = position.coords.longitude;
+//     // }
+//     //
+//     // function geo_error(error) {
+//     //     alert("Ошибка получения геоданных. " + error.message);
+//     // }
+//
+//     // const geo_options = {
+//     //     enableHighAccuracy: true,
+//     //     maximumAge        : 20000
+//     // };
+//
+//     // const promise = new Promise(function(resolve, reject) {
+//     //     if (!navigator.geolocation) {
+//     //         alert('Определение геоданных не поддерживается вашим браузером');
+//     //         return false;
+//     //     } else {
+//     //         navigator.geolocation.getCurrentPosition(function(pos){
+//     //             let lat = pos.coords.latitude;
+//     //             let long = pos.coords.longitude;
+//     //             resolve({lat,long});
+//     //         })
+//     //     }
+//     //
+//     // });
+//     //
+//     // promise.then(function(geo) {
+//     //     // console.log(geo.lat, geo.long);
+//     //     return {
+//     //         latitude: geo.lat,
+//     //         longitude: geo.long
+//     //     };
+//     // });
+//
+// }
 
 
 // select
@@ -218,15 +70,10 @@ function initSelects() {
 
     for (let i = 0; i < selectElems.length; i++) {
         let selectElem = selectElems[i].querySelectorAll('select')[0];
-        // console.log(selectElem);
         let divElement = document.createElement('DIV');
         divElement.setAttribute('class', 'select_selected');
 
         if (selectElem) {
-            // console.log(selectElem);
-            // console.log(selectElem.selectedIndex);
-            // console.log(selectElem.options);
-
             if (selectElem.selectedIndex !== -1) {
                 divElement.innerHTML = selectElem.options[selectElem.selectedIndex].innerHTML;
             }
@@ -245,12 +92,9 @@ function initSelects() {
                 optionDivElement.addEventListener('click', function(e) {
                     let currentSelect = this.parentNode.parentNode.querySelectorAll('select')[0];
                     let selectedDiv = this.parentNode.previousSibling;
-                    //console.log(currentSelect);
-                    //console.log(selectedDiv);
 
                     for (let i = 0; i < currentSelect.length; i++) {
                         if (currentSelect.options[i].innerHTML == this.innerHTML) {
-                            // console.log(currentSelect.options[i]);
                             currentSelect.selectedIndex = i;
                             selectedDiv.innerHTML = this.innerHTML;
 
@@ -267,10 +111,6 @@ function initSelects() {
                             if (selectedValue == currentSelect.options[i].value) {
                                 currentSelect.options[i].selected = true;
                             }
-                            // console.log(selectedValue);
-                            // console.log(currentSelect.options[i].value);
-                            // console.log(currentSelect.options[i].selected);
-
 
                             break;
                         }
@@ -344,12 +184,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     // handle application data
-    // category select
-
-    // const categorySelect = new CustomSelect('#category-select');
-    // let serviceSelect = new CustomSelect('#service-select');
-    // const placeSelect = new CustomSelect('#place-select');
-    // const countrySelect = new CustomSelect('#country-select');
 
     const dataBlocks = document.querySelectorAll('[data-block]');
     const btnPrev = document.getElementById('btn-prev');
@@ -383,11 +217,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
                     const secondElSelector = '[data-block="' + step + '"]';
                     document.querySelector(secondElSelector).style.display = 'none';
-
-                    // let serviceSelectEl = document.querySelector('#service-select');
-                    // for (let node of document.querySelector('#service-select').childNodes) {
-                    //     node.remove();
-                    // }
 
                     step--;
 
@@ -538,12 +367,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     })
                         .then(response => response.json())
                         .then(data => {
-                            // const options = [];
-                            //
-                            // data.forEach(function(item) {
-                            //     options.push([item.id, item.name]);
-                            // });
-
                             let items = [];
 
                             data.forEach(function(item) {
@@ -551,16 +374,6 @@ document.addEventListener("DOMContentLoaded", function() {
                             });
 
                             if (items.length) {
-                                // let name = 'service_id-btn';
-                                // let selectedContent = 'Выберите услугу';
-                                //
-                                // let template = `<button type="button" class="select__toggle" name="${name}"
-                                //                     value="" data-select="toggle"
-                                //                     data-index="-1">${selectedContent}</button>
-                                //                     <div class="select__dropdown">
-                                //                         <ul class="select__options">${items.join('')}</ul>
-                                //                     </div>`;
-
                                 let serviceSelect = document.querySelector('#service_id');
                                 serviceSelect.querySelectorAll('option').forEach(function(item) {
                                     item.remove();
@@ -573,29 +386,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
                                 initSelects();
 
-                                // if (serviceSelect) {
-                                //     serviceSelect = null;
-                                // }
-
-                                // let serviceSelect = new CustomSelect('#service-select', {
-                                //     name: 'service_id-btn',
-                                //     // selectedContent: 'Выберите услугу',
-                                //     // targetValue: 'Выберите услугу',
-                                //     options
-                                // });
-
-                                // serviceSelect.dispose();
-                                //
-                                // document.querySelector('[name="service_id-btn"]').textContent = 'Выберите услугу';
-                                //
-                                // serviceSelect.show();
                             }
 
 
                             const firstElSelector = '[data-block="' + step + '"]';
                             document.querySelector(firstElSelector).style.display = 'none';
-
-                            // document.querySelector('#category_id').value = categoryId;
 
                             step++;
 
@@ -605,10 +400,6 @@ document.addEventListener("DOMContentLoaded", function() {
                             document.querySelector(secondElSelector).style.display = 'inline-flex';
                             btnPrev.style.display = 'inline-flex';
 
-
-                            // document.querySelector('.select__trigger').textContent = document.querySelector('.select__item_selected').textContent;
-
-
                         });
 
                     break;
@@ -616,8 +407,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     e.preventDefault();
                     const secondElSelector = '[data-block="' + step + '"]';
                     document.querySelector(secondElSelector).style.display = 'none';
-
-                    // document.querySelector('#service_id').value = document.querySelector('[name="service_id-btn"]').value;
 
                     step++;
 
@@ -691,8 +480,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     document.querySelector(sixthElSelector).style.display = 'inline-flex';
 
 
-                    // need to fix place select !!!!!!!!!
-
                     // address select handling
                     const addressBtns = document.getElementById('address-btns');
                     let placeSelectElems = document.querySelectorAll('#place-select .select_items div');
@@ -763,74 +550,12 @@ document.addEventListener("DOMContentLoaded", function() {
                         });
                     }
 
-                    // const placeSelectBtn = document.getElementById('place-select');
-                    // placeSelectBtn.addEventListener('select.change', function(e) {
-                    //     const btn = e.target.querySelector('#place-btn');
-                    //     console.log(btn.value);
-                    //
-                    //     document.querySelector('#place').value = btn.value;
-                    //
-                    //     const addressBtns = document.getElementById('address-btns');
-                    //
-                    //     if (btn.value == 'client' || btn.value == 'both') {
-                    //         addressBtns.style.display = 'inline-flex';
-                    //
-                    //         const addressBtn = document.getElementById('btn-address');
-                    //         const geoBtn = document.getElementById('btn-coords');
-                    //
-                    //         if (addressBtn) {
-                    //             addressBtn.addEventListener('click', function(e) {
-                    //                 e.preventDefault();
-                    //
-                    //                 document.querySelector('[data-block="6"]').style.display = 'none';
-                    //
-                    //                 document.getElementById('address-data').style.display = 'inline-flex';
-                    //             });
-                    //         }
-                    //
-                    //         if (geoBtn) {
-                    //             geoBtn.addEventListener('click', function(e) {
-                    //                 e.preventDefault();
-                    //
-                    //                 const promise = new Promise(function(resolve, reject) {
-                    //                     if (!navigator.geolocation) {
-                    //                         alert('Определение геоданных не поддерживается вашим браузером');
-                    //                         return false;
-                    //                     } else {
-                    //                         navigator.geolocation.getCurrentPosition(function(pos){
-                    //                             let lat = pos.coords.latitude;
-                    //                             let long = pos.coords.longitude;
-                    //                             resolve({lat,long});
-                    //                         })
-                    //                     }
-                    //                 });
-                    //
-                    //                 promise.then(function(geo) {
-                    //                     console.log(geo.lat, geo.long);
-                    //                     document.getElementById('coord_lat').value = geo.lat;
-                    //                     document.getElementById('coord_long').value = geo.long;
-                    //
-                    //                     addressBtns.style.display = 'none';
-                    //                     document.getElementById('coords-saved').style.display = 'inline-flex';
-                    //                 });
-                    //
-                    //             });
-                    //         }
-                    //
-                    //     } else {
-                    //         addressBtns.style.display = 'none';
-                    //     }
-                    //
-                    // });
-
                     break;
                 case 6:
                     e.preventDefault();
                     const sixthElemSelector = '[data-block="' + step + '"]';
                     document.querySelector(sixthElemSelector).style.display = 'none';
                     document.getElementById('address-data').style.display = 'none';
-
-                    // document.querySelector('#country').value = document.querySelector('#country-btn').value;
 
                     step++;
 
