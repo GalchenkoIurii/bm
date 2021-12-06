@@ -15,13 +15,18 @@ class Service extends Model
         'category_id'
     ];
 
-    public function users()
+    public function applications()
     {
-        return $this->belongsToMany(User::class);
+        return $this->hasMany(Application::class);
     }
 
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
     }
 }

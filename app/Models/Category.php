@@ -15,13 +15,18 @@ class Category extends Model
         'logo'
     ];
 
-    public function users()
+    public function applications()
     {
-        return $this->belongsToMany(User::class);
+        return $this->hasMany(Application::class);
     }
 
     public function services()
     {
         return $this->hasMany(Service::class);
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
     }
 }
