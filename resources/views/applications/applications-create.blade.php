@@ -17,7 +17,7 @@
                       enctype="multipart/form-data">
                     @csrf
                     <div class="form-group" data-block="1">
-                        <div class="select">
+                        <div id="category-select" class="select">
                             <select name="category_id" id="category_id">
                                 @foreach($categories as $category)
                                     <option value="{{ $category->id }}">{{ $category->name }}</option>

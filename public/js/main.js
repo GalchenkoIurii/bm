@@ -470,7 +470,11 @@ document.addEventListener("DOMContentLoaded", function () {
               //                     <div class="select__dropdown">
               //                         <ul class="select__options">${items.join('')}</ul>
               //                     </div>`;
-              document.querySelector('#service_id').insertAdjacentHTML('afterbegin', items.join(''));
+              var serviceSelect = document.querySelector('#service_id');
+              serviceSelect.querySelectorAll('option').forEach(function (item) {
+                item.remove();
+              });
+              serviceSelect.insertAdjacentHTML('afterbegin', items.join(''));
               document.querySelector('#service-select .select_selected').remove();
               document.querySelector('#service-select .select_items.select_hide').remove();
               initSelects(); // if (serviceSelect) {
