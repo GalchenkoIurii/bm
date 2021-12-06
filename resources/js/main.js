@@ -421,6 +421,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     document.querySelector('#service-select .select_selected').remove();
                     document.querySelector('#service-select .select_items.select_hide').remove();
 
+                    initSelects();
+
                     const secondElemSelector = '[data-block="' + step + '"]';
                     document.querySelector(secondElemSelector).style.display = 'inline-flex';
 
@@ -461,6 +463,21 @@ document.addEventListener("DOMContentLoaded", function() {
 
                     step--;
 
+                    if (document.getElementById('address-data').style.display !== 'none') {
+                        document.getElementById('address-data').style.display = 'none';
+                        step++;
+
+                        document.querySelectorAll('#place-select .select_selected').forEach(function(item) {
+                            item.remove();
+                        });
+
+                        document.querySelectorAll('#place-select .select_items.select_hide').forEach(function(item) {
+                            item.remove();
+                        });
+
+                        initSelects();
+                    }
+
                     currentStepEl.textContent = String(step);
 
                     const fifthElemSelector = '[data-block="' + step + '"]';
@@ -472,10 +489,25 @@ document.addEventListener("DOMContentLoaded", function() {
 
                     const seventhElSelector = '[data-block="' + step + '"]';
                     document.querySelector(seventhElSelector).style.display = 'none';
+                    document.getElementById('address-data').style.display = 'none';
 
                     step--;
 
                     currentStepEl.textContent = String(step);
+
+                    if (document.getElementById('address-data').style.display !== 'none') {
+                        document.getElementById('address-data').style.display = 'none';
+                    }
+
+                    document.querySelectorAll('#place-select .select_selected').forEach(function(item) {
+                        item.remove();
+                    });
+
+                    document.querySelectorAll('#place-select .select_items.select_hide').forEach(function(item) {
+                        item.remove();
+                    });
+
+                    initSelects();
 
                     const sixthElemSelector = '[data-block="' + step + '"]';
                     document.querySelector(sixthElemSelector).style.display = 'inline-flex';
@@ -660,6 +692,76 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
                     // need to fix place select !!!!!!!!!
+
+                    // address select handling
+                    const addressBtns = document.getElementById('address-btns');
+                    let placeSelectElems = document.querySelectorAll('#place-select .select_items div');
+                    let placeValue = null;
+
+                    for (let i = 0; i < placeSelectElems.length; i++) {
+                        placeSelectElems[i].addEventListener('click', function(e) {
+                            if (e.target.classList.contains('selected-item')) {
+                                placeValue = e.target.getAttribute('data-value');
+
+                                if ((placeValue === 'client' || placeValue === 'both') && addressBtns) {
+                                    addressBtns.style.display = 'inline-flex';
+
+                                    const addressBtn = document.getElementById('btn-address');
+                                    const geoBtn = document.getElementById('btn-coords');
+
+                                    if (addressBtn) {
+                                        addressBtn.addEventListener('click', function(e) {
+                                            e.preventDefault();
+
+                                            document.querySelector('[data-block="6"]').style.display = 'none';
+
+                                            document.querySelectorAll('#country-select .select_selected').forEach(function(item) {
+                                                item.remove();
+                                            });
+
+                                            document.querySelectorAll('#country-select .select_items.select_hide').forEach(function(item) {
+                                                item.remove();
+                                            });
+
+                                            initSelects();
+
+                                            document.getElementById('address-data').style.display = 'inline-flex';
+                                        });
+                                    }
+
+                                    if (geoBtn) {
+                                        geoBtn.addEventListener('click', function(e) {
+                                            e.preventDefault();
+
+                                            const promise = new Promise(function(resolve, reject) {
+                                                if (!navigator.geolocation) {
+                                                    alert('Определение геоданных не поддерживается вашим браузером');
+                                                    return false;
+                                                } else {
+                                                    navigator.geolocation.getCurrentPosition(function(pos){
+                                                        let lat = pos.coords.latitude;
+                                                        let long = pos.coords.longitude;
+                                                        resolve({lat,long});
+                                                    })
+                                                }
+                                            });
+
+                                            promise.then(function(geo) {
+                                                console.log(geo.lat, geo.long);
+                                                document.getElementById('coord_lat').value = geo.lat;
+                                                document.getElementById('coord_long').value = geo.long;
+
+                                                addressBtns.style.display = 'none';
+                                                document.getElementById('coords-saved').style.display = 'inline-flex';
+                                            });
+                                        });
+                                    }
+                                } else {
+                                    addressBtns.style.display = 'none';
+                                }
+                            }
+                        });
+                    }
 
                     // const placeSelectBtn = document.getElementById('place-select');
                     // placeSelectBtn.addEventListener('select.change', function(e) {

@@ -386,6 +386,7 @@ document.addEventListener("DOMContentLoaded", function () {
           currentStepEl.textContent = String(step);
           document.querySelector('#service-select .select_selected').remove();
           document.querySelector('#service-select .select_items.select_hide').remove();
+          initSelects();
           var secondElemSelector = '[data-block="' + step + '"]';
           document.querySelector(secondElemSelector).style.display = 'inline-flex';
           break;
@@ -415,6 +416,19 @@ document.addEventListener("DOMContentLoaded", function () {
           var sixthElSelector = '[data-block="' + step + '"]';
           document.querySelector(sixthElSelector).style.display = 'none';
           step--;
+
+          if (document.getElementById('address-data').style.display !== 'none') {
+            document.getElementById('address-data').style.display = 'none';
+            step++;
+            document.querySelectorAll('#place-select .select_selected').forEach(function (item) {
+              item.remove();
+            });
+            document.querySelectorAll('#place-select .select_items.select_hide').forEach(function (item) {
+              item.remove();
+            });
+            initSelects();
+          }
+
           currentStepEl.textContent = String(step);
           var fifthElemSelector = '[data-block="' + step + '"]';
           document.querySelector(fifthElemSelector).style.display = 'inline-flex';
@@ -424,8 +438,21 @@ document.addEventListener("DOMContentLoaded", function () {
           e.preventDefault();
           var seventhElSelector = '[data-block="' + step + '"]';
           document.querySelector(seventhElSelector).style.display = 'none';
+          document.getElementById('address-data').style.display = 'none';
           step--;
           currentStepEl.textContent = String(step);
+
+          if (document.getElementById('address-data').style.display !== 'none') {
+            document.getElementById('address-data').style.display = 'none';
+          }
+
+          document.querySelectorAll('#place-select .select_selected').forEach(function (item) {
+            item.remove();
+          });
+          document.querySelectorAll('#place-select .select_items.select_hide').forEach(function (item) {
+            item.remove();
+          });
+          initSelects();
           var sixthElemSelector = '[data-block="' + step + '"]';
           document.querySelector(sixthElemSelector).style.display = 'inline-flex';
           break;
@@ -435,213 +462,279 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (btnNext) {
     btnNext.addEventListener("click", function (e) {
-      switch (step) {
-        case 1:
-          e.preventDefault();
-          var categoryId = document.getElementById('category_id').value;
-          var csrf_token = document.querySelector('input[name="_token"]').value;
-          fetch('/applications/services', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json;charset=utf-8',
-              'X-CSRF-TOKEN': csrf_token
-            },
-            body: JSON.stringify({
-              category_id: categoryId
-            })
-          }).then(function (response) {
-            return response.json();
-          }).then(function (data) {
-            // const options = [];
-            //
-            // data.forEach(function(item) {
-            //     options.push([item.id, item.name]);
-            // });
-            var items = [];
-            data.forEach(function (item) {
-              items.push("<option value=\"".concat(item.id, "\">").concat(item.name, "</option>"));
-            });
-
-            if (items.length) {
-              // let name = 'service_id-btn';
-              // let selectedContent = 'Выберите услугу';
+      (function () {
+        switch (step) {
+          case 1:
+            e.preventDefault();
+            var categoryId = document.getElementById('category_id').value;
+            var csrf_token = document.querySelector('input[name="_token"]').value;
+            fetch('/applications/services', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json;charset=utf-8',
+                'X-CSRF-TOKEN': csrf_token
+              },
+              body: JSON.stringify({
+                category_id: categoryId
+              })
+            }).then(function (response) {
+              return response.json();
+            }).then(function (data) {
+              // const options = [];
               //
-              // let template = `<button type="button" class="select__toggle" name="${name}"
-              //                     value="" data-select="toggle"
-              //                     data-index="-1">${selectedContent}</button>
-              //                     <div class="select__dropdown">
-              //                         <ul class="select__options">${items.join('')}</ul>
-              //                     </div>`;
-              var serviceSelect = document.querySelector('#service_id');
-              serviceSelect.querySelectorAll('option').forEach(function (item) {
-                item.remove();
-              });
-              serviceSelect.insertAdjacentHTML('afterbegin', items.join(''));
-              document.querySelector('#service-select .select_selected').remove();
-              document.querySelector('#service-select .select_items.select_hide').remove();
-              initSelects(); // if (serviceSelect) {
-              //     serviceSelect = null;
-              // }
-              // let serviceSelect = new CustomSelect('#service-select', {
-              //     name: 'service_id-btn',
-              //     // selectedContent: 'Выберите услугу',
-              //     // targetValue: 'Выберите услугу',
-              //     options
+              // data.forEach(function(item) {
+              //     options.push([item.id, item.name]);
               // });
-              // serviceSelect.dispose();
-              //
-              // document.querySelector('[name="service_id-btn"]').textContent = 'Выберите услугу';
-              //
-              // serviceSelect.show();
-            }
+              var items = [];
+              data.forEach(function (item) {
+                items.push("<option value=\"".concat(item.id, "\">").concat(item.name, "</option>"));
+              });
 
-            var firstElSelector = '[data-block="' + step + '"]';
-            document.querySelector(firstElSelector).style.display = 'none'; // document.querySelector('#category_id').value = categoryId;
+              if (items.length) {
+                // let name = 'service_id-btn';
+                // let selectedContent = 'Выберите услугу';
+                //
+                // let template = `<button type="button" class="select__toggle" name="${name}"
+                //                     value="" data-select="toggle"
+                //                     data-index="-1">${selectedContent}</button>
+                //                     <div class="select__dropdown">
+                //                         <ul class="select__options">${items.join('')}</ul>
+                //                     </div>`;
+                var serviceSelect = document.querySelector('#service_id');
+                serviceSelect.querySelectorAll('option').forEach(function (item) {
+                  item.remove();
+                });
+                serviceSelect.insertAdjacentHTML('afterbegin', items.join(''));
+                document.querySelector('#service-select .select_selected').remove();
+                document.querySelector('#service-select .select_items.select_hide').remove();
+                initSelects(); // if (serviceSelect) {
+                //     serviceSelect = null;
+                // }
+                // let serviceSelect = new CustomSelect('#service-select', {
+                //     name: 'service_id-btn',
+                //     // selectedContent: 'Выберите услугу',
+                //     // targetValue: 'Выберите услугу',
+                //     options
+                // });
+                // serviceSelect.dispose();
+                //
+                // document.querySelector('[name="service_id-btn"]').textContent = 'Выберите услугу';
+                //
+                // serviceSelect.show();
+              }
+
+              var firstElSelector = '[data-block="' + step + '"]';
+              document.querySelector(firstElSelector).style.display = 'none'; // document.querySelector('#category_id').value = categoryId;
+
+              step++;
+              currentStepEl.textContent = String(step);
+              var secondElSelector = '[data-block="' + step + '"]';
+              document.querySelector(secondElSelector).style.display = 'inline-flex';
+              btnPrev.style.display = 'inline-flex'; // document.querySelector('.select__trigger').textContent = document.querySelector('.select__item_selected').textContent;
+            });
+            break;
+
+          case 2:
+            e.preventDefault();
+            var secondElSelector = '[data-block="' + step + '"]';
+            document.querySelector(secondElSelector).style.display = 'none'; // document.querySelector('#service_id').value = document.querySelector('[name="service_id-btn"]').value;
 
             step++;
             currentStepEl.textContent = String(step);
-            var secondElSelector = '[data-block="' + step + '"]';
-            document.querySelector(secondElSelector).style.display = 'inline-flex';
-            btnPrev.style.display = 'inline-flex'; // document.querySelector('.select__trigger').textContent = document.querySelector('.select__item_selected').textContent;
-          });
-          break;
+            var thirdElSelector = '[data-block="' + step + '"]';
+            document.querySelector(thirdElSelector).style.display = 'inline-flex';
+            break;
 
-        case 2:
-          e.preventDefault();
-          var secondElSelector = '[data-block="' + step + '"]';
-          document.querySelector(secondElSelector).style.display = 'none'; // document.querySelector('#service_id').value = document.querySelector('[name="service_id-btn"]').value;
+          case 3:
+            e.preventDefault();
+            var thirdElemSelector = '[data-block="' + step + '"]';
+            document.querySelector(thirdElemSelector).style.display = 'none';
+            step++;
+            currentStepEl.textContent = String(step);
+            var fourthElSelector = '[data-block="' + step + '"]';
+            document.querySelector(fourthElSelector).style.display = 'inline-flex';
+            var photoInput = document.querySelector('#photo');
 
-          step++;
-          currentStepEl.textContent = String(step);
-          var thirdElSelector = '[data-block="' + step + '"]';
-          document.querySelector(thirdElSelector).style.display = 'inline-flex';
-          break;
+            if (photoInput) {
+              photoInput.addEventListener('change', function (e) {
+                if (this.value != '' && e.target.files.length > 0) {
+                  this.parentNode.previousElementSibling.textContent = 'Выбрано фото ' + e.target.files[0].name;
+                  var photoUrl = URL.createObjectURL(e.target.files[0]);
+                  var preview = document.querySelector('#photo-preview');
+                  preview.src = photoUrl;
+                  preview.style.display = 'inline-flex';
+                } else {
+                  this.parentNode.previousElementSibling.textContent = 'Выберите фото...';
+                }
+              });
+            }
 
-        case 3:
-          e.preventDefault();
-          var thirdElemSelector = '[data-block="' + step + '"]';
-          document.querySelector(thirdElemSelector).style.display = 'none';
-          step++;
-          currentStepEl.textContent = String(step);
-          var fourthElSelector = '[data-block="' + step + '"]';
-          document.querySelector(fourthElSelector).style.display = 'inline-flex';
-          var photoInput = document.querySelector('#photo');
+            break;
 
-          if (photoInput) {
-            photoInput.addEventListener('change', function (e) {
-              if (this.value != '' && e.target.files.length > 0) {
-                this.parentNode.previousElementSibling.textContent = 'Выбрано фото ' + e.target.files[0].name;
-                var photoUrl = URL.createObjectURL(e.target.files[0]);
-                var preview = document.querySelector('#photo-preview');
-                preview.src = photoUrl;
-                preview.style.display = 'inline-flex';
-              } else {
-                this.parentNode.previousElementSibling.textContent = 'Выберите фото...';
-              }
+          case 4:
+            e.preventDefault();
+            var fourthElemSelector = '[data-block="' + step + '"]';
+            document.querySelector(fourthElemSelector).style.display = 'none';
+            step++;
+            currentStepEl.textContent = String(step);
+            var fifthElSelector = '[data-block="' + step + '"]';
+            document.querySelector(fifthElSelector).style.display = 'inline-flex';
+            break;
+
+          case 5:
+            e.preventDefault();
+            var fifthElemSelector = '[data-block="' + step + '"]';
+            document.querySelector(fifthElemSelector).style.display = 'none';
+            step++;
+            currentStepEl.textContent = String(step);
+            document.querySelectorAll('#place-select .select_selected').forEach(function (item) {
+              item.remove();
             });
-          }
+            document.querySelectorAll('#place-select .select_items.select_hide').forEach(function (item) {
+              item.remove();
+            });
+            initSelects();
+            var sixthElSelector = '[data-block="' + step + '"]';
+            document.querySelector(sixthElSelector).style.display = 'inline-flex'; // need to fix place select !!!!!!!!!
+            // address select handling
 
-          break;
+            var addressBtns = document.getElementById('address-btns');
+            var placeSelectElems = document.querySelectorAll('#place-select .select_items div');
+            var placeValue = null;
 
-        case 4:
-          e.preventDefault();
-          var fourthElemSelector = '[data-block="' + step + '"]';
-          document.querySelector(fourthElemSelector).style.display = 'none';
-          step++;
-          currentStepEl.textContent = String(step);
-          var fifthElSelector = '[data-block="' + step + '"]';
-          document.querySelector(fifthElSelector).style.display = 'inline-flex';
-          break;
+            for (var _i3 = 0; _i3 < placeSelectElems.length; _i3++) {
+              placeSelectElems[_i3].addEventListener('click', function (e) {
+                if (e.target.classList.contains('selected-item')) {
+                  placeValue = e.target.getAttribute('data-value');
 
-        case 5:
-          e.preventDefault();
-          var fifthElemSelector = '[data-block="' + step + '"]';
-          document.querySelector(fifthElemSelector).style.display = 'none';
-          step++;
-          currentStepEl.textContent = String(step);
-          document.querySelectorAll('#place-select .select_selected').forEach(function (item) {
-            item.remove();
-          });
-          document.querySelectorAll('#place-select .select_items.select_hide').forEach(function (item) {
-            item.remove();
-          });
-          initSelects();
-          var sixthElSelector = '[data-block="' + step + '"]';
-          document.querySelector(sixthElSelector).style.display = 'inline-flex'; // need to fix place select !!!!!!!!!
-          // const placeSelectBtn = document.getElementById('place-select');
-          // placeSelectBtn.addEventListener('select.change', function(e) {
-          //     const btn = e.target.querySelector('#place-btn');
-          //     console.log(btn.value);
-          //
-          //     document.querySelector('#place').value = btn.value;
-          //
-          //     const addressBtns = document.getElementById('address-btns');
-          //
-          //     if (btn.value == 'client' || btn.value == 'both') {
-          //         addressBtns.style.display = 'inline-flex';
-          //
-          //         const addressBtn = document.getElementById('btn-address');
-          //         const geoBtn = document.getElementById('btn-coords');
-          //
-          //         if (addressBtn) {
-          //             addressBtn.addEventListener('click', function(e) {
-          //                 e.preventDefault();
-          //
-          //                 document.querySelector('[data-block="6"]').style.display = 'none';
-          //
-          //                 document.getElementById('address-data').style.display = 'inline-flex';
-          //             });
-          //         }
-          //
-          //         if (geoBtn) {
-          //             geoBtn.addEventListener('click', function(e) {
-          //                 e.preventDefault();
-          //
-          //                 const promise = new Promise(function(resolve, reject) {
-          //                     if (!navigator.geolocation) {
-          //                         alert('Определение геоданных не поддерживается вашим браузером');
-          //                         return false;
-          //                     } else {
-          //                         navigator.geolocation.getCurrentPosition(function(pos){
-          //                             let lat = pos.coords.latitude;
-          //                             let long = pos.coords.longitude;
-          //                             resolve({lat,long});
-          //                         })
-          //                     }
-          //                 });
-          //
-          //                 promise.then(function(geo) {
-          //                     console.log(geo.lat, geo.long);
-          //                     document.getElementById('coord_lat').value = geo.lat;
-          //                     document.getElementById('coord_long').value = geo.long;
-          //
-          //                     addressBtns.style.display = 'none';
-          //                     document.getElementById('coords-saved').style.display = 'inline-flex';
-          //                 });
-          //
-          //             });
-          //         }
-          //
-          //     } else {
-          //         addressBtns.style.display = 'none';
-          //     }
-          //
-          // });
+                  if ((placeValue === 'client' || placeValue === 'both') && addressBtns) {
+                    addressBtns.style.display = 'inline-flex';
+                    var addressBtn = document.getElementById('btn-address');
+                    var geoBtn = document.getElementById('btn-coords');
 
-          break;
+                    if (addressBtn) {
+                      addressBtn.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        document.querySelector('[data-block="6"]').style.display = 'none';
+                        document.querySelectorAll('#country-select .select_selected').forEach(function (item) {
+                          item.remove();
+                        });
+                        document.querySelectorAll('#country-select .select_items.select_hide').forEach(function (item) {
+                          item.remove();
+                        });
+                        initSelects();
+                        document.getElementById('address-data').style.display = 'inline-flex';
+                      });
+                    }
 
-        case 6:
-          e.preventDefault();
-          var sixthElemSelector = '[data-block="' + step + '"]';
-          document.querySelector(sixthElemSelector).style.display = 'none';
-          document.getElementById('address-data').style.display = 'none'; // document.querySelector('#country').value = document.querySelector('#country-btn').value;
+                    if (geoBtn) {
+                      geoBtn.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        var promise = new Promise(function (resolve, reject) {
+                          if (!navigator.geolocation) {
+                            alert('Определение геоданных не поддерживается вашим браузером');
+                            return false;
+                          } else {
+                            navigator.geolocation.getCurrentPosition(function (pos) {
+                              var lat = pos.coords.latitude;
+                              var _long = pos.coords.longitude;
+                              resolve({
+                                lat: lat,
+                                "long": _long
+                              });
+                            });
+                          }
+                        });
+                        promise.then(function (geo) {
+                          console.log(geo.lat, geo["long"]);
+                          document.getElementById('coord_lat').value = geo.lat;
+                          document.getElementById('coord_long').value = geo["long"];
+                          addressBtns.style.display = 'none';
+                          document.getElementById('coords-saved').style.display = 'inline-flex';
+                        });
+                      });
+                    }
+                  } else {
+                    addressBtns.style.display = 'none';
+                  }
+                }
+              });
+            } // const placeSelectBtn = document.getElementById('place-select');
+            // placeSelectBtn.addEventListener('select.change', function(e) {
+            //     const btn = e.target.querySelector('#place-btn');
+            //     console.log(btn.value);
+            //
+            //     document.querySelector('#place').value = btn.value;
+            //
+            //     const addressBtns = document.getElementById('address-btns');
+            //
+            //     if (btn.value == 'client' || btn.value == 'both') {
+            //         addressBtns.style.display = 'inline-flex';
+            //
+            //         const addressBtn = document.getElementById('btn-address');
+            //         const geoBtn = document.getElementById('btn-coords');
+            //
+            //         if (addressBtn) {
+            //             addressBtn.addEventListener('click', function(e) {
+            //                 e.preventDefault();
+            //
+            //                 document.querySelector('[data-block="6"]').style.display = 'none';
+            //
+            //                 document.getElementById('address-data').style.display = 'inline-flex';
+            //             });
+            //         }
+            //
+            //         if (geoBtn) {
+            //             geoBtn.addEventListener('click', function(e) {
+            //                 e.preventDefault();
+            //
+            //                 const promise = new Promise(function(resolve, reject) {
+            //                     if (!navigator.geolocation) {
+            //                         alert('Определение геоданных не поддерживается вашим браузером');
+            //                         return false;
+            //                     } else {
+            //                         navigator.geolocation.getCurrentPosition(function(pos){
+            //                             let lat = pos.coords.latitude;
+            //                             let long = pos.coords.longitude;
+            //                             resolve({lat,long});
+            //                         })
+            //                     }
+            //                 });
+            //
+            //                 promise.then(function(geo) {
+            //                     console.log(geo.lat, geo.long);
+            //                     document.getElementById('coord_lat').value = geo.lat;
+            //                     document.getElementById('coord_long').value = geo.long;
+            //
+            //                     addressBtns.style.display = 'none';
+            //                     document.getElementById('coords-saved').style.display = 'inline-flex';
+            //                 });
+            //
+            //             });
+            //         }
+            //
+            //     } else {
+            //         addressBtns.style.display = 'none';
+            //     }
+            //
+            // });
 
-          step++;
-          currentStepEl.textContent = String(step);
-          var seventhElSelector = '[data-block="' + step + '"]';
-          document.querySelector(seventhElSelector).style.display = 'inline-flex';
-          break;
-      }
+
+            break;
+
+          case 6:
+            e.preventDefault();
+            var sixthElemSelector = '[data-block="' + step + '"]';
+            document.querySelector(sixthElemSelector).style.display = 'none';
+            document.getElementById('address-data').style.display = 'none'; // document.querySelector('#country').value = document.querySelector('#country-btn').value;
+
+            step++;
+            currentStepEl.textContent = String(step);
+            var seventhElSelector = '[data-block="' + step + '"]';
+            document.querySelector(seventhElSelector).style.display = 'inline-flex';
+            break;
+        }
+      })();
     });
   }
 }, false);

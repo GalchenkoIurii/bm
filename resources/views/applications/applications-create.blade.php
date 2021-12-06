@@ -115,7 +115,7 @@
                         <h3 class="page-description">Введите свой адрес (не обязательно)</h3>
                         <h3 class="page-description">Ваши данные будут доступны только выбранному мастеру</h3>
 
-                        <div class="select">
+                        <div id="country-select" class="select">
                             <select name="country" id="country">
                                 <option value="Украина">Украина</option>
                                 <option value="Польша">Польша</option>
