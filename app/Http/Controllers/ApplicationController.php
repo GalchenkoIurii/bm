@@ -64,7 +64,9 @@ class ApplicationController extends Controller
      */
     public function show($id)
     {
-        //
+        $application = Application::with(['category', 'service', 'user'])->findOrFail($id);
+
+        return view('applications.applications-show', compact('application'));
     }
 
     /**
