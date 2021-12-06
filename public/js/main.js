@@ -384,6 +384,8 @@ document.addEventListener("DOMContentLoaded", function () {
           document.querySelector(thirdElSelector).style.display = 'none';
           step--;
           currentStepEl.textContent = String(step);
+          document.querySelector('#service-select .select_selected').remove();
+          document.querySelector('#service-select .select_items.select_hide').remove();
           var secondElemSelector = '[data-block="' + step + '"]';
           document.querySelector(secondElemSelector).style.display = 'inline-flex';
           break;
@@ -557,6 +559,13 @@ document.addEventListener("DOMContentLoaded", function () {
           document.querySelector(fifthElemSelector).style.display = 'none';
           step++;
           currentStepEl.textContent = String(step);
+          document.querySelectorAll('#place-select .select_selected').forEach(function (item) {
+            item.remove();
+          });
+          document.querySelectorAll('#place-select .select_items.select_hide').forEach(function (item) {
+            item.remove();
+          });
+          initSelects();
           var sixthElSelector = '[data-block="' + step + '"]';
           document.querySelector(sixthElSelector).style.display = 'inline-flex'; // need to fix place select !!!!!!!!!
           // const placeSelectBtn = document.getElementById('place-select');

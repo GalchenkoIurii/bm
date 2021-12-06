@@ -418,6 +418,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
                     currentStepEl.textContent = String(step);
 
+                    document.querySelector('#service-select .select_selected').remove();
+                    document.querySelector('#service-select .select_items.select_hide').remove();
+
                     const secondElemSelector = '[data-block="' + step + '"]';
                     document.querySelector(secondElemSelector).style.display = 'inline-flex';
 
@@ -641,6 +644,16 @@ document.addEventListener("DOMContentLoaded", function() {
                     step++;
 
                     currentStepEl.textContent = String(step);
+
+                    document.querySelectorAll('#place-select .select_selected').forEach(function(item) {
+                        item.remove();
+                    });
+
+                    document.querySelectorAll('#place-select .select_items.select_hide').forEach(function(item) {
+                        item.remove();
+                    });
+
+                    initSelects();
 
                     const sixthElSelector = '[data-block="' + step + '"]';
                     document.querySelector(sixthElSelector).style.display = 'inline-flex';

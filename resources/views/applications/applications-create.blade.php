@@ -81,7 +81,7 @@
                     </div>
                     <div class="form-group" data-block="6">
                         <h3 class="page-description">Выберите место встречи с мастером</h3>
-                        <div class="select">
+                        <div id="place-select" class="select">
                             <select name="place" id="place">
                                 <option value="master">Я приеду к мастеру</option>
                                 <option value="client">Мастер приедет ко мне</option>
