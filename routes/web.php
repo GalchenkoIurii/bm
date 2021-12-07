@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -79,6 +80,9 @@ Route::middleware('auth')->group(function() {
     Route::get('/application/created', [ApplicationController::class, 'applicationCreated'])
         ->name('application.created');
     Route::post('/applications/services', [ApplicationController::class, 'getServices']);
+
+    Route::get('/profiles/{profile}', [ProfileController::class, 'show'])
+        ->name('profiles.show');
 });
 
 /*
