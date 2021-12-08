@@ -405,16 +405,16 @@ a {
   line-height: 1.2rem;
   display: flex;
   flex-direction: column;
-  padding: 1rem 1.5rem;
+  padding: 1rem 1.2rem;
   border: 1px solid $color-main-brown;
   border-radius: .5rem;
   &__item {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: .8rem;
+    flex-direction: column;
+    margin-bottom: 1rem;
     &-title {
-      flex-basis: min-content;
       color: $color-main-black;
+      margin-bottom: 0.4rem;
     }
     &-content {
       font-size: .9rem;

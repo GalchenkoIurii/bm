@@ -409,18 +409,18 @@ a {
   line-height: 1.2rem;
   display: flex;
   flex-direction: column;
-  padding: 1rem 1.5rem;
+  padding: 1rem 1.2rem;
   border: 1px solid #d2a679;
   border-radius: 0.5rem;
 }
 .card__item {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.8rem;
+  flex-direction: column;
+  margin-bottom: 1rem;
 }
 .card__item-title {
-  flex-basis: min-content;
   color: #000;
+  margin-bottom: 0.4rem;
 }
 .card__item-content {
   font-size: 0.9rem;
