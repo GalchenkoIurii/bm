@@ -9,19 +9,37 @@
 @section('content')
     <section class="section">
         <div class="container">
-            <h1 class="page-header">{{ $application->id }}</h1>
+            <h1 class="page-header">{{ $profile->user->first_name }} {{ $profile->user->last_name }}</h1>
 
+            @if($profile->user->is_master)
                 <p class="page-description">
-                    Категория: {{ $application->category->name }} <br>
-                    Услуга: {{ $application->service->name }} <br>
-                    Цена: от {{ $application->start_price }} грн. до {{ $application->end_price }} грн. <br>
-                    Даты: от {{ $application->start_date }} до {{ $application->end_date }} <br>
-                    Место: {{ $application->place }} <br>
-                    Страна: {{ $application->country }} <br>
-                    Регион: {{ $application->region }} <br>
-                    Город: {{ $application->city }} <br>
-                    Пользователь: {{ $application->user->first_name }} <br>
+                    Email: {{ $profile->user->email }} <br>
+                    Номер телефона: {{ $profile->user->phone }} <br>
+                    Аватар: {{ $profile->avatar }} <br>
+                    Страна: {{ $profile->country }} <br>
+                    Область/Регион: {{ $profile->region }} <br>
+                    Район: {{ $profile->district }} <br>
+                    Город: {{ $profile->city }} <br>
+                    Улица: {{ $profile->street }} <br>
+                    Номер дома: {{ $profile->house }} <br>
+                    Номер помещения/квартиры: {{ $profile->locale_num }} <br>
+                    Место: {{ $profile->place }} <br>
+                    Обо мне: {{ $profile->about }} <br>
+                    Образование: {{ $profile->education }} <br>
+                    Опыт: {{ $profile->experience }} <br>
                 </p>
+            @else
+                <p class="page-description">
+                    Email: {{ $profile->user->email }} <br>
+                    Номер телефона: {{ $profile->user->phone }} <br>
+                    Аватар: {{ $profile->avatar }} <br>
+                    Страна: {{ $profile->user->country }} <br>
+                    Область/Регион: {{ $profile->user->region }} <br>
+                    Район: {{ $profile->user->district }} <br>
+                    Город: {{ $profile->user->city }} <br>
+                </p>
+            @endif
+
         </div>
     </section>
 @endsection
