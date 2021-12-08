@@ -13,4 +13,9 @@ class ProfileController extends Controller
 
         return view('profiles.profiles-show', compact('profile'));
     }
+
+    public function edit($id)
+    {
+        //
+    }
 }

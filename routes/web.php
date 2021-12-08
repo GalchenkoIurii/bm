@@ -83,6 +83,8 @@ Route::middleware('auth')->group(function() {
 
     Route::get('/profiles/{profile}', [ProfileController::class, 'show'])
         ->name('profiles.show');
+    Route::get('/profiles/{profile}/edit', [ProfileController::class, 'edit'])
+        ->name('profiles.edit');
 });
 
 /*
