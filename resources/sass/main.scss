@@ -393,6 +393,36 @@ a {
   }
 
 
+  /* card */
+
+.card-box {
+  margin: 1.5rem auto;
+}
+
+.card {
+  font-family: $font-main-medium;
+  font-size: 1rem;
+  line-height: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1.5rem;
+  border: 1px solid $color-main-brown;
+  border-radius: .5rem;
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: .8rem;
+    &-title {
+      flex-basis: min-content;
+      color: $color-main-black;
+    }
+    &-content {
+      font-size: .9rem;
+      color: $color-text-grey;
+    }
+  }
+}
+
 
   .page-header {
     font-family: $font-main-bold;

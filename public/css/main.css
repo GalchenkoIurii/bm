@@ -398,6 +398,35 @@ a {
   margin-bottom: 0.5rem;
 }
 
+/* card */
+.card-box {
+  margin: 1.5rem auto;
+}
+
+.card {
+  font-family: Roboto-Medium, sans-serif;
+  font-size: 1rem;
+  line-height: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1.5rem;
+  border: 1px solid #d2a679;
+  border-radius: 0.5rem;
+}
+.card__item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+}
+.card__item-title {
+  flex-basis: min-content;
+  color: #000;
+}
+.card__item-content {
+  font-size: 0.9rem;
+  color: #4a4a4a;
+}
+
 .page-header {
   font-family: Roboto-Bold, sans-serif;
   font-size: 1.3rem;
