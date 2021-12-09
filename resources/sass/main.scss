@@ -428,6 +428,28 @@ a {
 }
 
 
+/* avatar */
+
+.avatar-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.avatar {
+  max-width: 40%;
+  margin: auto;
+  &__square {
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+  &__image {
+    max-width: 100%;
+  }
+}
+
+
   .page-header {
     font-family: $font-main-bold;
     font-size: 1.3rem;

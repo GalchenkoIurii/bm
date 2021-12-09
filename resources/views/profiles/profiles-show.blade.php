@@ -14,6 +14,15 @@
             <div class="card-box">
                 <div class="card">
                     @if($profile->user->is_master)
+                        <div class="card__item">
+                            <div class="avatar-box">
+                                <div class="avatar">
+                                    <div class="avatar__square">
+                                        <img src="{{ asset('storage/no-image.svg') }}" alt="" class="avatar__image">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <p class="card__item">
                             <span class="card__item-title">Email: </span>
                             <span class="card__item-content">{{ $profile->user->email }}</span>
@@ -21,10 +30,6 @@
                         <p class="card__item">
                             <span class="card__item-title">Номер телефона: </span>
                             <span class="card__item-content">{{ $profile->user->phone }}</span>
-                        </p>
-                        <p class="card__item">
-                            <span class="card__item-title">Аватар: </span>
-                            <span class="card__item-content">{{ $profile->avatar }}</span>
                         </p>
                         <p class="card__item">
                             <span class="card__item-title">Страна: </span>

@@ -430,6 +430,26 @@ a {
   margin-bottom: 0;
 }
 
+/* avatar */
+.avatar-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.avatar {
+  max-width: 40%;
+  margin: auto;
+}
+.avatar__square {
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.avatar__image {
+  max-width: 100%;
+}
+
 .page-header {
   font-family: Roboto-Bold, sans-serif;
   font-size: 1.3rem;
