@@ -426,6 +426,9 @@ a {
   font-size: 0.9rem;
   color: #4a4a4a;
 }
+.card__item:last-child {
+  margin-bottom: 0;
+}
 
 .page-header {
   font-family: Roboto-Bold, sans-serif;

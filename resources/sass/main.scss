@@ -412,6 +412,7 @@ a {
     display: flex;
     flex-direction: column;
     margin-bottom: 1rem;
+
     &-title {
       color: $color-main-black;
       margin-bottom: 0.4rem;
@@ -420,6 +421,9 @@ a {
       font-size: .9rem;
       color: $color-text-grey;
     }
+  }
+  &__item:last-child {
+    margin-bottom: 0;
   }
 }
 
