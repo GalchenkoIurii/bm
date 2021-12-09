@@ -1,5 +1,10 @@
 @extends('layouts.main')
 
+@section('page-keywords')Мастер, Маникюр, Парикмахер, Косметолог@endsection
+
+@section('page-description')Найдите мастера, который позаботится о Вашей красоте. Косметологи, парикмахеры, мастера
+маникюра и другие профессионалы рядом с Вами ...или оставьте заявку и мастер найдет Вас.@endsection
+
 @section('page-title')Главная@endsection
 
 @section('header')
