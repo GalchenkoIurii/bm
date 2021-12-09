@@ -443,9 +443,16 @@ a {
   &__square {
     border-radius: 1rem;
     overflow: hidden;
+    display: flex;
+    background-color: $color-main-brown;
   }
   &__image {
     max-width: 100%;
+    border-radius: 1rem;
+  }
+  img {
+    width: 100px;
+    margin: 1rem;
   }
 }
 

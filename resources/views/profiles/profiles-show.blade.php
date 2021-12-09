@@ -18,7 +18,7 @@
                             <div class="avatar-box">
                                 <div class="avatar">
                                     <div class="avatar__square">
-                                        <img src="{{ asset('storage/no-image.svg') }}" alt="" class="avatar__image">
+                                        <img src="{{ $profile->getAvatar() }}" alt="" class="avatar__image">
                                     </div>
                                 </div>
                             </div>
