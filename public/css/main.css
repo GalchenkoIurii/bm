@@ -446,7 +446,6 @@ a {
   border-radius: 1rem;
   overflow: hidden;
   display: flex;
-  background-color: #d2a679;
 }
 .avatar__image {
   max-width: 100%;
