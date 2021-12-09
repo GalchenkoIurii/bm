@@ -100,12 +100,15 @@
                             <span class="card__item-content">{{ $profile->user->city }}</span>
                         </p>
                     @endif
-                    <div class="card__item">
-                        <div class="btn-container">
-                            <a href="{{ route('profiles.edit', ['profile' => $profile->id]) }}"
-                               class="button button_colored button_shadowed">Редактировать профиль</a>
-                        </div>
-                    </div>
+
+                    @if($profile->user_id == auth()->id())
+                            <div class="card__item">
+                                <div class="btn-container">
+                                    <a href="{{ route('profiles.edit', ['profile' => $profile->id]) }}"
+                                       class="button button_colored button_shadowed">Редактировать профиль</a>
+                                </div>
+                            </div>
+                    @endif
                 </div>
             </div>
 
