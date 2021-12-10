@@ -410,20 +410,25 @@ a {
   border-radius: .5rem;
   &__item {
     display: flex;
-    flex-direction: column;
     margin-bottom: 1rem;
 
     &-title {
-      color: $color-main-black;
+      color: $color-text-grey;
+      font-size: .9rem;
       margin-bottom: 0.4rem;
     }
     &-content {
-      font-size: .9rem;
-      color: $color-text-grey;
+      color: $color-main-black;
     }
   }
   &__item:last-child {
     margin-bottom: 0;
+  }
+  &__item_column {
+    flex-direction: column;
+  }
+  &__item_centered {
+    align-items: center;
   }
 }
 

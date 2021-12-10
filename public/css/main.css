@@ -415,19 +415,24 @@ a {
 }
 .card__item {
   display: flex;
-  flex-direction: column;
   margin-bottom: 1rem;
 }
 .card__item-title {
-  color: #000;
+  color: #4a4a4a;
+  font-size: 0.9rem;
   margin-bottom: 0.4rem;
 }
 .card__item-content {
-  font-size: 0.9rem;
-  color: #4a4a4a;
+  color: #000;
 }
 .card__item:last-child {
   margin-bottom: 0;
+}
+.card__item_column {
+  flex-direction: column;
+}
+.card__item_centered {
+  align-items: center;
 }
 
 /* avatar */
