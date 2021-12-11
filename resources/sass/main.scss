@@ -439,11 +439,12 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  flex: 1 2 40%;
+  //width: 100%;
 }
 
 .avatar {
-  max-width: 40%;
+  //max-width: 40%;
   margin: auto;
   &__square {
     border-radius: 1rem;
@@ -459,6 +460,13 @@ a {
     width: 100px;
     margin: 1rem;
   }
+}
+
+
+/* name block profile */
+
+.name-box {
+  flex: 1 2 60%;
 }
 
 

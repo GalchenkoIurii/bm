@@ -440,11 +440,10 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  flex: 1 2 40%;
 }
 
 .avatar {
-  max-width: 40%;
   margin: auto;
 }
 .avatar__square {
@@ -459,6 +458,11 @@ a {
 .avatar img {
   width: 100px;
   margin: 1rem;
+}
+
+/* name block profile */
+.name-box {
+  flex: 1 2 60%;
 }
 
 .page-header {
