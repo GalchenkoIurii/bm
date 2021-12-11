@@ -20,7 +20,9 @@
                                 </div>
                             </div>
                             @if($profile->user->isOnline())
-                                <p class="status-online">online</p>
+                                <p class="avatar-box__status status-online">online</p>
+                            @else
+                                <p class="avatar-box__status status-not-online">не в сети</p>
                             @endif
                         </div>
                         <div class="name-box">

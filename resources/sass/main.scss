@@ -284,6 +284,11 @@ a {
   color: $color-main-green;
 }
 
+.status-not-online {
+  font-family: $font-main;
+  color: $color-text-grey;
+}
+
   .forgot-password {
     display: flex;
     flex-direction: column;
@@ -447,7 +452,7 @@ a {
   justify-content: center;
   flex: 1 2 35%;
   //width: 100%;
-  .status-online {
+  &__status {
     font-size: .8rem;
     line-height: 1rem;
     text-align: center;

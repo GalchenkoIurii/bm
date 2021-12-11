@@ -297,6 +297,11 @@ a {
   color: #199946;
 }
 
+.status-not-online {
+  font-family: Roboto, sans-serif;
+  color: #4a4a4a;
+}
+
 .forgot-password {
   display: flex;
   flex-direction: column;
@@ -448,7 +453,7 @@ a {
   justify-content: center;
   flex: 1 2 35%;
 }
-.avatar-box .status-online {
+.avatar-box__status {
   font-size: 0.8rem;
   line-height: 1rem;
   text-align: center;
