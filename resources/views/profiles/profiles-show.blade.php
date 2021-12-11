@@ -19,6 +19,7 @@
                                     <img src="{{ $profile->getAvatar() }}" alt="" class="avatar__image">
                                 </div>
                             </div>
+                            <p class="status-online">online</p>
                         </div>
                         <div class="name-box">
                             <h1 class="page-header">{{ $profile->user->first_name }} {{ $profile->user->last_name }}</h1>
