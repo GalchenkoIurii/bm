@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Cache;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -74,6 +75,11 @@ class User extends Authenticatable
     public function chats()
     {
         return $this->belongsToMany(Chat::class);
+    }
+
+    public function isOnline()
+    {
+        return Cache::has('user_online_' . $this->id);
     }
 
     public function messages()

@@ -24,68 +24,71 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [MainController::class, 'index'])
-    ->name('home');
-Route::get('/about', [MainController::class, 'about'])
-    ->name('about');
+Route::middleware(['user_online'])->group(function() {
+    Route::get('/', [MainController::class, 'index'])
+        ->name('home');
+    Route::get('/about', [MainController::class, 'about'])
+        ->name('about');
 //Route::get('/apply', [MainController::class, 'apply'])
 //    ->name('apply');
 
-Route::get('/contacts', [MainController::class, 'contacts'])
-    ->name('contacts');
-Route::get('/search', [MainController::class, 'search'])
-    ->name('search');
+    Route::get('/contacts', [MainController::class, 'contacts'])
+        ->name('contacts');
+    Route::get('/search', [MainController::class, 'search'])
+        ->name('search');
 
 
-Route::middleware('guest')->group(function() {
-    /*
-     * reset password
-     */
-    Route::get('/forgot-password', [UserController::class, 'passwordRequest'])
-        ->name('password.request');
-    Route::post('/forgot-password', [UserController::class, 'passwordEmail'])
-        ->name('password.email');
+    Route::middleware('guest')->group(function() {
+        /*
+         * reset password
+         */
+        Route::get('/forgot-password', [UserController::class, 'passwordRequest'])
+            ->name('password.request');
+        Route::post('/forgot-password', [UserController::class, 'passwordEmail'])
+            ->name('password.email');
 
-    Route::get('/reset-password/{token}/', [UserController::class, 'passwordReset'])
-        ->name('password.reset');
-    Route::post('/reset-password', [UserController::class, 'passwordUpdate'])
-        ->name('password.update');
+        Route::get('/reset-password/{token}/', [UserController::class, 'passwordReset'])
+            ->name('password.reset');
+        Route::post('/reset-password', [UserController::class, 'passwordUpdate'])
+            ->name('password.update');
 
-    /*
-     * register, login
-     */
-    Route::get('/register', [UserController::class, 'create'])
-        ->name('register.create');
-    Route::post('/register', [UserController::class, 'store'])
-        ->name('register.store');
+        /*
+         * register, login
+         */
+        Route::get('/register', [UserController::class, 'create'])
+            ->name('register.create');
+        Route::post('/register', [UserController::class, 'store'])
+            ->name('register.store');
 
-    Route::get('/login', [UserController::class, 'loginForm'])
-        ->name('login.create');
-    Route::post('/login', [UserController::class, 'login'])
-        ->name('login');
+        Route::get('/login', [UserController::class, 'loginForm'])
+            ->name('login.create');
+        Route::post('/login', [UserController::class, 'login'])
+            ->name('login');
+    });
+
+
+    Route::middleware('auth')->group(function() {
+        /*
+         * logout
+         */
+        Route::get('/logout', [UserController::class, 'logout'])
+            ->name('logout');
+
+        Route::resources([
+            '/applications' => ApplicationController::class
+        ]);
+
+        Route::get('/application/created', [ApplicationController::class, 'applicationCreated'])
+            ->name('application.created');
+        Route::post('/applications/services', [ApplicationController::class, 'getServices']);
+
+        Route::get('/profiles/{profile}', [ProfileController::class, 'show'])
+            ->name('profiles.show');
+        Route::get('/profiles/{profile}/edit', [ProfileController::class, 'edit'])
+            ->name('profiles.edit');
+    });
 });
 
-
-Route::middleware('auth')->group(function() {
-    /*
-     * logout
-     */
-    Route::get('/logout', [UserController::class, 'logout'])
-        ->name('logout');
-
-    Route::resources([
-        '/applications' => ApplicationController::class
-    ]);
-
-    Route::get('/application/created', [ApplicationController::class, 'applicationCreated'])
-        ->name('application.created');
-    Route::post('/applications/services', [ApplicationController::class, 'getServices']);
-
-    Route::get('/profiles/{profile}', [ProfileController::class, 'show'])
-        ->name('profiles.show');
-    Route::get('/profiles/{profile}/edit', [ProfileController::class, 'edit'])
-        ->name('profiles.edit');
-});
 
 /*
  * admin routes

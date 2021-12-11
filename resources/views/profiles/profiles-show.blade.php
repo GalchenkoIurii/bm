@@ -19,7 +19,9 @@
                                     <img src="{{ $profile->getAvatar() }}" alt="" class="avatar__image">
                                 </div>
                             </div>
-                            <p class="status-online">online</p>
+                            @if($profile->user->isOnline())
+                                <p class="status-online">online</p>
+                            @endif
                         </div>
                         <div class="name-box">
                             <h1 class="page-header">{{ $profile->user->first_name }} {{ $profile->user->last_name }}</h1>
