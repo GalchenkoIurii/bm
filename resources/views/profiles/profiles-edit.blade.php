@@ -13,9 +13,7 @@
 @section('content')
     <section class="section">
         <div class="container">
-            @if(session()->has('error'))
-                <p class="error-message">{{ session('error') }}</p>
-            @endif
+
             <div class="card-box">
                 <div class="card">
                     <div class="card__item card__item_centered">
@@ -32,7 +30,7 @@
                             @endif
                         </div>
                         <div class="name-box">
-                            <h1 class="page-header">{{ $profile->user->first_name }} {{ $profile->user->last_name }}</h1>
+                            <h1 class="page-header">Редактирование профиля {{ $profile->user->first_name }} {{ $profile->user->last_name }}</h1>
                             <div class="stars-box">
                                 <div class="stars">
                                     <i class="fas fa-star"></i>
