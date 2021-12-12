@@ -4,7 +4,7 @@
     <link href="{{ asset('fa-web/css/all.css') }}" rel="stylesheet">
 @endsection
 
-@section('page-title')Профиль пользователя@endsection
+@section('page-title')Редактирование профиля пользователя@endsection
 
 @section('header')
     @include('incs.header')
@@ -14,6 +14,7 @@
     <section class="section">
         <div class="container">
 
+            <h1 class="page-header">Редактирование профиля</h1>
             <div class="card-box">
                 <div class="card">
                     <div class="card__item card__item_centered">
@@ -23,14 +24,8 @@
                                     <img src="{{ $profile->getAvatar() }}" alt="" class="avatar__image">
                                 </div>
                             </div>
-                            @if($profile->user->isOnline())
-                                <p class="avatar-box__status status-online">online</p>
-                            @else
-                                <p class="avatar-box__status status-not-online">не в сети</p>
-                            @endif
                         </div>
                         <div class="name-box">
-                            <h1 class="page-header">Редактирование профиля {{ $profile->user->first_name }} {{ $profile->user->last_name }}</h1>
                             <div class="stars-box">
                                 <div class="stars">
                                     <i class="fas fa-star"></i>
