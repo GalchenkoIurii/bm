@@ -10,6 +10,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/media.css') }}">
 
+    @yield('styles')
+
     <title>@yield('page-title')</title>
 
 </head>

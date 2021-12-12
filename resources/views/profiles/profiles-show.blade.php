@@ -1,5 +1,9 @@
 @extends('layouts.main')
 
+@section('styles')
+    <link href="{{ asset('fa-web/css/all.css') }}" rel="stylesheet">
+@endsection
+
 @section('page-title')Профиль пользователя@endsection
 
 @section('header')
@@ -27,6 +31,18 @@
                         </div>
                         <div class="name-box">
                             <h1 class="page-header">{{ $profile->user->first_name }} {{ $profile->user->last_name }}</h1>
+                            <div class="stars-box">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <div class="responses">
+                                    <p class="responses__text">отзывов - 0</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     @if($profile->user->is_master)

@@ -485,6 +485,24 @@ a {
 
 .name-box {
   flex: 1 2 65%;
+  display: flex;
+  flex-direction: column;
+}
+
+.stars-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .stars {
+    font-size: .8rem;
+    margin-bottom: 0.1rem;
+    i {
+      color: $color-main-brown;
+    }
+  }
+  .responses {
+    font-size: .8rem;
+  }
 }
 
 
