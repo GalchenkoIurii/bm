@@ -86,6 +86,8 @@ Route::middleware(['user_online'])->group(function() {
             ->name('profiles.show');
         Route::get('/profiles/{profile}/edit', [ProfileController::class, 'edit'])
             ->name('profiles.edit');
+        Route::put('/profiles/{profile}', [ProfileController::class, 'update'])
+            ->name('profiles.update');
     });
 });
 
