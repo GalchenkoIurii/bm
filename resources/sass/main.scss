@@ -94,7 +94,7 @@ a {
 .select {
   position: relative;
   width: 100%;
-  padding: 1rem .2rem;
+  padding: 1rem 0;
   select {
     display: none;
   }
@@ -454,7 +454,7 @@ a {
       display: flex;
       margin-bottom: 1rem;
     }
-    input {
+    input, textarea {
       flex-basis: 100%;
       padding: .6rem .8rem;
       height: 2.5rem;
@@ -466,8 +466,16 @@ a {
       line-height: 1.2;
       outline: none;
     }
+    textarea {
+      resize: none;
+      height: 5rem;
+    }
     input.error {
       border-color: $color-main-red;
+    }
+    .select {
+      padding: 0;
+      margin-bottom: 1rem;
     }
   }
   &__file-input {

@@ -112,7 +112,7 @@ a {
 .select {
   position: relative;
   width: 100%;
-  padding: 1rem 0.2rem;
+  padding: 1rem 0;
 }
 .select select {
   display: none;
@@ -459,7 +459,7 @@ a {
   display: flex;
   margin-bottom: 1rem;
 }
-.card__form-group input {
+.card__form-group input, .card__form-group textarea {
   flex-basis: 100%;
   padding: 0.6rem 0.8rem;
   height: 2.5rem;
@@ -471,8 +471,16 @@ a {
   line-height: 1.2;
   outline: none;
 }
+.card__form-group textarea {
+  resize: none;
+  height: 5rem;
+}
 .card__form-group input.error {
   border-color: #f03d3e;
+}
+.card__form-group .select {
+  padding: 0;
+  margin-bottom: 1rem;
 }
 .card__file-input {
   flex: 1 2 65%;

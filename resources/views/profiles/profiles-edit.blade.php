@@ -49,72 +49,103 @@
                                 <input type="text" name="last_name" id="last_name" value="{{ $profile->user->last_name }}">
                             </div>
                         </div>
+                        <div class="card__form-group">
+                            <label for="email" class="card__form-group-label">Email</label>
+                            <div class="card__form-group-input">
+                                <input type="email" name="email" id="email" value="{{ $profile->user->email }}">
+                            </div>
+                        </div>
+                        <div class="card__form-group">
+                            <label for="phone" class="card__form-group-label">Номер телефона</label>
+                            <div class="card__form-group-input">
+                                <input type="text" name="phone" id="phone" value="{{ $profile->user->phone }}">
+                            </div>
+                        </div>
                         @if($profile->user->is_master)
-                            <p class="card__item card__item_column">
-                                <span class="card__item-title">Email: </span>
-                                <span class="card__item-content">{{ $profile->user->email }}</span>
-                            </p>
-                            <p class="card__item card__item_column">
-                                <span class="card__item-title">Номер телефона: </span>
-                                <span class="card__item-content">{{ $profile->user->phone }}</span>
-                            </p>
-                            <p class="card__item card__item_column">
-                                <span class="card__item-title">Страна: </span>
-                                <span class="card__item-content">{{ $profile->country }}</span>
-                            </p>
-                            <p class="card__item card__item_column">
-                                <span class="card__item-title">Область/Регион: </span>
-                                <span class="card__item-content">{{ $profile->region }}</span>
-                            </p>
-                            <p class="card__item card__item_column">
-                                <span class="card__item-title">Район: </span>
-                                <span class="card__item-content">{{ $profile->district }}</span>
-                            </p>
-                            <p class="card__item card__item_column">
-                                <span class="card__item-title">Город: </span>
-                                <span class="card__item-content">{{ $profile->city }}</span>
-                            </p>
-                            <p class="card__item card__item_column">
-                                <span class="card__item-title">Улица: </span>
-                                <span class="card__item-content">{{ $profile->street }}</span>
-                            </p>
-                            <p class="card__item card__item_column">
-                                <span class="card__item-title">Номер дома: </span>
-                                <span class="card__item-content">{{ $profile->house }}</span>
-                            </p>
-                            <p class="card__item card__item_column">
-                                <span class="card__item-title">Номер помещения/квартиры: </span>
-                                <span class="card__item-content">{{ $profile->locale_num }}</span>
-                            </p>
-                            <p class="card__item card__item_column">
-                                <span class="card__item-title">Место: </span>
-                                <span class="card__item-content">{{ $profile->place }}</span>
-                            </p>
-                            <p class="card__item card__item_column">
-                                <span class="card__item-title">Обо мне: </span>
-                                <span class="card__item-content">{{ $profile->about }}</span>
-                            </p>
-                            <p class="card__item card__item_column">
-                                <span class="card__item-title">Образование: </span>
-                                <span class="card__item-content">{{ $profile->education }}</span>
-                            </p>
-                            <p class="card__item card__item_column">
-                                <span class="card__item-title">Опыт: </span>
-                                <span class="card__item-content">{{ $profile->experience }}</span>
-                            </p>
+                            <div class="card__form-group">
+                                <label for="country" class="card__form-group-label">Страна</label>
+                                <div id="country-select" class="select">
+                                    <select name="country" id="country">
+                                        <option value="Украина" @if($profile->country == "Украина") selected @endif>Украина</option>
+                                        <option value="Польша" @if($profile->country == "Польша") selected @endif>Польша</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="card__form-group">
+                                <label for="region" class="card__form-group-label">Область/Регион</label>
+                                <div class="card__form-group-input">
+                                    <input type="text" name="region" id="region" value="{{ $profile->region }}">
+                                </div>
+                            </div>
+                            <div class="card__form-group">
+                                <label for="district" class="card__form-group-label">Район</label>
+                                <div class="card__form-group-input">
+                                    <input type="text" name="district" id="district" value="{{ $profile->district }}">
+                                </div>
+                            </div>
+                            <div class="card__form-group">
+                                <label for="city" class="card__form-group-label">Город</label>
+                                <div class="card__form-group-input">
+                                    <input type="text" name="city" id="city" value="{{ $profile->city }}">
+                                </div>
+                            </div>
+                            <div class="card__form-group">
+                                <label for="street" class="card__form-group-label">Улица</label>
+                                <div class="card__form-group-input">
+                                    <input type="text" name="street" id="street" value="{{ $profile->street }}">
+                                </div>
+                            </div>
+                            <div class="card__form-group">
+                                <label for="house" class="card__form-group-label">Номер дома</label>
+                                <div class="card__form-group-input">
+                                    <input type="text" name="house" id="house" value="{{ $profile->house }}">
+                                </div>
+                            </div>
+                            <div class="card__form-group">
+                                <label for="locale_num" class="card__form-group-label">Номер помещения/квартиры</label>
+                                <div class="card__form-group-input">
+                                    <input type="text" name="locale_num" id="locale_num" value="{{ $profile->locale_num }}">
+                                </div>
+                            </div>
+                            <div class="card__form-group">
+                                <label for="country" class="card__form-group-label">Где могу принять клиента</label>
+                                <div id="place-select" class="select">
+                                    <select name="place" id="place">
+                                        <option value="master" @if($profile->place == "master") selected @endif>У себя</option>
+                                        <option value="client" @if($profile->place == "client") selected @endif>У клиента</option>
+                                        <option value="both" @if($profile->place == "both") selected @endif>У себя или у клиента</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="card__form-group">
+                                <label for="about" class="card__form-group-label">Обо мне</label>
+                                <div class="card__form-group-input">
+                                    <textarea name="about" id="about">{{ $profile->about }}</textarea>
+                                </div>
+                            </div>
+                            <div class="card__form-group">
+                                <label for="education" class="card__form-group-label">Образование</label>
+                                <div class="card__form-group-input">
+                                    <textarea name="education" id="education">{{ $profile->education }}</textarea>
+                                </div>
+                            </div>
+                            <div class="card__form-group">
+                                <label for="experience" class="card__form-group-label">Опыт</label>
+                                <div class="card__form-group-input">
+                                    <textarea name="experience" id="experience">{{ $profile->experience }}</textarea>
+                                </div>
+                            </div>
                         @else
-                            <p class="card__item card__item_column">
-                                <span class="card__item-title">Email: </span>
-                                <span class="card__item-content">{{ $profile->user->email }}</span>
-                            </p>
-                            <p class="card__item card__item_column">
-                                <span class="card__item-title">Номер телефона: </span>
-                                <span class="card__item-content">{{ $profile->user->phone }}</span>
-                            </p>
-                            <p class="card__item card__item_column">
-                                <span class="card__item-title">Страна: </span>
-                                <span class="card__item-content">{{ $profile->user->country }}</span>
-                            </p>
+                            <div class="card__form-group">
+                                <label for="country" class="card__form-group-label">Страна</label>
+                                <div id="country-select" class="select">
+                                    <select name="country" id="country">
+                                        <option value="Украина" @if($profile->user->country == "Украина") selected @endif>Украина</option>
+                                        <option value="Польша" @if($profile->user->country == "Польша") selected @endif>Польша</option>
+                                    </select>
+                                </div>
+                            </div>
+
                             <p class="card__item card__item_column">
                                 <span class="card__item-title">Область/Регион: </span>
                                 <span class="card__item-content">{{ $profile->user->region }}</span>
