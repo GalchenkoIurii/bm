@@ -63,6 +63,16 @@
                         </div>
                         @if($profile->user->is_master)
                             <div class="card__form-group">
+                                <label for="category_id" class="card__form-group-label">Категория</label>
+                                <div id="category-select" class="select">
+                                    <select name="category_id" id="category_id">
+                                        @foreach($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="card__form-group">
                                 <label for="country" class="card__form-group-label">Страна</label>
                                 <div id="country-select" class="select">
                                     <select name="country" id="country">
