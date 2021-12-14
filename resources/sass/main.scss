@@ -440,6 +440,17 @@ a {
   &__item_centered {
     align-items: center;
   }
+  &__form-group {
+
+  }
+  &__file-input {
+    flex: 1 2 65%;
+    display: flex;
+    flex-direction: column;
+    .card__item-title {
+      text-align: center;
+    }
+  }
 }
 
 
@@ -451,6 +462,7 @@ a {
   align-items: center;
   justify-content: center;
   flex: 1 2 35%;
+  margin-right: 1rem;
   //width: 100%;
   &__status {
     font-size: .8rem;
@@ -468,6 +480,7 @@ a {
     border-radius: 1rem;
     overflow: hidden;
     display: flex;
+    justify-content: center;
     //background-color: $color-main-brown;
   }
   &__image {

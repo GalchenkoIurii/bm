@@ -17,4 +17,5 @@ mix.sass('resources/sass/main.scss', 'public/css')
     //     processCssUrls: false
     // })
     .sass('resources/sass/media.scss', 'public/css');
-mix.js('resources/js/main.js', 'public/js');
+mix.js('resources/js/main.js', 'public/js')
+    .js('resources/js/profile.js', 'public/js');

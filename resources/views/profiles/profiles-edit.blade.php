@@ -25,15 +25,15 @@
                             <div class="avatar-box">
                                 <div class="avatar">
                                     <div class="avatar__square">
-                                        <img src="{{ $profile->getAvatar() }}" alt="" class="avatar__image">
+                                        <img id="profile-photo-preview" src="{{ $profile->getAvatar() }}" alt="" class="avatar__image">
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group file-input">
-                                <h3 class="page-description">Добавьте фото профиля</h3>
-                                <label for="photo" class="form-group__label file-input__label">Выберите фото...</label>
+                            <div class="card__form-group card__file-input file-input">
+                                <span class="card__item-title">Добавьте фото профиля</span>
+                                <label for="profile-photo" class="form-group__label file-input__label">Выберите фото...</label>
                                 <div class="form-group__input">
-                                    <input type="file" class="file-input__input" name="photo" id="photo">
+                                    <input type="file" class="file-input__input" name="photo" id="profile-photo">
                                 </div>
                                 {{--<div class="photo-preview">--}}
                                     {{--<img id="photo-preview" src="" alt="">--}}
@@ -138,4 +138,8 @@
 
 @section('footer')
     @include('incs.footer')
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/profile.js') }}"></script>
 @endsection
