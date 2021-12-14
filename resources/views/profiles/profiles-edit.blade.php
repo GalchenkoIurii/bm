@@ -145,29 +145,31 @@
                                     </select>
                                 </div>
                             </div>
-
-                            <p class="card__item card__item_column">
-                                <span class="card__item-title">Область/Регион: </span>
-                                <span class="card__item-content">{{ $profile->user->region }}</span>
-                            </p>
-                            <p class="card__item card__item_column">
-                                <span class="card__item-title">Район: </span>
-                                <span class="card__item-content">{{ $profile->user->district }}</span>
-                            </p>
-                            <p class="card__item card__item_column">
-                                <span class="card__item-title">Город: </span>
-                                <span class="card__item-content">{{ $profile->user->city }}</span>
-                            </p>
-                        @endif
-
-                        @if($profile->user_id == auth()->id())
-                                <div class="card__item card__item_column">
-                                    <div class="btn-container">
-                                        <a href="{{ route('profiles.edit', ['profile' => $profile->id]) }}"
-                                           class="button button_colored button_shadowed">Редактировать профиль</a>
-                                    </div>
+                            <div class="card__form-group">
+                                <label for="region" class="card__form-group-label">Область/Регион</label>
+                                <div class="card__form-group-input">
+                                    <input type="text" name="region" id="region" value="{{ $profile->user->region }}">
                                 </div>
+                            </div>
+                            <div class="card__form-group">
+                                <label for="district" class="card__form-group-label">Район</label>
+                                <div class="card__form-group-input">
+                                    <input type="text" name="district" id="district" value="{{ $profile->user->district }}">
+                                </div>
+                            </div>
+                            <div class="card__form-group">
+                                <label for="city" class="card__form-group-label">Город</label>
+                                <div class="card__form-group-input">
+                                    <input type="text" name="city" id="city" value="{{ $profile->user->city }}">
+                                </div>
+                            </div>
                         @endif
+
+                        <div class="card__item card__item_column">
+                            <div class="btn-container">
+                                <button type="submit" class="button button_colored button_shadowed">Сохранить</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
