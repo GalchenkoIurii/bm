@@ -35,9 +35,18 @@
                                 <div class="form-group__input">
                                     <input type="file" class="file-input__input" name="photo" id="profile-photo">
                                 </div>
-                                {{--<div class="photo-preview">--}}
-                                    {{--<img id="photo-preview" src="" alt="">--}}
-                                {{--</div>--}}
+                            </div>
+                        </div>
+                        <div class="card__form-group">
+                            <label for="first_name" class="card__form-group-label">Имя</label>
+                            <div class="card__form-group-input">
+                                <input type="text" name="first_name" id="first_name" value="{{ $profile->user->first_name }}">
+                            </div>
+                        </div>
+                        <div class="card__form-group">
+                            <label for="last_name" class="card__form-group-label">Фамилия</label>
+                            <div class="card__form-group-input">
+                                <input type="text" name="last_name" id="last_name" value="{{ $profile->user->last_name }}">
                             </div>
                         </div>
                         @if($profile->user->is_master)
