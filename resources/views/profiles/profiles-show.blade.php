@@ -52,79 +52,119 @@
                             <span class="card__item-title">Email: </span>
                             <span class="card__item-content">{{ $profile->user->email }}</span>
                         </p>
-                        <p class="card__item card__item_column">
-                            <span class="card__item-title">Номер телефона: </span>
-                            <span class="card__item-content">{{ $profile->user->phone }}</span>
-                        </p>
-                        <p class="card__item card__item_column">
-                            <span class="card__item-title">Страна: </span>
-                            <span class="card__item-content">{{ $profile->country }}</span>
-                        </p>
-                        <p class="card__item card__item_column">
-                            <span class="card__item-title">Область/Регион: </span>
-                            <span class="card__item-content">{{ $profile->region }}</span>
-                        </p>
-                        <p class="card__item card__item_column">
-                            <span class="card__item-title">Район: </span>
-                            <span class="card__item-content">{{ $profile->district }}</span>
-                        </p>
-                        <p class="card__item card__item_column">
-                            <span class="card__item-title">Город: </span>
-                            <span class="card__item-content">{{ $profile->city }}</span>
-                        </p>
-                        <p class="card__item card__item_column">
-                            <span class="card__item-title">Улица: </span>
-                            <span class="card__item-content">{{ $profile->street }}</span>
-                        </p>
-                        <p class="card__item card__item_column">
-                            <span class="card__item-title">Номер дома: </span>
-                            <span class="card__item-content">{{ $profile->house }}</span>
-                        </p>
-                        <p class="card__item card__item_column">
-                            <span class="card__item-title">Номер помещения/квартиры: </span>
-                            <span class="card__item-content">{{ $profile->locale_num }}</span>
-                        </p>
-                        <p class="card__item card__item_column">
-                            <span class="card__item-title">Место: </span>
-                            <span class="card__item-content">{{ $profile->place }}</span>
-                        </p>
-                        <p class="card__item card__item_column">
-                            <span class="card__item-title">Обо мне: </span>
-                            <span class="card__item-content">{{ $profile->about }}</span>
-                        </p>
-                        <p class="card__item card__item_column">
-                            <span class="card__item-title">Образование: </span>
-                            <span class="card__item-content">{{ $profile->education }}</span>
-                        </p>
-                        <p class="card__item card__item_column">
-                            <span class="card__item-title">Опыт: </span>
-                            <span class="card__item-content">{{ $profile->experience }}</span>
-                        </p>
+                        @if(!is_null($profile->user->phone))
+                            <p class="card__item card__item_column">
+                                <span class="card__item-title">Номер телефона: </span>
+                                <span class="card__item-content">{{ $profile->user->phone }}</span>
+                            </p>
+                        @endif
+                        @if(!is_null($profile->country))
+                            <p class="card__item card__item_column">
+                                <span class="card__item-title">Страна: </span>
+                                <span class="card__item-content">{{ $profile->country }}</span>
+                            </p>
+                        @endif
+                        @if(!is_null($profile->region))
+                            <p class="card__item card__item_column">
+                                <span class="card__item-title">Область/Регион: </span>
+                                <span class="card__item-content">{{ $profile->region }}</span>
+                            </p>
+                        @endif
+                        @if(!is_null($profile->district))
+                            <p class="card__item card__item_column">
+                                <span class="card__item-title">Район: </span>
+                                <span class="card__item-content">{{ $profile->district }}</span>
+                            </p>
+                        @endif
+                        @if(!is_null($profile->city))
+                            <p class="card__item card__item_column">
+                                <span class="card__item-title">Город: </span>
+                                <span class="card__item-content">{{ $profile->city }}</span>
+                            </p>
+                        @endif
+                        @if(!is_null($profile->street))
+                            <p class="card__item card__item_column">
+                                <span class="card__item-title">Улица: </span>
+                                <span class="card__item-content">{{ $profile->street }}</span>
+                            </p>
+                        @endif
+                        @if(!is_null($profile->house))
+                            <p class="card__item card__item_column">
+                                <span class="card__item-title">Номер дома: </span>
+                                <span class="card__item-content">{{ $profile->house }}</span>
+                            </p>
+                        @endif
+                        @if(!is_null($profile->locale_num))
+                            <p class="card__item card__item_column">
+                                <span class="card__item-title">Номер помещения/квартиры: </span>
+                                <span class="card__item-content">{{ $profile->locale_num }}</span>
+                            </p>
+                        @endif
+                        @if(!is_null($profile->place))
+                            <p class="card__item card__item_column">
+                                <span class="card__item-title">Где могу принять клиента:</span>
+                                    @if($profile->place == 'master')
+                                        <span class="card__item-content">У себя</span>
+                                    @elseif($profile->place == 'client')
+                                        <span class="card__item-content">У клиента</span>
+                                    @elseif($profile->place == 'both')
+                                        <span class="card__item-content">У себя или у клиента</span>
+                                    @endif
+                            </p>
+                        @endif
+                        @if(!is_null($profile->about))
+                            <p class="card__item card__item_column">
+                                <span class="card__item-title">Обо мне: </span>
+                                <span class="card__item-content">{{ $profile->about }}</span>
+                            </p>
+                        @endif
+                        @if(!is_null($profile->education))
+                            <p class="card__item card__item_column">
+                                <span class="card__item-title">Образование: </span>
+                                <span class="card__item-content">{{ $profile->education }}</span>
+                            </p>
+                        @endif
+                        @if(!is_null($profile->experience))
+                            <p class="card__item card__item_column">
+                                <span class="card__item-title">Опыт: </span>
+                                <span class="card__item-content">{{ $profile->experience }}</span>
+                            </p>
+                        @endif
                     @else
                         <p class="card__item card__item_column">
                             <span class="card__item-title">Email: </span>
                             <span class="card__item-content">{{ $profile->user->email }}</span>
                         </p>
-                        <p class="card__item card__item_column">
-                            <span class="card__item-title">Номер телефона: </span>
-                            <span class="card__item-content">{{ $profile->user->phone }}</span>
-                        </p>
-                        <p class="card__item card__item_column">
-                            <span class="card__item-title">Страна: </span>
-                            <span class="card__item-content">{{ $profile->user->country }}</span>
-                        </p>
-                        <p class="card__item card__item_column">
-                            <span class="card__item-title">Область/Регион: </span>
-                            <span class="card__item-content">{{ $profile->user->region }}</span>
-                        </p>
-                        <p class="card__item card__item_column">
-                            <span class="card__item-title">Район: </span>
-                            <span class="card__item-content">{{ $profile->user->district }}</span>
-                        </p>
-                        <p class="card__item card__item_column">
-                            <span class="card__item-title">Город: </span>
-                            <span class="card__item-content">{{ $profile->user->city }}</span>
-                        </p>
+                        @if(!is_null($profile->user->phone))
+                            <p class="card__item card__item_column">
+                                <span class="card__item-title">Номер телефона: </span>
+                                <span class="card__item-content">{{ $profile->user->phone }}</span>
+                            </p>
+                        @endif
+                        @if(!is_null($profile->user->country))
+                            <p class="card__item card__item_column">
+                                <span class="card__item-title">Страна: </span>
+                                <span class="card__item-content">{{ $profile->user->country }}</span>
+                            </p>
+                        @endif
+                        @if(!is_null($profile->user->region))
+                            <p class="card__item card__item_column">
+                                <span class="card__item-title">Область/Регион: </span>
+                                <span class="card__item-content">{{ $profile->user->region }}</span>
+                            </p>
+                        @endif
+                        @if(!is_null($profile->user->district))
+                            <p class="card__item card__item_column">
+                                <span class="card__item-title">Район: </span>
+                                <span class="card__item-content">{{ $profile->user->district }}</span>
+                            </p>
+                        @endif
+                        @if(!is_null($profile->user->city))
+                            <p class="card__item card__item_column">
+                                <span class="card__item-title">Город: </span>
+                                <span class="card__item-content">{{ $profile->user->city }}</span>
+                            </p>
+                        @endif
                     @endif
 
                     @if($profile->user_id == auth()->id())
