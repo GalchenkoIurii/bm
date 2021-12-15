@@ -77,9 +77,7 @@
                                 {{--<div id="service-select" class="select">--}}
                                     {{--<select name="service_id" id="service_id"></select>--}}
                                 {{--</div>--}}
-                                <div class="form-group-checkbox">
-
-                                </div>
+                                <div class="form-group-checkbox"></div>
                             </div>
 
                             <div class="card__form-group">

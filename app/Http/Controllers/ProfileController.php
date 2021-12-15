@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProfileEditRequest;
 use App\Models\Category;
 use App\Models\Profile;
 use App\Models\Service;
@@ -27,6 +28,12 @@ class ProfileController extends Controller
         }
 
         return back()->with('error', 'Недостаточно прав для редактирования');
+    }
+
+    public function update(ProfileEditRequest $request, $id)
+    {
+        $request_data = $request->validated();
+        dd($request_data);
     }
 
     public function getServices(Request $request)

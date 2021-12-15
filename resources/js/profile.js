@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 let items = [];
 
                 data.forEach(function(item) {
-                    items.push(`<input type="checkbox" name="service-${item.id}" id="service-${item.id}" value="${item.id}">
+                    items.push(`<input type="checkbox" name="service_ids[]" id="service-${item.id}" value="${item.id}">
                                     <label for="service-${item.id}" class="form-group-checkbox__label">${item.name}</label>`);
                 });
 

@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }).then(function (data) {
       var items = [];
       data.forEach(function (item) {
-        items.push("<input type=\"checkbox\" name=\"service-".concat(item.id, "\" id=\"service-").concat(item.id, "\" value=\"").concat(item.id, "\">\n                                    <label for=\"service-").concat(item.id, "\" class=\"form-group-checkbox__label\">").concat(item.name, "</label>"));
+        items.push("<input type=\"checkbox\" name=\"service_ids[]\" id=\"service-".concat(item.id, "\" value=\"").concat(item.id, "\">\n                                    <label for=\"service-").concat(item.id, "\" class=\"form-group-checkbox__label\">").concat(item.name, "</label>"));
       });
 
       if (items.length) {
