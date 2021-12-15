@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Profile;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,5 +27,12 @@ class ProfileController extends Controller
         }
 
         return back()->with('error', 'Недостаточно прав для редактирования');
+    }
+
+    public function getServices(Request $request)
+    {
+        $services = Service::where('category_id', $request->input('category_id'))->get();
+
+        return response()->json($services->toArray());
     }
 }

@@ -72,6 +72,12 @@
                                     </select>
                                 </div>
                             </div>
+                            <div id="service-select-box" class="card__form-group" style="display:none">
+                                <label for="service_id" class="card__form-group-label">Услуги</label>
+                                <div id="service-select" class="select">
+                                    <select name="service_id" id="service_id"></select>
+                                </div>
+                            </div>
                             <div class="card__form-group">
                                 <label for="country" class="card__form-group-label">Страна</label>
                                 <div id="country-select" class="select">
