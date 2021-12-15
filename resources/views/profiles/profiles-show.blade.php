@@ -16,6 +16,14 @@
             @if(session()->has('error'))
                 <p class="error-message">{{ session('error') }}</p>
             @endif
+                @if($errors->any())
+                    @foreach($errors->all() as $error)
+                        <p class="error-message">{{ $error }}</p>
+                    @endforeach
+                @endif
+                @if(session()->has('success'))
+                    <p class="status-message">{{ session('success') }}</p>
+                @endif
             <div class="card-box">
                 <div class="card">
                     <div class="card__item card__item_centered">
@@ -141,28 +149,28 @@
                                 <span class="card__item-content">{{ $profile->user->phone }}</span>
                             </p>
                         @endif
-                        @if(!is_null($profile->user->country))
+                        @if(!is_null($profile->country))
                             <p class="card__item card__item_column">
                                 <span class="card__item-title">Страна: </span>
-                                <span class="card__item-content">{{ $profile->user->country }}</span>
+                                <span class="card__item-content">{{ $profile->country }}</span>
                             </p>
                         @endif
-                        @if(!is_null($profile->user->region))
+                        @if(!is_null($profile->region))
                             <p class="card__item card__item_column">
                                 <span class="card__item-title">Область/Регион: </span>
-                                <span class="card__item-content">{{ $profile->user->region }}</span>
+                                <span class="card__item-content">{{ $profile->region }}</span>
                             </p>
                         @endif
-                        @if(!is_null($profile->user->district))
+                        @if(!is_null($profile->district))
                             <p class="card__item card__item_column">
                                 <span class="card__item-title">Район: </span>
-                                <span class="card__item-content">{{ $profile->user->district }}</span>
+                                <span class="card__item-content">{{ $profile->district }}</span>
                             </p>
                         @endif
-                        @if(!is_null($profile->user->city))
+                        @if(!is_null($profile->city))
                             <p class="card__item card__item_column">
                                 <span class="card__item-title">Город: </span>
-                                <span class="card__item-content">{{ $profile->user->city }}</span>
+                                <span class="card__item-content">{{ $profile->city }}</span>
                             </p>
                         @endif
                     @endif

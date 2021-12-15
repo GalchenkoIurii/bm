@@ -15,6 +15,17 @@
         <div class="container">
 
             <h1 class="page-header">Редактирование профиля</h1>
+            @if(session()->has('error'))
+                <p class="error-message">{{ session('error') }}</p>
+            @endif
+            @if($errors->any())
+                @foreach($errors->all() as $error)
+                    <p class="error-message">{{ $error }}</p>
+                @endforeach
+            @endif
+            @if(session()->has('success'))
+                <p class="status-message">{{ session('success') }}</p>
+            @endif
             <div class="card-box">
                 <div class="card">
                     <form action="{{ route('profiles.update', ['profile' => $profile->id]) }}" method="post"
@@ -158,27 +169,27 @@
                                 <label for="country" class="card__form-group-label">Страна</label>
                                 <div id="country-select" class="select">
                                     <select name="country" id="country">
-                                        <option value="Украина" @if($profile->user->country == "Украина") selected @endif>Украина</option>
-                                        <option value="Польша" @if($profile->user->country == "Польша") selected @endif>Польша</option>
+                                        <option value="Украина" @if($profile->country == "Украина") selected @endif>Украина</option>
+                                        <option value="Польша" @if($profile->country == "Польша") selected @endif>Польша</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="card__form-group">
                                 <label for="region" class="card__form-group-label">Область/Регион</label>
                                 <div class="card__form-group-input">
-                                    <input type="text" name="region" id="region" value="{{ $profile->user->region }}">
+                                    <input type="text" name="region" id="region" value="{{ $profile->region }}">
                                 </div>
                             </div>
                             <div class="card__form-group">
                                 <label for="district" class="card__form-group-label">Район</label>
                                 <div class="card__form-group-input">
-                                    <input type="text" name="district" id="district" value="{{ $profile->user->district }}">
+                                    <input type="text" name="district" id="district" value="{{ $profile->district }}">
                                 </div>
                             </div>
                             <div class="card__form-group">
                                 <label for="city" class="card__form-group-label">Город</label>
                                 <div class="card__form-group-input">
-                                    <input type="text" name="city" id="city" value="{{ $profile->user->city }}">
+                                    <input type="text" name="city" id="city" value="{{ $profile->city }}">
                                 </div>
                             </div>
                         @endif
