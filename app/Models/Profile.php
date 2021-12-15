@@ -9,6 +9,21 @@ class Profile extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'avatar',
+        'about',
+        'education',
+        'experience',
+        'country',
+        'region',
+        'district',
+        'city',
+        'street',
+        'house',
+        'locale_num',
+        'place',
+    ];
+
     public function getAvatar()
     {
         if (!$this->avatar) {

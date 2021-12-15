@@ -33,7 +33,7 @@
                                 <span class="card__item-title">Добавьте фото профиля</span>
                                 <label for="profile-photo" class="form-group__label file-input__label">Выберите фото...</label>
                                 <div class="form-group__input">
-                                    <input type="file" class="file-input__input" name="photo" id="profile-photo">
+                                    <input type="file" class="file-input__input" name="avatar" id="profile-photo">
                                 </div>
                             </div>
                         </div>

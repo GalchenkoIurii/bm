@@ -33,7 +33,21 @@ class ProfileController extends Controller
     public function update(ProfileEditRequest $request, $id)
     {
         $request_data = $request->validated();
-        dd($request_data);
+
+        if (Auth::user()->profile->id == $id) {
+            $profile = Profile::with(['user'])->findOrFail($id);
+
+            $profile_data = null;
+            $user_data = null;
+
+            if ($request->hasFile('avatar')) {
+                $folder = date('Y-m-d');
+                $profile_data['avatar'] = $request->file('avatar')->store('profiles/' . $folder, 'public');
+                $old_avatar_path = $profile->avatar;
+            }
+        }
+
+        return back()->with('error', 'Недостаточно прав для редактирования');
     }
 
     public function getServices(Request $request)
