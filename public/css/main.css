@@ -490,6 +490,12 @@ a {
 .card__file-input .card__item-title {
   text-align: center;
 }
+.card .form-group-checkbox {
+  flex-direction: column;
+}
+.card .form-group-checkbox input + label {
+  margin-bottom: 1rem;
+}
 
 /* avatar */
 .avatar-box {

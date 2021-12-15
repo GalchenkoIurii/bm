@@ -105,6 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var categorySelect = document.querySelector('#category-select .select_items');
   var serviceSelectBox = document.querySelector('#service-select-box');
   categorySelect.addEventListener('click', function (e) {
+    serviceSelectBox.style.display = 'none';
     var categoryId = e.target.getAttribute('data-value');
     var csrf_token = document.querySelector('input[name="_token"]').value;
     fetch('/profiles/services', {
@@ -121,20 +122,39 @@ document.addEventListener("DOMContentLoaded", function () {
     }).then(function (data) {
       var items = [];
       data.forEach(function (item) {
-        items.push("<option value=\"".concat(item.id, "\">").concat(item.name, "</option>"));
+        items.push("<input type=\"checkbox\" name=\"service-".concat(item.id, "\" id=\"service-").concat(item.id, "\" value=\"").concat(item.id, "\">\n                                    <label for=\"service-").concat(item.id, "\" class=\"form-group-checkbox__label\">").concat(item.name, "</label>"));
       });
 
       if (items.length) {
-        var serviceSelect = document.querySelector('#service_id');
-        serviceSelect.querySelectorAll('option').forEach(function (item) {
+        var serviceSelect = document.querySelector('#service-select-box .form-group-checkbox');
+        serviceSelect.querySelectorAll('input').forEach(function (item) {
+          item.remove();
+        });
+        serviceSelect.querySelectorAll('label').forEach(function (item) {
           item.remove();
         });
         serviceSelect.insertAdjacentHTML('afterbegin', items.join(''));
-        document.querySelector('#service-select .select_selected').remove();
-        document.querySelector('#service-select .select_items.select_hide').remove();
-        initSelect('#service-select');
         serviceSelectBox.style.display = 'flex';
-      }
+      } // data.forEach(function(item) {
+      //     items.push(`<option value="${item.id}">${item.name}</option>`);
+      // });
+      //
+      // if (items.length) {
+      //     let serviceSelect = document.querySelector('#service_id');
+      //     serviceSelect.querySelectorAll('option').forEach(function(item) {
+      //         item.remove();
+      //     });
+      //
+      //     serviceSelect.insertAdjacentHTML('afterbegin', items.join(''));
+      //
+      //     document.querySelector('#service-select .select_selected').remove();
+      //     document.querySelector('#service-select .select_items.select_hide').remove();
+      //
+      //     initSelect('#service-select');
+      //
+      //     serviceSelectBox.style.display = 'flex';
+      // }
+
     });
   });
 }, false);
