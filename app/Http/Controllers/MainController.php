@@ -33,4 +33,9 @@ class MainController extends Controller
 
         return view('search', compact('categories'));
     }
+
+    public function searchMasters($service)
+    {
+
+    }
 }

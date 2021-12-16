@@ -34,8 +34,11 @@ Route::middleware(['user_online'])->group(function() {
 
     Route::get('/contacts', [MainController::class, 'contacts'])
         ->name('contacts');
+
     Route::get('/search', [MainController::class, 'search'])
         ->name('search');
+    Route::get('/search/{service}', [MainController::class, 'searchMasters'])
+        ->name('search.masters');
 
 
     Route::middleware('guest')->group(function() {

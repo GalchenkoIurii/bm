@@ -19,7 +19,7 @@
                             </summary>
                             <ul class="accordion__text">
                                 @foreach($category->services as $service)
-                                        <li class="accordion__item"><a href="#">{{ $service->name }}</a></li>
+                                        <li class="accordion__item"><a href="{{ route('search.masters', ['service' => $service->slug]) }}">{{ $service->name }}</a></li>
                                     @endforeach
                             </ul>
                         </details>
