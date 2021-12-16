@@ -104,3 +104,10 @@
     padding: 0 100px;
   }
 }
+
+@media (min-width: 1920px) {
+  .container {
+    max-width: 2100px;
+    padding: 0 120px;
+  }
+}
