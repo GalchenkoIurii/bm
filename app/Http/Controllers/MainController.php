@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Service;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -36,6 +38,8 @@ class MainController extends Controller
 
     public function searchMasters($service)
     {
+        $service_data = Service::with('users')->where('slug', $service)->get();
 
+        return view('masters.masters-show', compact('service_data'));
     }
 }
