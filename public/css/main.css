@@ -544,59 +544,6 @@ a {
 .master-card__item_centered {
   align-items: center;
 }
-.master-card__form-group {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-.master-card__form-group-label {
-  font-family: Roboto-Medium, sans-serif;
-  font-size: 0.9rem;
-  line-height: 1.2rem;
-  margin-bottom: 0.3rem;
-}
-.master-card__form-group-input {
-  display: flex;
-  margin-bottom: 1rem;
-}
-.master-card__form-group input, .master-card__form-group textarea {
-  flex-basis: 100%;
-  padding: 0.6rem 0.8rem;
-  height: 2.5rem;
-  border-radius: 0.3rem;
-  border: 1px solid #d9dadf;
-  background-color: #fff;
-  font-family: Roboto-Medium, sans-serif;
-  color: #4a4a4a;
-  font-size: 1rem;
-  line-height: 1.2;
-  outline: none;
-}
-.master-card__form-group textarea {
-  resize: none;
-  height: 5rem;
-}
-.master-card__form-group input.error {
-  border-color: #f03d3e;
-}
-.master-card__form-group .select {
-  padding: 0;
-  margin-bottom: 1rem;
-}
-.master-card__file-input {
-  flex: 1 2 65%;
-  display: flex;
-  flex-direction: column;
-}
-.master-card__file-input .card__item-title {
-  text-align: center;
-}
-.master-card .form-group-checkbox {
-  flex-direction: column;
-}
-.master-card .form-group-checkbox input + label {
-  margin-bottom: 1rem;
-}
 
 /* avatar */
 .avatar-box {
@@ -629,7 +576,7 @@ a {
   border-radius: 1rem;
 }
 .avatar img {
-  width: 100px;
+  width: 50px;
   margin: 1rem;
 }
 

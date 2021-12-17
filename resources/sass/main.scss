@@ -542,59 +542,6 @@ a {
   &__item_centered {
     align-items: center;
   }
-  &__form-group {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    &-label {
-      font-family: $font-main-medium;
-      font-size: .9rem;
-      line-height: 1.2rem;
-      margin-bottom: .3rem;
-    }
-    &-input {
-      display: flex;
-      margin-bottom: 1rem;
-    }
-    input, textarea {
-      flex-basis: 100%;
-      padding: .6rem .8rem;
-      height: 2.5rem;
-      border-radius: .3rem;
-      border: 1px solid $color-main-grey;
-      background-color: $color-main-white;
-      font-family: $font-main-medium;
-      color: $color-text-grey;
-      font-size: 1rem;
-      line-height: 1.2;
-      outline: none;
-    }
-    textarea {
-      resize: none;
-      height: 5rem;
-    }
-    input.error {
-      border-color: $color-main-red;
-    }
-    .select {
-      padding: 0;
-      margin-bottom: 1rem;
-    }
-  }
-  &__file-input {
-    flex: 1 2 65%;
-    display: flex;
-    flex-direction: column;
-    .card__item-title {
-      text-align: center;
-    }
-  }
-  .form-group-checkbox {
-    flex-direction: column;
-  }
-  .form-group-checkbox input + label {
-    margin-bottom: 1rem;
-  }
 }
 
 
@@ -632,7 +579,7 @@ a {
     border-radius: 1rem;
   }
   img {
-    width: 100px;
+    width: 50px;
     margin: 1rem;
   }
 }
