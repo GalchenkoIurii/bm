@@ -505,7 +505,7 @@ a {
   display: flex;
   flex-direction: column;
   padding: .6rem 1rem;
-  margin-bottom: .6rem;
+  margin-bottom: 1rem;
   border: 1px solid $color-main-brown;
   border-radius: .5rem;
   .page-header {
@@ -548,6 +548,9 @@ a {
   &__item_centered {
     align-items: center;
   }
+}
+.card-box a:last-child .master-card{
+  margin-bottom: 0;
 }
 
 

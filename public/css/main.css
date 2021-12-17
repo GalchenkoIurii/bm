@@ -506,7 +506,7 @@ a {
   display: flex;
   flex-direction: column;
   padding: 0.6rem 1rem;
-  margin-bottom: 0.6rem;
+  margin-bottom: 1rem;
   border: 1px solid #d2a679;
   border-radius: 0.5rem;
 }
@@ -549,6 +549,10 @@ a {
 }
 .master-card__item_centered {
   align-items: center;
+}
+
+.card-box a:last-child .master-card {
+  margin-bottom: 0;
 }
 
 /* avatar */
