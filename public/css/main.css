@@ -498,6 +498,106 @@ a {
   margin-bottom: 1rem;
 }
 
+/* masters cards */
+.master-card {
+  font-family: Roboto-Medium, sans-serif;
+  font-size: 1rem;
+  line-height: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  padding: 0.6rem 1rem;
+  margin-bottom: 0.6rem;
+  border: 1px solid #d2a679;
+  border-radius: 0.5rem;
+}
+.master-card__item {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 0.6rem;
+}
+.master-card__item-title {
+  color: #4a4a4a;
+  font-size: 0.9rem;
+  margin-bottom: 0.2rem;
+}
+.master-card__item-content {
+  color: #000;
+}
+.master-card__item-label {
+  color: #4a4a4a;
+  font-size: 1rem;
+  margin-right: 1rem;
+}
+.master-card__item-label i {
+  color: #d2a679;
+}
+.master-card__item-text {
+  color: #4a4a4a;
+  font-size: 0.9rem;
+}
+.master-card__item:last-child {
+  margin-bottom: 0;
+}
+.master-card__item_column {
+  flex-direction: column;
+}
+.master-card__item_centered {
+  align-items: center;
+}
+.master-card__form-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.master-card__form-group-label {
+  font-family: Roboto-Medium, sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.2rem;
+  margin-bottom: 0.3rem;
+}
+.master-card__form-group-input {
+  display: flex;
+  margin-bottom: 1rem;
+}
+.master-card__form-group input, .master-card__form-group textarea {
+  flex-basis: 100%;
+  padding: 0.6rem 0.8rem;
+  height: 2.5rem;
+  border-radius: 0.3rem;
+  border: 1px solid #d9dadf;
+  background-color: #fff;
+  font-family: Roboto-Medium, sans-serif;
+  color: #4a4a4a;
+  font-size: 1rem;
+  line-height: 1.2;
+  outline: none;
+}
+.master-card__form-group textarea {
+  resize: none;
+  height: 5rem;
+}
+.master-card__form-group input.error {
+  border-color: #f03d3e;
+}
+.master-card__form-group .select {
+  padding: 0;
+  margin-bottom: 1rem;
+}
+.master-card__file-input {
+  flex: 1 2 65%;
+  display: flex;
+  flex-direction: column;
+}
+.master-card__file-input .card__item-title {
+  text-align: center;
+}
+.master-card .form-group-checkbox {
+  flex-direction: column;
+}
+.master-card .form-group-checkbox input + label {
+  margin-bottom: 1rem;
+}
+
 /* avatar */
 .avatar-box {
   display: flex;
