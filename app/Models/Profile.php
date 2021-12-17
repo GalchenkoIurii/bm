@@ -24,14 +24,14 @@ class Profile extends Model
         'place',
     ];
 
-    public function getAvatar()
-    {
-        if (!$this->avatar) {
-            return asset('storage/no-avatar.svg');
-        } else {
-            return asset('storage/' . $this->avatar);
-        }
-    }
+//    public function getAvatar()
+//    {
+//        if (!$this->avatar) {
+//            return asset('storage/no-avatar.svg');
+//        } else {
+//            return asset('storage/' . $this->avatar);
+//        }
+//    }
 
     public function user()
     {

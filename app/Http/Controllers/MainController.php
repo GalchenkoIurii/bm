@@ -38,8 +38,8 @@ class MainController extends Controller
 
     public function searchMasters($service)
     {
-        $service_data = Service::with('users')->where('slug', $service)->get();
+        $users = User::with('profile')->whereRelation('services', 'slug', $service)->get();
 
-        return view('masters.masters-show', compact('service_data'));
+        return view('masters.masters-show', compact('users'));
     }
 }

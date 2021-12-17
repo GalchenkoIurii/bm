@@ -36,7 +36,7 @@
                             <div class="avatar-box">
                                 <div class="avatar">
                                     <div class="avatar__square">
-                                        <img id="profile-photo-preview" src="{{ $profile->getAvatar() }}" alt="" class="avatar__image">
+                                        <img id="profile-photo-preview" src="{{ $profile->avatar }}" alt="" class="avatar__image">
                                     </div>
                                 </div>
                             </div>
@@ -85,9 +85,6 @@
                             </div>
                             <div id="service-select-box" class="card__form-group" style="display:none">
                                 <label class="card__form-group-label">Услуги</label>
-                                {{--<div id="service-select" class="select">--}}
-                                    {{--<select name="service_id" id="service_id"></select>--}}
-                                {{--</div>--}}
                                 <div class="form-group-checkbox"></div>
                             </div>
 

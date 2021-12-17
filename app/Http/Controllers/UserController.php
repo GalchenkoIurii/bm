@@ -34,6 +34,8 @@ class UserController extends Controller
         $user = User::create($request_data);
 
         $user->profile()->save(new Profile());
+        $user->profile->avatar = 'storage/no-avatar.svg';
+        $user->profile()->save();
 
         session()->flash('success', 'Вы успешно зарегистрированы');
 

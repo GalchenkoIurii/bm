@@ -24,17 +24,19 @@
                 @if(session()->has('success'))
                     <p class="status-message">{{ session('success') }}</p>
                 @endif
-                @foreach($service_data as $user)
+
+                @if($users->isNotEmpty())
+                @foreach($users as $user)
                     <div class="card-box">
                         <div class="card">
                             <div class="card__item card__item_centered">
                                 <div class="avatar-box">
                                     <div class="avatar">
                                         <div class="avatar__square">
-                                            <img src="{{ $user->profile()->getAvatar() }}" alt="" class="avatar__image">
+                                            <img src="{{ asset('storage/' . $user->profile->avatar) }}" alt="" class="avatar__image">
                                         </div>
                                     </div>
-                                    @if($profile->user->isOnline())
+                                    @if($user->isOnline())
                                         <p class="avatar-box__status status-online">online</p>
                                     @else
                                         <p class="avatar-box__status status-not-online">не в сети</p>
@@ -144,8 +146,9 @@
                         </div>
                     </div>
                     @endforeach
-
-
+                @else
+                    <h3 class="page-description">По данной услуге пока нет мастеров...</h3>
+                @endif
         </div>
     </section>
 @endsection
