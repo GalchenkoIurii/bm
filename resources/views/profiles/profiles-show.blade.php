@@ -30,7 +30,7 @@
                         <div class="avatar-box">
                             <div class="avatar">
                                 <div class="avatar__square">
-                                    <img src="{{ $profile->avatar }}" alt="" class="avatar__image">
+                                    <img src="{{ asset('storage/' . $profile->avatar) }}" alt="" class="avatar__image">
                                 </div>
                             </div>
                             @if($profile->user->isOnline())

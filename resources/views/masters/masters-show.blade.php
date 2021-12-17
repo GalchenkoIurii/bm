@@ -28,6 +28,7 @@
                 @if($users->isNotEmpty())
                     <div class="card-box">
                 @foreach($users as $user)
+                            <a href="{{ route('profiles.show', ['profile' => $user->profile->id]) }}">
                         <div class="master-card">
                             <div class="master-card__item master-card__item_centered">
                                 <div class="avatar-box">
@@ -90,6 +91,7 @@
                                 @endif
                             @endif
                         </div>
+                            </a>
                     @endforeach
                     </div>
                 @else

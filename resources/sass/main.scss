@@ -508,13 +508,19 @@ a {
   margin-bottom: .6rem;
   border: 1px solid $color-main-brown;
   border-radius: .5rem;
+  .page-header {
+    color: $color-main-black;
+  }
+  .responses__text {
+    color: $color-text-grey;
+  }
   &__item {
     display: flex;
     justify-content: space-around;
     margin-bottom: .6rem;
     &-title {
       color: $color-text-grey;
-      font-size: .9rem;
+      font-size: .8rem;
       margin-bottom: 0.2rem;
     }
     &-content {

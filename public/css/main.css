@@ -510,6 +510,12 @@ a {
   border: 1px solid #d2a679;
   border-radius: 0.5rem;
 }
+.master-card .page-header {
+  color: #000;
+}
+.master-card .responses__text {
+  color: #4a4a4a;
+}
 .master-card__item {
   display: flex;
   justify-content: space-around;
@@ -517,7 +523,7 @@ a {
 }
 .master-card__item-title {
   color: #4a4a4a;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   margin-bottom: 0.2rem;
 }
 .master-card__item-content {
