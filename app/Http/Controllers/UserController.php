@@ -33,9 +33,7 @@ class UserController extends Controller
 
         $user = User::create($request_data);
 
-        $user->profile()->save(new Profile());
-        $user->profile->avatar = 'no-avatar.svg';
-        $user->profile()->save();
+        $user->profile()->save(new Profile(['avatar' => 'no-avatar.svg']));
 
         session()->flash('success', 'Вы успешно зарегистрированы');
 
@@ -55,7 +53,7 @@ class UserController extends Controller
 
         $search_param = array_key_exists('email', $request_data) ? 'email' : 'phone';
 
-        $user = User::where($search_param, $request_data[$search_param])->first();
+        $user = User::with(['profile'])->where($search_param, $request_data[$search_param])->first();
 
         if (isset($user) && $user->is_banned) {
             return redirect()->back()->with('error', 'Вы заблокированы');
