@@ -176,7 +176,7 @@
                     @endif
 
                     @if($profile->user_id == auth()->id())
-                            <div class="card__item card__item_column">
+                            <div class="card__item card__item_column card__item-btn">
                                 <div class="btn-container">
                                     <a href="{{ route('profiles.edit', ['profile' => $profile->id]) }}"
                                        class="button button_colored button_shadowed">Редактировать профиль</a>

@@ -80,6 +80,19 @@
     }
   }
 
+  .card {
+    padding: 1rem 2.8rem;
+    &__item_column {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    &__item-title {
+      margin-bottom: 0;
+    }
+    &__item-btn {
+      justify-content: center;
+    }
+  }
 }
 
 @media (min-width: 768px) {

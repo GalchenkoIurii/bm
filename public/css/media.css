@@ -71,6 +71,20 @@
     margin-bottom: 0.4rem;
     padding: 0.4rem;
   }
+
+  .card {
+    padding: 1rem 2.8rem;
+  }
+  .card__item_column {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .card__item-title {
+    margin-bottom: 0;
+  }
+  .card__item-btn {
+    justify-content: center;
+  }
 }
 @media (min-width: 768px) {
   .container {

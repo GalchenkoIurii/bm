@@ -191,7 +191,7 @@
                             </div>
                         @endif
 
-                        <div class="card__item card__item_column">
+                        <div class="card__item card__item_column card__item-btn">
                             <div class="btn-container">
                                 <button type="submit" class="button button_colored button_shadowed">Сохранить</button>
                             </div>
