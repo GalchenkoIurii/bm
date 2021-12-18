@@ -64,7 +64,7 @@ class UserController extends Controller
 
             session()->flash('success', 'Вы вошли');
 
-            return redirect()->intended(route('home'));
+            return redirect()->intended(route('profiles.show', ['profile' => Auth::user()->profile->id]));
         }
 
         return redirect()->back()->with('error', 'Неверные данные для входа');

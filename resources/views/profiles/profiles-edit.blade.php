@@ -36,7 +36,7 @@
                             <div class="avatar-box">
                                 <div class="avatar">
                                     <div class="avatar__square">
-                                        <img id="profile-photo-preview" src="{{ $profile->avatar }}" alt="" class="avatar__image">
+                                        <img id="profile-photo-preview" src="{{ asset('storage/' . $profile->avatar) }}" alt="" class="avatar__image">
                                     </div>
                                 </div>
                             </div>
