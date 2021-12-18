@@ -26,7 +26,7 @@
                 @endif
 
                 @if($users->isNotEmpty())
-                    <div class="card-box">
+                    <div class="card-box masters-box">
                 @foreach($users as $user)
                             <a href="{{ route('profiles.show', ['profile' => $user->profile->id]) }}">
                         <div class="master-card">

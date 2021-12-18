@@ -101,6 +101,18 @@
     padding: 0 60px;
     margin: 0 auto;
   }
+  .masters-box {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    a {
+      flex-basis: 48%;
+      margin-bottom: 1rem;
+    }
+  }
+  .master-card {
+    height: 100%;
+  }
 }
 
 @media (min-width: 860px) {
