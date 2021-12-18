@@ -411,6 +411,8 @@ a {
 /* card */
 .card-box {
   margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .card {
@@ -518,7 +520,8 @@ a {
 }
 .master-card__item {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 0.6rem;
 }
 .master-card__item-title {

@@ -407,6 +407,8 @@ a {
 
 .card-box {
   margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .card {
@@ -516,7 +518,8 @@ a {
   }
   &__item {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
     margin-bottom: .6rem;
     &-title {
       color: $color-text-grey;
