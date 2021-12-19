@@ -116,12 +116,19 @@
 }
 
 @media (min-width: 860px) {
+  .logo {
+    flex-basis: 30%;
+    flex-shrink: 2;
+  }
   .menu {
     &__btn {
       display: none;
     }
     &__nav {
-      display: block;
+      display: flex;
+      .menu-box {
+        display: flex;
+      }
     }
   }
 }

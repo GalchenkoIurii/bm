@@ -687,6 +687,20 @@ a {
     &__nav {
       display: none;
     }
+    &__item {
+      padding: .1rem .2rem;
+    }
+    &__item:hover &__link {
+      color: $color-main-black;
+    }
+    &__item:not(:last-child) {
+      margin-right: .5rem;
+    }
+    &__link {
+      font-family: $font-main-bold;
+      font-size: .8rem;
+      color: $color-text-grey;
+    }
   }
 
   .mobile-menu {

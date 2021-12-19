@@ -108,11 +108,19 @@
   }
 }
 @media (min-width: 860px) {
+  .logo {
+    flex-basis: 30%;
+    flex-shrink: 2;
+  }
+
   .menu__btn {
     display: none;
   }
   .menu__nav {
-    display: block;
+    display: flex;
+  }
+  .menu__nav .menu-box {
+    display: flex;
   }
 }
 @media (min-width: 1024px) {

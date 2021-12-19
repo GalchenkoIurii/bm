@@ -676,6 +676,20 @@ a {
 .menu__nav {
   display: none;
 }
+.menu__item {
+  padding: 0.1rem 0.2rem;
+}
+.menu__item:hover .menu__link {
+  color: #000;
+}
+.menu__item:not(:last-child) {
+  margin-right: 0.5rem;
+}
+.menu__link {
+  font-family: Roboto-Bold, sans-serif;
+  font-size: 0.8rem;
+  color: #4a4a4a;
+}
 
 .mobile-menu {
   position: fixed;
