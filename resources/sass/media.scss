@@ -138,6 +138,10 @@
     max-width: 1200px;
     padding: 0 70px;
   }
+  .section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
   .menu {
     &__item {
       padding: .2rem .4rem;
@@ -147,6 +151,49 @@
     }
     &__link {
       font-size: .9rem;
+    }
+  }
+  .page-header {
+    margin-bottom: 2rem;
+  }
+  .page-subheader {
+    margin-top: 1.6rem;
+    margin-bottom: 1.6rem;
+  }
+  .page-description {
+    margin-bottom: 1.8rem;
+  }
+  .btn-container {
+    padding: 2rem;
+  }
+  .accordion-box {
+    margin: 2rem auto;
+    padding: 0 3rem;
+    &__item {
+      margin-bottom: 1rem;
+    }
+  }
+  .accordion {
+    &__title {
+      padding: 1.5rem 2.5rem;
+    }
+    &__text {
+      padding: 2rem 3rem;
+    }
+    &__item {
+      margin-bottom: 0.6rem;
+      padding: 0.5rem 1rem;
+    }
+  }
+  .footer {
+    &__nav {
+      padding: 2rem 0;
+    }
+    &__nav li {
+      margin-bottom: 1rem;
+    }
+    &__hr {
+      margin: 1.8rem auto;
     }
   }
 }

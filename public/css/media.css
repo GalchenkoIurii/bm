@@ -129,6 +129,11 @@
     padding: 0 70px;
   }
 
+  .section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
   .menu__item {
     padding: 0.2rem 0.4rem;
   }
@@ -137,6 +142,52 @@
   }
   .menu__link {
     font-size: 0.9rem;
+  }
+
+  .page-header {
+    margin-bottom: 2rem;
+  }
+
+  .page-subheader {
+    margin-top: 1.6rem;
+    margin-bottom: 1.6rem;
+  }
+
+  .page-description {
+    margin-bottom: 1.8rem;
+  }
+
+  .btn-container {
+    padding: 2rem;
+  }
+
+  .accordion-box {
+    margin: 2rem auto;
+    padding: 0 3rem;
+  }
+  .accordion-box__item {
+    margin-bottom: 1rem;
+  }
+
+  .accordion__title {
+    padding: 1.5rem 2.5rem;
+  }
+  .accordion__text {
+    padding: 2rem 3rem;
+  }
+  .accordion__item {
+    margin-bottom: 0.6rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .footer__nav {
+    padding: 2rem 0;
+  }
+  .footer__nav li {
+    margin-bottom: 1rem;
+  }
+  .footer__hr {
+    margin: 1.8rem auto;
   }
 }
 @media (min-width: 1280px) {
