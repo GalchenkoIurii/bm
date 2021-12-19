@@ -138,6 +138,17 @@
     max-width: 1200px;
     padding: 0 70px;
   }
+  .menu {
+    &__item {
+      padding: .2rem .4rem;
+    }
+    &__item:not(:last-child) {
+      margin-right: .7rem;
+    }
+    &__link {
+      font-size: .9rem;
+    }
+  }
 }
 
 @media (min-width: 1280px) {
