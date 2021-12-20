@@ -202,8 +202,13 @@
     margin-bottom: 1rem;
   }
 
+  .name-box {
+    overflow: hidden;
+  }
+
   .masters-box a {
     flex-basis: 32%;
+    max-width: 32%;
   }
 
   .footer__nav {
