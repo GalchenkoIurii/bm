@@ -189,6 +189,19 @@
     margin: 2rem auto;
   }
 
+  .card {
+    padding: 2rem 4rem;
+  }
+  .card__item {
+    margin-bottom: 2rem;
+  }
+  .card__item_column.about, .card__item_column.education, .card__item_column.experience {
+    flex-direction: column;
+  }
+  .card__item_column.about .card__item-title, .card__item_column.education .card__item-title, .card__item_column.experience .card__item-title {
+    margin-bottom: 1rem;
+  }
+
   .masters-box a {
     flex-basis: 32%;
   }

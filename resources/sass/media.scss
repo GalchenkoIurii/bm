@@ -192,6 +192,20 @@
   .card-box {
     margin: 2rem auto;
   }
+  .card {
+    padding: 2rem 4rem;
+    &__item {
+      margin-bottom: 2rem;
+    }
+    &__item_column.about,
+    &__item_column.education,
+    &__item_column.experience {
+      flex-direction: column;
+      .card__item-title {
+        margin-bottom: 1rem;
+      }
+    }
+  }
   .masters-box a {
     flex-basis: 32%;
   }

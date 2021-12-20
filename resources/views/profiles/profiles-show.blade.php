@@ -121,19 +121,19 @@
                             </p>
                         @endif
                         @if(!is_null($profile->about))
-                            <p class="card__item card__item_column">
+                            <p class="card__item about card__item_column">
                                 <span class="card__item-title">Обо мне: </span>
                                 <span class="card__item-content">{{ $profile->about }}</span>
                             </p>
                         @endif
                         @if(!is_null($profile->education))
-                            <p class="card__item card__item_column">
+                            <p class="card__item education card__item_column">
                                 <span class="card__item-title">Образование: </span>
                                 <span class="card__item-content">{{ $profile->education }}</span>
                             </p>
                         @endif
                         @if(!is_null($profile->experience))
-                            <p class="card__item card__item_column">
+                            <p class="card__item experience card__item_column">
                                 <span class="card__item-title">Опыт: </span>
                                 <span class="card__item-content">{{ $profile->experience }}</span>
                             </p>
