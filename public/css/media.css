@@ -144,6 +144,11 @@
     font-size: 0.9rem;
   }
 
+  .form-group {
+    width: 85%;
+    margin-bottom: 1rem;
+  }
+
   .page-header {
     margin-bottom: 2rem;
   }
@@ -178,6 +183,14 @@
   .accordion__item {
     margin-bottom: 0.6rem;
     padding: 0.5rem 1rem;
+  }
+
+  .card-box {
+    margin: 2rem auto;
+  }
+
+  .masters-box a {
+    flex-basis: 32%;
   }
 
   .footer__nav {
