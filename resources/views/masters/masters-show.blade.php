@@ -60,24 +60,22 @@
                                 </div>
                             </div>
                             @if($user->is_master)
-                                {{-- remove map-marker if empty data --}}
-                                <p class="master-card__item master-card__item_centered">
-                                    <span class="master-card__item-label"><i class="fas fa-map-marker-alt"></i></span>
-                                    <span class="master-card__item-text">
-                                        @if(!is_null($user->profile->country))
-                                            {{ $user->profile->country }}
-                                        @endif
-                                        @if(!is_null($user->profile->region))
-                                            {{ $user->profile->region }}
-                                        @endif
-                                        @if(!is_null($user->profile->district))
-                                            {{ $user->profile->district }}
-                                        @endif
-                                        @if(!is_null($user->profile->city))
-                                            {{ $user->profile->city }}
-                                        @endif
-                                    </span>
-                                </p>
+                                @if(
+                                    !is_null($user->profile->country)
+                                    || !is_null($user->profile->region)
+                                    || !is_null($user->profile->district)
+                                    || !is_null($user->profile->city)
+                                )
+                                    <p class="master-card__item master-card__item_centered">
+                                        <span class="master-card__item-label"><i class="fas fa-map-marker-alt"></i></span>
+                                        <span class="master-card__item-text">
+                                                {{ $user->profile->country }}
+                                                {{ $user->profile->region }}
+                                                {{ $user->profile->district }}
+                                                {{ $user->profile->city }}
+                                        </span>
+                                    </p>
+                                @endif
                                 @if(!is_null($user->profile->place))
                                     <p class="master-card__item master-card__item_column">
                                         <span class="master-card__item-title">Где могу принять клиента:</span>
