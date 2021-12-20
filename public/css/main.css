@@ -648,6 +648,7 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 0.5rem;
 }
 
 .logo__link {
@@ -676,6 +677,15 @@ a {
 }
 .menu__nav {
   display: none;
+  flex-direction: column;
+  align-items: end;
+}
+.menu-box:first-child {
+  padding: 1rem 0 0.5rem;
+}
+.menu-box:last-child {
+  padding: 0.5rem 0 1rem;
+  border-top: 1px solid #d2a679;
 }
 .menu__item {
   padding: 0.1rem 0.2rem;

@@ -655,6 +655,7 @@ a {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-top: 0.5rem;
     }
   }
 
@@ -687,6 +688,15 @@ a {
     }
     &__nav {
       display: none;
+      flex-direction: column;
+      align-items: end;
+    }
+    &-box:first-child {
+      padding: 1rem 0 .5rem;
+    }
+    &-box:last-child {
+      padding: .5rem 0 1rem;
+      border-top: 1px solid $color-main-brown;
     }
     &__item {
       padding: .1rem .2rem;
