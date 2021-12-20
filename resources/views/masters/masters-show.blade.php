@@ -60,6 +60,7 @@
                                 </div>
                             </div>
                             @if($user->is_master)
+                                {{-- remove map-marker if empty data --}}
                                 <p class="master-card__item master-card__item_centered">
                                     <span class="master-card__item-label"><i class="fas fa-map-marker-alt"></i></span>
                                     <span class="master-card__item-text">

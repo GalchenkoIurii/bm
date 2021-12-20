@@ -225,9 +225,71 @@
   }
 }
 @media (min-width: 1280px) {
+  .main {
+    margin: 2rem 0;
+  }
+
   .container {
     max-width: 1400px;
     padding: 0 80px;
+  }
+
+  .button {
+    font-size: 1.1rem;
+    padding: 0.9rem 1.2rem;
+  }
+
+  .page-description {
+    font-size: 1rem;
+  }
+
+  .logo__link {
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+  }
+
+  .menu__link {
+    font-size: 1.1rem;
+  }
+
+  .accordion {
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+  }
+  .accordion-box {
+    padding: 0 4rem;
+  }
+  .accordion-box__item {
+    margin-bottom: 2rem;
+  }
+
+  .card-box {
+    padding: 0 4rem;
+  }
+
+  .card {
+    padding: 3rem 5rem;
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+  }
+  .card__item-title {
+    font-size: 1rem;
+  }
+
+  .form-container {
+    padding: 3rem 5rem;
+  }
+  .form-group {
+    width: 80%;
+    margin-bottom: 2rem;
+  }
+
+  .forgot-password {
+    padding: 1.8rem;
+  }
+  .forgot-password__text {
+    font-size: 1rem;
+    margin-bottom: 1rem;
   }
 }
 @media (min-width: 1440px) {
