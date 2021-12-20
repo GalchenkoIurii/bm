@@ -13,18 +13,23 @@
                         <li class="menu__item"><a class="menu__link" href="{{ route('home') }}">Главная</a></li>
                         <li class="menu__item"><a class="menu__link" href="{{ route('search') }}">Найти мастера</a></li>
                         <li class="menu__item"><a class="menu__link" href="{{ route('applications.create') }}">Оставить заявку</a></li>
-                        <li class="menu__item"><a class="menu__link" href="{{ route('about') }}">О сервисе</a></li>
-                        @if(auth()->check() && auth()->user()->is_admin)
-                                <li class="menu__item"><a class="menu__link" href="{{ route('admin.index') }}">Админпанель</a></li>
-                                <li class="menu__item"><a class="menu__link" href="{{ route('profiles.show', ['profile' => $user_data['profile_id']]) }}">Мой профиль</a></li>
-                                <li class="menu__item"><a class="menu__link" href="{{ route('logout') }}">Выйти</a></li>
-                            @elseif(auth()->check())
-                                <li class="menu__item"><a class="menu__link" href="{{ route('profiles.show', ['profile' => $user_data['profile_id']]) }}">Мой профиль</a></li>
-                                <li class="menu__item"><a class="menu__link" href="{{ route('logout') }}">Выйти</a></li>
-                            @else
-                                <li class="menu__item"><a class="menu__link" href="{{ route('register.create') }}">Регистрация</a></li>
-                                <li class="menu__item"><a class="menu__link" href="{{ route('login.create') }}">Вход</a></li>
+                        @if(auth()->check() && auth()->user()->is_master)
+                            <li class="menu__item"><a class="menu__link" href="{{ route('applications.create') }}">Заявки</a></li>
                             @endif
+                        <li class="menu__item"><a class="menu__link" href="{{ route('about') }}">О сервисе</a></li>
+                    </ul>
+                    <ul class="menu-box">
+                        @if(auth()->check() && auth()->user()->is_admin)
+                            <li class="menu__item"><a class="menu__link" href="{{ route('admin.index') }}">Админпанель</a></li>
+                            <li class="menu__item"><a class="menu__link" href="{{ route('profiles.show', ['profile' => $user_data['profile_id']]) }}">Мой профиль</a></li>
+                            <li class="menu__item"><a class="menu__link" href="{{ route('logout') }}">Выйти</a></li>
+                        @elseif(auth()->check())
+                            <li class="menu__item"><a class="menu__link" href="{{ route('profiles.show', ['profile' => $user_data['profile_id']]) }}">Мой профиль</a></li>
+                            <li class="menu__item"><a class="menu__link" href="{{ route('logout') }}">Выйти</a></li>
+                        @else
+                            <li class="menu__item"><a class="menu__link" href="{{ route('register.create') }}">Регистрация</a></li>
+                            <li class="menu__item"><a class="menu__link" href="{{ route('login.create') }}">Вход</a></li>
+                        @endif
                     </ul>
                 </nav>
             </div>
@@ -46,6 +51,11 @@
             <li class="mobile-menu__item">
                 <a class="mobile-menu__link" href="{{ route('applications.create') }}">Оставить заявку</a>
             </li>
+            @if(auth()->check() && auth()->user()->is_master)
+                <li class="mobile-menu__item">
+                    <a class="mobile-menu__link" href="{{ route('applications.create') }}">Заявки</a>
+                </li>
+            @endif
             <li class="mobile-menu__item">
                 <a class="mobile-menu__link" href="{{ route('about') }}">О сервисе</a>
             </li>
