@@ -50,6 +50,14 @@
     padding: 0 50px;
   }
 
+  .modal__window {
+    width: 70vw;
+    padding: 3rem 3.5rem;
+  }
+  .modal__body {
+    min-height: 3rem;
+  }
+
   .menu {
     &__btn {
       width:46px;
@@ -239,6 +247,10 @@
     max-width: 1400px;
     padding: 0 80px;
   }
+  .modal__window {
+    width: 50vw;
+    padding: 4rem 4.5rem;
+  }
   .button {
     font-size: 1.1rem;
     padding: 0.9rem 1.2rem;
@@ -295,13 +307,46 @@
 @media (min-width: 1440px) {
   .container {
     max-width: 1700px;
-    padding: 0 100px;
+    padding: 0 150px;
+  }
+  .section {
+    padding-top: 4rem;
+  }
+  .page-header {
+    margin-bottom: 3rem;
+  }
+}
+
+@media (min-width: 1660px) {
+  .form-container {
+    padding: 4rem 6rem;
+  }
+  .card-box {
+    padding: 0 5rem;
+  }
+  .card {
+    padding: 4rem 6rem;
+  }
+  .accordion {
+    &-box {
+      padding: 0 5rem;
+    }
+    &__title {
+      padding: 2.5rem 3.5rem;
+    }
+    &__text {
+      padding: 3rem 4rem;
+    }
+  }
+  .masters-box a {
+    flex-basis: 24%;
+    max-width: 24%;
   }
 }
 
 @media (min-width: 1920px) {
   .container {
     max-width: 2100px;
-    padding: 0 120px;
+    padding: 0 200px;
   }
 }
