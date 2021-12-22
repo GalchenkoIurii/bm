@@ -49,6 +49,16 @@
   .accordion-box {
     padding: 0 2rem;
   }
+
+  .pagination-box {
+    padding: 1.6rem 0.8rem;
+  }
+
+  .pagination__link {
+    font-size: 1rem;
+    line-height: 1.2rem;
+    padding: 0.5rem 0.8rem;
+  }
 }
 @media (min-width: 600px) {
   .container {
