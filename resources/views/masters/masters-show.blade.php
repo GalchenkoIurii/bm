@@ -96,6 +96,7 @@
                 @else
                     <h3 class="page-description">По данной услуге пока нет мастеров...</h3>
                 @endif
+            {{ $users->links('pagination.pagination') }}
         </div>
     </section>
 @endsection

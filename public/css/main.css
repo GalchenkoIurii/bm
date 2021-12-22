@@ -616,6 +616,12 @@ a {
   font-size: 0.8rem;
 }
 
+/* pagination */
+.pagination-box {
+  display: flex;
+  justify-content: center;
+}
+
 .page-header {
   font-family: Roboto-Bold, sans-serif;
   font-size: 1.3rem;

@@ -623,6 +623,14 @@ a {
 }
 
 
+/* pagination */
+
+.pagination-box {
+  display: flex;
+  justify-content: center;
+}
+
+
   .page-header {
     font-family: $font-main-bold;
     font-size: 1.3rem;
