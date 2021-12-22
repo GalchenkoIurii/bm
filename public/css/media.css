@@ -259,6 +259,14 @@
     margin-left: auto;
   }
 
+  .pagination-box {
+    padding: 1.6rem 2rem;
+  }
+
+  .pagination__link {
+    padding: 0.6rem 1rem;
+  }
+
   .footer__nav {
     padding: 2rem 0;
   }

@@ -267,6 +267,16 @@
       margin-left: auto;
     }
   }
+
+  .pagination-box {
+    padding: 1.6rem 2rem;
+  }
+  .pagination {
+    &__link {
+      padding: .6rem 1rem;
+    }
+  }
+
   .footer {
     &__nav {
       padding: 2rem 0;
