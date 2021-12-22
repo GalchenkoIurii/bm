@@ -628,6 +628,39 @@ a {
 .pagination-box {
   display: flex;
   justify-content: center;
+  padding: 1rem .5rem;
+}
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 98%;
+  &__item {
+
+  }
+  &__link {
+    display: inline-flex;
+    justify-content: center;
+    font-family: $font-main-medium;
+    font-size: .7rem;
+    line-height: 1rem;
+    color: $color-main-black;
+    padding: .3rem .6rem;
+    text-align: center;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    &_colored {
+      background-color: $color-main-brown;
+      color: $color-main-white;
+    }
+    &_active {
+      border: 1px solid $color-main-brown;
+    }
+    &_disabled {
+      border: 1px solid $color-main-grey;
+      color: $color-main-grey;
+    }
+  }
 }
 
 

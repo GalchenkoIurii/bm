@@ -620,6 +620,37 @@ a {
 .pagination-box {
   display: flex;
   justify-content: center;
+  padding: 1rem 0.5rem;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 98%;
+}
+.pagination__link {
+  display: inline-flex;
+  justify-content: center;
+  font-family: Roboto-Medium, sans-serif;
+  font-size: 0.7rem;
+  line-height: 1rem;
+  color: #000;
+  padding: 0.3rem 0.6rem;
+  text-align: center;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.pagination__link_colored {
+  background-color: #d2a679;
+  color: #fff;
+}
+.pagination__link_active {
+  border: 1px solid #d2a679;
+}
+.pagination__link_disabled {
+  border: 1px solid #d9dadf;
+  color: #d9dadf;
 }
 
 .page-header {
