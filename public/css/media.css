@@ -113,6 +113,10 @@
   .card__item-btn {
     justify-content: center;
   }
+
+  .pagination__link {
+    padding: 0.6rem 1rem;
+  }
 }
 @media (min-width: 768px) {
   .container {

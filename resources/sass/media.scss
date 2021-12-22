@@ -121,6 +121,12 @@
       justify-content: center;
     }
   }
+
+  .pagination {
+    &__link {
+      padding: .6rem 1rem;
+    }
+  }
 }
 
 @media (min-width: 768px) {
