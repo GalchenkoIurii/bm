@@ -255,6 +255,9 @@
   .masters-box a:not(:nth-child(3)) {
     margin-right: 1%;
   }
+  .masters-box a:nth-child(3) {
+    margin-left: auto;
+  }
 
   .footer__nav {
     padding: 2rem 0;
