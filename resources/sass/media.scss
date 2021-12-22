@@ -147,6 +147,9 @@
     a:not(:nth-child(2)) {
       margin-right: 1%;
     }
+    a:nth-child(2) {
+      margin-left: auto;
+    }
   }
   .master-card {
     height: 100%;
