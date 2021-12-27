@@ -22,6 +22,16 @@
   font-weight: 700;
   src: url(/fonts/Roboto-Bold.woff2?0c4c7fc6d9f439815c3bf42b75e3b3e5) format("woff2"), url(/fonts/Roboto-Bold.woff?00f54dcb163757355b2d682e16b44799) format("woff");
 }
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 body {
   min-width: 320px;
   overflow-x: hidden;

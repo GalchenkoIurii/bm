@@ -38,7 +38,7 @@ class MainController extends Controller
 
     public function searchMasters($service)
     {
-        $users = User::with('profile')->whereRelation('services', 'slug', $service)->paginate(7);
+        $users = User::with('profile')->whereRelation('services', 'slug', $service)->paginate(9);
 
         return view('masters.masters-show', compact('users'));
     }
