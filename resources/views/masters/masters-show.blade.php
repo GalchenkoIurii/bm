@@ -92,6 +92,7 @@
                         </div>
                             </a>
                     @endforeach
+                        <a href="#" class="card-invisible"></a>
                     </div>
                 @else
                     <h3 class="page-description">По данной услуге пока нет мастеров...</h3>

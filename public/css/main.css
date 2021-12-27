@@ -500,6 +500,12 @@ a {
 .card .form-group-checkbox input + label {
   margin-bottom: 1rem;
 }
+.card-invisible {
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
 
 /* masters cards */
 .master-card {
