@@ -94,10 +94,10 @@
                     @endforeach
                         <a href="#" class="card-invisible"></a>
                     </div>
+                    {{ $users->links('pagination.pagination') }}
                 @else
                     <h3 class="page-description">По данной услуге пока нет мастеров...</h3>
                 @endif
-            {{ $users->links('pagination.pagination') }}
         </div>
     </section>
 @endsection
