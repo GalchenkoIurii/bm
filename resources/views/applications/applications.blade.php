@@ -37,10 +37,10 @@
                         Пользователь: {{ $application->user->first_name }} <br>
                     </p>
                 @endforeach
+                    {{ $applications->links('pagination.pagination') }}
             @else
                 <h3 class="page-description">По Вашим услугам пока нет заявок...</h3>
             @endif
-
 
         </div>
     </section>
