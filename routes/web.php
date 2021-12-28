@@ -77,12 +77,23 @@ Route::middleware(['user_online'])->group(function() {
         Route::get('/logout', [UserController::class, 'logout'])
             ->name('logout');
 
-        Route::resources([
-            '/applications' => ApplicationController::class
-        ]);
+//        Route::resources([
+//            '/applications' => ApplicationController::class
+//        ]);
 
+        Route::middleware('master')->group(function() {
+            Route::get('/applications', [ApplicationController::class, 'index'])
+                ->name('applications.index');
+        });
+
+        Route::get('/applications/create', [ApplicationController::class, 'create'])
+            ->name('applications.create');
+        Route::post('/applications', [ApplicationController::class, 'store'])
+            ->name('applications.store');
         Route::get('/application/created', [ApplicationController::class, 'applicationCreated'])
             ->name('application.created');
+        Route::get('/application/not-master', [ApplicationController::class, 'notMaster'])
+            ->name('application.not-master');
         Route::post('/applications/services', [ApplicationController::class, 'getServices']);
 
         Route::get('/profiles/{profile}', [ProfileController::class, 'show'])

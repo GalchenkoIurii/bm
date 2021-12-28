@@ -21,6 +21,6 @@ class Master
             return $next($request);
         }
 
-        return redirect()->route('applications.application-not-master');
+        return redirect()->route('application.not-master');
     }
 }

@@ -114,4 +114,9 @@ class ApplicationController extends Controller
 
         return response()->json($services->toArray());
     }
+
+    public function notMaster()
+    {
+        return view('applications.application-not-master');
+    }
 }

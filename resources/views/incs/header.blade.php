@@ -14,7 +14,7 @@
                         <li class="menu__item"><a class="menu__link" href="{{ route('search') }}">Найти мастера</a></li>
                         <li class="menu__item"><a class="menu__link" href="{{ route('applications.create') }}">Оставить заявку</a></li>
                         @if(auth()->check() && auth()->user()->is_master)
-                            <li class="menu__item"><a class="menu__link" href="{{ route('applications.create') }}">Заявки</a></li>
+                            <li class="menu__item"><a class="menu__link" href="{{ route('applications.index') }}">Заявки</a></li>
                             @endif
                         <li class="menu__item"><a class="menu__link" href="{{ route('about') }}">О сервисе</a></li>
                     </ul>
@@ -53,7 +53,7 @@
             </li>
             @if(auth()->check() && auth()->user()->is_master)
                 <li class="mobile-menu__item">
-                    <a class="mobile-menu__link" href="{{ route('applications.create') }}">Заявки</a>
+                    <a class="mobile-menu__link" href="{{ route('applications.index') }}">Заявки</a>
                 </li>
             @endif
             <li class="mobile-menu__item">
