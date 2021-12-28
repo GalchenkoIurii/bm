@@ -6,6 +6,7 @@ use App\Http\Requests\ApplicationStoreRequest;
 use App\Models\Application;
 use App\Models\Category;
 use App\Models\Service;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,7 +19,9 @@ class ApplicationController extends Controller
      */
     public function index()
     {
-        $applications = Application::with(['category', 'service', 'user'])->get();
+        $services = Auth::user()->services()->pluck('service_id')->toArray();
+
+        $applications = Application::with(['category', 'service', 'user'])->whereIn('service_id', $services)->get();
 
         return view('applications.applications', compact('applications'));
     }
