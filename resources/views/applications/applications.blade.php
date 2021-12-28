@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('page-title')Заявки@endsection
+@section('page-title')Заявки клиентов@endsection
 
 @section('header')
     @include('incs.header')
@@ -9,21 +9,39 @@
 @section('content')
     <section class="section">
         <div class="container">
-            <h1 class="page-header">Заявки</h1>
+            <h1 class="page-header">Заявки клиентов</h1>
 
-            @foreach($applications as $application)
-                <p class="page-description">
-                    Категория: {{ $application->category->name }} <br>
-                    Услуга: {{ $application->service->name }} <br>
-                    Цена: от {{ $application->start_price }} грн. до {{ $application->end_price }} грн. <br>
-                    Даты: от {{ $application->start_date }} до {{ $application->end_date }} <br>
-                    Место: {{ $application->place }} <br>
-                    Страна: {{ $application->country }} <br>
-                    Регион: {{ $application->region }} <br>
-                    Город: {{ $application->city }} <br>
-                    Пользователь: {{ $application->user->first_name }} <br>
-                </p>
+            @if(session()->has('error'))
+                <p class="error-message">{{ session('error') }}</p>
+            @endif
+            @if($errors->any())
+                @foreach($errors->all() as $error)
+                    <p class="error-message">{{ $error }}</p>
                 @endforeach
+            @endif
+            @if(session()->has('success'))
+                <p class="status-message">{{ session('success') }}</p>
+            @endif
+
+            @if($applications->isNotEmpty())
+                @foreach($applications as $application)
+                    <p class="page-description">
+                        Категория: {{ $application->category->name }} <br>
+                        Услуга: {{ $application->service->name }} <br>
+                        Цена: от {{ $application->start_price }} грн. до {{ $application->end_price }} грн. <br>
+                        Даты: от {{ $application->start_date }} до {{ $application->end_date }} <br>
+                        Место: {{ $application->place }} <br>
+                        Страна: {{ $application->country }} <br>
+                        Регион: {{ $application->region }} <br>
+                        Город: {{ $application->city }} <br>
+                        Пользователь: {{ $application->user->first_name }} <br>
+                    </p>
+                @endforeach
+            @else
+                <h3 class="page-description">По Вашим услугам пока нет заявок...</h3>
+            @endif
+
+
         </div>
     </section>
 @endsection
