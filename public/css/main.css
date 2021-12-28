@@ -2,25 +2,25 @@
   font-family: "Roboto-Light";
   font-style: normal;
   font-weight: 300;
-  src: url(/fonts/Roboto-Light.woff2?7c46e842233e7968d5dad3ed0d3d5313) format("woff2"), url(/fonts/Roboto-Light.woff?7edb5c1283fd64425d81816ae66963e5) format("woff");
+  src: local("Roboto-Light"), url(/fonts/Roboto-Light.woff2?7c46e842233e7968d5dad3ed0d3d5313) format("woff2"), url(/fonts/Roboto-Light.woff?7edb5c1283fd64425d81816ae66963e5) format("woff");
 }
 @font-face {
   font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
-  src: url(/fonts/Roboto-Regular.woff2?6da80660b317a900aa44c9f6b559cd80) format("woff2"), url(/fonts/Roboto-Regular.woff?d535d388dc916299d0838b96e7cc3db4) format("woff");
+  src: local("Roboto-Regular"), url(/fonts/Roboto-Regular.woff2?6da80660b317a900aa44c9f6b559cd80) format("woff2"), url(/fonts/Roboto-Regular.woff?d535d388dc916299d0838b96e7cc3db4) format("woff");
 }
 @font-face {
   font-family: "Roboto-Medium";
   font-style: normal;
   font-weight: 500;
-  src: url(/fonts/Roboto-Medium.woff2?7d2a7d7644dad6b39474a5a0f8b93759) format("woff2"), url(/fonts/Roboto-Medium.woff?44f0515c8c7c844e3e2db0a78afcd894) format("woff");
+  src: local("Roboto-Medium"), url(/fonts/Roboto-Medium.woff2?7d2a7d7644dad6b39474a5a0f8b93759) format("woff2"), url(/fonts/Roboto-Medium.woff?44f0515c8c7c844e3e2db0a78afcd894) format("woff");
 }
 @font-face {
   font-family: "Roboto-Bold";
   font-style: normal;
   font-weight: 700;
-  src: url(/fonts/Roboto-Bold.woff2?0c4c7fc6d9f439815c3bf42b75e3b3e5) format("woff2"), url(/fonts/Roboto-Bold.woff?00f54dcb163757355b2d682e16b44799) format("woff");
+  src: local("Roboto-Bold"), url(/fonts/Roboto-Bold.woff2?0c4c7fc6d9f439815c3bf42b75e3b3e5) format("woff2"), url(/fonts/Roboto-Bold.woff?00f54dcb163757355b2d682e16b44799) format("woff");
 }
 html {
   box-sizing: border-box;
