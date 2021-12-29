@@ -81,6 +81,9 @@ Route::middleware(['user_online'])->group(function() {
 //            '/applications' => ApplicationController::class
 //        ]);
 
+        Route::get('/applications/create', [ApplicationController::class, 'create'])
+            ->name('applications.create');
+
         Route::middleware('master')->group(function() {
             Route::get('/applications', [ApplicationController::class, 'index'])
                 ->name('applications.index');
@@ -88,8 +91,6 @@ Route::middleware(['user_online'])->group(function() {
                 ->name('applications.show');
         });
 
-        Route::get('/applications/create', [ApplicationController::class, 'create'])
-            ->name('applications.create');
         Route::post('/applications', [ApplicationController::class, 'store'])
             ->name('applications.store');
         Route::get('/application/created', [ApplicationController::class, 'applicationCreated'])
