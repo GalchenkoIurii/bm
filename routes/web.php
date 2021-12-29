@@ -84,6 +84,8 @@ Route::middleware(['user_online'])->group(function() {
         Route::middleware('master')->group(function() {
             Route::get('/applications', [ApplicationController::class, 'index'])
                 ->name('applications.index');
+            Route::get('/applications/{application}', [ApplicationController::class, 'show'])
+                ->name('applications.show');
         });
 
         Route::get('/applications/create', [ApplicationController::class, 'create'])

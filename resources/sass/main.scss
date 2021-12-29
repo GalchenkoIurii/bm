@@ -35,6 +35,7 @@ a {
   display: inline-block;
   outline: none;
   text-decoration: none;
+  color: $color-main-black;
 }
 
 .main {
@@ -661,7 +662,7 @@ a {
     font-family: $font-main-medium;
     font-size: .7rem;
     line-height: 1rem;
-    color: $color-main-black;
+    //color: $color-main-black;
     padding: .3rem .6rem;
     text-align: center;
     border-radius: 0.5rem;
@@ -723,7 +724,7 @@ a {
       font-family: $font-main-bold;
       font-size: 1.2rem;
       line-height: 1.5rem;
-      color: $color-main-black;
+      //color: $color-main-black;
     }
   }
 
