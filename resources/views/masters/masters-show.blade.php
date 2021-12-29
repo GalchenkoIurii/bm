@@ -13,6 +13,8 @@
 @section('content')
     <section class="section">
         <div class="container">
+            <h1 class="page-header">Мастера - результат поиска</h1>
+
             @if(session()->has('error'))
                 <p class="error-message">{{ session('error') }}</p>
             @endif
