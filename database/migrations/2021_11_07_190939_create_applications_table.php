@@ -18,8 +18,8 @@ class CreateApplicationsTable extends Migration
             $table->enum('gender', ['female', 'male'])->nullable();
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('service_id');
-            $table->decimal('start_price')->nullable();
-            $table->decimal('end_price')->nullable();
+            $table->unsignedInteger('start_price')->nullable();
+            $table->unsignedInteger('end_price')->nullable();
             $table->string('photo')->nullable();
             $table->timestamp('start_date')->nullable();
             $table->timestamp('end_date')->nullable();
