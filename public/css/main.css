@@ -520,15 +520,8 @@ a {
 
 /* masters cards */
 .master-card {
-  font-family: Roboto-Medium, sans-serif;
-  font-size: 1rem;
-  line-height: 1.2rem;
-  display: flex;
-  flex-direction: column;
   padding: 0.6rem 1rem;
   margin-bottom: 1rem;
-  border: 1px solid #d2a679;
-  border-radius: 0.5rem;
 }
 .master-card .page-header {
   color: #000;

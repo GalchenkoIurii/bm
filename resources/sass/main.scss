@@ -519,15 +519,8 @@ a {
 /* masters cards */
 
 .master-card {
-  font-family: $font-main-medium;
-  font-size: 1rem;
-  line-height: 1.2rem;
-  display: flex;
-  flex-direction: column;
   padding: .6rem 1rem;
   margin-bottom: 1rem;
-  border: 1px solid $color-main-brown;
-  border-radius: .5rem;
   .page-header {
     color: $color-main-black;
   }

@@ -31,7 +31,7 @@
                     <div class="card-box masters-box">
                 @foreach($users as $user)
                             <a href="{{ route('profiles.show', ['profile' => $user->profile->id]) }}">
-                        <div class="master-card">
+                        <div class="card master-card">
                             <div class="master-card__item master-card__item_centered">
                                 <div class="avatar-box">
                                     <div class="avatar">
