@@ -511,6 +511,9 @@ a {
 .card .form-group-checkbox input + label {
   margin-bottom: 1rem;
 }
+.card_mb {
+  margin-bottom: 1rem;
+}
 .card-invisible {
   visibility: hidden;
   height: 0;
@@ -521,7 +524,6 @@ a {
 /* masters cards */
 .master-card {
   padding: 0.6rem 1rem;
-  margin-bottom: 1rem;
 }
 .master-card .page-header {
   color: #000;

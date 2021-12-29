@@ -1,5 +1,9 @@
 @extends('layouts.main')
 
+@section('styles')
+    <link href="{{ asset('fa-web/css/all.css') }}" rel="stylesheet">
+@endsection
+
 @section('page-title')Заявки клиентов@endsection
 
 @section('header')
@@ -27,17 +31,30 @@
                 <div class="card-box">
                 @foreach($applications as $application)
                         <a href="{{ route('applications.show', ['application' => $application->id]) }}">
-                            <p class="page-description">
+                            <div class="card card_mb">
                                 Категория: {{ $application->category->name }} <br>
                                 Услуга: {{ $application->service->name }} <br>
                                 Цена: от {{ $application->start_price }} грн. до {{ $application->end_price }} грн. <br>
                                 Даты: от {{ $application->start_date }} до {{ $application->end_date }} <br>
                                 Место: {{ $application->place }} <br>
-                                Страна: {{ $application->country }} <br>
-                                Регион: {{ $application->region }} <br>
-                                Город: {{ $application->city }} <br>
+                                @if(
+                                    !is_null($application->country)
+                                    || !is_null($application->region)
+                                    || !is_null($application->district)
+                                    || !is_null($application->city)
+                                )
+                                    <p class="card__item card__item_centered">
+                                        <span class="card__item-label"><i class="fas fa-map-marker-alt"></i></span>
+                                        <span class="card__item-text">
+                                                {{ $application->country }}
+                                            {{ $application->region }}
+                                            {{ $application->district }}
+                                            {{ $application->city }}
+                                        </span>
+                                    </p>
+                                @endif
                                 Пользователь: {{ $application->user->first_name }} <br>
-                            </p>
+                            </div>
                         </a>
                 @endforeach
                     <a href="#" class="card-invisible"></a>

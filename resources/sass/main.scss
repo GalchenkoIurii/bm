@@ -434,7 +434,6 @@ a {
   &__item {
     display: flex;
     margin-bottom: 1rem;
-
     &-title {
       color: $color-text-grey;
       font-size: .9rem;
@@ -506,7 +505,9 @@ a {
   .form-group-checkbox input + label {
     margin-bottom: 1rem;
   }
-
+  &_mb {
+    margin-bottom: 1rem;
+  }
   &-invisible {
     visibility: hidden;
     height: 0;
@@ -520,7 +521,7 @@ a {
 
 .master-card {
   padding: .6rem 1rem;
-  margin-bottom: 1rem;
+  //margin-bottom: 1rem;
   .page-header {
     color: $color-main-black;
   }
