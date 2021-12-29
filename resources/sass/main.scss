@@ -433,11 +433,12 @@ a {
   border-radius: .5rem;
   &__item {
     display: flex;
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
     color: $color-text-grey;
+    align-items: baseline;
     &-title {
       font-size: .9rem;
-      margin-bottom: 0.4rem;
+      margin-right: 1rem;
     }
     &-content {
       color: $color-main-black;
@@ -452,16 +453,25 @@ a {
     &-text {
       font-size: .9rem;
     }
+    &_column {
+      flex-direction: column;
+    }
+    &_column &-title {
+      margin-right: 0;
+      margin-bottom: .3rem;
+    }
+    &_centered {
+      align-items: center;
+    }
+    &_hr-top {
+      border-top: 1px solid $color-main-brown;
+      padding-top: 0.4rem;
+    }
   }
   &__item:last-child {
     margin-bottom: 0;
   }
-  &__item_column {
-    flex-direction: column;
-  }
-  &__item_centered {
-    align-items: center;
-  }
+
   &__form-group {
     width: 100%;
     display: flex;

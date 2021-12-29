@@ -439,12 +439,13 @@ a {
 }
 .card__item {
   display: flex;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   color: #4a4a4a;
+  align-items: baseline;
 }
 .card__item-title {
   font-size: 0.9rem;
-  margin-bottom: 0.4rem;
+  margin-right: 1rem;
 }
 .card__item-content {
   color: #000;
@@ -459,14 +460,22 @@ a {
 .card__item-text {
   font-size: 0.9rem;
 }
-.card__item:last-child {
-  margin-bottom: 0;
-}
 .card__item_column {
   flex-direction: column;
 }
+.card__item_column .card__item-title {
+  margin-right: 0;
+  margin-bottom: 0.3rem;
+}
 .card__item_centered {
   align-items: center;
+}
+.card__item_hr-top {
+  border-top: 1px solid #d2a679;
+  padding-top: 0.4rem;
+}
+.card__item:last-child {
+  margin-bottom: 0;
 }
 .card__form-group {
   width: 100%;

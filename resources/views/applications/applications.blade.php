@@ -32,11 +32,48 @@
                 @foreach($applications as $application)
                         <a href="{{ route('applications.show', ['application' => $application->id]) }}">
                             <div class="card card_mb">
-                                Категория: {{ $application->category->name }} <br>
-                                Услуга: {{ $application->service->name }} <br>
-                                Цена: от {{ $application->start_price }} грн. до {{ $application->end_price }} грн. <br>
-                                Даты: от {{ $application->start_date }} до {{ $application->end_date }} <br>
-                                Место: {{ $application->place }} <br>
+                                <p class="card__item">
+                                    <span class="card__item-title">Категория:</span>
+                                    <span class="card__item-content">{{ $application->category->name }}</span>
+                                </p>
+                                <p class="card__item">
+                                    <span class="card__item-title">Услуга:</span>
+                                    <span class="card__item-content">{{ $application->service->name }}</span>
+                                </p>
+                                @if(
+                                    !is_null($application->start_price)
+                                    || !is_null($application->end_price)
+                                )
+                                    <p class="card__item card__item_centered">
+                                        <span class="card__item-label"><i class="fas fa-dollar-sign"></i></span>
+                                        <span class="card__item-text">
+                                                от {{ $application->start_price }} до {{ $application->end_price }} грн.
+                                        </span>
+                                    </p>
+                                @endif
+                                @if(
+                                    !is_null($application->start_date)
+                                    || !is_null($application->end_date)
+                                )
+                                    <p class="card__item card__item_centered">
+                                        <span class="card__item-label"><i class="fas fa-calendar-alt"></i></span>
+                                        <span class="card__item-text">
+                                                с {{ date('d.m.Y', strtotime($application->start_date)) }} до {{ date('d.m.Y', strtotime($application->end_date)) }}
+                                        </span>
+                                    </p>
+                                @endif
+                                @if(!is_null($application->place))
+                                    <p class="card__item card__item_column card__item_hr-top">
+                                        <span class="card__item-title">Где могу получить услугу:</span>
+                                        @if($application->place == 'master')
+                                            <span class="card__item-content">У мастера</span>
+                                        @elseif($application->place == 'client')
+                                            <span class="card__item-content">У себя</span>
+                                        @elseif($application->place == 'both')
+                                            <span class="card__item-content">У себя или у мастера</span>
+                                        @endif
+                                    </p>
+                                @endif
                                 @if(
                                     !is_null($application->country)
                                     || !is_null($application->region)
@@ -53,7 +90,6 @@
                                         </span>
                                     </p>
                                 @endif
-                                Пользователь: {{ $application->user->first_name }} <br>
                             </div>
                         </a>
                 @endforeach
