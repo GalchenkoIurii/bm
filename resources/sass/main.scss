@@ -434,13 +434,23 @@ a {
   &__item {
     display: flex;
     margin-bottom: 1rem;
+    color: $color-text-grey;
     &-title {
-      color: $color-text-grey;
       font-size: .9rem;
       margin-bottom: 0.4rem;
     }
     &-content {
       color: $color-main-black;
+    }
+    &-label {
+      font-size: 1rem;
+      margin-right: 1rem;
+      i {
+        color: $color-main-brown;
+      }
+    }
+    &-text {
+      font-size: .9rem;
     }
   }
   &__item:last-child {

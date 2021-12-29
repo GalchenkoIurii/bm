@@ -440,14 +440,24 @@ a {
 .card__item {
   display: flex;
   margin-bottom: 1rem;
+  color: #4a4a4a;
 }
 .card__item-title {
-  color: #4a4a4a;
   font-size: 0.9rem;
   margin-bottom: 0.4rem;
 }
 .card__item-content {
   color: #000;
+}
+.card__item-label {
+  font-size: 1rem;
+  margin-right: 1rem;
+}
+.card__item-label i {
+  color: #d2a679;
+}
+.card__item-text {
+  font-size: 0.9rem;
 }
 .card__item:last-child {
   margin-bottom: 0;
