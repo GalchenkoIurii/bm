@@ -10,7 +10,10 @@
     <section class="section">
         <div class="container">
             <h1 class="page-header">Контакты</h1>
-            <p class="page-description"></p>
+            <address>
+                <p class="page-description">По техническим вопросам, связанным с работой сервиса, Вы можете связаться с командой разработчиков по электронной почте: </p>
+                <a href="mailto:smarttechsoft19@gmail.com">smarttechsoft19@gmail.com</a>
+            </address>
         </div>
     </section>
 @endsection
