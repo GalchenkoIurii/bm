@@ -91,6 +91,22 @@
                 </div>
             <details class="accordion accordion-box__item">
                 <summary class="accordion__title">
+                    <span>Фото</span>
+                </summary>
+                <div class="accordion__text">
+                    @if(!is_null($application->photo))
+                        <div class="photo-preview">
+                            <img src="{{ asset('storage/' . $application->photo) }}" alt="">
+                        </div>
+                    @else
+                        <p class="card__item card__item_centered">
+                            <span class="card__item-text">Заказчик не оставил фото при создании заявки...</span>
+                        </p>
+                    @endif
+                </div>
+            </details>
+            <details class="accordion accordion-box__item">
+                <summary class="accordion__title">
                     <span>Контакты</span>
                 </summary>
                 <div class="accordion__text">
@@ -112,6 +128,10 @@
                     @endif
                 </div>
             </details>
+                <div class="btn-container">
+                    <a href="#"
+                       class="button button_colored button_shadowed">Предложить услугу</a>
+                </div>
         </div>
     </section>
 @endsection
