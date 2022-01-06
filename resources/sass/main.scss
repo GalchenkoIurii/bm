@@ -432,12 +432,13 @@ address {
   line-height: 1.2rem;
   display: flex;
   flex-direction: column;
-  padding: 1rem 1.2rem;
+  padding: .8rem 1rem;
   border: 1px solid $color-main-brown;
   border-radius: .5rem;
   &__item {
     display: flex;
     margin-bottom: .5rem;
+    padding: .2rem .4rem;
     color: $color-text-grey;
     align-items: baseline;
     &-title {
@@ -470,6 +471,10 @@ address {
     &_hr-top {
       border-top: 1px solid $color-main-brown;
       padding-top: 0.4rem;
+    }
+    &_hr-bottom {
+      border-bottom: 1px solid $color-main-brown;
+      padding-bottom: 0.4rem;
     }
   }
   &__item:last-child {
