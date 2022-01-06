@@ -125,6 +125,13 @@
                                 {{ $application->city }}
                             </span>
                         </p>
+                        <p class="card__item card__item_centered">
+                            <span class="card__item-text">Полный список контактов будет доступен после того, как заказчик выберет Вас исполнителем.</span>
+                        </p>
+                    @else
+                        <p class="card__item card__item_centered">
+                            <span class="card__item-text">Заказчик не оставил свои контакты при создании заявки...</span>
+                        </p>
                     @endif
                 </div>
             </details>
