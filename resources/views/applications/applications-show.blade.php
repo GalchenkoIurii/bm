@@ -87,6 +87,13 @@
                             @endif
                         </p>
                     @endif
+
+                </div>
+            <details class="accordion accordion-box__item">
+                <summary class="accordion__title">
+                    <span>Контакты</span>
+                </summary>
+                <div class="accordion__text">
                     @if(
                         !is_null($application->country)
                         || !is_null($application->region)
@@ -104,16 +111,6 @@
                         </p>
                     @endif
                 </div>
-            <details class="accordion accordion-box__item">
-                <summary class="accordion__title">
-                    <span>Контакты</span>
-                </summary>
-                <ul class="accordion__text">
-                    {{ $application->country }}
-                    {{ $application->region }}
-                    {{ $application->district }}
-                    <li class="accordion__item">{{ $application->city }}</li>
-                </ul>
             </details>
         </div>
     </section>
