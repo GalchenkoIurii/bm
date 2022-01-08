@@ -11,7 +11,7 @@
         <div class="container">
             <h1 class="page-header">Ответить на заявку</h1>
             <div class="form-container">
-                <form action="{{ route('applications.offer.store') }}" method="post" class="form"
+                <form action="{{ route('applications.offer.store', ['application' => $id]) }}" method="post" class="form"
                       enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
