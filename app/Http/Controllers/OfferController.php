@@ -10,4 +10,9 @@ class OfferController extends Controller
     {
         return view('offer.offer-create', compact('id'));
     }
+
+    public function store(Request $request)
+    {
+        dd($request);
+    }
 }

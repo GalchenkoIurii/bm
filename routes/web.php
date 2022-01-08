@@ -92,6 +92,8 @@ Route::middleware(['user_online'])->group(function() {
                 ->name('applications.show');
             Route::get('/applications/{application}/offer/create', [OfferController::class, 'create'])
                 ->name('applications.offer.create');
+            Route::post('/applications/{application}/offer/create', [OfferController::class, 'store'])
+                ->name('applications.offer.store');
         });
 
         Route::post('/applications', [ApplicationController::class, 'store'])
