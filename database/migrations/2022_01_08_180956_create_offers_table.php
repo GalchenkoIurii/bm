@@ -15,7 +15,7 @@ class CreateOffersTable extends Migration
     {
         Schema::create('offers', function (Blueprint $table) {
             $table->id();
-            $table->string('comment');
+            $table->string('comment')->nullable();
             $table->unsignedTinyInteger('accepted')->default(0);
             $table->unsignedBigInteger('application_id');
             $table->unsignedBigInteger('user_id');

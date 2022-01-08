@@ -136,7 +136,7 @@
                 </div>
             </details>
                 <div class="btn-container">
-                    <a href="#"
+                    <a href="{{ route('applications.offer.create', ['application' => $application->id]) }}"
                        class="button button_colored button_shadowed">Предложить услугу</a>
                 </div>
         </div>
