@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\OfferController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -89,6 +90,8 @@ Route::middleware(['user_online'])->group(function() {
                 ->name('applications.index');
             Route::get('/applications/{application}', [ApplicationController::class, 'show'])
                 ->name('applications.show');
+            Route::get('/applications/{application}/offer/create', [OfferController::class, 'create'])
+                ->name('applications.offer.create');
         });
 
         Route::post('/applications', [ApplicationController::class, 'store'])
