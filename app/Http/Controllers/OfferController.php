@@ -11,8 +11,11 @@ class OfferController extends Controller
         return view('offer.offer-create', compact('id'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request, $application)
     {
-        dd($request);
+        $data = $request->validate([
+            'comment' => 'nullable|max:191'
+        ]);
+
     }
 }
