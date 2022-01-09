@@ -10,19 +10,19 @@
     <section class="section">
         <div class="container">
             <h1 class="page-header">Ответить на заявку</h1>
-            <div class="form-container">
+            <div class="card">
                 <form action="{{ route('applications.offer.store', ['application' => $id]) }}" method="post" class="form"
                       enctype="multipart/form-data">
                     @csrf
-                    <div class="form-group">
-                        <label for="comment" class="form-group-label">Вы можете оставить комментарий к Вашему предложению (не обязательно)</label>
-                        <div class="form-group-input">
+                    <div class="card__form-group">
+                        <label for="comment" class="card__form-group-label">Вы можете оставить комментарий к Вашему предложению (не обязательно)</label>
+                        <div class="card__form-group-input">
                             <textarea name="comment" id="comment"></textarea>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="card__form-group">
                         <div class="btn-container">
-                            <button id="btn-next" type="submit" class="button button_colored button_shadowed">Подтвердить</button>
+                            <button type="submit" class="button button_colored button_shadowed">Подтвердить</button>
                         </div>
                     </div>
                 </form>
