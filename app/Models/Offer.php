@@ -12,7 +12,8 @@ class Offer extends Model
     protected $fillable = [
         'comment',
         'accepted',
-        'application_id'
+        'application_id',
+        'user_id'
     ];
 
     public function application()

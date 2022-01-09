@@ -21,7 +21,7 @@ class ApplicationController extends Controller
     {
         $services = Auth::user()->services()->pluck('service_id')->toArray();
 
-        $applications = Application::with(['category', 'service', 'user'])->whereIn('service_id', $services)->paginate(4);
+        $applications = Application::with(['category', 'service', 'user'])->whereIn('service_id', $services)->paginate(9);
 
         return view('applications.applications', compact('applications'));
     }
