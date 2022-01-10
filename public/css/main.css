@@ -77,6 +77,24 @@ address {
   padding-bottom: 1rem;
 }
 
+/* breadcrumbs */
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+}
+.breadcrumbs__item {
+  margin-right: 0.5rem;
+  font-size: 0.9rem;
+  line-height: 1.3rem;
+}
+.breadcrumbs__item a::after {
+  content: ">";
+  margin-left: 0.5rem;
+}
+.breadcrumbs__item_active {
+  font-family: Roboto-Bold, sans-serif;
+}
+
 .button {
   display: inline-flex;
   justify-content: center;

@@ -56,6 +56,24 @@ address {
   padding-bottom: 1rem;
 }
 
+/* breadcrumbs */
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  &__item {
+    margin-right: .5rem;
+    font-size: 0.9rem;
+    line-height: 1.3rem;
+    a::after {
+      content: "\003E";
+      margin-left: .5rem;
+    }
+    &_active {
+      font-family: $font-main-bold;
+    }
+  }
+}
+
 .button {
   display: inline-flex;
   justify-content: center;
