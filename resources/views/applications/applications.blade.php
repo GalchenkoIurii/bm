@@ -13,6 +13,11 @@
 @section('content')
     <section class="section">
         <div class="container">
+            {{ Breadcrumbs::render('applications') }}
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
             <h1 class="page-header">Заявки клиентов</h1>
 
             @if(session()->has('error'))
