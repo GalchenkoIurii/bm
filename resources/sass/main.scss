@@ -62,6 +62,7 @@ address {
   flex-wrap: wrap;
   &__item {
     margin-right: .5rem;
+    font-family: $font-main-medium;
     font-size: 0.9rem;
     line-height: 1.3rem;
     a::after {
@@ -69,7 +70,7 @@ address {
       margin-left: .5rem;
     }
     &_active {
-      font-family: $font-main-bold;
+      font-family: $font-main;
     }
   }
 }
