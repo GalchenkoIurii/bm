@@ -38,10 +38,10 @@
                         <a href="{{ route('blog.show', ['post' => $post->id]) }}">
                             <div class="card card_mb">
                                 <p class="card__item">
-                                    <span class="card__item-content">{{ $post->title }}</span>
+                                    <span class="card__item-content">{{ \Illuminate\Support\Str::words($post->title, 10, ' ...') }}</span>
                                 </p>
                                 <p class="card__item">
-                                    <span class="card__item-title">{{ $post->description }}</span>
+                                    <span class="card__item-title">{{ \Illuminate\Support\Str::words($post->description, 20, ' ...') }}</span>
                                 </p>
 
                                 <p class="card__item card__item_centered">
