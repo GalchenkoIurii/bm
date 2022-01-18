@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\PostTagController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\ProfileController;
@@ -35,6 +36,13 @@ Route::middleware(['user_online'])->group(function() {
 
     Route::get('/contacts', [MainController::class, 'contacts'])
         ->name('contacts');
+
+    /*
+     * blog
+     */
+    Route::get('/blog', [BlogController::class, 'index'])
+        ->name('blog.index');
+
 
     Route::get('/search', [MainController::class, 'search'])
         ->name('search');
