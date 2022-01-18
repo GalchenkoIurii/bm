@@ -42,7 +42,8 @@ Route::middleware(['user_online'])->group(function() {
      */
     Route::get('/blog', [BlogController::class, 'index'])
         ->name('blog.index');
-
+    Route::get('/blog/{post}', [BlogController::class, 'show'])
+        ->name('blog.show');
 
     Route::get('/search', [MainController::class, 'search'])
         ->name('search');

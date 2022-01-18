@@ -4,7 +4,7 @@
     <link href="{{ asset('fa-web/css/all.css') }}" rel="stylesheet">
 @endsection
 
-@section('page-title')Заявки клиентов@endsection
+@section('page-title')Блог@endsection
 
 @section('header')
     @include('incs.header')
@@ -13,12 +13,12 @@
 @section('content')
     <section class="section">
         <div class="container">
-            {{ Breadcrumbs::render('applications') }}
+            {{--{{ Breadcrumbs::render('') }}--}}
         </div>
     </section>
     <section class="section">
         <div class="container">
-            <h1 class="page-header">Заявки клиентов</h1>
+            <h1 class="page-header">Посты</h1>
 
             @if(session()->has('error'))
                 <p class="error-message">{{ session('error') }}</p>
@@ -32,77 +32,32 @@
                 <p class="status-message">{{ session('success') }}</p>
             @endif
 
-            @if($applications->isNotEmpty())
+            @if($posts->isNotEmpty())
                 <div class="card-box">
-                @foreach($applications as $application)
-                        <a href="{{ route('applications.show', ['application' => $application->id]) }}">
+                @foreach($posts as $post)
+                        <a href="{{ route('blog.show', ['post' => $post->id]) }}">
                             <div class="card card_mb">
                                 <p class="card__item">
-                                    <span class="card__item-title">Категория:</span>
-                                    <span class="card__item-content">{{ $application->category->name }}</span>
+                                    <span class="card__item-content">{{ $post->title }}</span>
                                 </p>
                                 <p class="card__item">
-                                    <span class="card__item-title">Услуга:</span>
-                                    <span class="card__item-content">{{ $application->service->name }}</span>
+                                    <span class="card__item-title">{{ $post->description }}</span>
                                 </p>
-                                @if(
-                                    !is_null($application->start_price)
-                                    || !is_null($application->end_price)
-                                )
-                                    <p class="card__item card__item_centered">
-                                        <span class="card__item-label"><i class="fas fa-dollar-sign"></i></span>
-                                        <span class="card__item-text">
-                                                от {{ $application->start_price }} до {{ $application->end_price }} грн.
-                                        </span>
-                                    </p>
-                                @endif
-                                @if(
-                                    !is_null($application->start_date)
-                                    || !is_null($application->end_date)
-                                )
-                                    <p class="card__item card__item_centered">
-                                        <span class="card__item-label"><i class="fas fa-calendar-alt"></i></span>
-                                        <span class="card__item-text">
-                                                с {{ date('d.m.Y', strtotime($application->start_date)) }} до {{ date('d.m.Y', strtotime($application->end_date)) }}
-                                        </span>
-                                    </p>
-                                @endif
-                                @if(!is_null($application->place))
-                                    <p class="card__item card__item_column card__item_hr-top">
-                                        <span class="card__item-title">Где могу получить услугу:</span>
-                                        @if($application->place == 'master')
-                                            <span class="card__item-content">У мастера</span>
-                                        @elseif($application->place == 'client')
-                                            <span class="card__item-content">У себя</span>
-                                        @elseif($application->place == 'both')
-                                            <span class="card__item-content">У себя или у мастера</span>
-                                        @endif
-                                    </p>
-                                @endif
-                                @if(
-                                    !is_null($application->country)
-                                    || !is_null($application->region)
-                                    || !is_null($application->district)
-                                    || !is_null($application->city)
-                                )
-                                    <p class="card__item card__item_centered">
-                                        <span class="card__item-label"><i class="fas fa-map-marker-alt"></i></span>
-                                        <span class="card__item-text">
-                                                {{ $application->country }}
-                                            {{ $application->region }}
-                                            {{ $application->district }}
-                                            {{ $application->city }}
-                                        </span>
-                                    </p>
-                                @endif
+
+                                <p class="card__item card__item_centered">
+                                    <span class="card__item-label"><i class="fas fa-calendar-alt"></i></span>
+                                    <span class="card__item-text">
+                                            {{ date('d.m.Y', strtotime($post->created_at)) }}
+                                    </span>
+                                </p>
                             </div>
                         </a>
                 @endforeach
                     <a href="#" class="card-invisible"></a>
                 </div>
-                    {{ $applications->links('pagination.pagination') }}
+                    {{ $posts->links('pagination.pagination') }}
             @else
-                <h3 class="page-description">По Вашим услугам пока нет заявок...</h3>
+                <h3 class="page-description">Постов пока нет...</h3>
             @endif
 
         </div>
