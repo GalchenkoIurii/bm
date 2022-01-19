@@ -56,9 +56,7 @@
                                     <p class="post-card-meta__item">
                                         <span class="card__item-label"><i class="fas fa-tags"></i></span>
                                         <span class="card__item-text">
-                                            @foreach($post->postTags as $tag)
-                                                {{ $tag->title }}
-                                            @endforeach
+                                            {{ $post->postTags->pluck('title')->join(', ') }}
                                         </span>
                                     </p>
                                 </div>
