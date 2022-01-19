@@ -38,7 +38,7 @@
                         <a href="{{ route('blog.show', ['post' => $post->id]) }}">
                             <div class="card card_mb">
                                 <p class="card__item">
-                                    <span class="card__item-content">{{ \Illuminate\Support\Str::words($post->title, 10, ' ...') }}</span>
+                                    <span class="post-card__title">{{ \Illuminate\Support\Str::words($post->title, 10, ' ...') }}</span>
                                 </p>
                                 <div class="card__item post-card-meta">
                                     <p class="post-card-meta__item">
@@ -63,7 +63,7 @@
                                     </p>
                                 </div>
                                 <p class="card__item">
-                                    <span class="card__item-title">{{ \Illuminate\Support\Str::words($post->description, 20, ' ...') }}</span>
+                                    <span class="post-card__description">{{ \Illuminate\Support\Str::words($post->description, 16, ' >>>') }}</span>
                                 </p>
                             </div>
                         </a>

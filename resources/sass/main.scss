@@ -566,22 +566,30 @@ address {
 
 
 /* posts cards */
-
-.post-card-meta {
-  justify-content: space-between;
-  flex-wrap: wrap;
-  border-top: 1px solid $color-main-brown;
-  border-bottom: 1px solid $color-main-brown;
-  padding-top: .4rem;
-  padding-bottom: .4rem;
-  &__item span {
+.post-card {
+  &__title {
+    color: $color-main-black;
+  }
+  &__description {
     font-size: .8rem;
   }
-  &__item:not(:last-child) {
-    flex-basis: 50%;
-    margin-bottom: .3rem;
+  &-meta {
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border-top: 1px solid $color-main-brown;
+    border-bottom: 1px solid $color-main-brown;
+    padding-top: .4rem;
+    padding-bottom: .4rem;
+    &__item span {
+      font-size: .7rem;
+    }
+    &__item:not(:last-child) {
+      flex-basis: 50%;
+      margin-bottom: .3rem;
+    }
   }
 }
+
 
 /* masters cards */
 
