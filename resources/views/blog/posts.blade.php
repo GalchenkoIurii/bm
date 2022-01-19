@@ -13,7 +13,7 @@
 @section('content')
     <section class="section">
         <div class="container">
-            {{--{{ Breadcrumbs::render('') }}--}}
+            {{ Breadcrumbs::render('blog') }}
         </div>
     </section>
     <section class="section">

@@ -20,3 +20,9 @@ Breadcrumbs::for('application', function (BreadcrumbTrail $trail, Application $a
     $trail->parent('applications');
     $trail->push($application->id, route('applications.show', $application));
 });
+
+// Home > Blog
+Breadcrumbs::for('blog', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Блог', route('blog.index'));
+});
