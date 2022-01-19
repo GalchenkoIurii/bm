@@ -568,6 +568,19 @@ address {
   pointer-events: none;
 }
 
+/* posts cards */
+.post-card-meta {
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border-top: 1px solid #d2a679;
+  border-bottom: 1px solid #d2a679;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+}
+.post-card-meta__item:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
 /* masters cards */
 .master-card {
   padding: 0.6rem 1rem;

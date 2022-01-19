@@ -40,15 +40,30 @@
                                 <p class="card__item">
                                     <span class="card__item-content">{{ \Illuminate\Support\Str::words($post->title, 10, ' ...') }}</span>
                                 </p>
+                                <div class="card__item post-card-meta">
+                                    <p class="post-card-meta__item">
+                                        <span class="card__item-label"><i class="fas fa-calendar-alt"></i></span>
+                                        <span class="card__item-text">
+                                            {{ date('d.m.Y', strtotime($post->created_at)) }}
+                                        </span>
+                                    </p>
+                                    <p class="post-card-meta__item">
+                                        <span class="card__item-label"><i class="fas fa-eye"></i></span>
+                                        <span class="card__item-text">
+                                            {{ $post->views }}
+                                        </span>
+                                    </p>
+                                    <p class="post-card-meta__item">
+                                        <span class="card__item-label"><i class="fas fa-tags"></i></span>
+                                        <span class="card__item-text">
+                                            @foreach($post->postTags as $tag)
+                                                {{ $tag->title }}
+                                            @endforeach
+                                        </span>
+                                    </p>
+                                </div>
                                 <p class="card__item">
                                     <span class="card__item-title">{{ \Illuminate\Support\Str::words($post->description, 20, ' ...') }}</span>
-                                </p>
-
-                                <p class="card__item card__item_centered">
-                                    <span class="card__item-label"><i class="fas fa-calendar-alt"></i></span>
-                                    <span class="card__item-text">
-                                            {{ date('d.m.Y', strtotime($post->created_at)) }}
-                                    </span>
                                 </p>
                             </div>
                         </a>
