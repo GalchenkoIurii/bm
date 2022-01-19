@@ -565,7 +565,62 @@ address {
 }
 
 
+/* post */
+
+.post {
+  //margin: 1rem auto;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  &__item {
+    display: flex;
+    margin-bottom: 1rem;
+    padding: .2rem .4rem;
+    color: $color-text-grey;
+    align-items: baseline;
+    &_centered {
+      align-items: center;
+    }
+  }
+  &-title {
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+  }
+  &-meta {
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border-top: 1px solid $color-main-brown;
+    border-bottom: 1px solid $color-main-brown;
+    padding-top: .4rem;
+    padding-bottom: .4rem;
+    &__item span {
+      font-size: .8rem;
+    }
+    &__item:not(:last-child) {
+      flex-basis: 50%;
+      margin-bottom: .3rem;
+    }
+  }
+  &-description {
+    font-family: $font-main-medium;
+    font-size: .8rem;
+    text-indent: 1rem;
+  }
+  &-content {
+    font-size: .9rem;
+    text-indent: 1rem;
+  }
+  &-author {
+    border-top: 1px solid $color-main-brown;
+    border-bottom: 1px solid $color-main-brown;
+    padding-top: .4rem;
+    padding-bottom: .4rem;
+  }
+}
+
+
 /* posts cards */
+
 .post-card {
   &__title {
     color: $color-main-black;
@@ -690,6 +745,15 @@ address {
   flex: 1 2 65%;
   display: flex;
   flex-direction: column;
+}
+
+.name-header {
+  font-family: $font-main-bold;
+  font-size: 1rem;
+  line-height: 1.3rem;
+  text-align: center;
+  margin-bottom: 0.6rem;
+  word-wrap: break-word;
 }
 
 .stars-box {

@@ -16,7 +16,7 @@ class BlogController extends Controller
 
     public function show($post)
     {
-        $postData = Post::with(['postCategory', 'postTags'])->findOrFail($post);
+        $postData = Post::with(['postCategory', 'postTags', 'user'])->findOrFail($post);
 
         return view('blog.posts-show', compact('postData'));
     }
