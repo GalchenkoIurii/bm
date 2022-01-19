@@ -574,8 +574,12 @@ address {
   border-bottom: 1px solid $color-main-brown;
   padding-top: .4rem;
   padding-bottom: .4rem;
+  &__item span {
+    font-size: .8rem;
+  }
   &__item:not(:last-child) {
-    margin-bottom: .5rem;
+    flex-basis: 50%;
+    margin-bottom: .3rem;
   }
 }
 

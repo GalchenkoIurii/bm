@@ -577,8 +577,12 @@ address {
   padding-top: 0.4rem;
   padding-bottom: 0.4rem;
 }
+.post-card-meta__item span {
+  font-size: 0.8rem;
+}
 .post-card-meta__item:not(:last-child) {
-  margin-bottom: 0.5rem;
+  flex-basis: 50%;
+  margin-bottom: 0.3rem;
 }
 
 /* masters cards */
