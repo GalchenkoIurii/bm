@@ -1,5 +1,9 @@
 @extends('layouts.main')
 
+@section('page-keywords'){{ \Illuminate\Support\Str::replace(' ', ', ', $postData->title) }}@endsection
+
+@section('page-description'){{ $postData->description }}@endsection
+
 @section('styles')
     <link href="{{ asset('fa-web/css/all.css') }}" rel="stylesheet">
 @endsection
