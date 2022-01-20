@@ -1,5 +1,10 @@
 @extends('layouts.main')
 
+@section('page-keywords')Мастер, Бьютимастер, Блог, Бьютиблог, Маникюр, Парикмахер, Косметолог@endsection
+
+@section('page-description')Бьюти блог. Блог о красоте и здоровье. Найдите мастера, который позаботится о Вашей красоте.
+Косметологи, парикмахеры, мастера маникюра и другие профессионалы рядом с Вами.@endsection
+
 @section('styles')
     <link href="{{ asset('fa-web/css/all.css') }}" rel="stylesheet">
 @endsection
