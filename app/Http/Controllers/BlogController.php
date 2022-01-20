@@ -3,13 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\PostCategory;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::with(['postCategory', 'postTags'])->paginate();
+        if($request->has('category')) {
+            $postCategory = PostCategory::with(['posts'])->where('slug', $request->query('category'))->firstOrFail();
+            $posts = $postCategory->posts()->paginate();
+        } else {
+            $posts = Post::with(['postCategory', 'postTags'])->paginate();
+        }
 
         return view('blog.posts', compact('posts'));
     }
