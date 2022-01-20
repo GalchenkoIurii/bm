@@ -1,6 +1,8 @@
 @extends('layouts.main')
 
-@section('page-keywords'){{ \Illuminate\Support\Str::replace(' ', ', ', $postData->title) }}@endsection
+@section('page-keywords'){{ \Illuminate\Support\Str::replace(
+' ', ', ', \Illuminate\Support\Str::remove(',', $postData->title)
+) }}@endsection
 
 @section('page-description'){{ $postData->description }}@endsection
 
