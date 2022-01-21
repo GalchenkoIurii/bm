@@ -25,7 +25,7 @@
         <div class="container">
             @include('incs.sidebar')
             <div class="content">
-                <h1 class="page-header">Посты</h1>
+                <h1 class="page-header">Блог</h1>
 
                 @if(session()->has('error'))
                     <p class="error-message">{{ session('error') }}</p>

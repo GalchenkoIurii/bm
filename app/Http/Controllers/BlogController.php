@@ -31,6 +31,10 @@ class BlogController extends Controller
     {
         $postData = Post::with(['postCategory', 'postTags', 'user'])->findOrFail($post);
 
+        $postData->views += 1;
+
+        $postData->update();
+
         return view('blog.posts-show', compact('postData'));
     }
 }
