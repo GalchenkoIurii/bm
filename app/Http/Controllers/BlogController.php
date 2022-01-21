@@ -17,7 +17,9 @@ class BlogController extends Controller
             $posts = Post::with(['postCategory', 'postTags'])->paginate();
         }
 
-        return view('blog.posts', compact('posts'));
+        $categories = PostCategory::all();
+
+        return view('blog.posts', compact('posts', 'categories'));
     }
 
     public function show($post)

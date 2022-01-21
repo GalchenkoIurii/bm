@@ -23,61 +23,76 @@
     </section>
     <section class="section">
         <div class="container">
-            <h1 class="page-header">Посты</h1>
+            {{--<aside class="sidebar">--}}
+                {{--<div class="sidebar-widget">--}}
+                    {{--<h3>Категории</h3>--}}
+                    {{--@if($categories->isNotEmpty())--}}
+                        {{--<a href="{{ route('blog.index') }}">Все категории</a>--}}
+                        {{--@foreach($categories as $category)--}}
+                            {{--<a href="{{ route('blog.index', ['category' => $category->slug]) }}">{{ $category->title }}</a>--}}
+                        {{--@endforeach--}}
+                    {{--@else--}}
+                        {{--<p>Категорий пока нет...</p>--}}
+                    {{--@endif--}}
+                {{--</div>--}}
+            {{--</aside>--}}
+            @include('incs.sidebar')
+            <div class="content">
+                <h1 class="page-header">Посты</h1>
 
-            @if(session()->has('error'))
-                <p class="error-message">{{ session('error') }}</p>
-            @endif
-            @if($errors->any())
-                @foreach($errors->all() as $error)
-                    <p class="error-message">{{ $error }}</p>
-                @endforeach
-            @endif
-            @if(session()->has('success'))
-                <p class="status-message">{{ session('success') }}</p>
-            @endif
+                @if(session()->has('error'))
+                    <p class="error-message">{{ session('error') }}</p>
+                @endif
+                @if($errors->any())
+                    @foreach($errors->all() as $error)
+                        <p class="error-message">{{ $error }}</p>
+                    @endforeach
+                @endif
+                @if(session()->has('success'))
+                    <p class="status-message">{{ session('success') }}</p>
+                @endif
 
-            @if($posts->isNotEmpty())
-                <div class="card-box">
-                @foreach($posts as $post)
-                        <a href="{{ route('blog.show', ['post' => $post->id]) }}">
-                            <div class="card card_mb">
-                                <p class="card__item">
-                                    <span class="post-card__title">{{ \Illuminate\Support\Str::words($post->title, 10, ' ...') }}</span>
-                                </p>
-                                <div class="card__item post-card-meta">
-                                    <p class="post-card-meta__item">
-                                        <span class="card__item-label"><i class="fas fa-calendar-alt"></i></span>
-                                        <span class="card__item-text">
+                @if($posts->isNotEmpty())
+                    <div class="card-box">
+                        @foreach($posts as $post)
+                            <a href="{{ route('blog.show', ['post' => $post->id]) }}">
+                                <div class="card card_mb">
+                                    <p class="card__item">
+                                        <span class="post-card__title">{{ \Illuminate\Support\Str::words($post->title, 10, ' ...') }}</span>
+                                    </p>
+                                    <div class="card__item post-card-meta">
+                                        <p class="post-card-meta__item">
+                                            <span class="card__item-label"><i class="fas fa-calendar-alt"></i></span>
+                                            <span class="card__item-text">
                                             {{ date('d.m.Y', strtotime($post->created_at)) }}
                                         </span>
-                                    </p>
-                                    <p class="post-card-meta__item">
-                                        <span class="card__item-label"><i class="fas fa-eye"></i></span>
-                                        <span class="card__item-text">
+                                        </p>
+                                        <p class="post-card-meta__item">
+                                            <span class="card__item-label"><i class="fas fa-eye"></i></span>
+                                            <span class="card__item-text">
                                             {{ $post->views }}
                                         </span>
-                                    </p>
-                                    <p class="post-card-meta__item">
-                                        <span class="card__item-label"><i class="fas fa-tags"></i></span>
-                                        <span class="card__item-text">
+                                        </p>
+                                        <p class="post-card-meta__item">
+                                            <span class="card__item-label"><i class="fas fa-tags"></i></span>
+                                            <span class="card__item-text">
                                             {{ $post->postTags->pluck('title')->join(', ') }}
                                         </span>
+                                        </p>
+                                    </div>
+                                    <p class="card__item">
+                                        <span class="post-card__description">{{ \Illuminate\Support\Str::words($post->description, 16, ' >>>') }}</span>
                                     </p>
                                 </div>
-                                <p class="card__item">
-                                    <span class="post-card__description">{{ \Illuminate\Support\Str::words($post->description, 16, ' >>>') }}</span>
-                                </p>
-                            </div>
-                        </a>
-                @endforeach
-                    <a href="#" class="card-invisible"></a>
-                </div>
+                            </a>
+                        @endforeach
+                        <a href="#" class="card-invisible"></a>
+                    </div>
                     {{ $posts->links('pagination.pagination') }}
-            @else
-                <h3 class="page-description">Постов пока нет...</h3>
-            @endif
-
+                @else
+                    <h3 class="page-description">Постов пока нет...</h3>
+                @endif
+            </div>
         </div>
     </section>
 @endsection
