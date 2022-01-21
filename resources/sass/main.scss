@@ -437,6 +437,62 @@ address {
   }
 
 
+  /* sidebar */
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem auto;
+  padding: .8rem 1rem;
+  border: 1px solid $color-main-brown;
+  border-radius: .5rem;
+  &-widget:not(:last-child) {
+    margin-bottom: .8rem;
+  }
+  &-widget {
+    font-family: $font-main-medium;
+    font-size: 1rem;
+    line-height: 1.2rem;
+    &__title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      outline: none;
+      padding: .5rem .4rem;
+      border-bottom: 1px solid $color-main-brown;
+      cursor: pointer;
+      list-style: none;
+      color: $color-main-black;
+      &-icon {
+        display: inline-block;
+        color: $color-main-black;
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+    &__title::-webkit-details-marker {
+      display: none;
+    }
+    &__content {
+      padding: .6rem .8rem .4rem;
+    }
+    &__item {
+      margin-bottom: .4rem;
+      padding: .3rem .6rem;
+      a {
+        font-size: .9rem;
+        color: $color-text-grey;
+      }
+    }
+    &__item:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &-widget[open] &-widget__title-icon {
+    transform: rotate(180deg);
+  }
+}
+
   /* card */
 
 .card-box {
