@@ -88,12 +88,17 @@ Route::middleware(['user_online'])->group(function() {
         Route::get('/logout', [UserController::class, 'logout'])
             ->name('logout');
 
-//        Route::resources([
-//            '/applications' => ApplicationController::class
-//        ]);
-
+        /*
+         * application creating
+         */
         Route::get('/applications/create', [ApplicationController::class, 'create'])
             ->name('applications.create');
+
+        /*
+         * post creating
+         */
+        Route::get('/blog/create', [BlogController::class, 'create'])
+            ->name('blog.create');
 
         Route::middleware('master')->group(function() {
             Route::get('/applications', [ApplicationController::class, 'index'])
