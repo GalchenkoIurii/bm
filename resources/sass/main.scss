@@ -372,6 +372,7 @@ address {
  /* photo preview */
 
 .photo-preview {
+  margin-bottom: 1rem;
   img {
     width: 100%;
   }
@@ -573,7 +574,7 @@ address {
     input, textarea {
       flex-basis: 100%;
       padding: .6rem .8rem;
-      height: 2.5rem;
+      //height: 2.5rem;
       border-radius: .3rem;
       border: 1px solid $color-main-grey;
       background-color: $color-main-white;
@@ -585,7 +586,15 @@ address {
     }
     textarea {
       resize: none;
+    }
+    &_text-sm {
       height: 5rem;
+    }
+    &_text-md {
+      height: 8rem;
+    }
+    &_text-lg {
+      height: 12rem;
     }
     input.error {
       border-color: $color-main-red;

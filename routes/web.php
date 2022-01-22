@@ -42,6 +42,14 @@ Route::middleware(['user_online'])->group(function() {
      */
     Route::get('/blog', [BlogController::class, 'index'])
         ->name('blog.index');
+    /*
+     * post creating
+     */
+    Route::middleware(['auth'])->group(function() {
+        Route::get('/blog/create', [BlogController::class, 'create'])
+            ->name('blog.create');
+    });
+
     Route::get('/blog/{post}', [BlogController::class, 'show'])
         ->name('blog.show');
 
@@ -94,11 +102,6 @@ Route::middleware(['user_online'])->group(function() {
         Route::get('/applications/create', [ApplicationController::class, 'create'])
             ->name('applications.create');
 
-        /*
-         * post creating
-         */
-        Route::get('/blog/create', [BlogController::class, 'create'])
-            ->name('blog.create');
 
         Route::middleware('master')->group(function() {
             Route::get('/applications', [ApplicationController::class, 'index'])

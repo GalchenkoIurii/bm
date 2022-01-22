@@ -381,6 +381,9 @@ address {
 }
 
 /* photo preview */
+.photo-preview {
+  margin-bottom: 1rem;
+}
 .photo-preview img {
   width: 100%;
 }
@@ -578,7 +581,6 @@ address {
 .card__form-group input, .card__form-group textarea {
   flex-basis: 100%;
   padding: 0.6rem 0.8rem;
-  height: 2.5rem;
   border-radius: 0.3rem;
   border: 1px solid #d9dadf;
   background-color: #fff;
@@ -590,7 +592,15 @@ address {
 }
 .card__form-group textarea {
   resize: none;
+}
+.card__form-group_text-sm {
   height: 5rem;
+}
+.card__form-group_text-md {
+  height: 8rem;
+}
+.card__form-group_text-lg {
+  height: 12rem;
 }
 .card__form-group input.error {
   border-color: #f03d3e;
