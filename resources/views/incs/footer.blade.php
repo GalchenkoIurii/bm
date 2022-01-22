@@ -12,7 +12,7 @@
                 </ul>
             </nav>
             <div class="footer__hr"></div>
-            <p>&#169; 2021-2022 Beauty Masters</p>
+            <p class="footer__copyright">&#169; 2021-{{ date('Y') }} Beauty Masters</p>
         </div>
     </div>
 </footer>

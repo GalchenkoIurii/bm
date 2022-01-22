@@ -1022,6 +1022,9 @@ address {
   text-align: center;
   padding: 20px 0;
 }
+.footer__copyright {
+  font-size: 0.7rem;
+}
 
 .phone__link {
   color: #fff;
