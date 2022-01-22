@@ -48,6 +48,8 @@ Route::middleware(['user_online'])->group(function() {
     Route::middleware(['auth'])->group(function() {
         Route::get('/blog/create', [BlogController::class, 'create'])
             ->name('blog.create');
+        Route::post('/blog', [BlogController::class, 'store'])
+            ->name('blog.store');
     });
 
     Route::get('/blog/{post}', [BlogController::class, 'show'])
