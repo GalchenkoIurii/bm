@@ -27,6 +27,14 @@ class BlogController extends Controller
         return view('blog.posts', compact('posts', 'categories', 'tags'));
     }
 
+    public function create()
+    {
+        $categories = PostCategory::all();
+        $tags = PostTag::all();
+
+        return view('blog.posts-create', compact('categories', 'tags'));
+    }
+
     public function show($post)
     {
         $postData = Post::with(['postCategory', 'postTags', 'user'])->findOrFail($post);
