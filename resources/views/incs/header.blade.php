@@ -21,12 +21,15 @@
                     <ul class="menu-box">
                         @if(auth()->check() && auth()->user()->is_admin)
                             <li class="menu__item"><a class="menu__link" href="{{ route('admin.index') }}">Админпанель</a></li>
+                            <li class="menu__item"><a class="menu__link" href="{{ route('blog.index') }}">Блог</a></li>
                             <li class="menu__item"><a class="menu__link" href="{{ route('profiles.show', ['profile' => $user_data['profile_id']]) }}">Мой профиль</a></li>
                             <li class="menu__item"><a class="menu__link" href="{{ route('logout') }}">Выйти</a></li>
                         @elseif(auth()->check())
+                            <li class="menu__item"><a class="menu__link" href="{{ route('blog.index') }}">Блог</a></li>
                             <li class="menu__item"><a class="menu__link" href="{{ route('profiles.show', ['profile' => $user_data['profile_id']]) }}">Мой профиль</a></li>
                             <li class="menu__item"><a class="menu__link" href="{{ route('logout') }}">Выйти</a></li>
                         @else
+                            <li class="menu__item"><a class="menu__link" href="{{ route('blog.index') }}">Блог</a></li>
                             <li class="menu__item"><a class="menu__link" href="{{ route('register.create') }}">Регистрация</a></li>
                             <li class="menu__item"><a class="menu__link" href="{{ route('login.create') }}">Вход</a></li>
                         @endif
@@ -44,6 +47,9 @@
         <ul class="">
             <li class="mobile-menu__item">
                 <a class="mobile-menu__link" href="{{ route('home') }}">Главная</a>
+            </li>
+            <li class="mobile-menu__item">
+                <a class="mobile-menu__link" href="{{ route('blog.index') }}">Блог</a>
             </li>
             <li class="mobile-menu__item">
                 <a class="mobile-menu__link" href="{{ route('search') }}">Найти мастера</a>
