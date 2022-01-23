@@ -24,7 +24,7 @@ class PostStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|max:255',
+            'title' => 'required|max:190',
             'description' => 'required|max:1000',
             'content' => 'required',
             'post_category_id' => 'required|integer',

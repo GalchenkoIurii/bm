@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostStoreRequest;
 use App\Models\Post;
 use App\Models\PostCategory;
 use App\Models\PostTag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
@@ -33,6 +35,26 @@ class BlogController extends Controller
         $tags = PostTag::all();
 
         return view('blog.posts-create', compact('categories', 'tags'));
+    }
+
+    public function store(PostStoreRequest $request)
+    {
+        $requestData = $request->validated();
+
+        if($request->hasFile('image')) {
+            $folder = date('Y-m-d');
+            $requestData['image'] = $request->file('image')->store('posts/' . $folder, 'public');
+        }
+
+        $requestData['user_id'] = Auth::id();
+
+        $post = Post::create($requestData);
+
+        if(isset($requestData['post_tags_id'])) {
+            $post->postTags()->sync($requestData['post_tags_id']);
+        }
+
+        return redirect()->route('blog.index')->with('success', 'Ваш пост отправлен на модерацию. После модерации пост будет опубликован.');
     }
 
     public function show($post)

@@ -38,7 +38,7 @@
             <article class="post">
                 <h1 class="page-header">Создание поста</h1>
                 <div class="card">
-                    <form action="#" method="post" class="form"
+                    <form action="{{ route('blog.store') }}" method="post" class="form"
                           enctype="multipart/form-data">
                         @csrf
                         <div class="card__form-group">
