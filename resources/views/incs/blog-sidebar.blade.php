@@ -35,4 +35,9 @@
             <p class="sidebar-widget__content">Тегов пока нет...</p>
         @endif
     </details>
+    <div class="sidebar-widget">
+        <div class="btn-container">
+            <a href="{{ route('blog.create') }}" class="button button_colored button_shadowed">Добавить пост</a>
+        </div>
+    </div>
 </aside>

@@ -23,7 +23,7 @@
     </section>
     <section class="section">
         <div class="container">
-            @include('incs.sidebar')
+            @include('incs.blog-sidebar')
             <div class="content">
                 <h1 class="page-header">Блог</h1>
 
