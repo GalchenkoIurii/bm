@@ -113,7 +113,7 @@ address {
 .btn-container {
   display: flex;
   justify-content: center;
-  padding: 1rem;
+  padding: .7rem 1rem;
 }
 
 .btn-address-container {
@@ -195,12 +195,12 @@ address {
   }
 
   .form-container {
-    padding: .8rem;
+    padding: .6rem .8rem;
   }
 
   .form-group {
     width: 90%;
-    margin-bottom: .8rem;
+    margin-bottom: .5rem;
     display: inline-flex;
     flex-direction: column;
     &__label {
@@ -210,12 +210,12 @@ address {
       margin-bottom: .3rem;
     }
     &__input {
-      margin-bottom: 1rem;
+      margin-bottom: .5rem;
     }
     input {
       width: 100%;
       padding: .6rem .8rem;
-      height: 2.5rem;
+      height: 2rem;
       border-radius: .3rem;
       border: 1px solid $color-main-grey;
       background-color: $color-main-white;
