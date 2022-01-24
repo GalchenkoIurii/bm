@@ -65,6 +65,11 @@
                 </div>
                 <div class="post-description post__item">{{ $postData->description }}</div>
                 <div class="post-content post__item">{{ $postData->content }}</div>
+                @if($postData->user->id == auth()->id())
+                    <div class="btn-container post__item">
+                        <a href="{{ route('blog.edit', ['post' => $postData->id]) }}" class="button button_colored button_shadowed">Редактировать пост</a>
+                    </div>
+                @endif
                 <div class="post-author post__item post__item_centered">
                     <div class="avatar-box">
                         <div class="avatar">

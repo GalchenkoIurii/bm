@@ -43,13 +43,15 @@ Route::middleware(['user_online'])->group(function() {
     Route::get('/blog', [BlogController::class, 'index'])
         ->name('blog.index');
     /*
-     * post creating
+     * post creating, editing and deleting
      */
     Route::middleware(['auth'])->group(function() {
         Route::get('/blog/create', [BlogController::class, 'create'])
             ->name('blog.create');
         Route::post('/blog', [BlogController::class, 'store'])
             ->name('blog.store');
+        Route::get('/blog/{post}/edit', [BlogController::class, 'edit'])
+            ->name('blog.edit');
     });
 
     Route::get('/blog/{post}', [BlogController::class, 'show'])

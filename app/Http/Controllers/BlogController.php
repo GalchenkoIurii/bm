@@ -67,4 +67,9 @@ class BlogController extends Controller
 
         return view('blog.posts-show', compact('postData'));
     }
+
+    public function edit($post)
+    {
+
+    }
 }
