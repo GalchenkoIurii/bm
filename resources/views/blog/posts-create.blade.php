@@ -18,7 +18,7 @@
 @section('content')
     <section class="section">
         <div class="container">
-            {{--{{ Breadcrumbs::render() }}--}}
+            {{ Breadcrumbs::render('blog.create') }}
         </div>
     </section>
     <section class="section">

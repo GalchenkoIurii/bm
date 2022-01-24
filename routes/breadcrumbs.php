@@ -28,6 +28,12 @@ Breadcrumbs::for('blog', function (BreadcrumbTrail $trail) {
     $trail->push('Блог', route('blog.index'));
 });
 
+// Home > Blog > Create
+Breadcrumbs::for('blog.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('blog');
+    $trail->push('Создание поста', route('blog.create'));
+});
+
 // Home > Blog > [Post]
 Breadcrumbs::for('post', function (BreadcrumbTrail $trail, Post $post) {
     $trail->parent('blog');
