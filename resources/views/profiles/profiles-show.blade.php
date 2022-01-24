@@ -25,7 +25,7 @@
                     <p class="status-message">{{ session('success') }}</p>
                 @endif
             <div class="card-box">
-                <div class="card">
+                <div class="card card_mb">
                     <div class="card__item card__item_centered">
                         <div class="avatar-box">
                             <div class="avatar">
@@ -183,6 +183,11 @@
                                 </div>
                             </div>
                     @endif
+                </div>
+                <div class="card">
+                    <div class="btn-container">
+                        <a href="{{ route('blog.create') }}" class="button button_colored button_shadowed">Добавить пост</a>
+                    </div>
                 </div>
             </div>
 
