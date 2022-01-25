@@ -77,7 +77,7 @@ class BlogController extends Controller
         if($postData->user_id == Auth::id()) {
             return view('blog.posts-edit', compact('postData', 'categories', 'tags'));
         } else {
-            return redirect()->back([403])->with('error', 'У Вас недостаточно прав для редактирования этого поста');
+            return back()->with('error', 'У Вас недостаточно прав для редактирования этого поста');
         }
     }
 }
