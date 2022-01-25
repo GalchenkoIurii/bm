@@ -39,7 +39,7 @@
             <article class="post">
                 <h1 class="page-header">Редактирование поста {{ $postData->title }}</h1>
                 <div class="card">
-                    <form action="#" method="post" class="form"
+                    <form action="{{ route('blog.update', ['post' => $postData->id]) }}" method="post" class="form"
                           enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
@@ -116,7 +116,7 @@
 
                         <div class="btn-container">
                             <button type="submit"
-                                    class="button button_colored button_shadowed">Сохранить</button>
+                                    class="button button_colored button_shadowed">Обновить</button>
                         </div>
                     </form>
                 </div>

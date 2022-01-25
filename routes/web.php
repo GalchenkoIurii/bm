@@ -52,6 +52,8 @@ Route::middleware(['user_online'])->group(function() {
             ->name('blog.store');
         Route::get('/blog/{post}/edit', [BlogController::class, 'edit'])
             ->name('blog.edit');
+        Route::put('/blog/{post}', [BlogController::class, 'update'])
+            ->name('blog.update');
     });
 
     Route::get('/blog/{post}', [BlogController::class, 'show'])
