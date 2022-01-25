@@ -39,3 +39,9 @@ Breadcrumbs::for('post', function (BreadcrumbTrail $trail, Post $post) {
     $trail->parent('blog');
     $trail->push($post->title, route('blog.show', $post));
 });
+
+// Home > Blog > [Post] > Edit
+Breadcrumbs::for('post.edit', function (BreadcrumbTrail $trail, Post $post) {
+    $trail->parent('post', $post);
+    $trail->push('Редактирование поста', route('blog.edit', $post));
+});

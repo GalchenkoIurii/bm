@@ -19,7 +19,7 @@
 @section('content')
     <section class="section">
         <div class="container">
-            {{--{{ Breadcrumbs::render() }}--}}
+            {{ Breadcrumbs::render('post.edit', $postData) }}
         </div>
     </section>
     <section class="section">
