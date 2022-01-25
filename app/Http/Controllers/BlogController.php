@@ -70,6 +70,14 @@ class BlogController extends Controller
 
     public function edit($post)
     {
+        $postData = Post::with(['postCategory', 'postTags', 'user'])->findOrFail($post);
+        $categories = PostCategory::all();
+        $tags = PostTag::all();
 
+        if($postData->user_id == Auth::id()) {
+            return view('blog.posts-edit', compact('postData', 'categories', 'tags'));
+        } else {
+            return redirect()->back([403])->with('error', 'У Вас недостаточно прав для редактирования этого поста');
+        }
     }
 }
