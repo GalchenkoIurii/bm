@@ -54,6 +54,8 @@ Route::middleware(['user_online'])->group(function() {
             ->name('blog.edit');
         Route::put('/blog/{post}', [BlogController::class, 'update'])
             ->name('blog.update');
+        Route::delete('/blog/{post}', [BlogController::class, 'destroy'])
+            ->name('blog.destroy');
     });
 
     Route::get('/blog/{post}', [BlogController::class, 'show'])

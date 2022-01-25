@@ -69,6 +69,14 @@
                     <div class="btn-container post__item">
                         <a href="{{ route('blog.edit', ['post' => $postData->id]) }}" class="button button_colored button_shadowed">Редактировать пост</a>
                     </div>
+                    <form action="{{ route('blog.destroy', ['post' => $postData->id]) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <div class="btn-container post__item">
+                            <button type="submit" class="button button_danger button_shadowed"
+                                    onclick="return confirm('Подтвердите удаление поста')">Удалить пост</button>
+                        </div>
+                    </form>
                 @endif
                 <div class="post-author post__item post__item_centered">
                     <div class="avatar-box">

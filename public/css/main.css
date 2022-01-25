@@ -119,6 +119,10 @@ address {
   background-color: #d2a679;
   color: #fff;
 }
+.button_danger {
+  background-color: #f03d3e;
+  color: #fff;
+}
 .button_shadowed {
   box-shadow: 2px 2px 8px 1px #d9dadf;
 }

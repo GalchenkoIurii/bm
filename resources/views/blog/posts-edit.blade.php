@@ -73,13 +73,15 @@
                             <div class="form-group__input" style="display: none">
                                 <input type="file" class="file-input__input" name="image" id="profile-photo">
                             </div>
-                            @if(!is_null($postData->image))
-                                <div class="photo-preview">
+                            <div class="photo-preview">
+                                @if(!is_null($postData->image))
                                     <img id="profile-photo-preview"
                                          src="{{ asset('storage/' . $postData->image) }}"
                                          alt="Изображение {{ $postData->title }}">
-                                </div>
-                            @endif
+                                @else
+                                    <img id="profile-photo-preview" src="" alt="">
+                                @endif
+                            </div>
                         </div>
                         <div class="card__form-group">
                             <label for="category_id" class="card__form-group-label">Категория</label>

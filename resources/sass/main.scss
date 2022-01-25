@@ -98,6 +98,10 @@ address {
     background-color: $color-main-brown;
     color: $color-main-white;
   }
+  &_danger {
+    background-color: $color-main-red;
+    color: $color-main-white;
+  }
   &_shadowed {
     box-shadow: 2px 2px 8px 1px $color-main-grey;
   }

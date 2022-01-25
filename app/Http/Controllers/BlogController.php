@@ -75,7 +75,7 @@ class BlogController extends Controller
         $categories = PostCategory::all();
         $tags = PostTag::all();
 
-        if($postData->user_id == Auth::id()) {
+        if ($postData->user_id == Auth::id()) {
             return view('blog.posts-edit', compact('postData', 'categories', 'tags'));
         } else {
             return back()->with('error', 'У Вас недостаточно прав для редактирования этого поста');
@@ -88,24 +88,28 @@ class BlogController extends Controller
 
         $postData = Post::findOrFail($post);
 
-        if ($request->hasFile('image')) {
-            $folder = date('Y-m-d');
-            $requestData['image'] = $request->file('image')->store('posts/' . $folder, 'public');
-            $oldImagePath = $postData->image;
-        }
+        if ($postData->user_id == Auth::id()) {
+            if ($request->hasFile('image')) {
+                $folder = date('Y-m-d');
+                $requestData['image'] = $request->file('image')->store('posts/' . $folder, 'public');
+                $oldImagePath = $postData->image;
+            }
 
-        $postData->update($requestData);
+            $postData->update($requestData);
 
-        if (isset($requestData['post_tags_id'])) {
-            $postData->postTags()->sync($requestData['post_tags_id']);
+            if (isset($requestData['post_tags_id'])) {
+                $postData->postTags()->sync($requestData['post_tags_id']);
+            } else {
+                $postData->postTags()->sync(null);
+            }
+
+            if (isset($oldImagePath)) {
+                Storage::disk('public')->delete($oldImagePath);
+            }
+
+            return redirect()->route('blog.show', ['post' => $postData->id])->with('success', 'Пост "' . $postData->title . '" обновлен');
         } else {
-            $postData->postTags()->sync(null);
+            return back()->with('error', 'У Вас недостаточно прав для редактирования этого поста');
         }
-
-        if (isset($oldImagePath)) {
-            Storage::disk('public')->delete($oldImagePath);
-        }
-
-        return redirect()->route('blog.show', ['post' => $postData->id])->with('success', 'Пост "' . $postData->title . '" обновлен');
     }
 }
