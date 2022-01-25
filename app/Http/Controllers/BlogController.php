@@ -112,4 +112,25 @@ class BlogController extends Controller
             return back()->with('error', 'У Вас недостаточно прав для редактирования этого поста');
         }
     }
+
+    public function destroy($post)
+    {
+        $postData = Post::findOrFail($post);
+
+        if ($postData->user_id == Auth::id()) {
+            $title = $postData->title;
+
+            $postData->postTags()->sync(null);
+
+            if (isset($postData->image)) {
+                Storage::disk('public')->delete($postData->image);
+            }
+
+            $postData->delete();
+
+            return redirect()->route('blog.index')->with('success', 'Пост "' . $title . '" удален');
+        } else {
+            return back()->with('error', 'У Вас недостаточно прав для удаления этого поста');
+        }
+    }
 }
