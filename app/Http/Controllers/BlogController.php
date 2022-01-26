@@ -16,12 +16,12 @@ class BlogController extends Controller
     {
         if($request->has('category')) {
             $postCategory = PostCategory::with(['posts'])->where('slug', $request->query('category'))->firstOrFail();
-            $posts = $postCategory->posts()->paginate();
+            $posts = $postCategory->posts()->where('confirmed', 1)->paginate();
         } elseif($request->has('tag')) {
             $postTag = PostTag::with(['posts'])->where('slug', $request->query('tag'))->firstOrFail();
-            $posts = $postTag->posts()->paginate();
+            $posts = $postTag->posts()->where('confirmed', 1)->paginate();
         } else {
-            $posts = Post::with(['postCategory', 'postTags'])->paginate();
+            $posts = Post::with(['postCategory', 'postTags'])->where('confirmed', 1)->paginate();
         }
 
         $categories = PostCategory::all();
