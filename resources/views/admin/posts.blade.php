@@ -19,6 +19,7 @@
                         <th scope="col">Дата</th>
                         <th scope="col">Категория</th>
                         <th scope="col">Теги</th>
+                        <th scope="col">Просмотры</th>
                         <th scope="col">Ожидает подтверждения</th>
                         <th scope="col">Подтвержден</th>
                         <th scope="col">Действия</th>
@@ -36,6 +37,7 @@
                                     <span>{{ $tag->title }}</span><br>
                                     @endforeach
                             </td>
+                            <td>{{ $post->views }}</td>
                             <td>
                                 @if($post->need_confirmation)
                                     <span class="badge bg-success">Да</span>
