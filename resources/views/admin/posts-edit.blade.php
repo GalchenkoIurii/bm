@@ -57,8 +57,14 @@
                     <label class="input-group-text" for="image">Изображение поста</label>
                     <input type="file" class="form-control" id="image" name="image">
                 </div>
-                <div class="mb-3">
+                <div class="mb-5">
                     <img src="{{ $post->getImage() }}" alt="{{ $post->title }}" class="img-fluid">
+                </div>
+
+                <div class="form-check form-switch mb-5">
+                    <input class="form-check-input" type="checkbox" name="confirmed" id="confirmed"
+                           @if($post->confirmed) checked @endif>
+                    <label class="form-check-label" for="confirmed">Одобрить/заблокировать пост</label>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Обновить</button>
