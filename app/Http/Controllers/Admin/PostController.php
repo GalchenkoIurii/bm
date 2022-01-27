@@ -100,26 +100,34 @@ class PostController extends Controller
      */
     public function update(PostStoreRequest $request, $id)
     {
-        $request_data = $request->validated();
+        $requestData = $request->validated();
 
         $post = Post::findOrFail($id);
 
         if ($request->hasFile('image')) {
             $folder = date('Y-m-d');
-            $request_data['image'] = $request->file('image')->store('posts/' . $folder, 'public');
-            $old_image_path = $post->image;
+            $requestData['image'] = $request->file('image')->store('posts/' . $folder, 'public');
+            $oldImagePath = $post->image;
         }
 
-        $post->update($request_data);
+        if (isset($requestData['confirmed']) && $post->need_confirmation) {
+            $requestData['confirmed'] = 1;
+            $requestData['need_confirmation'] = 0;
+        } elseif (!isset($requestData['confirmed']) && $post->confirmed) {
+            $requestData['confirmed'] = 0;
+            $requestData['need_confirmation'] = 1;
+        }
 
-        if (isset($request_data['post_tags_id'])) {
-            $post->postTags()->sync($request_data['post_tags_id']);
+        $post->update($requestData);
+
+        if (isset($requestData['post_tags_id'])) {
+            $post->postTags()->sync($requestData['post_tags_id']);
         } else {
             $post->postTags()->sync(null);
         }
 
-        if (isset($old_image_path)) {
-            Storage::disk('public')->delete($old_image_path);
+        if (isset($oldImagePath)) {
+            Storage::disk('public')->delete($oldImagePath);
         }
 
         return redirect()->route('admin.posts.index')->with('success', 'Пост "' . $post->title . '" обновлен');

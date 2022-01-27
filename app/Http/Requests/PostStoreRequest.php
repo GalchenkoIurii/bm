@@ -29,7 +29,8 @@ class PostStoreRequest extends FormRequest
             'content' => 'required',
             'post_category_id' => 'required|integer',
             'post_tags_id' => 'nullable|array',
-            'image' => 'nullable|image'
+            'image' => 'nullable|image',
+            'confirmed' => 'nullable'
         ];
     }
 }

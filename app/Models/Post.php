@@ -16,6 +16,8 @@ class Post extends Model
         'content',
         'post_category_id',
         'image',
+        'confirmed',
+        'need_confirmation',
         'user_id'
     ];
 
