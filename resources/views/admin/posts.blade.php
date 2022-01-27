@@ -19,6 +19,8 @@
                         <th scope="col">Дата</th>
                         <th scope="col">Категория</th>
                         <th scope="col">Теги</th>
+                        <th scope="col">Ожидает подтверждения</th>
+                        <th scope="col">Подтвержден</th>
                         <th scope="col">Действия</th>
                     </tr>
                     </thead>
@@ -33,6 +35,20 @@
                                 @foreach($post->postTags as $tag)
                                     <span>{{ $tag->title }}</span><br>
                                     @endforeach
+                            </td>
+                            <td>
+                                @if($post->need_confirmation)
+                                    <span class="badge bg-success">Да</span>
+                                @else
+                                    <span class="badge bg-danger">Нет</span>
+                                @endif
+                            </td>
+                            <td>
+                                @if($post->confirmed)
+                                    <span class="badge bg-success">Да</span>
+                                @else
+                                    <span class="badge bg-danger">Нет</span>
+                                @endif
                             </td>
                             <td class="d-flex">
                                 <a href="{{ route('admin.posts.edit', ['post' => $post->id]) }}"
