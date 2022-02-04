@@ -1169,10 +1169,54 @@ address {
     padding-bottom: 0;
   }
 
-  .accordion[open] .accordion__title:after {
-    //content: url("../../assets/images/arrow-top.svg");
+
+  /* post create */
+
+.post-accordion {
+  font-family: $font-main-medium;
+  font-size: 1rem;
+  line-height: 1.2rem;
+  margin-bottom: .8rem;
+
+  .form-group-checkbox input + label {
+    margin-bottom: .4rem;
   }
 
-  .accordion__title:after {
-    //content: url("../../assets/images/arrow-bottom.svg");
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    outline: none;
+    padding: .5rem .4rem;
+    border-bottom: 1px solid $color-main-brown;
+    cursor: pointer;
+    list-style: none;
+    color: $color-main-black;
+    &-icon {
+      display: inline-block;
+      color: $color-main-black;
+      width: 1rem;
+      height: 1rem;
+    }
   }
+  &__title::-webkit-details-marker {
+    display: none;
+  }
+  &__content {
+    padding: .6rem .8rem .4rem;
+  }
+  &__item {
+    margin-bottom: .4rem;
+    padding: .3rem .6rem;
+    a {
+      font-size: .9rem;
+      color: $color-text-grey;
+    }
+  }
+  &__item:last-child {
+    margin-bottom: 0;
+  }
+}
+.post-accordion[open] .post-accordion__title-icon {
+  transform: rotate(180deg);
+}

@@ -80,13 +80,24 @@
                             </div>
                         </div>
                         <div id="post-tags-select-box" class="card__form-group">
-                            <label class="card__form-group-label">Тэги (не обязательно)</label>
-                            <div class="form-group-checkbox">
-                                @foreach($tags as $tag)
-                                    <input type="checkbox" name="post_tags_id[]" id="{{ $tag->id }}" value="{{ $tag->id }}">
-                                    <label for="{{ $tag->id }}" class="form-group-checkbox__label">{{ $tag->title }}</label>
-                                @endforeach
-                            </div>
+                            <details class="post-accordion">
+                                <summary class="post-accordion__title">
+                                    <label class="card__form-group-label">Тэги (не обязательно)</label>
+                                    <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" class="post-accordion__title-icon">
+                                        <path d="M18.71,8.21a1,1,0,0,0-1.42,0l-4.58,4.58a1,1,0,0,1-1.42,0L6.71,8.21a1,1,0,0,0-1.42,0,1,1,0,0,0,0,1.41l4.59,4.59a3,3,0,0,0,4.24,0l4.59-4.59A1,1,0,0,0,18.71,8.21Z"/>
+                                    </svg>
+                                </summary>
+                                @if($tags->isNotEmpty())
+                                    <div class="form-group-checkbox post-accordion__content">
+                                        @foreach($tags as $tag)
+                                            <input type="checkbox" name="post_tags_id[]" id="{{ $tag->id }}" value="{{ $tag->id }}">
+                                            <label for="{{ $tag->id }}" class="form-group-checkbox__label post-accordion__item">{{ $tag->title }}</label>
+                                        @endforeach
+                                    </div>
+                                @else
+                                    <label class="card__form-group-label post-accordion__content">Тэгов пока нет...</label>
+                                @endif
+                            </details>
                         </div>
 
                         <div class="btn-container">
