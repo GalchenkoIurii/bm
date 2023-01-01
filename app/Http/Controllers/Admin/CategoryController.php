@@ -61,12 +61,12 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param Category $category
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        $category = Category::findOrFail($id);
+//        $category = Category::findOrFail($category);
         return view('admin.categories-edit', compact('category'));
     }
 
@@ -74,10 +74,10 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
         $request->validate([
             'name' => 'nullable|max:255',
@@ -86,7 +86,6 @@ class CategoryController extends Controller
 
         $request_data = array_diff($request->all(), [null]);
 
-        $category = Category::find($id);
         $category->update($request_data);
 
         return redirect()->route('admin.categories.index')->with('success', 'Категория обновлена');
@@ -95,7 +94,7 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
