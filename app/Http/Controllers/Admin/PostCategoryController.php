@@ -57,28 +57,24 @@ class PostCategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  PostCategory $post_category
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(PostCategory $post_category)
     {
-        $category = PostCategory::findOrFail($id);
-
-        return view('admin.post-categories-edit', compact('category'));
+        return view('admin.post-categories-edit', ['category' => $post_category]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  PostCategory $post_category
      * @return \Illuminate\Http\Response
      */
-    public function update(PostCategoryRequest $request, $id)
+    public function update(PostCategoryRequest $request, PostCategory $post_category)
     {
-        $category = PostCategory::findOrFail($id);
-
-        $category->update($request->validated());
+        $post_category->update($request->validated());
 
         return redirect()->route('admin.post-categories.index')->with('success', 'Категория постов обновлена');
     }
