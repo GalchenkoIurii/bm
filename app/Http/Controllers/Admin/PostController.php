@@ -78,13 +78,11 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        $post = Post::with('postTags')->findOrFail($id);
-
         $categories = PostCategory::all();
         $tags = PostTag::all();
 
