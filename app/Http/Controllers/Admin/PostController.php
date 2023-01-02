@@ -93,15 +93,16 @@ class PostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Post $post
      * @return \Illuminate\Http\Response
      */
-    public function update(PostStoreRequest $request, $id)
+    public function update(PostStoreRequest $request, Post $post)
     {
         $requestData = $request->validated();
 
-        $post = Post::findOrFail($id);
+//        $post = Post::findOrFail($id);
 
+        // TODO: refactor post updating - change http method from put to patch
         if ($request->hasFile('image')) {
             $folder = date('Y-m-d');
             $requestData['image'] = $request->file('image')->store('posts/' . $folder, 'public');
@@ -114,6 +115,8 @@ class PostController extends Controller
         } elseif (!isset($requestData['confirmed']) && $post->confirmed) {
             $requestData['confirmed'] = 0;
             $requestData['need_confirmation'] = 1;
+        } elseif (isset($requestData['confirmed']) && $post->confirmed) {
+            $requestData['confirmed'] = 1;
         }
 
         $post->update($requestData);
