@@ -78,10 +78,10 @@ class ServiceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Service $service
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Service $service)
     {
         $request->validate([
             'name' => 'nullable|max:255',
@@ -91,7 +91,6 @@ class ServiceController extends Controller
 
         $request_data = array_diff($request->all(), [null]);
 
-        $service = Service::find($id);
         $service->update($request_data);
 
         return redirect()->route('admin.services.index')->with('success', 'Услуга обновлена');
