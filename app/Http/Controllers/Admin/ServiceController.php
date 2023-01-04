@@ -64,12 +64,11 @@ class ServiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Service $service
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Service $service)
     {
-        $service = Service::with('category')->findOrFail($id);
         $categories = Category::all();
 
         return view('admin.services-edit', compact('service', 'categories'));
