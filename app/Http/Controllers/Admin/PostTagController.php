@@ -62,8 +62,6 @@ class PostTagController extends Controller
      */
     public function edit(PostTag $post_tag)
     {
-//        $tag = PostTag::findOrFail($id);
-
         return view('admin.post-tags-edit', ['tag' => $post_tag]);
     }
 
@@ -71,14 +69,12 @@ class PostTagController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  PostTag $post_tag
      * @return \Illuminate\Http\Response
      */
-    public function update(PostTagRequest $request, $id)
+    public function update(PostTagRequest $request, PostTag $post_tag)
     {
-        $tag = PostTag::findOrFail($id);
-
-        $tag->update($request->validated());
+        $post_tag->update($request->validated());
 
         return redirect()->route('admin.post-tags.index')->with('success', 'Тег постов обновлен');
     }
