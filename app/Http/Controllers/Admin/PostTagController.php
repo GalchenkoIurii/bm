@@ -57,14 +57,14 @@ class PostTagController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  PostTag $post_tag
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(PostTag $post_tag)
     {
-        $tag = PostTag::findOrFail($id);
+//        $tag = PostTag::findOrFail($id);
 
-        return view('admin.post-tags-edit', compact('tag'));
+        return view('admin.post-tags-edit', ['tag' => $post_tag]);
     }
 
     /**
