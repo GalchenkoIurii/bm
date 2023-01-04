@@ -28,7 +28,11 @@
                             <th scope="row">{{ $service->id }}</th>
                             <td>{{ $service->name }}</td>
                             <td>{{ $service->slug }}</td>
-                            <td>{{ $service->category->name }}</td>
+                            <td>
+                                @isset($service->category->name)
+                                    {{ $service->category->name }}
+                                @endisset
+                            </td>
                             {{--<td>{{ $service->logo }}</td>--}}
                             <td class="d-flex">
                                 <a href="{{ route('admin.services.edit', ['service' => $service->id]) }}"
