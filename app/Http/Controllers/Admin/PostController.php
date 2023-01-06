@@ -53,9 +53,7 @@ class PostController extends Controller
             $request_data['image'] = $request->file('image')->store('posts/' . $folder, 'public');
         }
 
-        $request_data['user_id'] = Auth::id();
-
-        $post = Post::create($request_data);
+        $post = $request->user()->posts()->create($request_data);
 
         if (isset($request_data['post_tags_id'])) {
             $post->postTags()->sync($request_data['post_tags_id']);
