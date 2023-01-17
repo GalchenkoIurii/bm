@@ -62,12 +62,11 @@ class SettingController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param Setting $setting
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Setting $setting)
     {
-        $setting = Setting::findOrFail($id);
         return view('admin.settings-edit', compact('setting'));
     }
 
