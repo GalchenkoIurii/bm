@@ -74,10 +74,10 @@ class SettingController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Setting $setting
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Setting $setting)
     {
         $request->validate([
             'title' => 'nullable|max:255',
@@ -87,7 +87,6 @@ class SettingController extends Controller
 
         $request_data = array_diff($request->all(), [null]);
 
-        $setting = Setting::find($id);
         $setting->update($request_data);
 
         return redirect()->route('admin.settings.index')->with('success', 'Настройка обновлена');
