@@ -99,12 +99,11 @@ class ServiceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Service $service
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Service $service)
     {
-        $service = Service::findOrFail($id);
         $service->delete();
 
         return redirect()->route('admin.services.index')->with('success', 'Услуга удалена');
