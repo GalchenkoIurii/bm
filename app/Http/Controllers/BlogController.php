@@ -56,15 +56,12 @@ class BlogController extends Controller
         return redirect()->route('blog.index')->with('success', 'Ваш пост отправлен на модерацию. После модерации пост будет опубликован.');
     }
 
-    public function show($post)
+    public function show(Post $post)
     {
-        $postData = Post::with(['postCategory', 'postTags', 'user'])->findOrFail($post);
+        $post->views += 1;
+        $post->update();
 
-        $postData->views += 1;
-
-        $postData->update();
-
-        return view('blog.posts-show', compact('postData'));
+        return view('blog.posts-show', compact('post'));
     }
 
     public function edit($post)
