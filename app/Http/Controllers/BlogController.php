@@ -47,9 +47,7 @@ class BlogController extends Controller
             $requestData['image'] = $request->file('image')->store('posts/' . $folder, 'public');
         }
 
-        $requestData['user_id'] = Auth::id();
-
-        $post = Post::create($requestData);
+        $post = $request->user()->posts()->create($requestData);
 
         if(isset($requestData['post_tags_id'])) {
             $post->postTags()->sync($requestData['post_tags_id']);
