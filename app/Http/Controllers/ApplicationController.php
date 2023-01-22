@@ -62,13 +62,11 @@ class ApplicationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Application $application
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Application $application)
     {
-        $application = Application::with(['category', 'service', 'user'])->findOrFail($id);
-
         return view('applications.applications-show', compact('application'));
     }
 
