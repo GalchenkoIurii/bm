@@ -1,16 +1,16 @@
 @extends('layouts.main')
 
 @section('page-keywords'){{ \Illuminate\Support\Str::replace(
-' ', ', ', \Illuminate\Support\Str::remove(',', $postData->title)
+' ', ', ', \Illuminate\Support\Str::remove(',', $post->title)
 ) }}@endsection
 
-@section('page-description'){{ $postData->description }}@endsection
+@section('page-description'){{ $post->description }}@endsection
 
 @section('styles')
     <link href="{{ asset('fa-web/css/all.css') }}" rel="stylesheet">
 @endsection
 
-@section('page-title')Редактирование {{ $postData->title }}@endsection
+@section('page-title')Редактирование {{ $post->title }}@endsection
 
 @section('header')
     @include('incs.header')
@@ -19,7 +19,7 @@
 @section('content')
     <section class="section">
         <div class="container">
-            {{ Breadcrumbs::render('post.edit', $postData) }}
+            {{ Breadcrumbs::render('post.edit', $post) }}
         </div>
     </section>
     <section class="section">
@@ -37,16 +37,16 @@
             @endif
 
             <article class="post">
-                <h1 class="page-header">Редактирование поста {{ $postData->title }}</h1>
+                <h1 class="page-header">Редактирование поста {{ $post->title }}</h1>
                 <div class="card">
-                    <form action="{{ route('blog.update', ['post' => $postData->id]) }}" method="post" class="form"
+                    <form action="{{ route('blog.update', ['post' => $post->id]) }}" method="post" class="form"
                           enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="card__form-group">
                             <label for="title" class="card__form-group-label">Название поста</label>
                             <div class="card__form-group-input">
-                                <input type="text" name="title" id="title" value="{{ $postData->title }}">
+                                <input type="text" name="title" id="title" value="{{ $post->title }}">
                             </div>
                         </div>
                         <div class="card__form-group">
@@ -55,7 +55,7 @@
                                 <textarea name="description"
                                           id="description"
                                           class="card__form-group_text-md"
-                                >{{ $postData->description }}</textarea>
+                                >{{ $post->description }}</textarea>
                             </div>
                         </div>
                         <div class="card__form-group">
@@ -64,7 +64,7 @@
                                 <textarea name="content"
                                           id="content"
                                           class="card__form-group_text-lg"
-                                >{{ $postData->content }}</textarea>
+                                >{{ $post->content }}</textarea>
                             </div>
                         </div>
                         <div class="card__form-group card__file-input file-input">
@@ -74,10 +74,10 @@
                                 <input type="file" class="file-input__input" name="image" id="profile-photo">
                             </div>
                             <div class="photo-preview">
-                                @if(!is_null($postData->image))
+                                @if(!is_null($post->image))
                                     <img id="profile-photo-preview"
-                                         src="{{ asset('storage/' . $postData->image) }}"
-                                         alt="Изображение {{ $postData->title }}">
+                                         src="{{ asset('storage/' . $post->image) }}"
+                                         alt="Изображение {{ $post->title }}">
                                 @else
                                     <img id="profile-photo-preview" src="" alt="">
                                 @endif
@@ -90,7 +90,7 @@
                                     @foreach($categories as $category)
                                         <option
                                                 value="{{ $category->id }}"
-                                                @if($category->id === $postData->post_category_id)
+                                                @if($category->id === $post->post_category_id)
                                                     selected
                                                 @endif
                                         >{{ $category->title }}</option>
@@ -107,7 +107,7 @@
                                             name="post_tags_id[]"
                                             id="{{ $tag->id }}"
                                             value="{{ $tag->id }}"
-                                            @if(in_array($tag->id, $postData->postTags->pluck('id')->all()))
+                                            @if(in_array($tag->id, $post->postTags->pluck('id')->all()))
                                                 checked
                                             @endif
                                     >
