@@ -76,32 +76,30 @@ class BlogController extends Controller
         }
     }
 
-    public function update(PostStoreRequest $request, $post)
+    public function update(PostStoreRequest $request, Post $post)
     {
         $requestData = $request->validated();
 
-        $postData = Post::findOrFail($post);
-
-        if ($postData->user_id == Auth::id()) {
+        if ($post->user_id == Auth::id()) {
             if ($request->hasFile('image')) {
                 $folder = date('Y-m-d');
                 $requestData['image'] = $request->file('image')->store('posts/' . $folder, 'public');
-                $oldImagePath = $postData->image;
+                $oldImagePath = $post->image;
             }
 
-            $postData->update($requestData);
+            $post->update($requestData);
 
             if (isset($requestData['post_tags_id'])) {
-                $postData->postTags()->sync($requestData['post_tags_id']);
+                $post->postTags()->sync($requestData['post_tags_id']);
             } else {
-                $postData->postTags()->sync(null);
+                $post->postTags()->sync(null);
             }
 
             if (isset($oldImagePath)) {
                 Storage::disk('public')->delete($oldImagePath);
             }
 
-            return redirect()->route('blog.show', ['post' => $postData->id])->with('success', 'Пост "' . $postData->title . '" обновлен');
+            return redirect()->route('blog.show', ['post' => $post->id])->with('success', 'Пост "' . $post->title . '" обновлен');
         } else {
             return back()->with('error', 'У Вас недостаточно прав для редактирования этого поста');
         }
