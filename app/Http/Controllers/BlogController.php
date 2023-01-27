@@ -105,20 +105,18 @@ class BlogController extends Controller
         }
     }
 
-    public function destroy($post)
+    public function destroy(Post $post)
     {
-        $postData = Post::findOrFail($post);
+        if ($post->user_id == Auth::id()) {
+            $title = $post->title;
 
-        if ($postData->user_id == Auth::id()) {
-            $title = $postData->title;
+            $post->postTags()->sync(null);
 
-            $postData->postTags()->sync(null);
-
-            if (isset($postData->image)) {
-                Storage::disk('public')->delete($postData->image);
+            if (isset($post->image)) {
+                Storage::disk('public')->delete($post->image);
             }
 
-            $postData->delete();
+            $post->delete();
 
             return redirect()->route('blog.index')->with('success', 'Пост "' . $title . '" удален');
         } else {
